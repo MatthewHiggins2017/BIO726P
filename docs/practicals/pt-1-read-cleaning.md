@@ -1,5 +1,5 @@
 
-# **Part 1: Introduction To Genomic Data & Read Quality Control**
+# **Part 1: Introduction To Genomic Data & Read Cleaning**
 
 ---------------------------------------------
 
@@ -144,7 +144,7 @@ For each practical, you will have to create the following directory structure:
   (`YYYY-MM-DD-name_of_the_practical`, where `YYYY` is the current year, `MM` is
   the current month, and `DD` is the current day, and `name_of_the_practical`
   matches the practical). For instance, on the 22nd of September 2025, you should
-  create the directory `2025-09-22_read_cleaning` for this practical.
+  create the directory `2025-09-22-read_cleaning` for this practical.
 * Inside this directory, create other three directories, called `input`, `tmp`,
   and `results`.
 * The directory `input` will contain the FASTQ files.
@@ -159,7 +159,7 @@ For each practical, you will have to create the following directory structure:
 
     The command you will need is:
     ```
-    mkdir 2025-09-22_read_cleaning
+    mkdir 2025-09-22-read_cleaning
     ```
 
     Now, see if you can make the necessary **input**, **tmp** and **results** subdirectories on your own!
@@ -175,20 +175,20 @@ For each practical, you will have to create the following directory structure:
     To create our WHATIDID.txt file we can use the following command:
 
     ```
-    touch ./2025-09-22_read_cleaning/WHATIDID.txt
+    touch ./2025-09-22-read_cleaning/WHATIDID.txt
     ```
 
     The to inspect the directory structure you have created you can run:
 
     ```
-    tree ./2025-09-22_read_cleaning
+    tree ./2025-09-22-read_cleaning
     ```
 
 
 The expected terminal output is highlighted below 
 !!! terminal 
     ```bash
-    2025-09-222-read_cleaning
+    2025-09-22-read_cleaning
     ├── input
     ├── tmp
     ├── results
@@ -241,7 +241,7 @@ Lets move to the main directory for this practical, so that everything we need a
 !!! task
     ```bash
     # Remember that yours may have a different date, now or in future, so be careful to check if you copy-paste code
-    cd ~/2024-09-24-read_cleaning
+    cd ~/2025-09-22-read_cleaning
     ```
 
     After, create a symbolic link (or symlink) using `ln -s` from the reads files to the
@@ -286,7 +286,7 @@ Now, you can start evaluating the quality of the reads `reads.pe1.fastq.gz` and
     Run FastQC on the `reads.pe1.fastq.gz` and `reads.pe2.fastq.gz` files.
     The command is given below, where instead of `YOUR_OUTDIR`, you will need
     replace `YOUR_OUTDIR` with the path to your `tmp` directory (e.g. if you main
-    directory is `2024-09-24-read_cleaning`, you need to replace `YOUR_OUTDIR` with
+    directory is `2025-09-22-read_cleaning`, you need to replace `YOUR_OUTDIR` with
     `tmp`):
 
     ```bash
@@ -355,9 +355,6 @@ e.g, [[1]](../img/qc/per_base_quality.png), [[2]](../img/qc/qc_factq_tile_sequen
 !!! Question
     Clearly, some sequences have very low quality bases towards the end. Why do you think that may be?
 
-!!! Question
-    Furthermore, many more sequences start with the nucleotide **A** rather
-    than **T**. Is this what you would expect?
 
 !!! Question
     Which FastQC plots shows the relationship between base quality and position in the sequence? What else does this plot tell you about nucleotide composition towards the end of the sequences?
@@ -416,7 +413,10 @@ and end (`--quality-cutoff`) of the sequences.
     threshold **(see the above info note for suggestion about the values to use)**. 
     Remember that each `.fq` file can have a different set of values.
 
-    ```bash
+    ```
+
+    cd ~/2025-09-22-read_cleaning
+
     cutadapt --cut BEGINNING --quality-cutoff CUTOFF input/reads.pe1.fastq.gz > tmp/reads.pe1.trimmed.fq
 
     cutadapt --cut BEGINNING --quality-cutoff CUTOFF input/reads.pe2.fastq.gz > tmp/reads.pe2.trimmed.fq
