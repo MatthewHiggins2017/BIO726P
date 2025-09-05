@@ -1,0 +1,40 @@
+:root > * {
+    --md-code-bg-color: #000000;
+    --md-code-fg-color: #ffffff;
+  }
+
+
+  :root {
+    --md-admonition-icon--terminal: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill-rule="evenodd" clip-rule="evenodd" d="m 53.740115,7.2768355 c -25.935529,0 -46.9604506,22.3685485 -46.9604506,49.9615815 V 456.93107 c 0,27.59378 21.0249006,49.96158 46.9604506,49.96158 H 523.34463 c 25.93625,0 46.96044,-22.3678 46.96044,-49.96158 V 57.238417 c 0,-27.593033 -21.02419,-49.9615815 -46.96044,-49.9615815 z M 523.34463,57.238417 H 53.740115 V 456.93107 H 523.34463 Z"/><path  d="m 107.48105,328.58609 27.61493,27.61473 82.84597,-82.84421 -82.84597,-82.84558 -27.61493,27.61513 55.22986,55.23045 z"/><path d="m 313.98871,309.44633 h -76.92656 v 38.46328 h 76.92656 z"/></svg>');
+    --md-admonition-icon--task: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>');
+  }
+  .md-typeset .admonition.terminal,
+  .md-typeset details.terminal {
+    border-color: rgb(0, 0, 0);
+  }
+  .md-typeset .terminal > .admonition-title,
+  .md-typeset .terminal > summary {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .md-typeset .terminal > .admonition-title::before,
+  .md-typeset .terminal > summary::before {
+    background-color: rgb(0, 0, 0);
+    -webkit-mask-image: var(--md-admonition-icon--terminal);
+            mask-image: var(--md-admonition-icon--terminal);
+  }
+
+  /* Task admonition styling */
+  .md-typeset .admonition.task,
+  .md-typeset details.task {
+    border-color: rgb(255, 152, 0);
+  }
+  .md-typeset .task > .admonition-title,
+  .md-typeset .task > summary {
+    background-color: rgba(255, 152, 0, 0.1);
+  }
+  .md-typeset .task > .admonition-title::before,
+  .md-typeset .task > summary::before {
+    background-color: rgb(255, 152, 0);
+    -webkit-mask-image: var(--md-admonition-icon--task);
+            mask-image: var(--md-admonition-icon--task);
+  }
