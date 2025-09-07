@@ -342,8 +342,81 @@ of a predicted gene to similar database sequences. This approach expects that
 similar sequences should for example be of similar length. *Genevalidator* was
 built to automate the comparison of sequence characteristics similarly to what we just did through visual individual BLAST results.
 
-Try to run the [example rice and honeybee protein sequences](predictions.fa)
-through *GeneValidator*. It should be accessible at [https://genevalidator.genomicscourse.com/](https://genevalidator.genomicscourse.com/) or [https://genevalidator.wurmlab.com/](https://genevalidator.wurmlab.com/). 
+!!! Task 
+
+    Try to run the [example rice and honeybee protein sequences](predictions.fa)
+    through *GeneValidator*. It should be accessible at [https://genevalidator.genomicscourse.com/](https://genevalidator.genomicscourse.com/) or [https://genevalidator.wurmlab.com/](https://genevalidator.wurmlab.com/). 
+
+    Copy and paste the xample rice and honey bee sequences into the input text box as shown in the image below. 
+
+    ![Gene Validator Home](../img/GeneValidatiorHome.png)
+
+    ---------------
+    
+    **This make take a few minutes to complete, but on completion the results will appear in the section below. Take a look through the results page along with the original [GeneValidator publication (link here)](https://academic.oup.com/bioinformatics/article/32/10/1559/1742817?login=false) to inspect the proteins generated as part of the gene sequence.**
+
+    -----------------
+
+    ![Gene Validator Results](../img/GeneValidatorResults.png)
+
+
+!!! Question
+
+    === "Question"
+
+        Why is it important to consider the **Length Cluster Metric**?
+
+    === "Answer"
+
+        When hovering over the metric we get the definition: *Check whether the prediction length fits most of the BLAST hit lengths, by 1D hierarchical clusterization.*
+
+        So it is a way to see if the predicted gene length makes sense by comparing it to the lengths of BLAST matches. The method groups BLAST hit lengths into clusters, then reports:
+
+        *  The predicted length of the query. 
+        * The main length range where most BLAST hits fall.
+        
+        If the predicted length is inside that main range, it’s probably accurate.
+
+
+!!! Task 
+
+    **By selecting the image icon on the right hand side of each query (cirlced in red) you will open the drop down section to see the associated plots.** 
+
+    ![Gene Validator Drop Down Image](../img/GeneValidatorPlots.png)
+
+    **Now take a look at some of your protein predictions from your own MAKER genome annotation run! How do they look? Can you tell the difference between a good and a bad prediction?** 
+
+
+
+!!! Question
+
+    === "Question"
+
+        What is the purpose of the **Gene Merge Validation Plot**?
+
+    === "Answer"
+
+        First lets break down the abbreviations used: 
+
+         **What HSP means**
+
+        * HSP (High-Scoring Pair) = a stretch of similarity found by BLAST between your query sequence and a database sequence.
+        * Each HSP has:
+
+            * A start coordinate (where the match begins on the query).
+            * An end coordinate (where the match stops on the query).
+
+        **What the graph shows**
+
+        * X-axis (Start Offset): where the HSP begins on the query sequence (further right = later in the sequence).
+        * Y-axis (End Offset): where the HSP ends on the query sequence (higher = later in the sequence).
+        * Each red dot = one HSP, plotted by its start (x) and end (y) positions.
+
+        **How to interpret this graph**
+
+        * If all HSPs lined up diagonally in a single cluster, that would suggest they all map to one continuous region (a single gene).
+
+
 
 
 ------------------------
@@ -353,8 +426,9 @@ through *GeneValidator*. It should be accessible at [https://genevalidator.genom
 *Genevalidator*'s visual output can be handy when looking at a few genes. But the 
 tool also provides tab-delimited output, useful when working in the command-line
 or running the software on whole proteomes. This can help the analysis:
-  * in situations when you can choose between multiple gene sets.
-  * to identify which gene predictions are likely correct, and which predictions
+
+  * In situations when you can choose between multiple gene sets.
+  * To identify which gene predictions are likely correct, and which predictions
     need might require further inspection and potentially be manually fixed.
 
 ------------------------
@@ -363,7 +437,7 @@ or running the software on whole proteomes. This can help the analysis:
 
 Because automated gene predictions are not perfect, manual inspection and fixing
 is often required. The most commonly used software for this is
-[*Apollo/WebApollo*](http://genomearchitect.org/).
+[*Apollo/WebApollo*](https://genomearchitect.readthedocs.io/en/latest/).
 
 We will not curate any gene models as part of this practical, but you can learn
 about gene model curation through these YouTube videos:
