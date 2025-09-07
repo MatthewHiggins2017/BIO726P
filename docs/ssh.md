@@ -1,7 +1,7 @@
 # SSH & Your Virtual Computer!
 
 
-For each of your we have created your very on AWS instance! This instance you will use to complete the practical work outlined.
+For each of you we have created your very on AWS instance! This instance you will use to complete the practical work outlined.
 
 To switch on your instance please go to [https://switch.genomicscourse.com](https://switch.genomicscourse.com) and follow the instructions! **Once you computer is switched on proceed with the following sections.** 
 
@@ -123,7 +123,7 @@ Type in the password that you've been emailed, and hit return. Nothing will appe
    replacing username and servername with the username and server name that you 
    have been emailed:
 
-```bash
+```
 ssh bt007@bt007.genomicscourse.com
 ```
 
@@ -171,7 +171,9 @@ There are a number of SSH clients you can use, but for the purposes of this prac
 
 1) Open MobaXTerm from the Windows start menu (if you can't find it, use the search bar).
 
-2) Click on Session in the upper left of MobaXTerm ![](img/mobasession.PNG)
+2) Click on Session in the upper left of MobaXTerm 
+
+![](img/mobasession.PNG)
 
 3) Select SSH in the window that opens.
 

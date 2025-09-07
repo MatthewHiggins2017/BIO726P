@@ -1,0 +1,847 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Part 1: Introduction To Genomic Data & Read Cleaning - BIO726P</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-1-introduction-to-genomic-data-read-cleaning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIO726P
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 1: Introduction To Genomic Data &amp; Read Cleaning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIO726P
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2025 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="part-1-introduction-to-genomic-data-read-cleaning"><strong>Part 1: Introduction To Genomic Data &amp; Read Cleaning</strong></h1>
+<hr />
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p><a href="https://www.genome.gov/sequencingcosts/">Cheap sequencing</a> has created the opportunity to perform molecular-genetic analyses on almost anything! Traditional  model organisms including <em>C. elegans</em>, <em>S. cerevisiae</em> (Yeast) &amp; <em>D. melanogaster</em> (Fruit Fly) to name a few, benefited from years of efforts by expert genome assemblers, gene predictors, and curators. They have created most of the prerequisites for genomic analyses.</p>
+<p>In contrast, genomic resources are much more limited for those working on "emerging" model organisms or other species. These new organisms include most crops, animals and plant pest species, many pathogens, and major models for ecology &amp; evolution.</p>
+<p>The steps below are meant to provide some ideas that can help obtaining a <strong>reference genome</strong> and <strong>geneset</strong> of sufficient quality for many analyses. They are based on worked performed by the <strong>Wurm Lab</strong> who assembled the <a href="https://www.pnas.org/content/108/14/5679.long" title="The genome of the fire ant Solenopsis invicta">fire ant genome</a> [1].</p>
+<p>In this pratical, the dataset you will use represents <strong>~0.5% of the fire ant genome</strong>. This enables us to perform a toy/sandbox version of all analyses within a much shorter time than would normally be required. </p>
+<p>During this series of practicals, we will:</p>
+<ol>
+<li>Inspect and clean short (Illumina) reads,</li>
+<li>Perform genome assemble using our 'cleaned' data.  </li>
+<li>Assess the quality of our genome assembly. </li>
+<li>Identify protein-coding genes within our assembly. </li>
+<li>Assess the quality of gene predictions.</li>
+<li>Assess the quality of the entire process using a biologically meaningful measure.</li>
+</ol>
+<hr />
+<p><strong>Note</strong>: <em>Please do not jump ahead. You will gain the most by following through each section of the practical one by one. If you're fast, dig deeper into particular aspects. Dozens of approaches and tools exist for each step - try to understand their tradeoffs.</em></p>
+<hr />
+<h2 id="2-how-to-use-this-website"><strong>2. How to use this website!</strong></h2>
+<p>As you move through sections chronologically you will see some parts which are labelled acrcording to its intended purpose below: </p>
+<h4 id="general-text">General text</h4>
+<p>Text which does not have any special formatting and looks (plain) like this will guide you through the practicals, providing background and explaining what anlyses we are performing, and why.</p>
+<h4 id="information-and-tips">Information and tips</h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Text which appears in boxes of this colour aims to inform you of important information. </p>
+</div>
+<h4 id="task">Task</h4>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>These boxes indicate there is something for you need to do! </p>
+</div>
+<h4 id="code">Code</h4>
+<div class="highlight"><pre><span></span><code>Text which appears in boxes of this colour will tell that you are looking at a terminal command.
+You can copy and paste from here straight to the terminal but before you do take a moment to understand what the command is actually doing.
+Several command lines may be present, with each new line representing a single command. 
+</code></pre></div>
+<p>Code windows are scrollable (horizontal &amp; verticle)</p>
+<h4 id="terminal-output">Terminal output</h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal output</p>
+<div class="highlight"><pre><span></span><code>Text appearing in these boxes represents output you might expect to see in the terminal in response to a command.
+Check to see if you get a similar output!
+</code></pre></div>
+</div>
+<p>Terminal windows are scrollable (horizontal &amp; verticle)</p>
+<h4 id="questions">Questions</h4>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Text in these boxes will usually ask an open ended question. If you cannot think of an answer or you want to check you have the right one, do not hesitate to ask one of the demonstrators for help! </p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Text in these boxes will ask a specific question. To reveal the answer select the 'Answer' tab.</p>
+</div>
+<div class="tabbed-block">
+<p>Here you will find the answer! </p>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Thats it!</strong> You are now ready to progress with the pratical! If you have any questions don't hesitate to ask one of the demonstrators for help. Good luck! </p>
+<hr />
+<h2 id="3-software-and-environment-setup"><strong>3. Software and environment setup</strong></h2>
+<h3 id="test-that-the-necessary-bioinformatics-software-is-available">Test that the necessary bioinformatics software is available</h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>In the terminal run <code>seqtk</code>. </p>
+</div>
+<p>The output of this command should look like this: </p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal output</p>
+<div class="highlight"><pre><span></span><code>Usage:   seqtk &lt;command&gt; &lt;arguments&gt;
+Version: 1.4-r132-dirty
+
+Command: seq       common transformation of FASTA/Q
+     size      report the number sequences and bases
+     comp      get the nucleotide composition of FASTA/Q
+     sample    subsample sequences
+     subseq    extract subsequences from FASTA/Q
+     fqchk     fastq QC (base/quality summary)
+     mergepe   interleave two PE FASTA/Q files
+     split     split one file into multiple smaller files
+     trimfq    trim FASTQ using the Phred algorithm
+</code></pre></div>
+</div>
+<p>If you obtained a similar output move onto the next section!</p>
+<p>However, if you terminal output produces an error (like below), please ask a demonstrator for help! </p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal output</p>
+<div class="highlight"><pre><span></span><code>command not found
+</code></pre></div>
+</div>
+<h3 id="set-up-directory-hierarchy-to-work-in"><strong>Set up directory hierarchy to work in</strong></h3>
+<p>Now we will start by creating a directory (folder) to work in! </p>
+<p>Drawing on ideas from <em><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424" title="A Quick Guide to Organizing Computational Biology Projects">Noble (2009)</a>[2]</em>
+and others, we recommend following a specific directory convention for all your
+projects. The details of the convention that we will use in this practical can
+be found
+<a href="https://github.com/wurmlab/templates/blob/master/project_structures.md" title="Typical multi-day project structure">here</a>. For the purpose of this practical we will use a slightly simplified version of this structure which is now explained below.</p>
+<p>For each practical, you will have to create the following directory structure:</p>
+<ul>
+<li>A main directory in your home directory in the format
+  (<code>YYYY-MM-DD-name_of_the_practical</code>, where <code>YYYY</code> is the current year, <code>MM</code> is
+  the current month, and <code>DD</code> is the current day, and <code>name_of_the_practical</code>
+  matches the practical). For instance, on the 22nd of September 2025, you should
+  create the directory <code>2025-09-22-read_cleaning</code> for this practical.</li>
+<li>Inside this directory, create other three directories, called <code>input</code>, <code>tmp</code>,
+  and <code>results</code>.</li>
+<li>The directory <code>input</code> will contain the FASTQ files.</li>
+<li>The directory <code>tmp</code> will represent your working directory.</li>
+<li>The directory <code>results</code> will contain a copy of the final results.</li>
+</ul>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now lets create the directory structure required for this practical!</p>
+<p>The command you will need is:
+<div class="highlight"><pre><span></span><code>mkdir 2025-09-22-read_cleaning
+</code></pre></div></p>
+<p>Now, see if you can make the necessary <strong>input</strong>, <strong>tmp</strong> and <strong>results</strong> subdirectories on your own!</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Each directory in which you have done something should include a <code>WHATIDID.txt</code> file in which you log your commands. </p>
+<p>Being disciplined about structuring analyses is <em>extremely important</em>. It is similar to having a laboratory notebook. It will prevent you from becoming overwhelmed by having too many files, or not remembering what you did where.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>To create our WHATIDID.txt file we can use the following command:</p>
+<div class="highlight"><pre><span></span><code>touch ./2025-09-22-read_cleaning/WHATIDID.txt
+</code></pre></div>
+<p>The to inspect the directory structure you have created you can run:</p>
+<div class="highlight"><pre><span></span><code>tree ./2025-09-22-read_cleaning
+</code></pre></div>
+</div>
+<p>The expected terminal output is highlighted below </p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code><span class="m">2025</span>-09-22-read_cleaning
+├──<span class="w"> </span>input
+├──<span class="w"> </span>tmp
+├──<span class="w"> </span>results
+└──<span class="w"> </span>WHATIDID.txt
+</code></pre></div>
+</div>
+<hr />
+<h2 id="4-sequencing-an-appropriate-sample"><strong>4. Sequencing an appropriate sample</strong></h2>
+<p><strong>The properties of your data can affect the ability of bioinformatics algorithms to handle them.</strong>
+For instance, less diversity and complexity in a sample makes life easier:
+assembly algorithms <em>really</em> struggle when given similar sequences. So less
+heterozygosity and fewer repeats are easier.</p>
+<p>Thus:</p>
+<ul>
+<li>A haploid is easier than a diploid  (those of us working on haplo-diploid
+  Hymenoptera have it easy because male ants are haploid).</li>
+<li>It goes without saying that a diploid is easier than a tetraploid!</li>
+<li>An inbred line or strain is easier than a wild-type.</li>
+<li>A more compact genome (with less repetitive DNA) is easier than one full of
+  repeats - sorry, grasshopper &amp; tick researchers! ;)</li>
+</ul>
+<p>Many considerations go into the appropriate experimental design and sequencing
+strategy. We will not formally cover those here as this is a simple introduction and instead jump right into getting hands on with our data! </p>
+<hr />
+<h2 id="5-illumina-short-read-cleaning"><strong>5. Illumina short-read cleaning</strong></h2>
+<p>In this practical, we will work with paired ends short read sequences from an Illumina machine. Each piece of DNA was thus sequenced once from the 5' and once from the 3' end. Thus, we expect to have two files per sequence.</p>
+<p>However, sequencers aren't perfect. Several problems may affect the quality of
+the reads. You can find some examples
+<a href="https://genomecuration.github.io/genometrain/a-experimental-design/curated-collection/Presentations/Sequencing%20Troubleshooting.pptx">here</a>
+and <a href="https://sequencing.qcfail.com/">here</a>. </p>
+<p>Also, as you may already know,
+"<em>garbage in – garbage out</em>", which means that reads should be cleaned before
+performing any analysis.</p>
+<hr />
+<h3 id="setup-and-initial-inspection-using-fastqc"><strong>Setup and initial inspection using FastQC</strong></h3>
+<p>Lets move to the main directory for this practical, so that everything we need and do and create is in one place:</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remember that yours may have a different date, now or in future, so be careful to check if you copy-paste code</span>
+<span class="nb">cd</span><span class="w"> </span>~/2025-09-22-read_cleaning
+</code></pre></div>
+<p>After, create a symbolic link (or symlink) using <code>ln -s</code> from the reads files to the
+<code>input</code> directory us the commands below:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Change directory to input</span>
+<span class="nb">cd</span><span class="w"> </span>input
+
+<span class="c1"># Link the two compressed FASTQ files (remember that each correspond to one of</span>
+<span class="c1"># the pair)</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/shared/data/reads.pe1.fastq.gz<span class="w"> </span>.
+ln<span class="w"> </span>-s<span class="w"> </span>/shared/data/reads.pe2.fastq.gz<span class="w"> </span>.
+
+<span class="c1"># Return to the main directory</span>
+<span class="nb">cd</span><span class="w"> </span>..
+</code></pre></div>
+<p>Now run the <code>tree</code> command to inspect your directory structure. </p>
+</div>
+<p>The structure of your directory should look like this:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code><span class="m">2025</span>-09-22-read_cleaning
+├──<span class="w"> </span>input
+│<span class="w">   </span>├──<span class="w"> </span>reads.pe1.fastq.gz<span class="w"> </span>-&gt;<span class="w"> </span>/shared/data/reads.pe1.fastq.gz
+│<span class="w">   </span>└──<span class="w"> </span>reads.pe2.fastq.gz<span class="w"> </span>-&gt;<span class="w"> </span>/shared/data/reads.pe2.fastq.gz
+├──<span class="w"> </span>tmp
+├──<span class="w"> </span>results
+└──<span class="w"> </span>WHATIDID.txt
+</code></pre></div>
+</div>
+<p>Now, you can start evaluating the quality of the reads <code>reads.pe1.fastq.gz</code> and
+<code>reads.pe2.fastq.gz</code>. To do so, we will use
+<a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><em>FastQC</em></a>
+(<a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/">documentation</a>). <strong>FastQC</strong> is a bioinformatics software tool to help visualise the characteristics of a sequencing run. It can thus inform your read cleaning a.k.a your quality control strategy.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run FastQC on the <code>reads.pe1.fastq.gz</code> and <code>reads.pe2.fastq.gz</code> files.
+The command is given below, where instead of <code>YOUR_OUTDIR</code>, you will need
+replace <code>YOUR_OUTDIR</code> with the path to your <code>tmp</code> directory (e.g. if you main
+directory is <code>2025-09-22-read_cleaning</code>, you need to replace <code>YOUR_OUTDIR</code> with
+<code>tmp</code>):</p>
+<div class="highlight"><pre><span></span><code>fastqc<span class="w"> </span>--nogroup<span class="w"> </span>--outdir<span class="w"> </span>YOUR_OUTDIR<span class="w"> </span>input/reads.pe1.fastq.gz
+fastqc<span class="w"> </span>--nogroup<span class="w"> </span>--outdir<span class="w"> </span>YOUR_OUTDIR<span class="w"> </span>input/reads.pe2.fastq.gz
+</code></pre></div>
+<p>The <code>--nogroup</code> option ensures that bases are not grouped together in many of
+the plots generated by FastQC. This makes it easier to interpret the output in
+many cases. The <code>--outdir</code> option is there to help you clearly separate input
+and output files. To learn more about these options run <code>fastqc --help</code> in the
+terminal.</p>
+<p><strong>Important Note</strong> - Remember to log the commands you used in the <code>WHATIDID.txt</code> file. To do this you can use the text editors introduced in the UNIX practical including <code>nano</code></p>
+<p>Take a moment to verify your directory structure. You can do so using the <code>tree</code>
+command (be aware of your current working directory using the command <code>pwd</code>):</p>
+<div class="highlight"><pre><span></span><code>tree<span class="w"> </span>~/2025-09-22-read_cleaning
+</code></pre></div>
+</div>
+<p>The resulting directory structure should look like this:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>2025-09-22-read_cleaning
+├── input
+│   ├── reads.pe1.fastq.gz -&gt; /shared/data/reads.pe1.fastq.gz
+│   └── reads.pe2.fastq.gz -&gt; /shared/data/reads.pe2.fastq.gz
+├── tmp
+│   ├── reads.pe1_fastqc.html
+│   ├── reads.pe1_fastqc.zip
+│   ├── reads.pe2_fastqc.html
+│   └── reads.pe2_fastqc.zip
+├── results
+└── WHATIDID.txt
+</code></pre></div>
+</div>
+<p>If your directory and file structure looks different, ask for some help!</p>
+<hr />
+<h3 id="inspecting-fastqc-reports"><strong>Inspecting FastQC Reports</strong></h3>
+<p>Now lets inspect those FastQC report generated!</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>First, copy the files <code>reads.pe1_fastqc.html</code> and
+<code>reads.pe2_fastqc.html</code> to the directory <code>~/www/tmp</code>. Then, open the browser and
+go to your personal module page (e.g., if your QMUL username is <code>bob</code>,  the
+URL will be <code>https://bob.genomicscourse.com</code>) and click on the <code>~/www/tmp</code> link. After
+that, click on one of the links corresponding to the reports files.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p><strong><em>Question:</em></strong>
+What does the <em>FastQC</em> report tell you? </p>
+<p>If in doubt, check the documentation <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/">here</a> and what the quality scores mean <a href="https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/">here</a>.</p>
+</div>
+<p>For comparison, have a look at some plots from other sequencing libraries:
+e.g, <a href="../../img/qc/per_base_quality.png">[1]</a>, <a href="../../img/qc/qc_factq_tile_sequence_quality.png">[2]</a>, <a href="../../img/qc/per_base_sequence_content.png">[3]</a>. Note, the results for your sequences may look different.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Clearly, some sequences have very low quality bases towards the end. Why do you think that may be?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Which FastQC plots shows the relationship between base quality and position in the sequence? What else does this plot tell you about nucleotide composition towards the end of the sequences?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Should you maybe trim the sequences to remove low-quality ends? What else might you want to do?</p>
+</div>
+<p>In the following sections, we will perform two cleaning steps:</p>
+<ul>
+<li>Trimming the ends of sequence reads using cutadapt.</li>
+<li>K-mer filtering using the bioinformatics tool <strong>kmc3</strong>.</li>
+<li>Removing sequences that are of low quality or too short using cutadapt.</li>
+</ul>
+<p>Other similar tools include <a href="https://github.com/agordon/fastx_toolkit"><em>fastx_toolkit</em></a>,
+<a href="https://jgi.doe.gov/data-and-tools/bbtools/"><em>BBTools</em></a>, and
+<a href="https://www.usadellab.org/cms/index.php?page=trimmomatic"><em>Trimmomatic</em></a> however, we will not use them in this practical!</p>
+<hr />
+<h3 id="read-trimming"><strong>Read trimming</strong></h3>
+<p>To clean the FASTQ sequences, we will use a software tool called
+<a href="https://cutadapt.readthedocs.io/en/stable/"><em>cutadapt</em></a>. As stated on the
+official website:</p>
+<ul>
+<li>Cutadapt finds and removes adapter sequences, primers, poly-A tails and other types of unwanted sequence from your high-throughput sequencing reads.</li>
+</ul>
+<p>Specifically, we will use <code>cutadapt</code> to trim the sequences.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What is the meaning of <code>cutadapt</code> options <code>--cut</code> and <code>--quality-cutoff</code> ?
+(<em>Hint:</em> you can read a short description of the options by calling the
+command <code>cutadapt -h</code>)</p>
+</div>
+<p>To identify relevant quality cutoffs, it is necessary to be familiar with
+<a href="https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/">base quality scores</a>
+and examine the per-base quality score in your FastQC report.</p>
+<p>We will run <code>cutadapt</code> with two options, <code>--cut</code> and/or <code>--quality-cutoff</code>,
+corresponding to the number of nucleotides to trim from the beginning (<code>--cut</code>)
+and end (<code>--quality-cutoff</code>) of the sequences.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong><em>Note:</em></strong>
+If you trim too much of your sequence (i.e., too large values for <code>--cut</code> and
+<code>--quality-cutoff</code>), you increase the likelihood of eliminating important
+information. Additionally, if the trimming is too aggressive, some sequences
+may be discarded completely, which will cause problems in the subsequent
+steps of the pre-processing. For this example, we suggest to keep <code>--cut</code> below 5 and <code>--quality-cutoff</code> below 10.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>The command to run <code>cutadapt</code> on the two reads files is reported below, where
+<code>BEGINNING</code> and <code>CUTOFF</code> are the the two integer values corresponding to the
+number of bases to trim from the beginning of the sequence and the quality
+threshold <strong>(see the above info note for suggestion about the values to use)</strong>. 
+Remember that each <code>.fq</code> file can have a different set of values.</p>
+<div class="highlight"><pre><span></span><code>cd ~/2025-09-22-read_cleaning
+
+cutadapt --cut BEGINNING --quality-cutoff CUTOFF input/reads.pe1.fastq.gz &gt; tmp/reads.pe1.trimmed.fq
+
+cutadapt --cut BEGINNING --quality-cutoff CUTOFF input/reads.pe2.fastq.gz &gt; tmp/reads.pe2.trimmed.fq
+</code></pre></div>
+</div>
+<hr />
+<h2 id="6-k-mer-filtering-removal-of-short-sequences">6. K-mer filtering, removal of short sequences</h2>
+<p>Let's suppose that you have sequenced your sample at 45x genome coverage. This
+means that every nucleotide of the genome was sequenced 45 times on average.
+So, for a genome of 100,000,000 nucleotides, you expect to have about 4,500,000,000
+nucleotides of raw sequence. But that coverage will not be homogeneous. 
+Instead, the real coverage distribution will be influenced by factors including DNA quality,  library preparation type, how was DNA packaged within the chromosomes (e.g., hetero vs. euchromatin) and local <strong>GC</strong> content. But you might expect most of the genome to be covered between 20 and 70x.</p>
+<p>In practice, this distribution can be very strange. One way of rapidly examining
+the coverage distribution before you have a reference genome is to chop your raw
+sequence reads into short <em>"k-mers"</em> of <em>k</em> nucleotides long, and estimate the
+frequency of occurrence of all k-mers. An example plot of k-mer frequencies from
+a <strong>haploid</strong> sample sequenced at <strong>~45x</strong> coverage is shown below:</p>
+<p><img alt="kmer distribution graph from UCSC" src="../../img/qc/quake_kmer_distribution.jpg" /></p>
+<p>In the above plot, the <em>y</em> axis represents the proportion of k-mers in the
+dataset that are observed <em>x</em> times (called <em>Coverage</em>). As, expected, we
+observe a peak in the region close to 45, which corresponds to the targeted
+coverage.</p>
+<p>However, we also see that a large fraction of sequences have a very low
+coverage (they are found only 10 times or less).</p>
+<p>These rare k-mers are likely to be errors that appeared during library
+preparation or sequencing, or <strong>could be rare somatic mutations</strong>. Analogously
+(although not shown in the above plot) other k-mers may exist at very large
+coverage (up to 10,000). These could be viruses or other pathogens, or highly 
+repetitive parts of the genome, such as transposable elements or simple repeats.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong><em>Note</em>:</strong> Extremely rare and extremely frequent sequences can both confuse assembly algorithms. Eliminating them can reduce subsequent memory, disk space and CPU requirements considerably, making overall computing more efficient and friendly.</p>
+</div>
+<p>Below, we use <a href="https://github.com/refresh-bio/KMC"><em>kmc3</em></a> to "mask" extremely
+rare k-mers (i.e., convert each base in the sequences corresponding to rare
+k-mers into <strong>N</strong>). In this way, we will ignore these bases (those called <strong>N</strong>)
+because they are not really present in the species. Multiple alternative
+approaches for k-mer filtering exist (e.g., using
+<a href="https://github.com/ged-lab/khmer"><em>khmer</em></a>).</p>
+<p>Here, we use <em>kmc3</em> to estimate the coverage of k-mers with a size of 21
+nucleotides. When the masked k-mers are located at the end of the reads, we trim
+them in a subsequent step using <em>cutadapt</em>. If the masked k-mers are in the
+<strong>middle</strong> of the reads, we <strong>leave them</strong> just masked.
+Trimming reads (either masked k-mers or low quality ends in the previous step)
+can cause some reads to become too short to be informative. We remove such
+reads in the same step using <em>cutadapt</em>. Finally, discarding reads (because they
+are too short) can cause the corresponding read of the pair to become
+<strong>"unpaired"</strong>. While it is possible to capture and use unpaired reads, we skip
+that here for simplicity. Understanding the exact commands – which are a bit
+convoluted – is unnecessary. However, it is important to understand the
+concept of k-mer filtering and the reasoning behind each step.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>To mask rare k-mers we will first build a k-mer database that includes counts for each k-mer. For this, we first make a list of files to input to KMC.</p>
+<div class="highlight"><pre><span></span><code>ls tmp/reads.pe1.trimmed.fq tmp/reads.pe2.trimmed.fq &gt; tmp/file_list_for_kmc
+</code></pre></div>
+<p>Build a k-mer database using k-mer size of 21 nucleotides (-k). This will
+produce two files in your <code>tmp/</code> directory: <code>./tmp/21-mers.kmc_pre</code> and <code>./tmp/21-mers.kmc_suf</code>. The last argument (tmp) tells kmc where to put intermediate files during computation; these are automatically deleted afterwards. The -m option tells
+KMC to use only 4 GB of RAM.</p>
+<div class="highlight"><pre><span></span><code>kmc -m4 -k21 @tmp/file_list_for_kmc tmp/21-mers tmp
+</code></pre></div>
+<p>Mask k-mers (-hm) observed less than two times (-ci) in the database
+(tmp/21-mers). The -t option tells KMC to run in single-threaded mode: this is
+required to preserve the order of the reads in the file. filter is a
+sub-command of kmc_tools that has options to mask, trim, or discard reads
+contain extremely rare k-mers.</p>
+<p><strong>Note</strong>: kmc_tools command may take a few seconds to complete and does not
+provide any visual feedback during the process.</p>
+<div class="highlight"><pre><span></span><code>kmc_tools -t1 filter -hm tmp/21-mers tmp/reads.pe1.trimmed.fq -ci2 tmp/reads.pe1.trimmed.norare.fq
+
+kmc_tools -t1 filter -hm tmp/21-mers tmp/reads.pe2.trimmed.fq -ci2 tmp/reads.pe2.trimmed.norare.fq
+</code></pre></div>
+<p>Check if unpaired reads are present in the files</p>
+<div class="highlight"><pre><span></span><code>cutadapt -o /dev/null -p /dev/null tmp/reads.pe1.trimmed.norare.fq tmp/reads.pe2.trimmed.norare.fq
+</code></pre></div>
+<p>Trim 'N's from the ends of the reads, then discard reads shorter than 21 bp,
+and save remaining reads to the paths specified by -o and -p options.
+The -p option ensures that only paired reads are saved (an error is raised
+if unpaired reads are found).</p>
+<div class="highlight"><pre><span></span><code>cutadapt --trim-n --minimum-length 21 -o tmp/reads.pe1.clean.fq -p tmp/reads.pe2.clean.fq tmp/reads.pe1.trimmed.norare.fq tmp/reads.pe2.trimmed.norare.fq
+</code></pre></div>
+<p>Finally, we can copy over the cleaned reads to results directory for further analysis</p>
+<div class="highlight"><pre><span></span><code>cp tmp/reads.pe1.clean.fq tmp/reads.pe2.clean.fq results
+</code></pre></div>
+</div>
+<hr />
+<h3 id="inspecting-quality-of-cleaned-reads"><strong>Inspecting quality of cleaned reads</strong></h3>
+<p>Now we have cleaned our reads, lets have a look at how the 'cleaned' file is different from the original! </p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Which percentage of reads have we removed overall? (hint: <code>wc -l</code> can count lines in a non-gzipped file).  </p>
+</div>
+<p>If you have time, maybe rerun FastQC on the cleaned data and inspect the output!  </p>
+<hr />
+<h2 id="7-references">7. References</h2>
+<ol>
+<li>
+<p>Wurm, Y., Wang, J., Riba-Grognuz, O., Corona, M., Nygaard, S., Hunt, B.G.,
+   Ingram, K.K., Falquet, L., Nipitwattanaphon, M., Gotzek, D. and Dijkstra,
+   M.B., 2011. The genome of the fire ant Solenopsis invicta. <em>Proceedings of the 2012.
+   National Academy of Sciences</em>, 108(14), pp.5679-5684.</p>
+</li>
+<li>
+<p>Noble, W.S., 2009. A quick guide to organizing computational biology
+   projects. <em>PLoS computational biology</em>, 5(7), p.e1000424.</p>
+</li>
+</ol>
+<h2 id="8-further-reading">8. Further reading</h2>
+<ul>
+<li>
+<p>MARTIN Marcel. Cutadapt removes adapter sequences from high-throughput
+  sequencing reads. EMBnet.journal, [S.l.], v. 17, n. 1, p. pp. 10-12, may 2011.
+  ISSN 2226-6089. doi: https://doi.org/10.14806/ej.17.1.200.</p>
+</li>
+<li>
+<p>Kokot, M., Długosz, M. and Deorowicz, S., 2017. KMC 3: counting and
+  manipulating k-mer statistics. Bioinformatics, 33(17), pp.2759-2761.</p>
+</li>
+</ul>
+<h2 id="9-bonus-questions-if-youre-done-early">9. Bonus questions if you're done early</h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ul>
+<li>Which read cleaners exist and are the most popular today? </li>
+<li>Which read cleaners would you use for Illumina data? Why?</li>
+<li>Which read cleaners would you use for long-read data? Why?</li>
+<li>Can having an existing genome assembly help with read cleaning? How?</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

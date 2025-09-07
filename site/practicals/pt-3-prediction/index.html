@@ -1,0 +1,833 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Part 3: Gene Prediction - BIO726P</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-3-gene-prediction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIO726P
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 3: Gene Prediction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIO726P
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2025 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="part-3-gene-prediction"><strong>Part 3: Gene Prediction</strong></h1>
+<hr />
+<p>You need to have gone through <a href="../pt-2-assembly/">Part 2: Genome assembly</a>
+before starting this practical.</p>
+<hr />
+<p>Many tools exist for gene prediction, some based on <em>ab initio</em> statistical
+models of what a protein-coding gene should look like, others that use
+similarity with protein-coding genes from other species, and others such as
+<a href="http://bioinf.uni-greifswald.de/augustus/">Augustus</a> and
+<a href="https://github.com/KorfLab/SNAP">SNAP</a>, which use both.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>There is no perfect tool or approach, thus we typically run many gene-finding tools and call a consensus between the different predicted gene models. </p>
+</div>
+<p>Pipelines which combine the use of multiople tools include: </p>
+<ul>
+<li><a href="http://www.yandell-lab.org/software/maker.html">MAKER</a>, </li>
+<li><a href="https://github.com/Gaius-Augustus/BRAKER">BRAKER</a> </li>
+<li><a href="https://github.com/genomecuration/JAMg">JAMg</a>  </li>
+</ul>
+<p>In this practical, we will use [<strong>MAKER</strong>]((http://www.yandell-lab.org/software/maker.html) and again for this practical you will be using the remote AWS computers created for you so please ssh back into these! </p>
+<hr />
+<h1 id="1-running-maker">1. <strong>Running Maker</strong></h1>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Following the same procedure from the first read cleaning practical
+  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2025-09-24-gene_prediction</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
+<p>To help get you started 
+  <div class="highlight"><pre><span></span><code>mkdir 2025-09-24-gene_prediction
+</code></pre></div></p>
+</div>
+<p>Your directory hierarchy should look like the following</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>2025-09-24-gene_prediction
+├── input
+├── tmp
+├── results
+└── WHATIDID.txt
+</code></pre></div>
+</div>
+<p>Next lets link your assembled scaffolds from from yesterdays practical into our <code>input</code> subdirectory. We will be using MAKER to annotate this assembly! </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Link the output (assembly) from Part 2 practical into <code>input</code> subdirectory:</p>
+<div class="highlight"><pre><span></span><code>cd ~/2025-09-24-gene_prediction/input
+ln -s ~/2025-09-23-assembly/results/scaffolds.fasta .
+cd ..
+</code></pre></div>
+<p>Next we are going to pull out the longest few scaffolds from our assembly and create a new file to house these.</p>
+<p><div class="highlight"><pre><span></span><code>seqtk seq -L 10000 input/scaffolds.fasta &gt; tmp/min10000.fa
+</code></pre></div>
+Gene prediction can be difficult if the assembly is low quality and does not include long scaffolds (remember, trash in = trash out). For instance, in the case of short scaffolds, if a gene is 2,000 bp long and includes introns, it may be very hard to find many entire genes. Thats why with the command above we are only carrying forward sequences that are longer than 10kb in length.   </p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Note:</strong> If you have difficulty in predicting the genes or you suspect that your assembly may be affected by the aforementioned issues, you can use already assembled scaffolds.
+<div class="highlight"><pre><span></span><code><span class="c1"># Link this scaffolds file into your input directory</span>
+ln<span class="w"> </span>-s<span class="w"> </span>/shared/data/backup_assembly/scaffolds.fasta<span class="w"> </span>.
+</code></pre></div></p>
+</div>
+<p>In the rest of this practical, we will show how to run MAKER in a simple scenario. For a better understanding of how this tool works, and how it can be applied in real-case scenarios,  we <em>strongly</em> encourage to read the paper and documentation. Also, checking which settings were used in recent publications can be very helpful for reproducing (or critiquing) analyses. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Here is a link to the <a href="http://www.yandell-lab.org/software/maker.html"><strong>MAKER documentation</strong></a> </p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What bioinformatic tools is MAKER implementing in it genome annotation pipeline? </p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now change to your <code>tmp</code> directory and lets start the process of running the <code>maker</code> pipeline:</p>
+<p><div class="highlight"><pre><span></span><code>cd tmp
+maker -OPTS
+</code></pre></div>
+This will generate an empty <code>maker_opts.ctl</code> configuration file (ignore the
+warnings). Edit that file using a text editor such as <code>nano</code> and
+specify:</p>
+<ul>
+<li>genome: <code>min10000.fa</code></li>
+<li>deactivate RepeatMasker by changing <code>model_org</code> line to <code>model_org=</code> 
+  (i.e., nothing afer <code>=</code>)</li>
+<li>deactivate RepeatRunner by changing <code>repeat_protein</code> line to 
+  <code>repeat_protein=</code> (i.e., nothing after <code>=</code>)</li>
+<li>Augustus_species:<code>honeybee1</code> (remember to add 1 at the end; this provides
+  hints to Augustus about the gene structure based on what we know about gene composition from the honeybee.</li>
+</ul>
+<p>We deactivated RepeatMakser and RepeatRunner due to computational limitations
+as well as the lack of a suitable library of repetitive elements for this
+species. For a real project, we <em>would</em> include RepeatMasker, likely after 
+creating a new repeat library for our species.<br />
+For a real project, we would also include gene expression data (RNAseq improves
+gene prediction performance <em>tremendously</em>), protein sequences from related
+species, and iteratively train gene prediction algorithms (e.g., Augustus and
+SNAP) for our data.</p>
+<p>After making the necessary edits we can inspect the <code>maker_opts.ctl</code> by printing it to stout using the following command, allowing us to double check the edits we have made are correct!</p>
+<p><div class="highlight"><pre><span></span><code>cat maker_opts.ctl
+</code></pre></div>
+The expected terminal output is shown below.</p>
+</div>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>#-----Genome (these are always required)
+genome=min10000.fa
+organism_type=eukaryotic #eukaryotic or prokaryotic. Default is eukaryotic
+
+#-----Re-annotation Using MAKER Derived GFF3
+maker_gff= #MAKER derived GFF3 file
+est_pass=0 #use ESTs in maker_gff: 1 = yes, 0 = no
+altest_pass=0 #use alternate organism ESTs in maker_gff: 1 = yes, 0 = no
+protein_pass=0 #use protein alignments in maker_gff: 1 = yes, 0 = no
+rm_pass=0 #use repeats in maker_gff: 1 = yes, 0 = no
+model_pass=0 #use gene models in maker_gff: 1 = yes, 0 = no
+pred_pass=0 #use ab-initio predictions in maker_gff: 1 = yes, 0 = no
+other_pass=0 #passthrough anyything else in maker_gff: 1 = yes, 0 = no
+
+#-----EST Evidence (for best results provide a file for at least one)
+est= #set of ESTs or assembled mRNA-seq in fasta format
+altest= #EST/cDNA sequence file in fasta format from an alternate organism
+est_gff= #aligned ESTs or mRNA-seq from an external GFF3 file
+altest_gff= #aligned ESTs from a closly relate species in GFF3 format
+
+#-----Protein Homology Evidence (for best results provide a file for at least one)
+protein=  #protein sequence file in fasta format (i.e. from mutiple organisms)
+protein_gff=  #aligned protein homology evidence from an external GFF3 file
+
+#-----Repeat Masking (leave values blank to skip repeat masking)
+model_org= 
+rmlib= #provide an organism specific repeat library in fasta format for RepeatMasker
+repeat_protein=
+rm_gff= #pre-identified repeat elements from an external GFF3 file
+prok_rm=0 #forces MAKER to repeatmask prokaryotes (no reason to change this), 1 = yes, 0 = no
+softmask=1 #use soft-masking rather than hard-masking in BLAST (i.e. seg and dust filtering)
+
+#-----Gene Prediction
+snaphmm= #SNAP HMM file
+gmhmm= #GeneMark HMM file
+augustus_species=honeybee1
+fgenesh_par_file= #FGENESH parameter file
+pred_gff= #ab-initio predictions from an external GFF3 file
+model_gff= #annotated gene models from an external GFF3 file (annotation pass-through)
+run_evm=0 #run EvidenceModeler, 1 = yes, 0 = no
+est2genome=0 #infer gene predictions directly from ESTs, 1 = yes, 0 = no
+protein2genome=0 #infer predictions from protein homology, 1 = yes, 0 = no
+trna=0 #find tRNAs with tRNAscan, 1 = yes, 0 = no
+snoscan_rrna= #rRNA file to have Snoscan find snoRNAs
+snoscan_meth= #-O-methylation site fileto have Snoscan find snoRNAs
+unmask=0 #also run ab-initio prediction programs on unmasked sequence, 1 = yes, 0 = no
+allow_overlap= #allowed gene overlap fraction (value from 0 to 1, blank for default)
+
+#-----Other Annotation Feature Types (features MAKER doesn&#39;t recognize)
+other_gff= #extra features to pass-through to final MAKER generated GFF3 file
+
+#-----External Application Behavior Options
+alt_peptide=C #amino acid used to replace non-standard amino acids in BLAST databases
+cpus=1 #max number of cpus to use in BLAST and RepeatMasker (not for MPI, leave 1 when using MPI)
+
+#-----MAKER Behavior Options
+max_dna_len=100000 #length for dividing up contigs into chunks (increases/decreases memory usage)
+min_contig=1 #skip genome contigs below this length (under 10kb are often useless)
+
+pred_flank=200 #flank for extending evidence clusters sent to gene predictors
+pred_stats=0 #report AED and QI statistics for all predictions as well as models
+AED_threshold=1 #Maximum Annotation Edit Distance allowed (bound by 0 and 1)
+min_protein=0 #require at least this many amino acids in predicted proteins
+alt_splice=0 #Take extra steps to try and find alternative splicing, 1 = yes, 0 = no
+always_complete=0 #extra steps to force start and stop codons, 1 = yes, 0 = no
+map_forward=0 #map names and attributes forward from old GFF3 genes, 1 = yes, 0 = no
+keep_preds=0 #Concordance threshold to add unsupported gene prediction (bound by 0 and 1)
+
+split_hit=10000 #length for the splitting of hits (expected max intron size for evidence alignments)
+min_intron=20 #minimum intron length (used for alignment polishing)
+single_exon=0 #consider single exon EST evidence when generating annotations, 1 = yes, 0 = no
+single_length=250 #min length required for single exon ESTs if &#39;single_exon is enabled&#39;
+correct_est_fusion=0 #limits use of ESTs in annotation to avoid fusion genes
+
+tries=2 #number of times to try a contig if there is a failure for some reason
+clean_try=0 #remove all data from previous run before retrying, 1 = yes, 0 = no
+clean_up=0 #removes theVoid directory with individual analysis files, 1 = yes, 0 = no
+TMP= #specify a directory other than the system default temporary directory for temporary files
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now our configuration file is ready, run <strong>MAKER</strong>! </p>
+<p><div class="highlight"><pre><span></span><code>maker maker_opts.ctl
+</code></pre></div>
+This may take a few minutes, depending on how much data you gave it:</p>
+</div>
+<p>Genome annotation software like MAKER usually provide information about the 
+exon-intron structure of the genes (e.g., in 
+<a href="https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md">GFF3 format</a>),
+and sequence of corresponding messenger RNA and protein products (e.g., in
+FASTA format).</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>While <strong>MAKER</strong> is running, note the different file formats you have encountered throughout this module up until now.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<ul>
+<li>What is the difference between a .fq.gz and .fq file?</li>
+<li>What information does the 5th column in a GFF file contain?  </li>
+</ul>
+</div>
+<p>Once MAKER has finished running the results will be hidden in subdirectories of  <code>min10000.maker.output</code>. MAKER provides a helper script to collect this hidden outputs all in one place (again please ignore the warnings for these steps):</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run the following commands to pull out information about exon-intron structure of the predicted genes. This will be saved to the file min10000.all.gff.</p>
+<div class="highlight"><pre><span></span><code>gff3_merge -d min10000.maker.output/min10000_master_datastore_index.log
+</code></pre></div>
+<p>Next, pull out predicted messenger RNA and protein sequences. 
+<div class="highlight"><pre><span></span><code>fasta_merge -d min10000.maker.output/min10000_master_datastore_index.log
+</code></pre></div></p>
+<p>These will be saved to the files: <code>min10000.all.maker.augustus.transcripts.fasta</code> and <code>min10000.all.maker.augustus.proteins.fasta</code></p>
+</div>
+<hr />
+<h1 id="2-quality-control-of-individual-genes"><strong>2. Quality control of individual genes</strong></h1>
+<p>So now we have some gene predictions... <strong><em>how can we know if they are any good?</em></strong></p>
+<p>The easiest way to get a feel for this is to use the following example
+sequences: <a href="../../data/protein_prediction_example.fa">predicted protein sequences from rice and honeybee</a>.</p>
+<p>We will compare them using BLAST to known sequences from other species against the Swissprot database (faster), or the Uniref50 database (slower).</p>
+<h2 id="21-running-blast-with-sequenceserver">2.1 Running BLAST with SequenceServer</h2>
+<p>We will use <a href="https://sequenceserver.com">SequenceServer</a> to run BLAST search against som </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Open <a href="https://genomicscourse.sequenceserver.com">genomicscourse.sequenceserver.com</a> in a new tab in your browser, paste the <a href="../../data/protein_prediction_example.fa">example rice and honeybee protein sequences</a> in the textbox.</p>
+<p>On the right hand side, under protein database select <strong>Non-redundant UniProtKB/SwissProt sequences</strong> as the database to use! </p>
+<p><strong>The image below is what your browser window should look like!</strong> </p>
+<p><img alt="Using Sequence Server" src="../../img/SequenceServer1.png" /></p>
+<p><strong>Then click on the 'BLAST' button to begin the BLAST search. This will take a minute or two and the window will look like:</strong> </p>
+<p><img alt="Sequence Server Loading" src="../../img/SequenceServer2.png" /></p>
+<p><strong>Once the analysis is complete you will get a output report like below:</strong> </p>
+<p><img alt="Sequence Server Results" src="../../img/SequenceServer3.png" /></p>
+<p><strong>This report contains a lot of information, but dont be overwhelmed!</strong> Focus solely on the alignment section and you can toggle between alignments by selecting either the rice or honeybee sequencing in the top left hand side <strong>(as highlighted in red below)</strong></p>
+<p><img alt="Sequence Server Options" src="../../img/SequenceServer4.png" /></p>
+<p>Now in you own time, examin the report and try to answer the questions below! </p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What sequence is the <em>rice_spQ7F1X5</em> sequence most similar too?</p>
+</div>
+<div class="tabbed-block">
+<p><strong>sp|Q7F1X5.1|RecName: Full=4-coumarate--CoA ligase-like 5 [Oryza sativa Japonica Group]</strong> with 100% query coverage and 100% identity. </p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What sequence is <em>ApisMellifera_SequenceA</em> sequence most similar too?</p>
+</div>
+<div class="tabbed-block">
+<p><strong>sp|Q90ZA1.1| RecName: Full=Poly(A)-specific ribonuclease PARN; AltName: Full=Deadenylating nuclease; AltName: Full=Deadenylation nuclease; AltName: Full=Polyadenylate-specific ribonuclease; AltName: Full=parn-A [Xenopus laevis]</strong> with 40% query coverage and 42.4% identity. </p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Look at the full report for the two given gene predictions, do you they are complete, or can you infer from the BLAST alignments that something may be wrong? Start by comparing the length of your gene prediction to that of the BLAST hits alongside other metrics such as identity.  </p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now try a few of your gene predictions. To do this you can use the predicted protein sequences which you generated and which can be found in <code>min10000.all.maker.augustus.proteins.fasta</code>. </p>
+<p><strong>Note</strong> - Run BLAST on only a maximum of 12 sequences at a time (instead of simply selecting the first 12 genes in your file, copy-paste sequences randomly from  the file). See if you can tell if based on the SequencingServer report generated the quality of the genome annotation!</p>
+</div>
+<p>As you can see, gene prediction software is imperfect. This is even the case when using all available evidence. This is potentially costly for analyses that rely on gene predictions, i.e. many of the analyses we might want to do:</p>
+<blockquote>
+<p><em>“Incorrect annotations [ie. gene identifications] poison every experiment 
+that makes use of them. Worse still the poison spreads.”</em> – 
+<a href="http://www.ncbi.nlm.nih.gov/pubmed/22510764">Yandell &amp; Ence (2012)</a>.</p>
+</blockquote>
+<hr />
+<h2 id="22-using-genevalidator"><strong>2.2 Using GeneValidator</strong></h2>
+<p>The
+<a href="http://bioinformatics.oxfordjournals.org/content/32/10/1559.long"><em>GeneValidator</em></a>
+tool can help to evaluate the quality of a gene prediction by comparing features
+of a predicted gene to similar database sequences. This approach expects that
+similar sequences should for example be of similar length. <em>Genevalidator</em> was
+built to automate the comparison of sequence characteristics similarly to what we just did through visual individual BLAST results.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Try to run the <a href="../../data/protein_prediction_example.fa">example rice and honeybee protein sequences</a>
+through <em>GeneValidator</em>. It should be accessible at <a href="https://genevalidator.genomicscourse.com/">https://genevalidator.genomicscourse.com/</a> or <a href="https://genevalidator.wurmlab.com/">https://genevalidator.wurmlab.com/</a>. </p>
+<p>Copy and paste the xample rice and honey bee sequences into the input text box as shown in the image below. </p>
+<p><img alt="Gene Validator Home" src="../../img/GeneValidatiorHome.png" /></p>
+<hr />
+<p><strong>This make take a few minutes to complete, but on completion the results will appear in the section below. Take a look through the results page along with the original <a href="https://academic.oup.com/bioinformatics/article/32/10/1559/1742817?login=false">GeneValidator publication (link here)</a> to inspect the proteins generated as part of the gene sequence.</strong></p>
+<hr />
+<p><img alt="Gene Validator Results" src="../../img/GeneValidatorResults.png" /></p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why is it important to consider the <strong>Length Cluster Metric</strong>?</p>
+</div>
+<div class="tabbed-block">
+<p>When hovering over the metric we get the definition: <em>Check whether the prediction length fits most of the BLAST hit lengths, by 1D hierarchical clusterization.</em></p>
+<p>So it is a way to see if the predicted gene length makes sense by comparing it to the lengths of BLAST matches. The method groups BLAST hit lengths into clusters, then reports:</p>
+<ul>
+<li>The predicted length of the query. </li>
+<li>The main length range where most BLAST hits fall.</li>
+</ul>
+<p>If the predicted length is inside that main range, it’s probably accurate.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><strong>By selecting the image icon on the right hand side of each query (cirlced in red) you will open the drop down section to see the associated plots.</strong> </p>
+<p><img alt="Gene Validator Drop Down Image" src="../../img/GeneValidatorPlots.png" /></p>
+<p><strong>Now take a look at some of your protein predictions from your own MAKER genome annotation run! How do they look? Can you tell the difference between a good and a bad prediction?</strong> </p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What is the purpose of the <strong>Gene Merge Validation Plot</strong>?</p>
+</div>
+<div class="tabbed-block">
+<p>First lets break down the abbreviations used: </p>
+<p><strong>What HSP means</strong></p>
+<ul>
+<li>HSP (High-Scoring Pair) = a stretch of similarity found by BLAST between your query sequence and a database sequence.</li>
+<li>
+<p>Each HSP has:</p>
+<ul>
+<li>A start coordinate (where the match begins on the query).</li>
+<li>An end coordinate (where the match stops on the query).</li>
+</ul>
+</li>
+</ul>
+<p><strong>What the graph shows</strong></p>
+<ul>
+<li>X-axis (Start Offset): where the HSP begins on the query sequence (further right = later in the sequence).</li>
+<li>Y-axis (End Offset): where the HSP ends on the query sequence (higher = later in the sequence).</li>
+<li>Each red dot = one HSP, plotted by its start (x) and end (y) positions.</li>
+</ul>
+<p><strong>How to interpret this graph</strong></p>
+<ul>
+<li>If all HSPs lined up diagonally in a single cluster, that would suggest they all map to one continuous region (a single gene).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h1 id="3-comparing-whole-genesets-and-prioritizing-genes-for-manual-curation"><strong>3. Comparing whole genesets and prioritizing genes for manual curation</strong></h1>
+<p><em>Genevalidator</em>'s visual output can be handy when looking at a few genes. But the 
+tool also provides tab-delimited output, useful when working in the command-line
+or running the software on whole proteomes. This can help the analysis:</p>
+<ul>
+<li>In situations when you can choose between multiple gene sets.</li>
+<li>To identify which gene predictions are likely correct, and which predictions
+    need might require further inspection and potentially be manually fixed.</li>
+</ul>
+<hr />
+<h1 id="4-manual-curation"><strong>4. Manual curation</strong></h1>
+<p>Because automated gene predictions are not perfect, manual inspection and fixing
+is often required. The most commonly used software for this is
+<a href="https://genomearchitect.readthedocs.io/en/latest/"><em>Apollo/WebApollo</em></a>.</p>
+<p>We will not curate any gene models as part of this practical, but you can learn
+about gene model curation through these YouTube videos:</p>
+<ol>
+<li><a href="https://youtu.be/Wec7ZlXykQc">EMBL-ABR training 20171121 - Genome Annotation using Apollo</a></li>
+<li><a href="https://youtu.be/HYo2RQa4BUI?t=865">The i5k Workspace@NAL: a pan-Arthropoda genome database</a></li>
+</ol>
+<hr />
+<!---
+
+This is the backup section just incase Sequence Server is not working.
+
+## **2.1 Running BLAST**
+
+To compare our obtain sequence against those which have already been described we can use BLAST (Basic Local Alignment Search Tool). As highlighted in the previous lecture series, this tool is common used by researches if they have a given sequence and they want to identify what other sequences are similar to it. 
+
+The original BLAST paper can be found [here](ADD LINK) and this video provides a great overview for how the underlying algorithm works. 
+
+
+!!! Task
+
+    Now lets put this in action! First download the example protein sequences by [click on this link](../data/protein_prediction_example.fa)
+
+    Inside this file you will find two predicted protein sequences:
+
+    * rice_spQ7F1X5
+    * ApisMellifera_SequenceA
+
+    Now lets analyse these using BLAST. First lets go to the NCBI BLAST webpage ([https://blast.ncbi.nlm.nih.gov/Blast.cgi](https://blast.ncbi.nlm.nih.gov/Blast.cgi)).
+
+    Select Protein BLAST 
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg)
+
+    Then copy and paste our two sequences (rice_spQ7F1X5 & ApisMellifera_SequenceA) into the Query Box in the top left hand side of the screen. 
+
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg)
+
+    To accelerate our analysis we are going to select to use the RefSeq_Protein database. This database is comprised only of proteins which are sourced from assembled that have been classified as high qaulity reference assembled. 
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg)
+
+    This may take a couple minutes to run depending on how busy the server is at the time! On completion you should get a page as follows: 
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg) 
+
+    Use the box highlighted in the image below you can toggle between your query sequences and inspect the output alignments for each. 
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg)
+
+    If you scroll down you can see the amino acid resolution alignment between the query sequence and the top sequences the tool identified with a high sequence similarity. 
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg)
+
+    However, you can get 100s if not 1000s of BLAST hits from a given run and therefore it is useful to inspect this graphically. You can do this by selecting the option as shown in the image below. 
+
+    ![kmer distribution graph from UCSC](../img/qc/quake_kmer_distribution.jpg) 
+
+    Now you have your BLAST hits, try to answer the following question below: 
+
+
+!!! Question
+    What sequences does each protein align to best?  
+
+!!! Question 
+    How can we tell the length of the sequence which our query aligned too? 
+
+!!! Question
+    How would changing the word size in the advanced parameters section impact our analysis. 
+
+!!! Question
+    How does changing the database, say to the SwissProt database impact our analysis?
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

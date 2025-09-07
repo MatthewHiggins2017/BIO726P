@@ -70,16 +70,4 @@ practicals.
 
 ## 4. Authors/Credits
 
-The initial version of this practical was put together by:
-
-  * [Yannick Wurm](http://wurmlab.com) [@yannick](http://twitter.com/yannick__)
-  * [Oksana Riba-Grognuz](https://www.linkedin.com/in/oksana80).
-
-It was revised and improved thanks to efforts of **Vitaly Voloshin**, **Matthew Higgins** and [others](https://github.com/wurmlab/genomicscourse/graphs/contributors). 
-
-<!-- ## 5. Things used in other versions of this course:
-* ~~[Inferring population sizes and gene flow.](./msmc/msmc-tutorial/guide) (Credit Stefan Schiffels [@stschiff](http://twitter.com/stschiff))~~
-* ~~Gene expression  ( Credit Julien Roux [www](http://www.unil.ch/dee/home/menuinst/people/post-docs--associates/dr-julien-roux.html) [@_julien_roux](http://twitter.com/_julien_roux)):~~
-     * ~~[From raw sequencing data to transcript expression levels.](./2016-SIB/practicals/rnaseq/TP1)~~
-     * ~~[Gene-level clustering and differential expression analysis.](./2016-SIB/practicals/rnaseq/TP2)~~ -->
-
+The initial version of this practical was put together by [Yannick Wurm](http://wurmlab.com) [@yannick], [Oksana Riba-Grognuz](https://www.linkedin.com/in/oksana80). It has been revised and improved thanks to efforts of **Vitaly Voloshin**, **Matthew Higgins** and [others](https://github.com/wurmlab/genomicscourse/graphs/contributors). 
