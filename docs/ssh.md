@@ -40,13 +40,13 @@ open the terminal. From step 3 onwards, everything should be identical.
 
 2) Type *Terminal*  and open the terminal application
 
-![](images/linux_find_terminal.png)
+![](../img/linux_find_terminal.png)
 
 3) Into the Linux terminal that appears, type `ssh username@servername`, 
    replacing username and servername with the username and server name that you 
    have been emailed:
 
-```bash
+```
 ssh bt007@bt007.genomicscourse.com
 ```
 
@@ -79,7 +79,7 @@ Type in the password that you've been emailed, and hit return. Nothing will appe
 
 1) Press Cmd-Space to open Spotlight, type *Terminal*, and press enter.
 
-![](images/spotlight.png)
+![](../img/spotlight.png)
 
 2) Into the Mac terminal that appears, type `ssh username@servername`, replacing username and servername with the username and server name that you have been emailed:
 
@@ -182,7 +182,7 @@ There are a number of SSH clients you can use, but for the purposes of this prac
 5) In the same window, tick the `Specify username` box, and add your username 
    (included in the email that we sent you with log in details).
 
-![](images/ssh_login.png)
+![](../img/ssh_login.png)
 
 6) Tick OK, at the bottom of the box.
 
@@ -190,7 +190,7 @@ There are a number of SSH clients you can use, but for the purposes of this prac
 
 8) Click on `Yes` if the message appears
 
-![](images/warning.png)
+![](../img/warning.png)
 
 9) You will then be asked for a password.
 
