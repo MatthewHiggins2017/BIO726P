@@ -33,3 +33,4 @@ extra_css:
 nav:
   - Home: 
     - index.md
+    - ssh.md
