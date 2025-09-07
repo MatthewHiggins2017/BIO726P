@@ -3,7 +3,7 @@
 
 -------------------------
 
-You need to have gone through [Part 1: Read cleaning](../pt-1-read-cleaning/)
+You need to have gone through [Part 1: Read cleaning](pt-1-read-cleaning.md)
 before starting this practical.
 
 -------------------------
@@ -17,7 +17,7 @@ Again for this practical you will be using the remote AWS computers created for 
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](../pt-1-read-cleaning/), create a new main directory for today's practical (e.g., `2025-09-23-assembly`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-23-assembly`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```

@@ -64,7 +64,7 @@ To perform the practicals, you will remotely connect to the Amazon Web Services
 informations).
 
 
-You will use an SSH ([here](../ssh/) for more information),
+You will use an SSH ([here](ssh.md) for more information),
 client to connect to a remote shell, where you will run the first three practicals. Some results will be available on a personal web page created for the course. The same web page will allow you to perform the fourth and fifth
 practicals.
 

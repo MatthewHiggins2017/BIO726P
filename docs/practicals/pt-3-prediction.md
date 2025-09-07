@@ -3,7 +3,7 @@
 
 ------------------------
 
-You need to have gone through [Part 2: Genome assembly](../pt-2-assembly.html)
+You need to have gone through [Part 2: Genome assembly](pt-2-assembly.md)
 before starting this practical.
 
 ------------------------
@@ -33,7 +33,7 @@ In this practical, we will use [**MAKER**]((http://www.yandell-lab.org/software/
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](../pt-1-read-cleaning/), create a new main directory for today's practical (e.g., `2025-09-24-gene_prediction`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-24-gene_prediction`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```
@@ -266,7 +266,7 @@ We will use [SequenceServer](https://sequenceserver.com) to run BLAST search aga
 
 
 !!! Task
-    Open [genomicscourse.sequenceserver.com](https://genomicscourse.sequenceserver.com) in a new tab in your browser, paste the [example rice and honeybee protein sequences](predictions.fa) in the textbox.
+    Open [genomicscourse.sequenceserver.com](https://genomicscourse.sequenceserver.com) in a new tab in your browser, paste the [example rice and honeybee protein sequences](../data/protein_prediction_example.fa) in the textbox.
 
     On the right hand side, under protein database select **Non-redundant UniProtKB/SwissProt sequences** as the database to use! 
     
@@ -344,7 +344,7 @@ built to automate the comparison of sequence characteristics similarly to what w
 
 !!! Task 
 
-    Try to run the [example rice and honeybee protein sequences](predictions.fa)
+    Try to run the [example rice and honeybee protein sequences](../data/protein_prediction_example.fa)
     through *GeneValidator*. It should be accessible at [https://genevalidator.genomicscourse.com/](https://genevalidator.genomicscourse.com/) or [https://genevalidator.wurmlab.com/](https://genevalidator.wurmlab.com/). 
 
     Copy and paste the xample rice and honey bee sequences into the input text box as shown in the image below. 
