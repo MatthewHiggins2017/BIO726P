@@ -64,21 +64,18 @@ To perform the practicals, you will remotely connect to the Amazon Web Services
 informations).
 
 
-You will use an SSH ([here](./current-year/docs/ssh.html) for more information),
-client to connect to a remote shell, where you will run the first three
-practicals. Some results will be available on a personal web page created for
-the course. The same web page will allow you to perform the fourth and fifth
+You will use an SSH ([here](../ssh/) for more information),
+client to connect to a remote shell, where you will run the first three practicals. Some results will be available on a personal web page created for the course. The same web page will allow you to perform the fourth and fifth
 practicals.
 
 ## 4. Authors/Credits
 
 The initial version of this practical was put together by:
 
-    * [Yannick Wurm](http://wurmlab.com) [@yannick__](http://twitter.com/yannick__)
-    * [Oksana Riba-Grognuz](https://www.linkedin.com/in/oksana80)'.
+  * [Yannick Wurm](http://wurmlab.com) [@yannick](http://twitter.com/yannick__)
+  * [Oksana Riba-Grognuz](https://www.linkedin.com/in/oksana80).
 
-It was heavily heavily heavily revised and improved thanks to efforts and new
-content by [https://github.com/wurmlab/genomicscourse/graphs/contributors](others). 
+It was revised and improved thanks to efforts of **Vitaly Voloshin**, **Matthew Higgins** and [others](https://github.com/wurmlab/genomicscourse/graphs/contributors). 
 
 <!-- ## 5. Things used in other versions of this course:
 * ~~[Inferring population sizes and gene flow.](./msmc/msmc-tutorial/guide) (Credit Stefan Schiffels [@stschiff](http://twitter.com/stschiff))~~
