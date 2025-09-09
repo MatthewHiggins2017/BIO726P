@@ -362,7 +362,7 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Following the same procedure from the first read cleaning practical
-  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2024-09-29-mapping</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
+  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2025-09-29-mapping</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
 <p>To help get you started 
   <div class="highlight"><pre><span></span><code>mkdir 2025-09-29-mapping
 </code></pre></div></p>
@@ -385,7 +385,7 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 </div>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
-<div class="highlight"><pre><span></span><code>2024-09-30-mapping/
+<div class="highlight"><pre><span></span><code>2025-09-29-mapping/
 ├── input
 │   ├── reads -&gt; /shared/data/popgen/reads
 │   └── reference.fa -&gt; /shared/data/popgen/reference.fa
@@ -432,7 +432,7 @@ which was created to align short read sequences to long sequences such as the sc
 <p>Let's start by linking scaffold sequences to our <code>tmp</code> directory.</p>
 <p>Symlink <code>reference.fa</code> to <code>tmp/</code>:</p>
 <div class="highlight"><pre><span></span><code>cd tmp
-ln -s ~/2024-09-30-mapping/input/reference.fa .
+ln -s ~/2025-09-29-mapping/input/reference.fa .
 cd ..
 </code></pre></div>
 <p>Build the index (step 1):</p>
@@ -505,20 +505,20 @@ cp tmp/alignments/*.bai results/
 <h2 id="5-variant-calling">5. Variant calling</h2>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Create a new directory in your <code>home</code> for the second part of today's practical (e.g., <code>2024-09-29-genotyping</code>). You will want to set up the relevant subdirectories  and <code>WHATIDID.txt</code> file, as you have done before. Then symlink (<code>ln -s</code>) the reference genome <code>/shared/data/popgen/reference.fa</code> and the alignments from the mapping part of the practical (both <code>.bam</code> and <code>.bai</code> files) to your input` directory.</p>
+<p>Create a new directory in your <code>home</code> for the second part of today's practical (e.g., <code>2025-09-29-genotyping</code>). You will want to set up the relevant subdirectories  and <code>WHATIDID.txt</code> file, as you have done before. Then symlink (<code>ln -s</code>) the reference genome <code>/shared/data/popgen/reference.fa</code> and the alignments from the mapping part of the practical (both <code>.bam</code> and <code>.bai</code> files) to your input` directory.</p>
 <p>To help get you started 
-  <div class="highlight"><pre><span></span><code>mkdir 2024-09-29-genotyping
+  <div class="highlight"><pre><span></span><code>mkdir 2025-09-29-genotyping
 </code></pre></div></p>
 <p>Your directory hierarchy should look like the following when running <code>tree</code></p>
 </div>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
 </div>
-<div class="highlight"><pre><span></span><code>2024-09-30-genotyping/
-├── input
+<div class="highlight"><pre><span></span><code>├── input
+2025-09-29-genotyping/
 │   ├── -&gt; /shared/data/popgen/reference.fa
-│   ├── -&gt; ~/2024-09-30-mapping/results/f1_B.bam
-│   ├── -&gt; ~/2024-09-30-mapping/results/f1_B.bam.bai
+│   ├── -&gt; ~/2025-09-29-mapping/results/f1_B.bam
+│   ├── -&gt; ~/2025-09-29-mapping/results/f1_B.bam.bai
 │   └── -&gt; ...
 ├── results
 ├── tmp
@@ -526,7 +526,7 @@ cp tmp/alignments/*.bai results/
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><strong><em>Note:</em></strong> When you create links from one directory to another, it is better to use the absolute path for links like <code>~/2024-09-30-mapping/results/*.bam*</code> instead of <code>../../2024-09-30-mapping/results/*.bam</code></p>
+<p><strong><em>Note:</em></strong> When you create links from one directory to another, it is better to use the absolute path for links like <code>~/2025-09-29-mapping/results/*.bam*</code> instead of <code>../../2025-09-29-mapping/results/*.bam</code></p>
 </div>
 <p>Several variant calling approaches exist. The simplest approach is to look for positions where the mapped reads consistently have a different base than the reference assembly (this is called <strong>consensus approach</strong>). For this, we will use <a href="http://www.htslib.org/doc/bcftools.html"><em>bcftools</em></a>, a set of tools to call variants and manipulate them. We will run two commands:</p>
 <div class="highlight"><pre><span></span><code>bcftools mpileup
@@ -541,7 +541,7 @@ individuals as <strong>haploid</strong>.</p>
 <p class="admonition-title">Task</p>
 <p>First link <code>reference.fa</code> to <code>tmp/</code></p>
 <div class="highlight"><pre><span></span><code>cd tmp
-ln -s ~/2024-09-30-genotyping/input/reference.fa .
+ln -s ~/2025-09-29-genotyping/input/reference.fa .
 cd ..
 </code></pre></div>
 <p>Then create the index of the reference (different from that used by <em>bowtie2</em>):</p>
