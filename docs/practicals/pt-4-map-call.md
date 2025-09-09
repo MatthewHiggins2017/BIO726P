@@ -163,6 +163,15 @@ We now need to run **bowtie2** for all the other samples. We could do this by ty
       ls input/reads/*fq.gz | cut -d '/' -f 3 | cut -d '.' -f 1 | sort | uniq > tmp/names.txt
       ```
 
+      Lets break this command down to understand what is going on:
+
+      * `ls input/reads/*fq.gz`: Lists the paths of all files in input/reads/ that end with fq.gz`
+      * `cut -d '/' -f 3` : Split the path using `/` as the deliminator and take the 3rd element (aka just the file name).
+      * `cut -d '.' -f 1` : Split the output using `.` as the deliminator and take 1st elemnt (sample name )
+      * `sort` sort the resulting list alphabetically 
+      * `uniq` remove duplicate lines in the out (aka only 1 entry per sample).
+
+
       Then, run **bowtie2** on each sample, this will take a few minutes:
 
       ```
@@ -180,6 +189,17 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
       samtools sort -O BAM tmp/alignments/f1_B.sam > tmp/alignments/f1_B.bam
       ```
 
+!!! Info
+      You may get the warning below: 
+
+      ```
+      samtools: /usr/local/miniconda/bin/../lib/libtinfow.so.6: no version information available (required by samtools)
+      samtools: /usr/local/miniconda/bin/../lib/libncursesw.so.6: no version information available (required by samtools)
+      ```
+      Please ignore this message as the command has still run successfully!
+
+
+!!! Task
       Then, index the BAM file generated above (creates f1_B.bam.bai):
 
       ```
@@ -237,8 +257,8 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
 
 !!! terminal 
    ```
-   ├── input
    2025-09-29-genotyping/
+   ├── input
    │   ├── -> /shared/data/popgen/reference.fa
    │   ├── -> ~/2025-09-29-mapping/results/f1_B.bam
    │   ├── -> ~/2025-09-29-mapping/results/f1_B.bam.bai
