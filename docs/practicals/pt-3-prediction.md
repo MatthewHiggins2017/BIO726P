@@ -262,7 +262,7 @@ We will compare them using BLAST to known sequences from other species against t
 
 ## 2.1 Running BLAST with SequenceServer
 
-We will use [SequenceServer](https://sequenceserver.com) to run BLAST search against som 
+We will use [SequenceServer](https://sequenceserver.com) to run the BLAST search!
 
 
 !!! Task
