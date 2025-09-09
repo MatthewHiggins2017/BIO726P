@@ -1,6 +1,6 @@
 # **Practicals for the 2025 Genome Bioinformatics module**
 
-## Introduction
+## **Introduction**
 
 [Cheap sequencing](http://www.genome.gov/sequencingcosts/) has created the
 opportunity to perform molecular-genetic analyses on just about anything.
@@ -23,14 +23,12 @@ At the end of this module, you should be able to:
 5. assess quality of gene predictions,
 6. assess quality of the entire process using a biologically meaningful measure.
 
-> **NOTE:_**
-> The exemplar datasets are simplified to run on laptops and to fit into the
-> short format of this course. For real projects, much more sophisticated
-> approaches are needed!
+!!! Info
+    **Note:** The exemplar datasets are simplified to run on laptops and to fit into the short format of this course. For real projects, much more sophisticated approaches are needed!
 
 ---
 
-## 1. Prerequisites
+## **1. Prerequisites**
 
 Prerequisites for the practicals are:
 
@@ -45,7 +43,7 @@ Prerequisites for the practicals are:
      * following at least the *ggplot* section of the *Exploratory_Data_Analysis*
        swirl course.
 
-## 2. Practicals
+## **2. Practicals**
 
 1. Short read cleaning: Illumina
   short read cleaning
@@ -57,7 +55,7 @@ Prerequisites for the practicals are:
      4. Mapping reads, calling variants, visualizing variant calls.
      5. Analysing variants: PCA, measuring differentiation & diversity.
 
-## 3. Computers
+## **3. Computers**
 
 To perform the practicals, you will remotely connect to the Amazon Web Services
 (AWS) ([here](https://en.wikipedia.org/wiki/Amazon_Web_Services), for more
@@ -68,6 +66,6 @@ You will use an SSH ([here](ssh.md) for more information),
 client to connect to a remote shell, where you will run the first three practicals. Some results will be available on a personal web page created for the course. The same web page will allow you to perform the fourth and fifth
 practicals.
 
-## 4. Authors/Credits
+## **4. Authors/Credits**
 
-The initial version of this practical was put together by [Yannick Wurm](http://wurmlab.com) [@yannick], [Oksana Riba-Grognuz](https://www.linkedin.com/in/oksana80). It has been revised and improved thanks to efforts of **Vitaly Voloshin**, **Matthew Higgins** and [others](https://github.com/wurmlab/genomicscourse/graphs/contributors). 
+The initial version of this practical was put together by [Yannick Wurm](http://wurmlab.com) [@yannick], [Oksana Riba-Grognuz](https://www.linkedin.com/in/oksana80). It has been revised and improved thanks to efforts of **Srishti Arya**, **Vitaly Voloshin**, **Matthew Higgins** and [others](https://github.com/wurmlab/genomicscourse/graphs/contributors). 
