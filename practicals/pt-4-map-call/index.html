@@ -664,16 +664,36 @@ cp tmp/snp.vcf.gz.tbi results
 <li>Copy the <code>snp.vcf.gz</code> and its index file (<code>.tbi</code>) to <code>~/www/igv/data</code>.</li>
 </ol>
 <p>To visualise them, open <em>IGV</em> by clicking on the <em>IGV</em> link in your personal module page (e.g., http://bob.genomicscourse.com).</p>
+<p><img alt="IGV Loading Page" src="../../img/IGV_View.png" /></p>
+<p>Upon loading your webpage should look like below, with the option to zoom in to see feature! By scrolling down, you can see all the bam files are loaded and named on the left hand side, as circled in red. </p>
+<p><img alt="IGV Loading Page" src="../../img/IGV_Loading_Page.png" /></p>
+<p>If you scroll to the bottom of the web-page you will also see your VCF file!</p>
+<p>Now lets zoom in to begin to see our aligned reads. For each BAM file we see two plots, the top being the coverage at each position and the bottom highlighting the individual aligned reads which are shown in grey. </p>
+<p><img alt="IGV Zoomed" src="../../img/IGV_Zoomed.png" /></p>
+<p>When you observe colour in the IGV plot, this typically indicates that there is a difference between the read sequence and the underlying refrence sequence. This could be due to the presence of a genetic variant or possibly due sequencing error!  To help you tell the difference please consider the plots below which highlight how <strong>SNPs</strong>, <strong>Insertions</strong> and <strong>Deletions</strong> are represented in IGV </p>
+<p><strong><em>Note</em></strong> - <em>these are from a different practical, however the colouration remains the same regarding how IGV highlights potential genetic variants</em>.</p>
+<p><img alt="IGV SNP" src="../../img/IGV_SNP.png" /></p>
+<p><img alt="IGV Deletion" src="../../img/IGV_Deletion.png" /></p>
+<p><img alt="IGV Insertion" src="../../img/IGV_Insertion.png" /></p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<ul>
+<li>
+<p>Using the search box at the top of the IGV webpage go to the follow position <strong>scaffold_2:95,983-96,079</strong> and see what variants you can see in the f1_B.bam sample! <em>(You should observe a SNP and Deletion)</em></p>
+</li>
+<li>
+<p>Using the search box at the top of the IGV webpage go to the follow position <strong>scaffold_2:97,597-97,636</strong> and see what variants you can see in the f1_B.bam sample! <em>(You should observe an Insertion)</em></p>
+</li>
+</ul>
 </div>
 <p>Here, we use <a href="https://github.com/igvteam/igv.js#igvjs"><em>igv.js</em></a> which is
 designed to be embedded in web pages and the installation is pre-configured to use the assembly (<code>reference.fa</code> file) you used for variant calling.</p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <ul>
-<li>Try to undrestand what all the parts of the screen are and mean.</li>
-<li>What do the colors represent?</li>
-<li>Can you see genetic variation? Can you see sequencing errors?</li>
-<li>Has bcftools/mpileup recovered the same genetic variants  as you would by looking at the alignments with IGV?</li>
+<li>Can you identify genetic variants and sequencing errors?</li>
+<li>Has bcftools/mpileup recovered the same genetic variants, <strong>idicated in by the snps.vcf.gz,</strong> as you would by looking at the alignments with IGV?</li>
 <li>Do you think our filtering was effective?</li>
 </ul>
 </div>
