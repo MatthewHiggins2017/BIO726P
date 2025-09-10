@@ -427,12 +427,49 @@ In this part of the practical, we will use the software [*IGV*](https://igv.org)
 
       To visualise them, open *IGV* by clicking on the *IGV* link in your personal module page (e.g., http://bob.genomicscourse.com).
 
+      ![IGV Loading Page](../img/IGV_View.png)
+
+
+      Upon loading your webpage should look like below, with the option to zoom in to see feature! By scrolling down, you can see all the bam files are loaded and named on the left hand side, as circled in red. 
+      
+      
+      ![IGV Loading Page](../img/IGV_Loading_Page.png)
+      
+      
+
+      If you scroll to the bottom of the web-page you will also see your VCF file!
+      
+      Now lets zoom in to begin to see our aligned reads. For each BAM file we see two plots, the top being the coverage at each position and the bottom highlighting the individual aligned reads which are shown in grey. 
+
+      ![IGV Zoomed](../img/IGV_Zoomed.png)
+
+      When you observe colour in the IGV plot, this typically indicates that there is a difference between the read sequence and the underlying refrence sequence. This could be due to the presence of a genetic variant or possibly due sequencing error!  To help you tell the difference please consider the plots below which highlight how **SNPs**, **Insertions** and **Deletions** are represented in IGV 
+      
+      **_Note_** - *these are from a different practical, however the colouration remains the same regarding how IGV highlights potential genetic variants*.
+      
+
+      ![IGV SNP](../img/IGV_SNP.png)
+
+      ![IGV Deletion](../img/IGV_Deletion.png)
+
+      ![IGV Insertion](../img/IGV_Insertion.png)
+
+
+!!! Task
+      * Using the search box at the top of the IGV webpage go to the follow position **scaffold_2:95,983-96,079** and see what variants you can see in the f1_B.bam sample! *(You should observe a SNP and Deletion)*
+
+
+      * Using the search box at the top of the IGV webpage go to the follow position **scaffold_2:97,597-97,636** and see what variants you can see in the f1_B.bam sample! *(You should observe an Insertion)*
+
+
+
+
 Here, we use [*igv.js*](https://github.com/igvteam/igv.js#igvjs) which is
 designed to be embedded in web pages and the installation is pre-configured to use the assembly (`reference.fa` file) you used for variant calling.
 
+
+
 !!! Question
-      * Try to undrestand what all the parts of the screen are and mean.
-      * What do the colors represent?
-      * Can you see genetic variation? Can you see sequencing errors?
-      * Has bcftools/mpileup recovered the same genetic variants  as you would by looking at the alignments with IGV?
+      * Can you identify genetic variants and sequencing errors?
+      * Has bcftools/mpileup recovered the same genetic variants, **idicated in by the snps.vcf.gz,** as you would by looking at the alignments with IGV?
       * Do you think our filtering was effective?
