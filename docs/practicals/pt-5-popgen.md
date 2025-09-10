@@ -65,10 +65,29 @@ package in R.
 
 !!! Task
     Next, open *RStudio* by clicking on the 'RStudio' link in your personal module
-    page (e.g., bt007.genomicscourse.com). Login using your username (e.g., bt007)
-    and the password that you use for ssh.  In *RStudio*, open the file `popgen.Rmd` and work through the rest of the
-    practical there.
-
+    page (e.g., bt007.genomicscourse.com). Login using your username (e.g., bt007) and the password that you use for ssh.
+    
     ![R Studio](../img/RStudio.png)
+
+!!! Task
+
+     In *RStudio*, open the file `popgen.Rmd` (as highlighted in red in the image below) and work through the rest of the practical there.
+
+    ![Opening Rmd File](../img/LocRmdFile.png)
+
+    Once opened, make sure to click the **visual button** in the top left hand corner (as highlighted in red in the image below). 
+
+     ![Opening Rmd Visual](../img/RmdFileVisual.png)
+
+    **You can now work through this file to complete the practical.** When you encouter a command box, please select the green play button on the right hand side, as highlighted in red in the image below, to run the necessary commands! 
+
+    ![Opening Rmd Visual](../img/RmdRun.png)
+
+
+    
+
+
+
+   
 
 

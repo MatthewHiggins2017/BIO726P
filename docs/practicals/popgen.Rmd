@@ -305,4 +305,5 @@ ggplot(data = data.frame(window = 1:length(lb_div), value = lb_div)) +
 ```
 
 * Knowing that there is no recombination between B and b somewhere in the genome, why do you think there is high FST in one scaffold and not the other?
+
 * What factors could make b have such low diversity in one of the scaffolds?
