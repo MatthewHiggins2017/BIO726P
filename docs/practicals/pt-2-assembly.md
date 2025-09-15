@@ -133,10 +133,12 @@ generate a standardized report.
       cp quast_results/latest/report.html ~/www/tmp
       ```
 
+
+      ![QUAST Output](../img/QUAST_Report.png)
+
 !!! Question
       * What do the values in the table mean?
       * For which values is higher better, and for which ones is smaller better?
-      * Why does *Quast* use the word "contig"?
 
 In some cases, we have prior knowledge about the expected percentage of **GC** 
 content, the number of chromosomes, and the total genome size. This information
@@ -174,11 +176,7 @@ For example:
     * *Quast* also includes a "quick and dirty" method of finding genes.
 5. We can expect that the different scaffolds in the genome have a unimodal
       distribution in sequence read coverage. Similarly, we can expect that the
-      percentage of **GC** content will be unimodally distributed among scaffolds.  
-      Using this idea, the [Blobology](https://github.com/sujaikumar/assemblage)
-      approach determined that evidence of foreign sequences in Tardigrades is
-      largely due to extensive contamination rather than extensive horizontal gene
-      transfer [Koutsovoulos et al 2016](http://www.pnas.org/content/113/18/5053).
+      percentage of **GC** content will be unimodally distributed among scaffolds. Using this idea, the [Blobology](https://github.com/sujaikumar/assemblage) approach determined that evidence of foreign sequences in Tardigrades is largely due to extensive contamination rather than extensive horizontal gene transfer [Koutsovoulos et al 2016](http://www.pnas.org/content/113/18/5053).
 
 **It is important to understand the concepts underlying these different 
 approaches.**
