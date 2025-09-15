@@ -434,13 +434,13 @@ quast.py scaffolds.fasta
   output directory to <code>~/www/tmp</code> and access through your browser).</p>
 <div class="highlight"><pre><span></span><code>cp quast_results/latest/report.html ~/www/tmp
 </code></pre></div>
+<p><img alt="QUAST Output" src="../../img/QUAST_Report.png" /></p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <ul>
 <li>What do the values in the table mean?</li>
 <li>For which values is higher better, and for which ones is smaller better?</li>
-<li>Why does <em>Quast</em> use the word "contig"?</li>
 </ul>
 </div>
 <p>In some cases, we have prior knowledge about the expected percentage of <strong>GC</strong> 
@@ -478,11 +478,7 @@ For example:</p>
 </li>
 <li>We can expect that the different scaffolds in the genome have a unimodal
       distribution in sequence read coverage. Similarly, we can expect that the
-      percentage of <strong>GC</strong> content will be unimodally distributed among scaffolds.<br />
-      Using this idea, the <a href="https://github.com/sujaikumar/assemblage">Blobology</a>
-      approach determined that evidence of foreign sequences in Tardigrades is
-      largely due to extensive contamination rather than extensive horizontal gene
-      transfer <a href="http://www.pnas.org/content/113/18/5053">Koutsovoulos et al 2016</a>.</li>
+      percentage of <strong>GC</strong> content will be unimodally distributed among scaffolds. Using this idea, the <a href="https://github.com/sujaikumar/assemblage">Blobology</a> approach determined that evidence of foreign sequences in Tardigrades is largely due to extensive contamination rather than extensive horizontal gene transfer <a href="http://www.pnas.org/content/113/18/5053">Koutsovoulos et al 2016</a>.</li>
 </ol>
 <p><strong>It is important to understand the concepts underlying these different 
 approaches.</strong></p>
