@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../ssh/">
       
-      
-        <link rel="next" href="../Apocrita_Access/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>SSH & Your Virtual Computer! - BIO726P</title>
+        <title>Accessing Apocrita - BIO726P</title>
       
     
     
@@ -64,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ssh-your-virtual-computer" class="md-skip">
+        <a href="#accessing-apocrita" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              SSH &amp; Your Virtual Computer!
+              Accessing Apocrita
             
           </span>
         </div>
@@ -295,6 +293,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -307,31 +328,20 @@
         
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
   
   
   <span class="md-ellipsis">
-    SSH &amp; Your Virtual Computer!
+    Accessing Apocrita
     
   </span>
   
 
-      </a>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Apocrita_Access/" class="md-nav__link">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -342,6 +352,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-an-ssh-key-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is an SSH-Key Pair?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-your-ssh-key-pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generating your SSH-Key Pair
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requesting-an-apocrita-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requesting an Apocrita Account
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -370,122 +427,69 @@
 
 
 
-<h1 id="ssh-your-virtual-computer">SSH &amp; Your Virtual Computer!</h1>
-<p>For each of you we have created your very on AWS instance! This instance you will use to complete the practical work outlined.</p>
-<p>To switch on your instance please go to <a href="https://switch.genomicscourse.com">https://switch.genomicscourse.com</a> and follow the instructions! <strong>Once you computer is switched on proceed with the following sections.</strong> </p>
-<p>You will able to files on you instance using you decidated webpage e.g https://matt.genomicscourse.com/. Please replace matt with your assigned username as follows: https://username.genomicscourse.com/. The webpage will look like the image below: </p>
-<p><img alt="Personalised Webpage" src="../img/PersonalisedWebpage.png" /></p>
+<h1 id="accessing-apocrita"><strong>Accessing Apocrita</strong></h1>
 <hr />
-<h1 id="ssh-connection"><strong>SSH Connection</strong></h1>
-<p>Please follow the instructions below to connect to your instance via SSH. </p>
-<p>Click on the link to the operating system you are using</p>
 <ul>
-<li>
-<p><a href="#sshlinux">SSH on Linux</a> - <em>For in class practicals you should follow this section.</em></p>
-</li>
-<li>
-<p><a href="#sshmac">SSH on Mac</a></p>
-</li>
-<li>
-<p><a href="#sshwindows">SSH on Windows</a></p>
-</li>
+<li>Apocrita is the high performance computing cluster (HPC) here at QMUL.</li>
+<li>You will use Apocrita in Week 2 of this module and also for your coursework.</li>
+<li>Full details on Apocrita can here found <a href="https://docs.hpc.qmul.ac.uk">here</a>. </li>
+<li>Before you can use Apocrita you need to request an account and that is the goal for this practical session! </li>
 </ul>
 <hr />
-<h1 id="ssh-on-linux"><strong>SSH on Linux</strong><a name="sshlinux"></a></h1>
-<p><strong>Note:</strong> Instructions are provided for <strong>Ubuntu</strong>, but if you are running a 
-different flavour of linux, the only thing that should be different is how to 
-open the terminal. From step 3 onwards, everything should be identical.</p>
-<p>1) On Ubuntu, click on the icon in the top left of the screen</p>
-<p>2) Type <em>Terminal</em>  and open the terminal application</p>
-<p><img alt="" src="../img/linux_find_terminal.png" /></p>
-<p>3) Into the Linux terminal that appears, type <code>ssh username@servername</code>, 
-   replacing username and servername with the username and server name that you 
-   have been emailed:</p>
-<div class="highlight"><pre><span></span><code>ssh bt007@bt007.genomicscourse.com
-</code></pre></div>
-<p>4) The first time you log in, you will see a message talking about the host's
-   authenticity, it's fingerprint and asking if you wish to continue.</p>
-<div class="highlight"><pre><span></span><code>The authenticity of host &#39;bt007.genomicscourse.com (192.135.232.24)&#39; can&#39;t be established.
-ECDSA key fingerprint is SHA256:xmvrB9Ke/bXNtpu5PXF6IbUS8wxCtF6SNqZ7VV+IRoU.
-Are you sure you want to continue connecting (yes/no)?
-</code></pre></div>
-<p>This message is normal when you log in to a new server. Agreeing will store the server's fingerprint, and the message will not appear again.</p>
-<p>5) Type <code>yes</code> into the Linux terminal and hit return.</p>
-<p>6) You will then be asked for a password.</p>
-<div class="highlight"><pre><span></span><code>bt007@bt007.genomicscourse.com&#39;s password:
-</code></pre></div>
-<p>Type in the password that you've been emailed, and hit return. Nothing will appear while you type. If you know you have made a mistake, you can hold down backspace, and retype the password.</p>
-<p>7) Congratulations! You are now logged in!</p>
+<h3 id="what-is-an-ssh-key-pair"><strong>What is an SSH-Key Pair?</strong></h3>
+<p>To connect to Apocrita you will again be using SSH just like how you connected to your Virtual Machines (VMs). However, as Apocrita has a higher level of security you will need to use an SSH-Key Pair. </p>
+<p>An <strong>SSH-Key Pair</strong> consists of two cryptographic keys: a <strong>public key</strong> and a <strong>private key</strong>.</p>
+<p>These keys are used to securely authenticate your identity when connecting to remote servers, such as Apocrita.</p>
+<ul>
+<li>
+<p>The <strong>public key</strong> can be shared freely and is placed on the server you want to access.</p>
+</li>
+<li>
+<p>The <strong>private key</strong> is kept secure on your own computer and <strong>should never be shared</strong>.</p>
+</li>
+</ul>
+<p>When you attempt to connect to a server using SSH, the server checks if your public key matches your private key. If they match, you are granted access. This method is more secure than using passwords alone.</p>
 <hr />
-<h1 id="ssh-on-mac"><strong>SSH on Mac</strong><a name="sshmac"></a></h1>
-<p>1) Press Cmd-Space to open Spotlight, type <em>Terminal</em>, and press enter.</p>
-<p><img alt="" src="../img/spotlight.png" /></p>
-<p>2) Into the Mac terminal that appears, type <code>ssh username@servername</code>, replacing username and servername with the username and server name that you have been emailed:</p>
-<div class="highlight"><pre><span></span><code>ssh bt007@bt007.genomicscourse.com
+<h3 id="generating-your-ssh-key-pair"><strong>Generating your SSH-Key Pair</strong></h3>
+<p>Now its time to generate your own SSH-Key Pair!</p>
+<p>Use the command below to achieve this but please remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bty313</code>:</p>
+<div class="highlight"><pre><span></span><code># Template
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;
 </code></pre></div>
-<p>3) The first time you log in, you will see a message talking about the host's authenticity, it's fingerprint and asksing if you wish to continue.</p>
-<div class="highlight"><pre><span></span><code>The authenticity of host &#39;bt007.genomicscourse.com (192.135.232.24)&#39; can&#39;t be established.
-ECDSA key fingerprint is SHA256:xmvrB9Ke/bXNtpu5PXF6IbUS8wxCtF6SNqZ7VV+IRoU.
-Are you sure you want to continue connecting (yes/no)?
+<p>Example, if your QMUL username was <em>bty313</em></p>
+<p><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_bty313
 </code></pre></div>
-<p>This message is normal when you log in to a new server. Agreeing will store the server's fingerprint, and the message will not appear again.</p>
-<p>4) Type <code>yes</code> into the Mac terminal and press enter.</p>
-<p>5) You will then be asked for a password.</p>
-<div class="highlight"><pre><span></span><code>bt007@bt007.genomicscourse.com&#39;s password:
-</code></pre></div>
-<p>Type in the password that you've been emailed, and hit return. Nothing will appear while you type. If you know you have made a mistake, you can hold down backspace, and retype the password.</p>
-<p>6) Congratulations! You are now logged in!</p>
+This command will generate two files in your standard SSH directory (<code>~/.ssh/</code>):</p>
+<ul>
+<li><code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;</code> — your <strong>private key</strong> (keep this secure and never share it).</li>
+<li><code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub</code> — your <strong>public key</strong>.</li>
+</ul>
+<p>Always keep your private key confidential. Only the public key (.pub) should be shared when requested.</p>
 <hr />
-<h1 id="ssh-on-windows"><strong>SSH on Windows</strong><a name="sshwindows"></a></h1>
-<h2 id="using-openssh-client-for-windows">Using OpenSSH client for Windows</h2>
-<p>1) On Windows 10+, type cmd (short for command) into the search box, and press Enter.</p>
-<p>2) Into the Windows command line that appears, type <code>ssh username@servername</code>, 
-   replacing username and servername with the username and server name that you 
-   have been emailed:</p>
-<div class="highlight"><pre><span></span><code>ssh bt007@bt007.genomicscourse.com
-</code></pre></div>
-<p>If you get a message that there is no command <code>ssh</code>, then you need to <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse">enable the OpenSSH client</a>. </p>
-<p>4) The first time you log in, you will see a message talking about the host's
-   authenticity, it's fingerprint and asksing if you wish to continue.</p>
-<div class="highlight"><pre><span></span><code>The authenticity of host &#39;bt007.genomicscourse.com (192.135.232.24)&#39; can&#39;t be established.
-ECDSA key fingerprint is SHA256:xmvrB9Ke/bXNtpu5PXF6IbUS8wxCtF6SNqZ7VV+IRoU.
-Are you sure you want to continue connecting (yes/no)?
-</code></pre></div>
-<p>This message is normal when you log in to a new server. Agreeing will store the server's fingerprint, and the message will not appear again.</p>
-<p>5) Type <code>yes</code> into the Windows command line and hit return.</p>
-<p>6) You will then be asked for a password.</p>
-<div class="highlight"><pre><span></span><code>bt007@bt007.genomicscourse.com&#39;s password:
-</code></pre></div>
-<p>Type in the password that you've been emailed, and hit return. Nothing will appear while you type. If you know you have made a mistake, you can hold down backspace, and retype the password.</p>
-<p>7) Congratulations! You are now logged in!</p>
-<h2 id="using-mobaxterm-ssh-client">Using MobaXTerm SSH client</h2>
-<p>If built-in SSH client did not work for you, then use MobaXTerm as exlained below.</p>
-<h3 id="installing-mobaxterm">Installing MobaXTerm</h3>
-<p>There are a number of SSH clients you can use, but for the purposes of this practical, we would recommend MobaXTerm.</p>
-<p>1) Download MobaXTerm from:
-<a href="https://mobaxterm.mobatek.net/download-home-edition.html">https://mobaxterm.mobatek.net/download-home-edition.html</a> - select installer version.</p>
-<p>2) Unzip the folder you downloaded.</p>
-<p>3) Run the file ending in .msi - you'll get a windows prompt to install this, which it is safe to agree to. Install MobaXTerm in the default location, and you're then ready to log in.</p>
-<h3 id="logging-in-through-mobaxterm">Logging in through MobaXTerm</h3>
-<p>1) Open MobaXTerm from the Windows start menu (if you can't find it, use the search bar).</p>
-<p>2) Click on Session in the upper left of MobaXTerm </p>
-<p><img alt="" src="../img/mobasession.PNG" /></p>
-<p>3) Select SSH in the window that opens.</p>
-<p>4) In the next window, enter your computer's hostname in the <code>Remote host</code> box
-   (your computer's hostname is included in the email that we sent you with log 
-   in details).</p>
-<p>5) In the same window, tick the <code>Specify username</code> box, and add your username 
-   (included in the email that we sent you with log in details).</p>
-<p><img alt="" src="../img/ssh_login.png" /></p>
-<p>6) Tick OK, at the bottom of the box.</p>
-<p>7) You may see a message the first time you log in, saying that "the authenticity of the host can not be established", and asking if you wish to continue connecting. This message is normal when you log in to a new server. Agreeing will store the server's fingerprint, and the message will not appear again.</p>
-<p>8) Click on <code>Yes</code> if the message appears</p>
-<p><img alt="" src="../img/warning.png" /></p>
-<p>9) You will then be asked for a password.</p>
-<div class="highlight"><pre><span></span><code>james@james.genomicscourse.com&#39;s password:
-</code></pre></div>
-<p>Type in the password that you've been emailed, and press enter. Nothing will appear while you type. If you know you have made a mistake, you can hold down backspace, and retype the password.</p>
-<p>10) Congratulations! You are now logged in!</p>
+<h2 id="requesting-an-apocrita-account">Requesting an Apocrita Account</h2>
+<p>To allow the ITS Research Support Team to create your Apocrita account, please complete the following two steps:</p>
+<ol>
+<li>
+<p><strong>Verify your details:</strong><br />
+    Visit the Excel table on OneDrive and check that your QMUL username and email address are correct: <a href="https://qmulprod-my.sharepoint.com/:x:/r/personal/qp252136_qmul_ac_uk/Documents/BIO726P/BIO726P_Apocrita_Student_Accounts.xlsx?d=w6233a7bb4457425e8b479b9f52df788f&amp;csf=1&amp;web=1&amp;e=P5bomv"><strong>TABLE LINK HERE!</strong></a>. If you spot any errors, contact a demonstrator or post in the Discussion Forum.</p>
+<p><br></p>
+</li>
+<li>
+<p><strong>Upload your public SSH key:</strong><br />
+    Upload your <strong>public key</strong> file <code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub</code> to this <a href="https://qmulprod-my.sharepoint.com/:f:/r/personal/qp252136_qmul_ac_uk/Documents/BIO726P/BIO726P_Apocrita_Public_Keys?csf=1&amp;web=1&amp;e=uxsjSY">shared OneDrive folder (<strong>LINK HERE</strong>)</a>. To make this easier, you can copy your public key from the SSH directory to your Desktop using the command below so it is easier to select to when uploading:<br />
+    <div class="highlight"><pre><span></span><code>cp ~/.ssh/Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub ~/Desktop
+</code></pre></div></p>
+</li>
+</ol>
+<p><br>
+Once you have completed these steps, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into <strong>Apocrita</strong>.</p>
+<p><img alt="Apocrita Email" src="../img/Apocrita_Email.png" /></p>
+<p>If you’d like to learn more about Apocrita before the session with ITS on October 2nd, please check out these resources:</p>
+<ol>
+<li><a href="https://docs.hpc.qmul.ac.uk">Apocrita Home</a></li>
+<li><a href="https://docs.hpc.qmul.ac.uk/intro/">HPC Introduction</a></li>
+<li><a href="https://docs.hpc.qmul.ac.uk/intro/login/">Logging Into Apocrita</a></li>
+</ol>
 
 
 
