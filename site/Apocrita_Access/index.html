@@ -384,6 +384,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Generating your SSH-Key Pair">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mac-linux-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mac &amp; Linux Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows Users
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -432,7 +456,7 @@
 <ul>
 <li>Apocrita is the high performance computing cluster (HPC) here at QMUL.</li>
 <li>You will use Apocrita in Week 2 of this module and also for your coursework.</li>
-<li>Full details on Apocrita can here found <a href="https://docs.hpc.qmul.ac.uk">here</a>. </li>
+<li>Full details on Apocrita can be found <a href="https://docs.hpc.qmul.ac.uk">here</a>. </li>
 <li>Before you can use Apocrita you need to request an account and that is the goal for this practical session! </li>
 </ul>
 <hr />
@@ -452,37 +476,112 @@
 <hr />
 <h3 id="generating-your-ssh-key-pair"><strong>Generating your SSH-Key Pair</strong></h3>
 <p>Now its time to generate your own SSH-Key Pair!</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<h4 id="mac-linux-users">Mac &amp; Linux Users</h4>
 <p>Use the command below to achieve this but please remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bty313</code>:</p>
 <div class="highlight"><pre><span></span><code># Template
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;
 </code></pre></div>
 <p>Example, if your QMUL username was <em>bty313</em></p>
-<p><div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_bty313
+<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_bty313
 </code></pre></div>
-This command will generate two files in your standard SSH directory (<code>~/.ssh/</code>):</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<h4 id="windows-users">Windows Users</h4>
+<p>Use the command below in PowerShell to generate your SSH key pair. Remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bty313</code>:</p>
+<div class="highlight"><pre><span></span><code># Template
+ssh-keygen -t rsa -b 4096 -f &quot;$env:USERPROFILE/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;&quot;
+</code></pre></div>
+<p>Example, if your QMUL username was <em>bty313</em></p>
+<div class="highlight"><pre><span></span><code>ssh-keygen -t rsa -b 4096 -f &quot;$env:USERPROFILE/.ssh/Apocrita_Key_bty313&quot;
+</code></pre></div>
+<p>Note: In Windows PowerShell, we use <code>$env:USERPROFILE\.ssh\</code> instead of <code>~/.ssh/</code> to specify the path to your SSH directory.</p>
+</div>
+<p>This command will generate two files in your standard SSH directory (<code>~/.ssh/</code>):</p>
 <ul>
 <li><code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;</code> — your <strong>private key</strong> (keep this secure and never share it).</li>
 <li><code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub</code> — your <strong>public key</strong>.</li>
 </ul>
 <p>Always keep your private key confidential. Only the public key (.pub) should be shared when requested.</p>
 <hr />
-<h2 id="requesting-an-apocrita-account">Requesting an Apocrita Account</h2>
-<p>To allow the ITS Research Support Team to create your Apocrita account, please complete the following two steps:</p>
+<h2 id="requesting-an-apocrita-account"><strong>Requesting an Apocrita Account</strong></h2>
+<p>To allow the ITS Research Support Team to create your Apocrita account, please complete the following steps:</p>
 <ol>
 <li>
-<p><strong>Verify your details:</strong><br />
-    Visit the Excel table on OneDrive and check that your QMUL username and email address are correct: <a href="https://qmulprod-my.sharepoint.com/:x:/r/personal/qp252136_qmul_ac_uk/Documents/BIO726P/BIO726P_Apocrita_Student_Accounts.xlsx?d=w6233a7bb4457425e8b479b9f52df788f&amp;csf=1&amp;web=1&amp;e=P5bomv"><strong>TABLE LINK HERE!</strong></a>. If you spot any errors, contact a demonstrator or post in the Discussion Forum.</p>
-<p><br></p>
-</li>
-<li>
-<p><strong>Upload your public SSH key:</strong><br />
-    Upload your <strong>public key</strong> file <code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub</code> to this <a href="https://qmulprod-my.sharepoint.com/:f:/r/personal/qp252136_qmul_ac_uk/Documents/BIO726P/BIO726P_Apocrita_Public_Keys?csf=1&amp;web=1&amp;e=uxsjSY">shared OneDrive folder (<strong>LINK HERE</strong>)</a>. To make this easier, you can copy your public key from the SSH directory to your Desktop using the command below so it is easier to select to when uploading:<br />
-    <div class="highlight"><pre><span></span><code>cp ~/.ssh/Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub ~/Desktop
+<p><strong>Email ITS your public SSH key:</strong>  </p>
+<p>Email your public key file <code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub</code> to <a href="mailto:its-research-support@qmul.ac.uk?subject=BIO726P%20Apocrita%20Account%20Request"><strong>its-research-support@qmul.ac.uk</strong></a> with the subject line "BIO726P Apocrita Account Request".</p>
+<p>In your email message, please include the table below and update the necessary information shown in <em>italics</em> with your own details.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Firstname</td>
+<td><em>Your first name</em></td>
+</tr>
+<tr>
+<td>Surname</td>
+<td><em>Your last name?</em></td>
+</tr>
+<tr>
+<td>QMUL username</td>
+<td><em>Your QMUL username</em></td>
+</tr>
+<tr>
+<td>QMUL email address</td>
+<td><em>Your QMUL email address</em></td>
+</tr>
+<tr>
+<td>QMUL affiliation</td>
+<td>msc student</td>
+</tr>
+<tr>
+<td>Role held at QMUL</td>
+<td>msc student</td>
+</tr>
+<tr>
+<td>PI</td>
+<td>Matthew Higgins</td>
+</tr>
+<tr>
+<td>Justification</td>
+<td>BIO726P</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attaching your public key:</strong><br />
+To make it easier to attach your public key to the email, you can copy it from the SSH directory to your Desktop using the appropriate command for your operating system:  </p>
+<p>For Mac &amp; Linux:
+<div class="highlight"><pre><span></span><code>cp ~/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub ~/Desktop
+</code></pre></div></p>
+<p>For Windows (in PowerShell):
+<div class="highlight"><pre><span></span><code>Copy-Item &quot;$env:USERPROFILE/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub&quot; &quot;$env:USERPROFILE/Desktop&quot;
 </code></pre></div></p>
 </li>
 </ol>
+<!-- BACK UP APPROACH FOR SENDING AS GROUP 
+
+
+1. **Upload your public SSH key:**  
+    Upload your **public key** file `Apocrita_Key_<YOUR_QMUL_USERNAME>.pub` to this [shared OneDrive folder (**LINK HERE**)](www.google.com). To make this easier, you can copy your public key from the SSH directory to your Desktop using the appropriate command for your operating system:  
+
+    For Mac & Linux:
+    <div class="highlight"><pre><span></span><code>cp ~/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub ~/Desktop
+</code></pre></div>
+
+    For Windows (in PowerShell):
+    <div class="highlight"><pre><span></span><code>Copy-Item &quot;$env:USERPROFILE\.ssh\Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub&quot; &quot;$env:USERPROFILE\Desktop&quot;
+</code></pre></div>
+-->
+
 <p><br>
-Once you have completed these steps, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into <strong>Apocrita</strong>.</p>
+Once you have completed this, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into <strong>Apocrita</strong>.</p>
 <p><img alt="Apocrita Email" src="../img/Apocrita_Email.png" /></p>
 <p>If you’d like to learn more about Apocrita before the session with ITS on October 2nd, please check out these resources:</p>
 <ol>

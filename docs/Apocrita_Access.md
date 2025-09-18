@@ -4,7 +4,7 @@
 
 * Apocrita is the high performance computing cluster (HPC) here at QMUL.
 * You will use Apocrita in Week 2 of this module and also for your coursework.
-* Full details on Apocrita can here found [here](https://docs.hpc.qmul.ac.uk). 
+* Full details on Apocrita can be found [here](https://docs.hpc.qmul.ac.uk). 
 * Before you can use Apocrita you need to request an account and that is the goal for this practical session! 
 
  
@@ -31,18 +31,40 @@ When you attempt to connect to a server using SSH, the server checks if your pub
 
 Now its time to generate your own SSH-Key Pair!
 
-Use the command below to achieve this but please remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bty313`:
 
-```
-# Template
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_<YOUR_STUDENT_ID>
-```
+!!! Task
+    #### Mac & Linux Users 
+    Use the command below to achieve this but please remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bty313`:
 
-Example, if your QMUL username was *bty313*
+    ```
+    # Template
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_<YOUR_STUDENT_ID>
+    ```
 
-```
-ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_bty313
-```
+    Example, if your QMUL username was *bty313*
+
+    ```
+    ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_bty313
+    ```
+
+
+!!! Task
+    #### Windows Users 
+    Use the command below in PowerShell to generate your SSH key pair. Remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bty313`:
+
+    ```
+    # Template
+    ssh-keygen -t rsa -b 4096 -f "$env:USERPROFILE/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>"
+    ```
+
+    Example, if your QMUL username was *bty313*
+
+    ```
+    ssh-keygen -t rsa -b 4096 -f "$env:USERPROFILE/.ssh/Apocrita_Key_bty313"
+    ```
+
+    Note: In Windows PowerShell, we use `$env:USERPROFILE\.ssh\` instead of `~/.ssh/` to specify the path to your SSH directory.
+
 This command will generate two files in your standard SSH directory (`~/.ssh/`):
 
 * `Apocrita_Key_<YOUR_STUDENT_ID>` — your **private key** (keep this secure and never share it).
@@ -53,24 +75,62 @@ Always keep your private key confidential. Only the public key (.pub) should be 
 
 ------------------------------------------
 
-## Requesting an Apocrita Account
+## **Requesting an Apocrita Account**
 
-To allow the ITS Research Support Team to create your Apocrita account, please complete the following two steps:
+To allow the ITS Research Support Team to create your Apocrita account, please complete the following steps:
 
-1. **Verify your details:**  
-    Visit the Excel table on OneDrive and check that your QMUL username and email address are correct: [**TABLE LINK HERE!**](https://qmulprod-my.sharepoint.com/:x:/r/personal/qp252136_qmul_ac_uk/Documents/BIO726P/BIO726P_Apocrita_Student_Accounts.xlsx?d=w6233a7bb4457425e8b479b9f52df788f&csf=1&web=1&e=P5bomv). If you spot any errors, contact a demonstrator or post in the Discussion Forum.
+
+1. **Email ITS your public SSH key:**  
+
+    Email your public key file `Apocrita_Key_<YOUR_STUDENT_ID>.pub` to [**its-research-support@qmul.ac.uk**](mailto:its-research-support@qmul.ac.uk?subject=BIO726P%20Apocrita%20Account%20Request) with the subject line "BIO726P Apocrita Account Request".
     
-    <br>
+    In your email message, please include the table below and update the necessary information shown in *italics* with your own details.
+
+    | Field             | Value                  |
+    |-------------------|-----------------------|
+    | Firstname         | *Your first name*      |
+    | Surname           | *Your last name?*       |
+    | QMUL username     | *Your QMUL username*   |
+    | QMUL email address| *Your QMUL email address* |
+    | QMUL affiliation  | msc student            |
+    | Role held at QMUL | msc student            |
+    | PI                | Matthew Higgins        |
+    | Justification     | BIO726P                |
+
+    
+    **Attaching your public key:**  
+    To make it easier to attach your public key to the email, you can copy it from the SSH directory to your Desktop using the appropriate command for your operating system:  
+
+    For Mac & Linux:
+    ```
+    cp ~/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>.pub ~/Desktop
+    ```
+
+    For Windows (in PowerShell):
+    ```
+    Copy-Item "$env:USERPROFILE/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>.pub" "$env:USERPROFILE/Desktop"
+    ```
 
 
-2. **Upload your public SSH key:**  
-    Upload your **public key** file `Apocrita_Key_<YOUR_STUDENT_ID>.pub` to this [shared OneDrive folder (**LINK HERE**)](https://qmulprod-my.sharepoint.com/:f:/r/personal/qp252136_qmul_ac_uk/Documents/BIO726P/BIO726P_Apocrita_Public_Keys?csf=1&web=1&e=uxsjSY). To make this easier, you can copy your public key from the SSH directory to your Desktop using the command below so it is easier to select to when uploading:  
+<!-- BACK UP APPROACH FOR SENDING AS GROUP 
+
+
+1. **Upload your public SSH key:**  
+    Upload your **public key** file `Apocrita_Key_<YOUR_QMUL_USERNAME>.pub` to this [shared OneDrive folder (**LINK HERE**)](www.google.com). To make this easier, you can copy your public key from the SSH directory to your Desktop using the appropriate command for your operating system:  
+    
+    For Mac & Linux:
     ```
-    cp ~/.ssh/Apocrita_Key_<YOUR_STUDENT_ID>.pub ~/Desktop
+    cp ~/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>.pub ~/Desktop
     ```
+    
+    For Windows (in PowerShell):
+    ```
+    Copy-Item "$env:USERPROFILE\.ssh\Apocrita_Key_<YOUR_QMUL_USERNAME>.pub" "$env:USERPROFILE\Desktop"
+    ```
+-->
 
 <br>
-Once you have completed these steps, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into **Apocrita**.
+Once you have completed this, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into **Apocrita**.
 
 ![Apocrita Email](./img/Apocrita_Email.png)
 
