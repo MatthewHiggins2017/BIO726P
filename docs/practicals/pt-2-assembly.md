@@ -54,7 +54,7 @@ Next lets link the cleaned reads from yesterdays practical into our `input` subd
 
 !!! task
       To assemble our cleaned reads with *SPAdes*, run the following line: 
-      (_This will take about 10 minutes_)
+      (_This will take about 10 minutes - please complete the task below in this time_)
 
       ```bash
       spades.py -o tmp -1 input/reads.pe1.clean.fq -2 input/reads.pe2.clean.fq
@@ -77,10 +77,12 @@ Next lets link the cleaned reads from yesterdays practical into our `input` subd
 !!! Question
       Does it contain a lot of **NNNN** sequences? What do you think might be the reason for that? (Do not worry if your assembly does not contain any **NNNN** sequence.
 
-There are many other genome assembly approaches. While waiting for everyone to
-make it to this stage, get an idea of some challenges associated to **_de novo_
-genome assembly** and the approaches used to overcome them from the following 
-papers:
+
+!!! Task
+      While waiting for spades to run please move on to the [Accessing Apocrita practical](../Apocrita_Access.md). 
+
+
+To get an idea of some challenges associated to **_de novo_genome assembly** and the approaches used to overcome them from the following papers:
 
 
 * [Towards complete and error-free genome assemblies of all vertebrate species. (Rhie et al 2021)](https://www.nature.com/articles/s41586-021-03451-0)
