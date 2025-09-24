@@ -17,18 +17,18 @@ Again for this practical you will be using the remote AWS computers created for 
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-23-assembly`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-24-assembly`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```
-      mkdir 2025-09-23-assembly
+      mkdir 2025-09-24-assembly
       ```
 
 Your directory hierarchy should look like the following
 
 !!! terminal 
     ```
-    2025-09-23-assembly
+    2025-09-24-assembly
     ├── input
     ├── tmp
     ├── results
@@ -42,9 +42,9 @@ Next lets link the cleaned reads from yesterdays practical into our `input` subd
 !!! task
       Use the following commands to achieve this! 
       ```
-      cd ~/2025-09-23-assembly
+      cd ~/2025-09-24-assembly
       cd input
-      ln -s ~/2025-09-22-read_cleaning/results/reads.pe*.clean.fq .
+      ln -s ~/2025-09-23-read_cleaning/results/reads.pe*.clean.fq .
       cd ..
       ```
 
@@ -124,7 +124,7 @@ generate a standardized report.
       file without special options to get the basic statistics:
 
       ```
-      cd ~/2025-09-23-assembly/results
+      cd ~/2025-09-24-assembly/results
       quast.py scaffolds.fasta
       ```
 
