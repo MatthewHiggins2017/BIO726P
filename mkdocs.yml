@@ -33,5 +33,6 @@ extra_css:
 nav:
   - Home: 
     - index.md
+    - debugging_process.md
     - ssh.md
     - Apocrita_Access.md
