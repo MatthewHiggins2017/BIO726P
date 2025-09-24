@@ -9,20 +9,22 @@
       
       
       
+        <link rel="prev" href="..">
       
-        <link rel="next" href="debugging_process/">
+      
+        <link rel="next" href="../ssh/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
-        <title>Practicals for the 2025 Genome Bioinformatics module - BIO726P</title>
+        <title>The Debugging Process - BIO726P</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
       
       
 
@@ -41,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#practicals-for-the-2025-genome-bioinformatics-module" class="md-skip">
+        <a href="#the-debugging-process" class="md-skip">
           Skip to content
         </a>
       
@@ -76,7 +78,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+    <a href=".." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Practicals for the 2025 Genome Bioinformatics module
+              The Debugging Process
             
           </span>
         </div>
@@ -173,7 +175,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="." class="md-tabs__link">
+        <a href=".." class="md-tabs__link">
           
   
   
@@ -209,7 +211,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+    <a href=".." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -270,6 +272,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2025 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -287,7 +312,7 @@
   
   
   <span class="md-ellipsis">
-    Practicals for the 2025 Genome Bioinformatics module
+    The Debugging Process
     
   </span>
   
@@ -295,12 +320,12 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    Practicals for the 2025 Genome Bioinformatics module
+    The Debugging Process
     
   </span>
   
@@ -323,45 +348,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#step-1-switch-on-your-virtual-machine" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Step 1. Switch on Your Virtual Machine
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-prerequisites" class="md-nav__link">
+  <a href="#step-2-check-you-are-connected-to-your-vm" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Prerequisites
+      Step 2. Check you are connected to your VM
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-practicals" class="md-nav__link">
+  <a href="#step-3-file-not-found" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Practicals
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-computers" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Computers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-authorscredits" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Authors/Credits
+      Step 3. File Not Found
     </span>
   </a>
   
@@ -383,30 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="debugging_process/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    The Debugging Process
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="ssh/" class="md-nav__link">
+      <a href="../ssh/" class="md-nav__link">
         
   
   
@@ -429,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Apocrita_Access/" class="md-nav__link">
+      <a href="../Apocrita_Access/" class="md-nav__link">
         
   
   
@@ -468,75 +452,57 @@
 
 
 
-<h1 id="practicals-for-the-2025-genome-bioinformatics-module"><strong>Practicals for the 2025 Genome Bioinformatics module</strong></h1>
-<h2 id="introduction"><strong>Introduction</strong></h2>
-<p><a href="http://www.genome.gov/sequencingcosts/">Cheap sequencing</a> has created the
-opportunity to perform molecular-genetic analyses on just about anything.
-Conceptually, doing this would be similar to working with traditional genetic
-model organisms. But a large difference exists: For traditional genetic model
-organisms, large teams and communities of expert assemblers, predictors, and
-curators have put years of efforts into the prerequisites for most genomic
-analyses, including a reference genome and a set of gene predictions. In
-contrast, those of us working on "emerging" model organisms often have limited
-or no pre-existing resources and are part of much smaller teams. Emerging model
-organisms includes most crops, animals and plant pest species, many pathogens,
-and major models for ecology &amp; evolution.</p>
-<p>At the end of this module, you should be able to:</p>
-<ol>
-<li>inspect and clean short (Illumina) reads,</li>
-<li>perform genome assembly,</li>
-<li>assess the quality of the genome assembly using simple statistics,</li>
-<li>predict protein-coding genes,</li>
-<li>assess quality of gene predictions,</li>
-<li>assess quality of the entire process using a biologically meaningful measure.</li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p><strong>Note:</strong> The exemplar datasets are simplified to run on laptops and to fit into the short format of this course. For real projects, much more sophisticated approaches are needed!</p>
-</div>
+<h1 id="the-debugging-process"><strong>The Debugging Process</strong></h1>
+<p>When working with command-line tools it's common to run into issues / bugs. This guide provides a systematic approach to debugging common errors.</p>
 <hr />
-<h2 id="1-prerequisites"><strong>1. Prerequisites</strong></h2>
-<p>Prerequisites for the practicals are:</p>
+<h3 id="step-1-switch-on-your-virtual-machine"><strong>Step 1. Switch on Your Virtual Machine</strong></h3>
+<p>If you recieve the following error message: </p>
+<div class="highlight"><pre><span></span><code>ssh: connect to host matt.genomicscourse.com port 22: Operation timed out
+</code></pre></div>
+<p>This indicates your <strong>AWS Virtual Machine (VM)</strong> is not yet switched on. </p>
+<p><strong>SOLUTION</strong>: To access your <strong>AWS Virtual Machine (VM)</strong> you have to first have to switch it on via the website <a href="https://switch.genomicscourse.com">switch.genomicscourse.com</a> and wait 2-5 minutes for your machine to boot up! </p>
+<hr />
+<h3 id="step-2-check-you-are-connected-to-your-vm"><strong>Step 2. Check you are connected to your VM</strong></h3>
+<p>When you are connected to your <strong>AWS Virtual Machine (VM)</strong> there may be times when your connection drops and you are logged out. This can be due to:</p>
+<ul>
+<li>Bad internet connection. </li>
+<li>User inactivity.</li>
+</ul>
+<p>How can you tell if you have become disconnected? You may see the following statement printed to your terminal:</p>
+<div class="highlight"><pre><span></span><code>Connection to matt.genomicscourse.com closed.
+client_loop: send disconnect: Broken pipe
+</code></pre></div>
+<p>Also, it is important to check at the command-prompt (bottom of the terminal, where you type in your commands) your username should be the same as that provided by Vitaly and the host (after the @ symbol) should by an IP address.</p>
+<div class="highlight"><pre><span></span><code>matt@ip-172-31-38-337:~$ 
+</code></pre></div>
+<p><strong>SOLUTION</strong>: If this happens, make sure to reconnect, via ssh to your AWS VM before continuing with the practical! </p>
+<hr />
+<h3 id="step-3-file-not-found"><strong>Step 3. File Not Found</strong></h3>
+<p>Let's say you are trying to run the command below:</p>
+<div class="highlight"><pre><span></span><code>fastqc --nogroup --outdir . input/reads.pe1.fastq.gz
+</code></pre></div>
+<p>However, you get an error message saying the file cannot be found, doesn't exist, or couldn't be read:</p>
+<div class="highlight"><pre><span></span><code>Skipping &#39;input/reads.pe1.fastq.gz&#39; which didn&#39;t exist, or couldn&#39;t be read
+</code></pre></div>
+<p>When a command fails like this, follow these systematic steps to debug the problem:</p>
 <ul>
 <li>
-<p>a basic knowledge of Linux command line. For a refresher, try the SIB's
-   UNIX fundamentals online course (<a href="http://edu.isb-sib.ch/course/view.php?id=82">here</a>). You can also go through a <a href="https://command-line-bootcamp.genomicscourse.com/">Command Line Bootcamp</a>.</p>
+<p><strong>Check your current directory</strong>: Use <code>pwd</code> (print working directory) to confirm where you are in the file system. Ensure you're in the correct location to run the command.</p>
 </li>
 <li>
-<p>a basic knowledge of R programming. The <code>swirl()</code> library course (<a href="http://swirlstats.com">here</a>)
-   can help.
-   In particular, it can be useful:</p>
+<p><strong>Verify the file exists</strong>: Use <code>ls -l input/reads.pe1.fastq.gz</code> to check if the file exists at the specified path. If you get a <code>No such file or directory</code> error, the file path is incorrect. Use the <code>tree</code> command to locate where your files actually are.</p>
+</li>
+<li>
+<p><strong>Check the file has content</strong>: Use <code>ls -l</code> to check the file size. If the size is <strong>0</strong>, the file is empty, indicating a problem with a previous step. You can also use <code>zcat input/reads.pe1.fastq.gz | head</code> to preview the file contents.</p>
+</li>
+</ul>
+<p><strong>SOLUTION</strong>: Once you've identified the issue using the steps above, you can:</p>
 <ul>
-<li>following the <em>R programming</em> self-led course (skip the sections
-   <em>Simulation</em> and <em>Dates and Times</em>)</li>
-<li>following at least the <em>ggplot</em> section of the <em>Exploratory_Data_Analysis</em>
-   swirl course.</li>
+<li>Navigate to the correct directory using <code>cd</code></li>
+<li>Correct the file path in your command</li>
+<li>Check if previous steps in your workflow completed successfully</li>
 </ul>
-</li>
-</ul>
-<h2 id="2-practicals"><strong>2. Practicals</strong></h2>
-<ol>
-<li>Short read cleaning: Illumina
-  short read cleaning</li>
-<li>Reads to genome: genome assembly,
-  quality control</li>
-<li>Gene prediction: gene prediction,
-  quality control</li>
-<li>Population sequencing to genotypes to population genetics statistics:<ol>
-<li>Mapping reads, calling variants, visualizing variant calls.</li>
-<li>Analysing variants: PCA, measuring differentiation &amp; diversity.</li>
-</ol>
-</li>
-</ol>
-<h2 id="3-computers"><strong>3. Computers</strong></h2>
-<p>To perform the practicals, you will remotely connect to the Amazon Web Services
-(AWS) (<a href="https://en.wikipedia.org/wiki/Amazon_Web_Services">here</a>, for more
-informations).</p>
-<p>You will use an SSH (<a href="ssh/">here</a> for more information),
-client to connect to a remote shell, where you will run the first three practicals. Some results will be available on a personal web page created for the course. The same web page will allow you to perform the fourth and fifth
-practicals.</p>
-<h2 id="4-authorscredits"><strong>4. Authors/Credits</strong></h2>
-<p>The initial version of this practical was put together by <a href="http://wurmlab.com">Yannick Wurm</a> [@yannick], <a href="https://www.linkedin.com/in/oksana80">Oksana Riba-Grognuz</a>. It has been revised and improved thanks to efforts of <strong>Srishti Arya</strong>, <strong>Vitaly Voloshin</strong>, <strong>Matthew Higgins</strong> and <a href="https://github.com/wurmlab/genomicscourse/graphs/contributors">others</a>. </p>
+<hr />
 
 
 
@@ -587,10 +553,10 @@ practicals.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.92b07e13.min.js"></script>
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   </body>
