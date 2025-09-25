@@ -36,7 +36,10 @@ Now its time to generate your own SSH-Key Pair! Complete the appropriate task **
 
 !!! Task
     #### Mac & Linux Users 
-    Use the command below to achieve this but please remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bty313`:
+    Use the command below to achieve this but please remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bty313`. 
+    
+    **The command below will prompt you if you want to add a passphrase for your key, please leave this blank and just press ENTER!** 
+
 
     ```
     # Template
@@ -52,7 +55,9 @@ Now its time to generate your own SSH-Key Pair! Complete the appropriate task **
 
 !!! Task
     #### Windows Users 
-    Use the command below in PowerShell to generate your SSH key pair. Remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bty313`:
+    Use the command below in PowerShell to generate your SSH key pair. Remember to replace `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g.  `bty313`. 
+    
+    The command will prompt you if you want to add a passphrase for your key, please leave this blank and just press ENTER! 
 
     ```
     # Template
@@ -118,14 +123,24 @@ In the last few days you should have recieved an email, like below to confirm yo
     ![Apocrita Email ](./img/OnDemandFilesButton.png)
 
 
+---------------------------------
 
-**4.** Click the checkbox to show hidden files (as circled in red). This should make the (.ssh) folder visible as highlighted in blue 
+
+**4.** Click the checkbox to show hidden files (as circled in red). This should make the hidden folders visible. Check to see if you already have an folder called `.ssh` as shown in blue.  **If you do not have this `.ssh` folder please make it by following step 4.5**.  
 
 !!! Task
 
     ![Apocrita Email ](./img/OnDemandHiddenFiles.png)
 
-**5.** Enter the .ssh directory and click of the button to edit the *Authorized_Keys* file. 
+**4.5** *ONLY DO THIS STEP IF YOU DO NOT HAVE AN .SSH DIRECTORY.* Click the button to create a *New Directory* and then call the directory `.ssh`, make sure to **REMEMBER THE DOT** 
+
+!!! Task
+
+    ![Apocrita Email ](./img/CreateNewSSHDirectory.png)
+
+
+
+**5.** Enter the .ssh directory and click of the button to edit the *Authorized_Keys* file.  **If you do not have an *Authorized_Keys* file please create an empty file using the *New File* button and name it *Authorized_Keys***
 
 !!! Task
 
