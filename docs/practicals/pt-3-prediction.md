@@ -33,11 +33,11 @@ In this practical, we will use [**MAKER**]((http://www.yandell-lab.org/software/
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-24-gene_prediction`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-25-gene_prediction`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```
-      mkdir 2025-09-24-gene_prediction
+      mkdir 2025-09-25-gene_prediction
       ```
 
 
@@ -45,7 +45,7 @@ Your directory hierarchy should look like the following
 
 !!! terminal 
     ```
-    2025-09-24-gene_prediction
+    2025-09-25-gene_prediction
     ├── input
     ├── tmp
     ├── results
@@ -58,8 +58,8 @@ Next lets link your assembled scaffolds from from yesterdays practical into our 
     Link the output (assembly) from Part 2 practical into `input` subdirectory:
 
     ```
-    cd ~/2025-09-24-gene_prediction/input
-    ln -s ~/2025-09-23-assembly/results/scaffolds.fasta .
+    cd ~/2025-09-25-gene_prediction/input
+    ln -s ~/2025-09-24-assembly/results/scaffolds.fasta .
     cd ..
     ```
 
@@ -84,8 +84,19 @@ In the rest of this practical, we will show how to run MAKER in a simple scenari
     Here is a link to the [**MAKER documentation**](http://www.yandell-lab.org/software/maker.html) 
 
 
+
 !!! Question
-    What bioinformatic tools is MAKER implementing in it genome annotation pipeline? 
+
+    === "Question"
+
+        What bioinformatic tools is MAKER implementing in it genome annotation pipeline? 
+
+    === "Answer"
+
+        * Augustus 
+        * BLAST
+        * RepeatMasker
+
 
 !!! Task 
     Now change to your `tmp` directory and lets start the process of running the `maker` pipeline:
@@ -224,9 +235,17 @@ FASTA format).
 
     While **MAKER** is running, note the different file formats you have encountered throughout this module up until now.
 
+
 !!! Question
-    * What is the difference between a .fq.gz and .fq file?
-    * What information does the 5th column in a GFF file contain?  
+
+    === "Question"
+
+        * What is the difference between a .fq.gz and .fq file?
+
+    === "Answer"
+         * The `.fq.gz` file is a compressed (gzipped) version of the `.fq` file. Compression is commonly used to reduce file size and save disk space, but the underlying data format remains the same.
+
+
 
 
 Once MAKER has finished running the results will be hidden in subdirectories of  `min10000.maker.output`. MAKER provides a helper script to collect this hidden outputs all in one place (again please ignore the warnings for these steps):
@@ -291,6 +310,15 @@ We will use [SequenceServer](https://sequenceserver.com) to run the BLAST search
 
     Now in you own time, examin the report and try to answer the questions below! 
 
+!!! Info
+
+    If you need to refresh your understanding of BLAST and the output metrics, please see the [following documentation HERE](https://www.nlm.nih.gov/ncbi/workshops/2023-08_BLAST_evol/first_search.html#results)
+
+
+    * **BLAST Score** — the sum of the match scores (positive), mismatch and gap penalties (negative) in the BLAST aligment.
+
+    * **Expect Value (e-value)** —  for a particular match, the number of chance alignments expected with the same score or a better one. If the e-value is (<1) then the match is not due to chance.
+
 
 !!! Question
 
@@ -314,9 +342,6 @@ We will use [SequenceServer](https://sequenceserver.com) to run the BLAST search
          **sp|Q90ZA1.1| RecName: Full=Poly(A)-specific ribonuclease PARN; AltName: Full=Deadenylating nuclease; AltName: Full=Deadenylation nuclease; AltName: Full=Polyadenylate-specific ribonuclease; AltName: Full=parn-A [Xenopus laevis]** with 40% query coverage and 42.4% identity. 
 
 
-
-!!! Question
-    Look at the full report for the two given gene predictions, do you they are complete, or can you infer from the BLAST alignments that something may be wrong? Start by comparing the length of your gene prediction to that of the BLAST hits alongside other metrics such as identity.  
 
 
 !!! Task
