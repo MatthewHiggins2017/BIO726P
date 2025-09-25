@@ -434,9 +434,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#requesting-an-apocrita-account" class="md-nav__link">
+  <a href="#your-own-apocrita-account" class="md-nav__link">
     <span class="md-ellipsis">
-      Requesting an Apocrita Account
+      Your Own Apocrita Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-your-key-to-the-apocrita-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding Your Key To The Apocrita Account
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cant-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cant Connect?
     </span>
   </a>
   
@@ -476,6 +494,7 @@
 
 <h1 id="accessing-apocrita"><strong>Accessing Apocrita</strong></h1>
 <hr />
+<p><strong>Background Information:</strong></p>
 <ul>
 <li>Apocrita is the high performance computing cluster (HPC) here at QMUL.</li>
 <li>You will use Apocrita in Week 2 of this module and also for your coursework.</li>
@@ -498,7 +517,7 @@
 <p>When you attempt to connect to a server using SSH, the server checks if your public key matches your private key. If they match, you are granted access. This method is more secure than using passwords alone.</p>
 <hr />
 <h3 id="generating-your-ssh-key-pair"><strong>Generating your SSH-Key Pair</strong></h3>
-<p>Now its time to generate your own SSH-Key Pair!</p>
+<p>Now its time to generate your own SSH-Key Pair! Complete the appropriate task <strong>depending on your own operating system (Windows vs MacOS / Linux).</strong></p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <h4 id="mac-linux-users">Mac &amp; Linux Users</h4>
@@ -529,83 +548,76 @@ ssh-keygen -t rsa -b 4096 -f &quot;$env:USERPROFILE/.ssh/Apocrita_Key_&lt;YOUR_Q
 </ul>
 <p>Always keep your private key confidential. Only the public key (.pub) should be shared when requested.</p>
 <hr />
-<h2 id="requesting-an-apocrita-account"><strong>Requesting an Apocrita Account</strong></h2>
-<p>To allow the ITS Research Support Team to create your Apocrita account, please complete the following steps:</p>
-<ol>
-<li>
-<p><strong>Email ITS your public SSH key:</strong>  </p>
-<p>Email your public key file <code>Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;.pub</code> to <a href="mailto:its-research-support@qmul.ac.uk?subject=BIO726P%20Apocrita%20Account%20Request"><strong>its-research-support@qmul.ac.uk</strong></a> with the subject line "BIO726P Apocrita Account Request".</p>
-<p>In your email message, please include the table below and update the necessary information shown in <em>italics</em> with your own details.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Firstname</td>
-<td><em>Your first name</em></td>
-</tr>
-<tr>
-<td>Surname</td>
-<td><em>Your last name?</em></td>
-</tr>
-<tr>
-<td>QMUL username</td>
-<td><em>Your QMUL username</em></td>
-</tr>
-<tr>
-<td>QMUL email address</td>
-<td><em>Your QMUL email address</em></td>
-</tr>
-<tr>
-<td>QMUL affiliation</td>
-<td>msc student</td>
-</tr>
-<tr>
-<td>Role held at QMUL</td>
-<td>msc student</td>
-</tr>
-<tr>
-<td>PI</td>
-<td>Matthew Higgins</td>
-</tr>
-<tr>
-<td>Justification</td>
-<td>BIO726P</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Attaching your public key:</strong><br />
-To make it easier to attach your public key to the email, you can copy it from the SSH directory to your Desktop using the appropriate command for your operating system:  </p>
+<h2 id="your-own-apocrita-account"><strong>Your Own Apocrita Account</strong></h2>
+<p>At the start of BIO726P, we sent a request to ITS Research Support to have an Apocrita account made for you.<br />
+In the last few days you should have recieved an email, like below to confirm your account has been created, your username and password.</p>
+<p><img alt="Apocrita Email" src="../img/Apocrita_Email.png" /></p>
+<hr />
+<h2 id="adding-your-key-to-the-apocrita-account"><strong>Adding Your Key To The Apocrita Account</strong></h2>
+<p><strong>1.</strong> First to make life easier, transfer your public key to somewhere that you can easily access it! The tasks below copy it to your desktop. </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
 <p>For Mac &amp; Linux:
 <div class="highlight"><pre><span></span><code>cp ~/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub ~/Desktop
 </code></pre></div></p>
 <p>For Windows (in PowerShell):
 <div class="highlight"><pre><span></span><code>Copy-Item &quot;$env:USERPROFILE/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub&quot; &quot;$env:USERPROFILE/Desktop&quot;
 </code></pre></div></p>
+</div>
+<p><strong>2.</strong> Next head to the OnDemand Apocrita Website</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Head to <a href="https://ondemand.hpc.qmul.ac.uk">https://ondemand.hpc.qmul.ac.uk</a></p>
+<p><img alt="Apocrita Email " src="../img/OnDemandHomePage.png" /></p>
+</div>
+<p><strong>3.</strong> Open up your files by clicking the button circled in red.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><img alt="Apocrita Email " src="../img/OnDemandFilesButton.png" /></p>
+</div>
+<p><strong>4.</strong> Click the checkbox to show hidden files (as circled in red). This should make the (.ssh) folder visible as highlighted in blue </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><img alt="Apocrita Email " src="../img/OnDemandHiddenFiles.png" /></p>
+</div>
+<p><strong>5.</strong> Enter the .ssh directory and click of the button to edit the <em>Authorized_Keys</em> file. </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><img alt="Apocrita Email " src="../img/OnDemandEditsKeys.png" /></p>
+</div>
+<p><strong>6.</strong> On a new line, copy and paste the <strong>contents</strong> of your <strong>PUBLIC KEY File</strong> to modify the <em>Authorized_Keys</em> file. Once edited, make sure to save the changes made. To view the contents of your public key you can open it in any text editor or use the <code>cat</code> command via the terminal.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><img alt="Apocrita Email " src="../img/OnDemandPublicKeys.png" /></p>
+</div>
+<p><strong>7.</strong> Now you have updated the <em>Authorized_Keys</em> file you can try and connect to Apocrita via SSH, similar to how you connect to your AWS virtual machines! To do this, open a new terminal / PowerShell on your computer.  </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>To connect to <strong>Apocrita</strong> via SSH you will need to use the following command:  <code>ssh -i ~/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt; &lt;YOUR_QMUL_USERNAME&gt;@login.hpc.qmul.ac.uk</code></p>
+<ul>
+<li>
+<p>The <code>-i</code> parameter points to where you private key is found. </p>
 </li>
-</ol>
-<!-- BACK UP APPROACH FOR SENDING AS GROUP 
-
-
-1. **Upload your public SSH key:**  
-    Upload your **public key** file `Apocrita_Key_<YOUR_QMUL_USERNAME>.pub` to this [shared OneDrive folder (**LINK HERE**)](www.google.com). To make this easier, you can copy your public key from the SSH directory to your Desktop using the appropriate command for your operating system:  
-
-    For Mac & Linux:
-    <div class="highlight"><pre><span></span><code>cp ~/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub ~/Desktop
-</code></pre></div>
-
-    For Windows (in PowerShell):
-    <div class="highlight"><pre><span></span><code>Copy-Item &quot;$env:USERPROFILE\.ssh\Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;.pub&quot; &quot;$env:USERPROFILE\Desktop&quot;
-</code></pre></div>
--->
-
-<p><br>
-Once you have completed this, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into <strong>Apocrita</strong>.</p>
-<p><img alt="Apocrita Email" src="../img/Apocrita_Email.png" /></p>
+<li>
+<p>Remember to update <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bgt726</code> </p>
+</li>
+<li>
+<p>Make sure to use the <strong>password provided in the original Apocrita email</strong> sent from ITS Research Support (See Your Own Apocrita Account Above)</p>
+</li>
+</ul>
+<p><img alt="Apocrita Email " src="../img/SSH_Connection.png" /></p>
+</div>
+<hr />
+<h2 id="cant-connect"><strong>Cant Connect?</strong></h2>
+<ul>
+<li>
+<p>If you cannot login then please contact one of the demonstrators.</p>
+</li>
+<li>
+<p>If you have not recieved an email from ITS Research Support with your username and password please let me know. </p>
+</li>
+</ul>
+<hr />
 <p>If you’d like to learn more about Apocrita before the session with ITS on October 2nd, please check out these resources:</p>
 <ol>
 <li><a href="https://docs.hpc.qmul.ac.uk">Apocrita Home</a></li>
