@@ -398,15 +398,15 @@ similarity with protein-coding genes from other species, and others such as
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Following the same procedure from the first read cleaning practical
-  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2025-09-24-gene_prediction</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
+  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2025-09-25-gene_prediction</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
 <p>To help get you started 
-  <div class="highlight"><pre><span></span><code>mkdir 2025-09-24-gene_prediction
+  <div class="highlight"><pre><span></span><code>mkdir 2025-09-25-gene_prediction
 </code></pre></div></p>
 </div>
 <p>Your directory hierarchy should look like the following</p>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
-<div class="highlight"><pre><span></span><code>2025-09-24-gene_prediction
+<div class="highlight"><pre><span></span><code>2025-09-25-gene_prediction
 ├── input
 ├── tmp
 ├── results
@@ -417,8 +417,8 @@ similarity with protein-coding genes from other species, and others such as
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Link the output (assembly) from Part 2 practical into <code>input</code> subdirectory:</p>
-<div class="highlight"><pre><span></span><code>cd ~/2025-09-24-gene_prediction/input
-ln -s ~/2025-09-23-assembly/results/scaffolds.fasta .
+<div class="highlight"><pre><span></span><code>cd ~/2025-09-25-gene_prediction/input
+ln -s ~/2025-09-24-assembly/results/scaffolds.fasta .
 cd ..
 </code></pre></div>
 <p>Next we are going to pull out the longest few scaffolds from our assembly and create a new file to house these.</p>
@@ -440,7 +440,20 @@ ln<span class="w"> </span>-s<span class="w"> </span>/shared/data/backup_assembly
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>What bioinformatic tools is MAKER implementing in it genome annotation pipeline? </p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Augustus </li>
+<li>BLAST</li>
+<li>RepeatMasker</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
@@ -573,10 +586,20 @@ FASTA format).</p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <ul>
 <li>What is the difference between a .fq.gz and .fq file?</li>
-<li>What information does the 5th column in a GFF file contain?  </li>
 </ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>The <code>.fq.gz</code> file is a compressed (gzipped) version of the <code>.fq</code> file. Compression is commonly used to reduce file size and save disk space, but the underlying data format remains the same.</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <p>Once MAKER has finished running the results will be hidden in subdirectories of  <code>min10000.maker.output</code>. MAKER provides a helper script to collect this hidden outputs all in one place (again please ignore the warnings for these steps):</p>
 <div class="admonition task">
@@ -611,9 +634,21 @@ sequences: <a href="../../data/protein_prediction_example.fa">predicted protein 
 <p><img alt="Sequence Server Options" src="../../img/SequenceServer4.png" /></p>
 <p>Now in you own time, examin the report and try to answer the questions below! </p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you need to refresh your understanding of BLAST and the output metrics, please see the <a href="https://www.nlm.nih.gov/ncbi/workshops/2023-08_BLAST_evol/first_search.html#results">following documentation HERE</a></p>
+<ul>
+<li>
+<p><strong>BLAST Score</strong> — the sum of the match scores (positive), mismatch and gap penalties (negative) in the BLAST aligment.</p>
+</li>
+<li>
+<p><strong>Expect Value (e-value)</strong> —  for a particular match, the number of chance alignments expected with the same score or a better one. If the e-value is (&lt;1) then the match is not due to chance.</p>
+</li>
+</ul>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What sequence is the <em>rice_spQ7F1X5</em> sequence most similar too?</p>
@@ -626,7 +661,7 @@ sequences: <a href="../../data/protein_prediction_example.fa">predicted protein 
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What sequence is <em>ApisMellifera_SequenceA</em> sequence most similar too?</p>
@@ -636,10 +671,6 @@ sequences: <a href="../../data/protein_prediction_example.fa">predicted protein 
 </div>
 </div>
 </div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>Look at the full report for the two given gene predictions, do you they are complete, or can you infer from the BLAST alignments that something may be wrong? Start by comparing the length of your gene prediction to that of the BLAST hits alongside other metrics such as identity.  </p>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
@@ -673,7 +704,7 @@ through <em>GeneValidator</em>. It should be accessible at <a href="https://gene
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Why is it important to consider the <strong>Length Cluster Metric</strong>?</p>
@@ -698,7 +729,7 @@ through <em>GeneValidator</em>. It should be accessible at <a href="https://gene
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What is the purpose of the <strong>Gene Merge Validation Plot</strong>?</p>
