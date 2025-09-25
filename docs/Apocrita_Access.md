@@ -2,6 +2,8 @@
 
 ---------------------------------------------
 
+**Background Information:**
+
 * Apocrita is the high performance computing cluster (HPC) here at QMUL.
 * You will use Apocrita in Week 2 of this module and also for your coursework.
 * Full details on Apocrita can be found [here](https://docs.hpc.qmul.ac.uk). 
@@ -29,7 +31,7 @@ When you attempt to connect to a server using SSH, the server checks if your pub
 
 ### **Generating your SSH-Key Pair** 
 
-Now its time to generate your own SSH-Key Pair!
+Now its time to generate your own SSH-Key Pair! Complete the appropriate task **depending on your own operating system (Windows vs MacOS / Linux).**
 
 
 !!! Task
@@ -75,32 +77,21 @@ Always keep your private key confidential. Only the public key (.pub) should be 
 
 ------------------------------------------
 
-## **Requesting an Apocrita Account**
+## **Your Own Apocrita Account**
 
-To allow the ITS Research Support Team to create your Apocrita account, please complete the following steps:
+At the start of BIO726P, we sent a request to ITS Research Support to have an Apocrita account made for you.  
+In the last few days you should have recieved an email, like below to confirm your account has been created, your username and password.
+
+![Apocrita Email](./img/Apocrita_Email.png)
+
+---------------------------------------------------
+
+## **Adding Your Key To The Apocrita Account**
 
 
-1. **Email ITS your public SSH key:**  
+**1.** First to make life easier, transfer your public key to somewhere that you can easily access it! The tasks below copy it to your desktop. 
 
-    Email your public key file `Apocrita_Key_<YOUR_STUDENT_ID>.pub` to [**its-research-support@qmul.ac.uk**](mailto:its-research-support@qmul.ac.uk?subject=BIO726P%20Apocrita%20Account%20Request) with the subject line "BIO726P Apocrita Account Request".
-    
-    In your email message, please include the table below and update the necessary information shown in *italics* with your own details.
-
-    | Field             | Value                  |
-    |-------------------|-----------------------|
-    | Firstname         | *Your first name*      |
-    | Surname           | *Your last name?*       |
-    | QMUL username     | *Your QMUL username*   |
-    | QMUL email address| *Your QMUL email address* |
-    | QMUL affiliation  | msc student            |
-    | Role held at QMUL | msc student            |
-    | PI                | Matthew Higgins        |
-    | Justification     | BIO726P                |
-
-    
-    **Attaching your public key:**  
-    To make it easier to attach your public key to the email, you can copy it from the SSH directory to your Desktop using the appropriate command for your operating system:  
-
+!!! Task
     For Mac & Linux:
     ```
     cp ~/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>.pub ~/Desktop
@@ -111,28 +102,66 @@ To allow the ITS Research Support Team to create your Apocrita account, please c
     Copy-Item "$env:USERPROFILE/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>.pub" "$env:USERPROFILE/Desktop"
     ```
 
+**2.** Next head to the OnDemand Apocrita Website
 
-<!-- BACK UP APPROACH FOR SENDING AS GROUP 
+!!! Task
+
+    Head to [https://ondemand.hpc.qmul.ac.uk](https://ondemand.hpc.qmul.ac.uk)
+
+    ![Apocrita Email ](./img/OnDemandHomePage.png)
 
 
-1. **Upload your public SSH key:**  
-    Upload your **public key** file `Apocrita_Key_<YOUR_QMUL_USERNAME>.pub` to this [shared OneDrive folder (**LINK HERE**)](www.google.com). To make this easier, you can copy your public key from the SSH directory to your Desktop using the appropriate command for your operating system:  
-    
-    For Mac & Linux:
-    ```
-    cp ~/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME>.pub ~/Desktop
-    ```
-    
-    For Windows (in PowerShell):
-    ```
-    Copy-Item "$env:USERPROFILE\.ssh\Apocrita_Key_<YOUR_QMUL_USERNAME>.pub" "$env:USERPROFILE\Desktop"
-    ```
--->
+**3.** Open up your files by clicking the button circled in red.
 
-<br>
-Once you have completed this, ITS Research Support will email you within a few days to confirm your account has been created and instructions for how to log into **Apocrita**.
+!!! Task
 
-![Apocrita Email](./img/Apocrita_Email.png)
+    ![Apocrita Email ](./img/OnDemandFilesButton.png)
+
+
+
+**4.** Click the checkbox to show hidden files (as circled in red). This should make the (.ssh) folder visible as highlighted in blue 
+
+!!! Task
+
+    ![Apocrita Email ](./img/OnDemandHiddenFiles.png)
+
+**5.** Enter the .ssh directory and click of the button to edit the *Authorized_Keys* file. 
+
+!!! Task
+
+    ![Apocrita Email ](./img/OnDemandEditsKeys.png)
+
+**6.** On a new line, copy and paste the **contents** of your **PUBLIC KEY File** to modify the *Authorized_Keys* file. Once edited, make sure to save the changes made. To view the contents of your public key you can open it in any text editor or use the `cat` command via the terminal.
+
+!!! Task
+
+    ![Apocrita Email ](./img/OnDemandPublicKeys.png)
+
+
+**7.** Now you have updated the *Authorized_Keys* file you can try and connect to Apocrita via SSH, similar to how you connect to your AWS virtual machines! To do this, open a new terminal / PowerShell on your computer.  
+
+!!! Task 
+
+    To connect to **Apocrita** via SSH you will need to use the following command:  `ssh -i ~/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME> <YOUR_QMUL_USERNAME>@login.hpc.qmul.ac.uk`
+
+    * The `-i` parameter points to where you private key is found. 
+
+    * Remember to update `<YOUR_QMUL_USERNAME>` with your actual QMUL username e.g. `bgt726` 
+
+    * Make sure to use the **password provided in the original Apocrita email** sent from ITS Research Support (See Your Own Apocrita Account Above)
+
+    ![Apocrita Email ](./img/./SSH_Connection.png)
+
+
+------------------------------------------
+   
+## **Cant Connect?**
+
+* If you cannot login then please contact one of the demonstrators.
+
+* If you have not recieved an email from ITS Research Support with your username and password please let me know. 
+
+----------------------
 
 If you’d like to learn more about Apocrita before the session with ITS on October 2nd, please check out these resources:
 
