@@ -521,7 +521,8 @@
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <h4 id="mac-linux-users">Mac &amp; Linux Users</h4>
-<p>Use the command below to achieve this but please remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bty313</code>:</p>
+<p>Use the command below to achieve this but please remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bty313</code>. </p>
+<p><strong>The command below will prompt you if you want to add a passphrase for your key, please leave this blank and just press ENTER!</strong> </p>
 <div class="highlight"><pre><span></span><code># Template
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;
 </code></pre></div>
@@ -532,7 +533,8 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/Apocrita_Key_&lt;YOUR_STUDENT_ID&gt;
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <h4 id="windows-users">Windows Users</h4>
-<p>Use the command below in PowerShell to generate your SSH key pair. Remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g. <code>bty313</code>:</p>
+<p>Use the command below in PowerShell to generate your SSH key pair. Remember to replace <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username e.g.  <code>bty313</code>. </p>
+<p>The command will prompt you if you want to add a passphrase for your key, please leave this blank and just press ENTER! </p>
 <div class="highlight"><pre><span></span><code># Template
 ssh-keygen -t rsa -b 4096 -f &quot;$env:USERPROFILE/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt;&quot;
 </code></pre></div>
@@ -575,12 +577,18 @@ In the last few days you should have recieved an email, like below to confirm yo
 <p class="admonition-title">Task</p>
 <p><img alt="Apocrita Email " src="../img/OnDemandFilesButton.png" /></p>
 </div>
-<p><strong>4.</strong> Click the checkbox to show hidden files (as circled in red). This should make the (.ssh) folder visible as highlighted in blue </p>
+<hr />
+<p><strong>4.</strong> Click the checkbox to show hidden files (as circled in red). This should make the hidden folders visible. Check to see if you already have an folder called <code>.ssh</code> as shown in blue.  <strong>If you do not have this <code>.ssh</code> folder please make it by following step 4.5</strong>.  </p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p><img alt="Apocrita Email " src="../img/OnDemandHiddenFiles.png" /></p>
 </div>
-<p><strong>5.</strong> Enter the .ssh directory and click of the button to edit the <em>Authorized_Keys</em> file. </p>
+<p><strong>4.5</strong> <em>ONLY DO THIS STEP IF YOU DO NOT HAVE AN .SSH DIRECTORY.</em> Click the button to create a <em>New Directory</em> and then call the directory <code>.ssh</code>, make sure to <strong>REMEMBER THE DOT</strong> </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><img alt="Apocrita Email " src="../img/CreateNewSSHDirectory.png" /></p>
+</div>
+<p><strong>5.</strong> Enter the .ssh directory and click of the button to edit the <em>Authorized_Keys</em> file.  <strong>If you do not have an <em>Authorized_Keys<em> file please create an empty file using the </em>New File<em> button and name it </em>Authorized_Keys</em></strong></p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p><img alt="Apocrita Email " src="../img/OnDemandEditsKeys.png" /></p>
