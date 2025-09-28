@@ -1,0 +1,650 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Improve & Refine Your Unix Skills - BIO726P</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#improve-refine-your-unix-skills" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIO726P
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Improve &amp; Refine Your Unix Skills
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIO726P
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2025 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging_process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Debugging Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Apocrita_Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accessing Apocrita
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="improve-refine-your-unix-skills"><strong>Improve &amp; Refine Your Unix Skills</strong></h1>
+<hr />
+<h2 id="goal"><strong>Goal</strong></h2>
+<p>Throughout this tutorial, you'll uncover <strong>22 hidden characters</strong>—each one a piece of a secret word. Tackle each challenge below to reveal the next character. Ready to sharpen your skills and solve the puzzle? Let the hunt begin!</p>
+<hr />
+<h2 id="preparations">Preparations</h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Create a new directory <code>UNIX_Skills_Recap</code> and then copy the exercises directory <code>/shared/data/bash_tutorial/exercises</code> into <code>UNIX_Skills_Recap</code></p>
+<div class="highlight"><pre><span></span><code>mkdir UNIX_Skills_Recap
+cd ./UNIX_Skills_Recap
+cp -r /shared/data/bash_tutorial/exercises .
+</code></pre></div>
+<p>The steps outlined below shall be completed in the <code>./UNIX_Skills_Recap</code> directory.</p>
+</div>
+<hr />
+<h2 id="1-directories-and-files">1. <strong>Directories and files</strong></h2>
+<h3 id="11-navigating-directories">1.1. Navigating directories</h3>
+<p>The <strong>first character</strong> is hidden in a file somewhere in the <em>exercise1</em>
+directory tree. Use the commands</p>
+<div class="highlight"><pre><span></span><code>cd &lt;directory_name&gt;
+</code></pre></div>
+<p>(do not type the pointy brackets, just insert the directory name) and</p>
+<div class="highlight"><pre><span></span><code>ls
+</code></pre></div>
+<p>to move from one directory to the next. Look through subdirectories
+until you find one with the name <code>solution_1.1</code> and list its contents.
+If you went to a wrong directory, you can go back one level by typing:</p>
+<div class="highlight"><pre><span></span><code>cd ..
+</code></pre></div>
+<p>or go back to your home folder:</p>
+<div class="highlight"><pre><span></span><code>cd
+</code></pre></div>
+<h3 id="12-show-a-hidden-file">1.2. Show a hidden file</h3>
+<p>Some files are not visible immediately. To see them, you need the
+command</p>
+<div class="highlight"><pre><span></span><code>ls -a
+</code></pre></div>
+<p>The <strong>second character</strong>, is in the same directory as the first one, but
+in a hidden file.</p>
+<h3 id="13-execute-a-program">1.3. Execute a program</h3>
+<p>Use cd .. to go back to the directory <code>exercise_1/directoryB/</code>. When
+listing its contents, you should see a <strong>shell script file</strong>
+<code>program.sh</code>. To find the <strong>third character</strong>, you need to execute the
+program. On bash, this is done by typing source and the name of the
+program:</p>
+<div class="highlight"><pre><span></span><code>source program.sh
+</code></pre></div>
+<h3 id="14-find-out-how-big-a-file-is">1.4. Find out how big a file is</h3>
+<p>Go to the folder <code>exercise_1/directoryC/</code>. To find <strong>the fourth
+character</strong>, you need to find out how big the text file in the directory
+is. This is done with the command</p>
+<div class="highlight"><pre><span></span><code>ls -l
+</code></pre></div>
+<p>In the table the command produces, you will find the file size in bytes,
+the file’s owner, permissions to read and modify it, and the date/time
+of the last modification.</p>
+<p>To obtain the fourth character look up the file size in the <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters">Table of
+printable ASCII
+characters</a>:</p>
+<hr />
+<h2 id="2-edit-text-files">2. Edit text files</h2>
+<p>Please use <code>cd ..</code> to go back to the top directory of the tutorial
+material. Then, change to the directory <code>exercise_2</code>.</p>
+<h3 id="21-see-what-is-in-a-text-file">2.1. See what is in a text file</h3>
+<p>In the directory <em>exercise_2/</em>, you will find a text file
+<em>solution_2.1.txt</em>. The <strong>fifth character</strong> is inside that file. To see
+its contents, use the command</p>
+<div class="highlight"><pre><span></span><code>less &lt;filename&gt;
+</code></pre></div>
+<h3 id="22-edit-text-files">2.2. Edit text files</h3>
+<p>To get <strong>character number six</strong>, you will need to create a text file in
+the <code>exercise_2</code> directory. On Ubuntu, you can do this using the editor
+<code>nano</code>. You can start it typing the name of the program, or</p>
+<div class="highlight"><pre><span></span><code>nano &lt;filename&gt;
+</code></pre></div>
+<p><strong>To exit nano, type Ctrl-X</strong></p>
+<p>Create a text file with the characters you have found so far.</p>
+<p>The <strong>sixth character</strong> is the one you need to press to <em>write out</em> in
+<code>nano</code>.</p>
+<hr />
+<h2 id="3-copy-and-remove-files">3. Copy and remove files</h2>
+<p>Please go to the directory exercise_3.</p>
+<h3 id="31-create-a-directory-and-copy-a-file-to-it">3.1. Create a directory and copy a file to it.</h3>
+<p>To find <strong>characters seven and eight</strong>, you need to create a
+subdirectory named <em>solution</em> in <code>exercise_3/</code> and copy the files from
+the <code>part1/</code> and <code>part2/</code> folders into it.</p>
+<p>For creating directories, use the command:</p>
+<div class="highlight"><pre><span></span><code>mkdir &lt;directory name&gt;
+</code></pre></div>
+<p>For copying, you can use the command</p>
+<div class="highlight"><pre><span></span><code>cp &lt;filename from&gt; &lt;filename to&gt;
+</code></pre></div>
+<p>Type <code>ls -l solution/*</code> afterwards to see the solution.</p>
+<h3 id="32-removing-files">3.2. Removing files</h3>
+<p>In the <code>data</code> directory, all files with an <code>Y</code> need to be deleted. To do
+so, use the command:</p>
+<div class="highlight"><pre><span></span><code>rm &lt;filename&gt;
+</code></pre></div>
+<p>Also, there are more files to be deleted in the <em>data</em> directory. To
+remove more than one file at once, you can use <code>*</code> as a wildcard, i.e.
+<code>rm ju*</code> will delete all of <code>junk.txt, juniper.txt</code> and <code>june.docx</code>.</p>
+<p>To get <strong>characters nine and ten</strong>, look at the files that remain after
+deleting all that contain a <code>Y</code>.</p>
+<hr />
+<h2 id="4-process-text-data"><strong>4. Process text data</strong></h2>
+<p>Please go to the directory exercise_4.</p>
+<h3 id="41-comparing-two-files">4.1. comparing two files</h3>
+<p>There are two different versions of a quote, <code>ai.txt</code>, and
+<code>artificial_intelligence.txt</code>. To find out, how they differ, Unix
+provides the command</p>
+<div class="highlight"><pre><span></span><code>diff &lt;filename1&gt; &lt;filename2&gt;
+</code></pre></div>
+<p>Of course, you can look at the text first using <code>less</code> or <code>nano</code>. The
+<strong>11th character</strong> of the solution is the single character in which the
+two files differ.</p>
+<h3 id="42-sorting-a-text-file">4.2. Sorting a text file</h3>
+<p>Unix has a small program to sort text files alphabetically. It is called
+by</p>
+<div class="highlight"><pre><span></span><code>less &lt;filename&gt; | sort
+</code></pre></div>
+<p>The symbol '|' is called a pipe and is often used to connect Unix
+programs to each other. The <strong>12th character</strong> of the solution is the
+first character of the last word in the alphabetically sorted file
+elephant.txt.</p>
+<h3 id="43-finding-words-in-a-text-file">4.3. Finding words in a text file</h3>
+<p>To look for specific words in a text file, use the command</p>
+<div class="highlight"><pre><span></span><code>grep &lt;word&gt; &lt;filename&gt;
+</code></pre></div>
+<p>It produces all lines from the given file that contain the given word.
+The <code>grep</code> command is very powerful and can handle Regular Expressions.</p>
+<p>To find the <strong>13th character</strong>, search for the word <strong>fire</strong> in the file
+<code>datascience.txt</code> and take the <strong>first</strong> character of the output.</p>
+<hr />
+<h2 id="5-unzip-files">5. Unzip files</h2>
+<p>Please go to the directory exercise_5.</p>
+<h3 id="51-unzipping-archives">5.1. unzipping archives</h3>
+<p>Unzipping compressed files is a very basic and important task. On Unix,
+you often encounter WinZip archives, .tar archives and .gz compressed
+files. For unpacking Win zip files, use</p>
+<div class="highlight"><pre><span></span><code>unzip &lt;filename&gt;
+</code></pre></div>
+<p>for .tar and .tar.gz files</p>
+<div class="highlight"><pre><span></span><code>tar -xf &lt;filename&gt;
+</code></pre></div>
+<p>and for .gz files,</p>
+<div class="highlight"><pre><span></span><code>gunzip &lt;filename&gt;
+</code></pre></div>
+<p>The <strong>14th and 15th character</strong> of the solution are in a multiply
+wrapped archive in the exercise_5 directory.</p>
+<hr />
+<h2 id="6-command-line-tools">6. Command-line tools</h2>
+<p>Please go to the directory <code>exercise_6</code>.</p>
+<h3 id="61-changing-file-access-rights">6.1. Changing file access rights</h3>
+<p>Each file on Unix has separate permissions for reading 'r', writing 'w',
+and executing 'x'. Displaying them with:</p>
+<div class="highlight"><pre><span></span><code>ls -l
+</code></pre></div>
+<p>There is one triplet of permissions for the owner of the file owner, one
+triplet for a group of users, and one for all others. The <code>chmod</code>
+command allows to change these permissions, e.g.</p>
+<div class="highlight"><pre><span></span><code>chmod a+x &lt;filename&gt;
+</code></pre></div>
+<p>grants all users the permission to execute a file, while chmod u-w
+forbids the current user (oneself) to write to the file (thereby
+protecting it from being deleted accidentally).</p>
+<p>To see <strong>characters 16+17</strong> of the solution, make the program
+<code>permissions.sh</code> executable. Then execute it with:</p>
+<div class="highlight"><pre><span></span><code>./permissions.sh
+</code></pre></div>
+<h3 id="62-how-much-disk-space-have-i-left">6.2. How much disk space have I left?</h3>
+<p>To find out, how much disk space you have left, you can use the command</p>
+<div class="highlight"><pre><span></span><code>df
+</code></pre></div>
+<p><code>df</code> lists all hard drive partitions, CD-ROMs, pendrives and some
+logical partitions Unix uses. All numbers are given in kilobyte (1000
+byte or one 1000000th GB).</p>
+<p>To obtain the <strong>18th character</strong>, check out the version of the <code>df</code>
+program. Find out how to do that with:</p>
+<div class="highlight"><pre><span></span><code>df --help
+</code></pre></div>
+<p>The solution is the last character of the first authors' first name.</p>
+<h3 id="63-set-an-environment-variable">6.3. Set an environment variable</h3>
+<p>To install some programs, it is necessary to set so-called environment
+variables. These can be set using the command</p>
+<div class="highlight"><pre><span></span><code>export &lt;variable-name&gt;=&lt;value&gt;
+</code></pre></div>
+<p>You can see all variables by the command</p>
+<div class="highlight"><pre><span></span><code>env
+</code></pre></div>
+<p>To obtain the <strong>19th character</strong>, you need to use <code>export</code> to set the
+variable <em>GIVEME</em> to the value <strong>SOLUTION</strong>.</p>
+<div class="highlight"><pre><span></span><code>echo $GIVEME
+</code></pre></div>
+<p>Find out the <strong>characters position in the alphabet</strong> with:</p>
+<div class="highlight"><pre><span></span><code>echo $GIVEME | wc -c
+</code></pre></div>
+<h3 id="64-using-git">6.4. Using Git</h3>
+<p>Git is a distributed version control system that helps developers track changes in their code and collaborate efficiently. It allows multiple people to work on the same project simultaneously without overwriting each other's work.</p>
+<p>The <strong>20th character</strong> is the first character of the git parameter which allow you to record changes to the repository. Use <code>git --help</code></p>
+<div class="highlight"><pre><span></span><code>git --help
+</code></pre></div>
+<h3 id="65-managing-processes">6.5. Managing processes</h3>
+<p>To see what programs are running on your machine, type</p>
+<div class="highlight"><pre><span></span><code>top
+</code></pre></div>
+<p>It displays you a list of all currently active programs. <em>Shift+P</em> sorts
+them by the CPU time they are using, <em>Shift+M</em> by the amount of memory
+they are using (if you don't see any program consuming lots of memory,
+start a web browser). Quit <code>top</code> by pressing <em>q</em>.</p>
+<p>The <strong>last two characters</strong> of the solution are the first two characters
+of the second word in the line containing the column labels.</p>
+<p>You find the pid number in the first column of the <em>top</em> output. Of
+course, you may only interrupt your own programs, not those owned by
+<em>root</em>, the system administrator.</p>
+<hr />
+<h3 id="acknowledgements">Acknowledgements</h3>
+<p>This tutorial was originally created by <strong>Dr. Kristian Rother (© 2024)</strong> and has been adapted by Matthew Higgins.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
