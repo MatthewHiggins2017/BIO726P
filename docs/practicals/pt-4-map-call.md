@@ -100,9 +100,8 @@ diploid and males are haploid. Here we will use only males, so all our samples a
       Have a look at the fastq files (`ls input/reads`).
 
       * Why does each sample have two sets of reads?
-      * What is each line of the `.fq.gz` file? (you can use `zless`)
       * How many reads do we have in individual *f1_B*? (you can use `zless` and `wc -l`)
-      * How long are the reads (are all their lengths equal)?
+      * How long are the reads?
       * Knowing that each scaffold is 200kb, calculate which coverage you would expect per base pair of individual *f1_B*?
 
 ## 4. Aligning reads to a reference assembly
@@ -142,9 +141,25 @@ which was created to align short read sequences to long sequences such as the sc
       bowtie2 --local -x tmp/reference -1 input/reads/f1_B.1.fq.gz -2 input/reads/f1_B.2.fq.gz > tmp/alignments/f1_B.sam
       ```
 
+
+
 !!! Question
-      * What is the meaning of the `-1` and `-2` parameters?
-      * Why do we use `--local` parameter?
+     
+    === "Question"
+
+        * What is the meaning of the `-1` and `-2` parameters?
+        * Why do we use `--local` parameter?
+
+
+    === "Answer"
+        
+        * To specify the paths to the fastq files containing the first mates (forward reads) and second mates (reverse reads) of the raw paired-end illumina sequencing data.
+        * To specify to run a local alignment vs end-to-end. Pull up the BowTie2 documentation for more information.
+
+
+
+
+
 
 The command produced a *SAM* file ([Sequence Alignment/Map file](http://samtools.github.io/hts-specs/SAMv1.pdf)), which is a text representation of the standard format used to store sequence alignments. Have a quick look at the file using `less`. The file includes a header (lines starting with the `@` symbol), and a line for every read aligned to the
 reference assembly. For each read, we are given a mapping quality value, the position of both reads in a pair, the actual sequence and its quality by base pair, and a series of flags with additional measures of mapping quality.
@@ -235,11 +250,25 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
       cp tmp/alignments/*.bai results/
       ```
 
-      Once you are sure the files are in `results`, clean the `tmp` directory.
+      Once you are sure the files are in `results`, clean the `tmp` directory. **ONLY DO THIS ONCE YOU ARE CERTAIN YOU HAVE COPIED YOUR BAM FILES TO THE RESULTS DIRECTORY**
 
       ```
       rm -ri tmp
       ```
+
+!!! Task
+
+      Samtools is an essential toolkit used by thousands of bioinformaticians every day. In addition to converting SAM files to BAM format, it provides options to generate summary statistics about your alignments, such as the number of mapped reads, alignment depth, and coverage. 
+
+      Explore the available options by running:
+
+      ```
+      samtools --help
+      ```
+
+      Identify which commands provide summary statistics (simple stats), along with alignment and coverage statistics and  use them to assess some of your BAM files!
+
+
 
 -----------------------------------------------------
 
@@ -316,9 +345,13 @@ individuals as **haploid**.
       The output `calls.vcf` is a file in the *VCF* ([Variant Call Format](http://samtools.github.io/hts-specs/VCFv4.3.pdf)) format, which contains the position, nature and quality of the called variants.
 
 !!! Question
-      * Why we are using the `--variants-only` option in `bcftools call`?
-      * Is it ever useful to leave it out?
+     
+    === "Question"
 
+        * Why we are using the `--variants-only` option in `bcftools call`?
+
+    === "Answer"
+        * To output variant sites only in the VCF file. So position in the reference genome where no variants were found will be excluded. 
 
 
 !!! Task
@@ -343,6 +376,7 @@ individuals as **haploid**.
       * How is the genotype of each sample coded?
       * How many variants were identified?
       * Can you tell the difference between SNPs and indels? How many of each have been identified?
+      * *(Hint: Use the bcftools stats option)*
 
 -----------------------------------------------------------------
 
@@ -471,5 +505,15 @@ designed to be embedded in web pages and the installation is pre-configured to u
 
 !!! Question
       * Can you identify genetic variants and sequencing errors?
-      * Has bcftools/mpileup recovered the same genetic variants, **idicated in by the snps.vcf.gz,** as you would by looking at the alignments with IGV?
+      * Has bcftools/mpileup recovered the same genetic variants as **indicated in the snps.vcf.gz,** as you would expect given the IGV visualisation?
       * Do you think our filtering was effective?
+
+
+## 8. Refining your skills 
+
+!!! Task
+
+      Well done if you have made it this far! 
+      
+      To further develop your skills, repeat the mapping and variant calling process for a few samples using your own reference assembly created during the *Week 1, Wednesday, Assembly Practical Session*. This exercise will help you gain confidence in independently running the mapping and variant calling pipeline, and give you more practice with tools like samtools and bcftools. 
+
