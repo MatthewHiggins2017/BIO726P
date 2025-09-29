@@ -456,9 +456,8 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 <p>Have a look at the fastq files (<code>ls input/reads</code>).</p>
 <ul>
 <li>Why does each sample have two sets of reads?</li>
-<li>What is each line of the <code>.fq.gz</code> file? (you can use <code>zless</code>)</li>
 <li>How many reads do we have in individual <em>f1_B</em>? (you can use <code>zless</code> and <code>wc -l</code>)</li>
-<li>How long are the reads (are all their lengths equal)?</li>
+<li>How long are the reads?</li>
 <li>Knowing that each scaffold is 200kb, calculate which coverage you would expect per base pair of individual <em>f1_B</em>?</li>
 </ul>
 </div>
@@ -494,10 +493,22 @@ bowtie2 --local -x tmp/reference -1 input/reads/f1_B.1.fq.gz -2 input/reads/f1_B
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <ul>
 <li>What is the meaning of the <code>-1</code> and <code>-2</code> parameters?</li>
 <li>Why do we use <code>--local</code> parameter?</li>
 </ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>To specify the paths to the fastq files containing the first mates (forward reads) and second mates (reverse reads) of the raw paired-end illumina sequencing data.</li>
+<li>To specify to run a local alignment vs end-to-end. Pull up the BowTie2 documentation for more information.</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <p>The command produced a <em>SAM</em> file (<a href="http://samtools.github.io/hts-specs/SAMv1.pdf">Sequence Alignment/Map file</a>), which is a text representation of the standard format used to store sequence alignments. Have a quick look at the file using <code>less</code>. The file includes a header (lines starting with the <code>@</code> symbol), and a line for every read aligned to the
 reference assembly. For each read, we are given a mapping quality value, the position of both reads in a pair, the actual sequence and its quality by base pair, and a series of flags with additional measures of mapping quality.</p>
@@ -562,9 +573,17 @@ samtools view tmp/alignments/f1_B.bam scaffold_1:10000-10500 | less -S
 <div class="highlight"><pre><span></span><code>cp tmp/alignments/*.bam results/
 cp tmp/alignments/*.bai results/
 </code></pre></div>
-<p>Once you are sure the files are in <code>results</code>, clean the <code>tmp</code> directory.</p>
+<p>Once you are sure the files are in <code>results</code>, clean the <code>tmp</code> directory. <strong>ONLY DO THIS ONCE YOU ARE CERTAIN YOU HAVE COPIED YOUR BAM FILES TO THE RESULTS DIRECTORY</strong></p>
 <div class="highlight"><pre><span></span><code>rm -ri tmp
 </code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Samtools is an essential toolkit used by thousands of bioinformaticians every day. In addition to converting SAM files to BAM format, it provides options to generate summary statistics about your alignments, such as the number of mapped reads, alignment depth, and coverage. </p>
+<p>Explore the available options by running:</p>
+<div class="highlight"><pre><span></span><code>samtools --help
+</code></pre></div>
+<p>Identify which commands provide summary statistics (simple stats), along with alignment and coverage statistics and  use them to assess some of your BAM files!</p>
 </div>
 <hr />
 <h2 id="5-variant-calling">5. Variant calling</h2>
@@ -621,10 +640,20 @@ cd ..
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <ul>
 <li>Why we are using the <code>--variants-only</code> option in <code>bcftools call</code>?</li>
-<li>Is it ever useful to leave it out?</li>
 </ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>To output variant sites only in the VCF file. So position in the reference genome where no variants were found will be excluded. </li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
@@ -644,6 +673,7 @@ cd ..
 <li>How is the genotype of each sample coded?</li>
 <li>How many variants were identified?</li>
 <li>Can you tell the difference between SNPs and indels? How many of each have been identified?</li>
+<li><em>(Hint: Use the bcftools stats option)</em></li>
 </ul>
 </div>
 <hr />
@@ -739,9 +769,15 @@ designed to be embedded in web pages and the installation is pre-configured to u
 <p class="admonition-title">Question</p>
 <ul>
 <li>Can you identify genetic variants and sequencing errors?</li>
-<li>Has bcftools/mpileup recovered the same genetic variants, <strong>idicated in by the snps.vcf.gz,</strong> as you would by looking at the alignments with IGV?</li>
+<li>Has bcftools/mpileup recovered the same genetic variants as <strong>indicated in the snps.vcf.gz,</strong> as you would expect given the IGV visualisation?</li>
 <li>Do you think our filtering was effective?</li>
 </ul>
+</div>
+<h2 id="8-refining-your-skills">8. Refining your skills</h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Well done if you have made it this far! </p>
+<p>To further develop your skills, repeat the mapping and variant calling process for a few samples using your own reference assembly created during the <em>Week 1, Wednesday, Assembly Practical Session</em>. This exercise will help you gain confidence in independently running the mapping and variant calling pipeline, and give you more practice with tools like samtools and bcftools. </p>
 </div>
 
 
