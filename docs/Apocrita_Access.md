@@ -12,6 +12,35 @@
  
 -----------------------------------------------------
 
+### **UPDATE: Already Have Your SSH Key Pair, Connect to Apocrita Straight Away!** 
+
+If you have already generated your SSH key pair, you can access Apocrita from your terminal using the command below. Make sure your **private key** file is saved on your own computer as this is needed to connect securely. Update `<YOUR_QMUL_USERNAME>` with your actual QMUL username (for example, `bgt726`):
+
+
+```
+ssh -i ~/.ssh/Apocrita_Key_<YOUR_QMUL_USERNAME> <YOUR_QMUL_USERNAME>@login.hpc.qmul.ac.uk
+```
+
+For example, if your usename is bgt726 it could be: 
+
+
+```
+ssh -i ~/.ssh/Apocrita_Key_bgt726 bgt726@login.hpc.qmul.ac.uk
+```
+
+This will connect you to Apocrita and upon first connecting your terminal will look like:
+
+![Apocrita Login](./img/Apocrita_Terminal_Home.png)
+
+
+**Well done, you have successfully logged into Apocrita!** 
+
+-----------------------------------------------------
+
+# Please only follow the instructions below if you need to generate a new SSH Key Pair. 
+
+-----------------------------------------------------
+
 ### **What is an SSH-Key Pair?**
 
 To connect to Apocrita you will again be using SSH just like how you connected to your Virtual Machines (VMs). However, as Apocrita has a higher level of security you will need to use an SSH-Key Pair. 
