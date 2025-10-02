@@ -392,69 +392,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-an-ssh-key-pair" class="md-nav__link">
+  <a href="#update-already-have-your-ssh-key-pair-connect-to-apocrita-straight-away" class="md-nav__link">
     <span class="md-ellipsis">
-      What is an SSH-Key Pair?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#generating-your-ssh-key-pair" class="md-nav__link">
-    <span class="md-ellipsis">
-      Generating your SSH-Key Pair
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Generating your SSH-Key Pair">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mac-linux-users" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mac &amp; Linux Users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#windows-users" class="md-nav__link">
-    <span class="md-ellipsis">
-      Windows Users
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#your-own-apocrita-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      Your Own Apocrita Account
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-your-key-to-the-apocrita-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding Your Key To The Apocrita Account
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cant-connect" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cant Connect?
+      UPDATE: Already Have Your SSH Key Pair, Connect to Apocrita Straight Away!
     </span>
   </a>
   
@@ -501,6 +441,19 @@
 <li>Full details on Apocrita can be found <a href="https://docs.hpc.qmul.ac.uk">here</a>. </li>
 <li>Before you can use Apocrita you need to request an account and that is the goal for this practical session! </li>
 </ul>
+<hr />
+<h3 id="update-already-have-your-ssh-key-pair-connect-to-apocrita-straight-away"><strong>UPDATE: Already Have Your SSH Key Pair, Connect to Apocrita Straight Away!</strong></h3>
+<p>If you have already generated your SSH key pair, you can access Apocrita from your terminal using the command below. Make sure your <strong>private key</strong> file is saved on your own computer as this is needed to connect securely. Update <code>&lt;YOUR_QMUL_USERNAME&gt;</code> with your actual QMUL username (for example, <code>bgt726</code>):</p>
+<div class="highlight"><pre><span></span><code>ssh -i ~/.ssh/Apocrita_Key_&lt;YOUR_QMUL_USERNAME&gt; &lt;YOUR_QMUL_USERNAME&gt;@login.hpc.qmul.ac.uk
+</code></pre></div>
+<p>For example, if your usename is bgt726 it could be: </p>
+<div class="highlight"><pre><span></span><code>ssh -i ~/.ssh/Apocrita_Key_bgt726 bgt726@login.hpc.qmul.ac.uk
+</code></pre></div>
+<p>This will connect you to Apocrita and upon first connecting your terminal will look like:</p>
+<p><img alt="Apocrita Login" src="../img/Apocrita_Terminal_Home.png" /></p>
+<p><strong>Well done, you have successfully logged into Apocrita!</strong> </p>
+<hr />
+<h1 id="please-only-follow-the-instructions-below-if-you-need-to-generate-a-new-ssh-key-pair">Please only follow the instructions below if you need to generate a new SSH Key Pair.</h1>
 <hr />
 <h3 id="what-is-an-ssh-key-pair"><strong>What is an SSH-Key Pair?</strong></h3>
 <p>To connect to Apocrita you will again be using SSH just like how you connected to your Virtual Machines (VMs). However, as Apocrita has a higher level of security you will need to use an SSH-Key Pair. </p>
