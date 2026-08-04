@@ -44,7 +44,7 @@ Next lets link the cleaned reads from yesterdays practical into our `input` subd
       ```
       cd ~/2026-09-24-assembly
       cd input
-      ln -s ~/2026-09-23-read_cleaning/results/reads.pe*.clean.fq .
+      ln -s ~/2026-09-22-read_cleaning/results/reads.pe*.clean.fq .
       cd ..
       ```
 
