@@ -444,44 +444,37 @@ Check to see if you get a similar output!
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>In the terminal run <code>seqtk</code>. </p>
-</div>
 <p>The output of this command should look like this: </p>
-<div class="admonition terminal">
-<p class="admonition-title">Terminal output</p>
-<p>```
-Usage:   seqtk <command> <arguments></p>
-</div>
-<p>Version: 1.5-r133</p>
-<p>Command: seq       common transformation of FASTA/Q
-         size      report the number sequences and bases
-         comp      get the nucleotide composition of FASTA/Q
-         sample    subsample sequences
-         subseq    extract subsequences from FASTA/Q
-         fqchk     fastq QC (base/quality summary)
-         mergepe   interleave two PE FASTA/Q files
-         split     split one file into multiple smaller files
-         trimfq    trim FASTQ using the Phred algorithm</p>
-<pre><code>     hety      regional heterozygosity
-     gc        identify high- or low-GC regions
-     mutfa     point mutate FASTA at specified positions
-     mergefa   merge two FASTA/Q files
-     famask    apply a X-coded FASTA to a source FASTA
-     dropse    drop unpaired from interleaved PE FASTA/Q
-     rename    rename sequence names
-     randbase  choose a random base from hets
-     cutN      cut sequence at long N
-     gap       get the gap locations
-     listhet   extract the position of each het
-     hpc       homopolyer-compressed sequence
-     telo      identify telomere repeats in asm or long reads
+<div class="highlight"><pre><span></span><code>Usage:   seqtk &lt;command&gt; &lt;arguments&gt;
+Version: 1.5-r133
 
-```
-</code></pre>
+Command: seq       common transformation of FASTA/Q
+        size      report the number sequences and bases
+        comp      get the nucleotide composition of FASTA/Q
+        sample    subsample sequences
+        subseq    extract subsequences from FASTA/Q
+        fqchk     fastq QC (base/quality summary)
+        mergepe   interleave two PE FASTA/Q files
+        split     split one file into multiple smaller files
+        trimfq    trim FASTQ using the Phred algorithm
+
+        hety      regional heterozygosity
+        gc        identify high- or low-GC regions
+        mutfa     point mutate FASTA at specified positions
+        mergefa   merge two FASTA/Q files
+        famask    apply a X-coded FASTA to a source FASTA
+        dropse    drop unpaired from interleaved PE FASTA/Q
+        rename    rename sequence names
+        randbase  choose a random base from hets
+        cutN      cut sequence at long N
+        gap       get the gap locations
+        listhet   extract the position of each het
+        hpc       homopolyer-compressed sequence
+        telo      identify telomere repeats in asm or long reads
+</code></pre></div>
 <p>If you obtained a similar output move onto the next section!</p>
 <p>However, if you terminal output produces an error (like below), please ask a demonstrator for help! </p>
-<div class="admonition terminal">
-<p class="admonition-title">Terminal output</p>
-<div class="highlight"><pre><span></span><code>command not found
+<div class="highlight"><pre><span></span><code>    command not found
 </code></pre></div>
 </div>
 <h3 id="set-up-directory-hierarchy-to-work-in"><strong>Set up directory hierarchy to work in</strong></h3>
@@ -529,11 +522,11 @@ be found
 <p>The expected terminal output is highlighted below </p>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
-<div class="highlight"><pre><span></span><code><span class="m">2026</span>-09-22-read_cleaning
-├──<span class="w"> </span>input
-├──<span class="w"> </span>tmp
-├──<span class="w"> </span>results
-└──<span class="w"> </span>WHATIDID.txt
+<div class="highlight"><pre><span></span><code>2026-09-22-read_cleaning
+├── input
+├── tmp
+├── results
+└── WHATIDID.txt
 </code></pre></div>
 </div>
 <hr />
@@ -568,34 +561,34 @@ performing any analysis.</p>
 <p>Lets move to the main directory for this practical, so that everything we need and do and create is in one place:</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Remember that yours may have a different date, now or in future, so be careful to check if you copy-paste code</span>
-<span class="nb">cd</span><span class="w"> </span>~/2026-09-22-read_cleaning
+<div class="highlight"><pre><span></span><code># Remember that yours may have a different date, now or in future, so be careful to check if you copy-paste code
+cd ~/2026-09-22-read_cleaning
 </code></pre></div>
 <p>After, create a symbolic link (or symlink) using <code>ln -s</code> from the reads files to the
 <code>input</code> directory us the commands below:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Change directory to input</span>
-<span class="nb">cd</span><span class="w"> </span>input
+<div class="highlight"><pre><span></span><code># Change directory to input
+cd input
 
-<span class="c1"># Link the two compressed FASTQ files (remember that each correspond to one of</span>
-<span class="c1"># the pair)</span>
-ln<span class="w"> </span>-s<span class="w"> </span>/shared/data/reads.pe1.fastq.gz<span class="w"> </span>.
-ln<span class="w"> </span>-s<span class="w"> </span>/shared/data/reads.pe2.fastq.gz<span class="w"> </span>.
+# Link the two compressed FASTQ files (remember that each correspond to one of
+# the pair)
+ln -s /shared/data/reads.pe1.fastq.gz .
+ln -s /shared/data/reads.pe2.fastq.gz .
 
-<span class="c1"># Return to the main directory</span>
-<span class="nb">cd</span><span class="w"> </span>..
+# Return to the main directory
+cd ..
 </code></pre></div>
 <p>Now run the <code>tree</code> command to inspect your directory structure. </p>
 </div>
 <p>The structure of your directory should look like this:</p>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
-<div class="highlight"><pre><span></span><code><span class="m">2026</span>-09-22-read_cleaning
-├──<span class="w"> </span>input
-│<span class="w">   </span>├──<span class="w"> </span>reads.pe1.fastq.gz<span class="w"> </span>-&gt;<span class="w"> </span>/shared/data/reads.pe1.fastq.gz
-│<span class="w">   </span>└──<span class="w"> </span>reads.pe2.fastq.gz<span class="w"> </span>-&gt;<span class="w"> </span>/shared/data/reads.pe2.fastq.gz
-├──<span class="w"> </span>tmp
-├──<span class="w"> </span>results
-└──<span class="w"> </span>WHATIDID.txt
+<div class="highlight"><pre><span></span><code>2026-09-22-read_cleaning
+├── input
+│   ├── reads.pe1.fastq.gz -&gt; /shared/data/reads.pe1.fastq.gz
+│   └── reads.pe2.fastq.gz -&gt; /shared/data/reads.pe2.fastq.gz
+├── tmp
+├── results
+└── WHATIDID.txt
 </code></pre></div>
 </div>
 <p>Now, you can start evaluating the quality of the reads <code>reads.pe1.fastq.gz</code> and
@@ -609,8 +602,8 @@ The command is given below, where instead of <code>YOUR_OUTDIR</code>, you will 
 replace <code>YOUR_OUTDIR</code> with the path to your <code>tmp</code> directory (e.g. if you main
 directory is <code>2026-09-22-read_cleaning</code>, you need to replace <code>YOUR_OUTDIR</code> with
 <code>tmp</code>):</p>
-<div class="highlight"><pre><span></span><code>fastqc<span class="w"> </span>--nogroup<span class="w"> </span>--outdir<span class="w"> </span>YOUR_OUTDIR<span class="w"> </span>input/reads.pe1.fastq.gz
-fastqc<span class="w"> </span>--nogroup<span class="w"> </span>--outdir<span class="w"> </span>YOUR_OUTDIR<span class="w"> </span>input/reads.pe2.fastq.gz
+<div class="highlight"><pre><span></span><code>fastqc --nogroup --outdir YOUR_OUTDIR input/reads.pe1.fastq.gz
+fastqc --nogroup --outdir YOUR_OUTDIR input/reads.pe2.fastq.gz
 </code></pre></div>
 <p>The <code>--nogroup</code> option ensures that bases are not grouped together in many of
 the plots generated by FastQC. This makes it easier to interpret the output in
@@ -620,7 +613,7 @@ terminal.</p>
 <p><strong>Important Note</strong> - Remember to log the commands you used in the <code>WHATIDID.txt</code> file. To do this you can use the text editors introduced in the UNIX practical including <code>nano</code></p>
 <p>Take a moment to verify your directory structure. You can do so using the <code>tree</code>
 command (be aware of your current working directory using the command <code>pwd</code>):</p>
-<div class="highlight"><pre><span></span><code>tree<span class="w"> </span>~/2026-09-22-read_cleaning
+<div class="highlight"><pre><span></span><code>tree ~/2026-09-22-read_cleaning
 </code></pre></div>
 </div>
 <p>The resulting directory structure should look like this:</p>
