@@ -98,47 +98,44 @@ Terminal windows are scrollable (horizontal & verticle)
     In the terminal run `seqtk`. 
 
 
-The output of this command should look like this: 
+    The output of this command should look like this: 
 
-!!! terminal "Terminal output"
     ```
     Usage:   seqtk <command> <arguments>
-Version: 1.5-r133
+    Version: 1.5-r133
 
-Command: seq       common transformation of FASTA/Q
-         size      report the number sequences and bases
-         comp      get the nucleotide composition of FASTA/Q
-         sample    subsample sequences
-         subseq    extract subsequences from FASTA/Q
-         fqchk     fastq QC (base/quality summary)
-         mergepe   interleave two PE FASTA/Q files
-         split     split one file into multiple smaller files
-         trimfq    trim FASTQ using the Phred algorithm
+    Command: seq       common transformation of FASTA/Q
+            size      report the number sequences and bases
+            comp      get the nucleotide composition of FASTA/Q
+            sample    subsample sequences
+            subseq    extract subsequences from FASTA/Q
+            fqchk     fastq QC (base/quality summary)
+            mergepe   interleave two PE FASTA/Q files
+            split     split one file into multiple smaller files
+            trimfq    trim FASTQ using the Phred algorithm
 
-         hety      regional heterozygosity
-         gc        identify high- or low-GC regions
-         mutfa     point mutate FASTA at specified positions
-         mergefa   merge two FASTA/Q files
-         famask    apply a X-coded FASTA to a source FASTA
-         dropse    drop unpaired from interleaved PE FASTA/Q
-         rename    rename sequence names
-         randbase  choose a random base from hets
-         cutN      cut sequence at long N
-         gap       get the gap locations
-         listhet   extract the position of each het
-         hpc       homopolyer-compressed sequence
-         telo      identify telomere repeats in asm or long reads
-
-    ```
-
-If you obtained a similar output move onto the next section!
-
-However, if you terminal output produces an error (like below), please ask a demonstrator for help! 
-
-!!! terminal "Terminal output"
+            hety      regional heterozygosity
+            gc        identify high- or low-GC regions
+            mutfa     point mutate FASTA at specified positions
+            mergefa   merge two FASTA/Q files
+            famask    apply a X-coded FASTA to a source FASTA
+            dropse    drop unpaired from interleaved PE FASTA/Q
+            rename    rename sequence names
+            randbase  choose a random base from hets
+            cutN      cut sequence at long N
+            gap       get the gap locations
+            listhet   extract the position of each het
+            hpc       homopolyer-compressed sequence
+            telo      identify telomere repeats in asm or long reads
 
     ```
-    command not found
+
+    If you obtained a similar output move onto the next section!
+
+    However, if you terminal output produces an error (like below), please ask a demonstrator for help! 
+
+    ```
+        command not found
     ```
 
 
@@ -202,7 +199,7 @@ For each practical, you will have to create the following directory structure:
 
 The expected terminal output is highlighted below 
 !!! terminal 
-    ```bash
+    ```
     2026-09-22-read_cleaning
     ├── input
     ├── tmp
@@ -254,7 +251,7 @@ performing any analysis.
 Lets move to the main directory for this practical, so that everything we need and do and create is in one place:
 
 !!! task
-    ```bash
+    ```
     # Remember that yours may have a different date, now or in future, so be careful to check if you copy-paste code
     cd ~/2026-09-22-read_cleaning
     ```
@@ -262,7 +259,7 @@ Lets move to the main directory for this practical, so that everything we need a
     After, create a symbolic link (or symlink) using `ln -s` from the reads files to the
     `input` directory us the commands below:
 
-    ```bash
+    ```
 
     # Change directory to input
     cd input
@@ -281,7 +278,7 @@ Lets move to the main directory for this practical, so that everything we need a
 The structure of your directory should look like this:
 
 !!! terminal
-    ```bash
+    ```
     2026-09-22-read_cleaning
     ├── input
     │   ├── reads.pe1.fastq.gz -> /shared/data/reads.pe1.fastq.gz
@@ -304,7 +301,7 @@ Now, you can start evaluating the quality of the reads `reads.pe1.fastq.gz` and
     directory is `2026-09-22-read_cleaning`, you need to replace `YOUR_OUTDIR` with
     `tmp`):
 
-    ```bash
+    ```
     fastqc --nogroup --outdir YOUR_OUTDIR input/reads.pe1.fastq.gz
     fastqc --nogroup --outdir YOUR_OUTDIR input/reads.pe2.fastq.gz
     ```
@@ -321,7 +318,7 @@ Now, you can start evaluating the quality of the reads `reads.pe1.fastq.gz` and
     Take a moment to verify your directory structure. You can do so using the `tree`
     command (be aware of your current working directory using the command `pwd`):
 
-    ```bash
+    ```
     tree ~/2026-09-22-read_cleaning
     ```
 
