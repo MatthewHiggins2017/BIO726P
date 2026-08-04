@@ -36,12 +36,12 @@ and *b* in sliding windows using **PLINK 2**, and nucleotide diversity (π) usin
 
 !!! Task
       As before, create a new directory for this practical (e.g.,
-      `2025-09-30-population_genetics`) with the standard subdirectory structure and
+      `2026-09-30-population_genetics`) with the standard subdirectory structure and
       a `WHATIDID.txt` log file:
 
       ```bash
-      mkdir 2025-09-30-population_genetics
-      cd 2025-09-30-population_genetics
+      mkdir 2026-09-30-population_genetics
+      cd 2026-09-30-population_genetics
       mkdir input results tmp
       touch WHATIDID.txt
       ```
@@ -50,8 +50,8 @@ and *b* in sliding windows using **PLINK 2**, and nucleotide diversity (π) usin
       previous practical to your `input/` directory.
 
       ```bash
-      ln -s ~/2025-09-29-genotyping/results/snp.vcf.gz input/
-      ln -s ~/2025-09-29-genotyping/results/snp.vcf.gz.tbi input/
+      ln -s ~/2026-09-29-genotyping/results/snp.vcf.gz input/
+      ln -s ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi input/
       ```
 
       If you don't have these files, you can use the backup copies in
@@ -61,10 +61,10 @@ and *b* in sliding windows using **PLINK 2**, and nucleotide diversity (π) usin
 
 !!! terminal
       ```
-      2025-09-30-population_genetics/
+      2026-09-30-population_genetics/
       ├── input
-      │   ├── snp.vcf.gz -> ~/2025-09-29-genotyping/results/snp.vcf.gz
-      │   └── snp.vcf.gz.tbi -> ~/2025-09-29-genotyping/results/snp.vcf.gz.tbi
+      │   ├── snp.vcf.gz -> ~/2026-09-29-genotyping/results/snp.vcf.gz
+      │   └── snp.vcf.gz.tbi -> ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi
       ├── results
       ├── tmp
       └── WHATIDID.txt
