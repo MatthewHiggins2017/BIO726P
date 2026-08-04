@@ -1,4 +1,4 @@
-# **Practicals for the 2025 Genome Bioinformatics module**
+# **Practicals for the 2026 Genome Bioinformatics module**
 
 ## **Introduction**
 

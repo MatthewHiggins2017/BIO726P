@@ -45,18 +45,18 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2025-09-29-mapping`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2026-09-29-mapping`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```
-      mkdir 2025-09-29-mapping
+      mkdir 2026-09-29-mapping
       ```
 
       Your directory hierarchy should look like the following
 
 !!! terminal 
     ```
-    2025-09-29-mapping
+    2026-09-29-mapping
     ├── input
     ├── tmp
     ├── results
@@ -72,7 +72,7 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 
 !!! terminal 
       ```
-      2025-09-29-mapping/
+      2026-09-29-mapping/
       ├── input
       │   ├── reads -> /shared/data/popgen/reads
       │   └── reference.fa -> /shared/data/popgen/reference.fa
@@ -121,7 +121,7 @@ which was created to align short read sequences to long sequences such as the sc
 
       ```
       cd tmp
-      ln -s ~/2025-09-29-mapping/input/reference.fa .
+      ln -s ~/2026-09-29-mapping/input/reference.fa .
       cd ..
       ```
 
@@ -275,22 +275,22 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
 ## 5. Variant calling
 
 !!! Task
-      Create a new directory in your `home` for the second part of today's practical (e.g., `2025-09-29-genotyping`). You will want to set up the relevant subdirectories  and `WHATIDID.txt` file, as you have done before. Then symlink (`ln -s`) the reference genome `/shared/data/popgen/reference.fa` and the alignments from the mapping part of the practical (both `.bam` and `.bai` files) to your input` directory.
+      Create a new directory in your `home` for the second part of today's practical (e.g., `2026-09-29-genotyping`). You will want to set up the relevant subdirectories  and `WHATIDID.txt` file, as you have done before. Then symlink (`ln -s`) the reference genome `/shared/data/popgen/reference.fa` and the alignments from the mapping part of the practical (both `.bam` and `.bai` files) to your input` directory.
 
       To help get you started 
       ```
-      mkdir 2025-09-29-genotyping
+      mkdir 2026-09-29-genotyping
       ```
 
       Your directory hierarchy should look like the following when running `tree`
 
 !!! terminal 
    ```
-   2025-09-29-genotyping/
+   2026-09-29-genotyping/
    ├── input
    │   ├── -> /shared/data/popgen/reference.fa
-   │   ├── -> ~/2025-09-29-mapping/results/f1_B.bam
-   │   ├── -> ~/2025-09-29-mapping/results/f1_B.bam.bai
+   │   ├── -> ~/2026-09-29-mapping/results/f1_B.bam
+   │   ├── -> ~/2026-09-29-mapping/results/f1_B.bam.bai
    │   └── -> ...
    ├── results
    ├── tmp
@@ -298,7 +298,7 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
    ```
 
 !!! Info
-      **_Note:_** When you create links from one directory to another, it is better to use the absolute path for links like `~/2025-09-29-mapping/results/*.bam*` instead of `../../2025-09-29-mapping/results/*.bam`
+      **_Note:_** When you create links from one directory to another, it is better to use the absolute path for links like `~/2026-09-29-mapping/results/*.bam*` instead of `../../2026-09-29-mapping/results/*.bam`
 
 
 Several variant calling approaches exist. The simplest approach is to look for positions where the mapped reads consistently have a different base than the reference assembly (this is called **consensus approach**). For this, we will use [*bcftools*](http://www.htslib.org/doc/bcftools.html), a set of tools to call variants and manipulate them. We will run two commands:
@@ -324,7 +324,7 @@ individuals as **haploid**.
 
       ```
       cd tmp
-      ln -s ~/2025-09-29-genotyping/input/reference.fa .
+      ln -s ~/2026-09-29-genotyping/input/reference.fa .
       cd ..
       ```
 

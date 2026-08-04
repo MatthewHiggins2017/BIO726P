@@ -97,14 +97,15 @@ Terminal windows are scrollable (horizontal & verticle)
 !!! task
     In the terminal run `seqtk`. 
 
+
 The output of this command should look like this: 
 
 !!! terminal "Terminal output"
     ```
     Usage:   seqtk <command> <arguments>
-    Version: 1.4-r132-dirty
+Version: 1.5-r133
 
-    Command: seq       common transformation of FASTA/Q
+Command: seq       common transformation of FASTA/Q
          size      report the number sequences and bases
          comp      get the nucleotide composition of FASTA/Q
          sample    subsample sequences
@@ -113,6 +114,20 @@ The output of this command should look like this:
          mergepe   interleave two PE FASTA/Q files
          split     split one file into multiple smaller files
          trimfq    trim FASTQ using the Phred algorithm
+
+         hety      regional heterozygosity
+         gc        identify high- or low-GC regions
+         mutfa     point mutate FASTA at specified positions
+         mergefa   merge two FASTA/Q files
+         famask    apply a X-coded FASTA to a source FASTA
+         dropse    drop unpaired from interleaved PE FASTA/Q
+         rename    rename sequence names
+         randbase  choose a random base from hets
+         cutN      cut sequence at long N
+         gap       get the gap locations
+         listhet   extract the position of each het
+         hpc       homopolyer-compressed sequence
+         telo      identify telomere repeats in asm or long reads
 
     ```
 
@@ -143,8 +158,8 @@ For each practical, you will have to create the following directory structure:
 * A main directory in your home directory in the format
   (`YYYY-MM-DD-name_of_the_practical`, where `YYYY` is the current year, `MM` is
   the current month, and `DD` is the current day, and `name_of_the_practical`
-  matches the practical). For instance, on the 22nd of September 2025, you should
-  create the directory `2025-09-22-read_cleaning` for this practical.
+  matches the practical). For instance, on the 22nd of September 2026, you should
+  create the directory `2026-09-22-read_cleaning` for this practical.
 * Inside this directory, create other three directories, called `input`, `tmp`,
   and `results`.
 * The directory `input` will contain the FASTQ files.
@@ -159,7 +174,7 @@ For each practical, you will have to create the following directory structure:
 
     The command you will need is:
     ```
-    mkdir 2025-09-22-read_cleaning
+    mkdir 2026-09-22-read_cleaning
     ```
 
     Now, see if you can make the necessary **input**, **tmp** and **results** subdirectories on your own!
@@ -175,20 +190,20 @@ For each practical, you will have to create the following directory structure:
     To create our WHATIDID.txt file we can use the following command:
 
     ```
-    touch ./2025-09-22-read_cleaning/WHATIDID.txt
+    touch ./2026-09-22-read_cleaning/WHATIDID.txt
     ```
 
     The to inspect the directory structure you have created you can run:
 
     ```
-    tree ./2025-09-22-read_cleaning
+    tree ./2026-09-22-read_cleaning
     ```
 
 
 The expected terminal output is highlighted below 
 !!! terminal 
     ```bash
-    2025-09-22-read_cleaning
+    2026-09-22-read_cleaning
     ├── input
     ├── tmp
     ├── results
@@ -241,7 +256,7 @@ Lets move to the main directory for this practical, so that everything we need a
 !!! task
     ```bash
     # Remember that yours may have a different date, now or in future, so be careful to check if you copy-paste code
-    cd ~/2025-09-22-read_cleaning
+    cd ~/2026-09-22-read_cleaning
     ```
 
     After, create a symbolic link (or symlink) using `ln -s` from the reads files to the
@@ -267,7 +282,7 @@ The structure of your directory should look like this:
 
 !!! terminal
     ```bash
-    2025-09-22-read_cleaning
+    2026-09-22-read_cleaning
     ├── input
     │   ├── reads.pe1.fastq.gz -> /shared/data/reads.pe1.fastq.gz
     │   └── reads.pe2.fastq.gz -> /shared/data/reads.pe2.fastq.gz
@@ -286,7 +301,7 @@ Now, you can start evaluating the quality of the reads `reads.pe1.fastq.gz` and
     Run FastQC on the `reads.pe1.fastq.gz` and `reads.pe2.fastq.gz` files.
     The command is given below, where instead of `YOUR_OUTDIR`, you will need
     replace `YOUR_OUTDIR` with the path to your `tmp` directory (e.g. if you main
-    directory is `2025-09-22-read_cleaning`, you need to replace `YOUR_OUTDIR` with
+    directory is `2026-09-22-read_cleaning`, you need to replace `YOUR_OUTDIR` with
     `tmp`):
 
     ```bash
@@ -307,14 +322,14 @@ Now, you can start evaluating the quality of the reads `reads.pe1.fastq.gz` and
     command (be aware of your current working directory using the command `pwd`):
 
     ```bash
-    tree ~/2025-09-22-read_cleaning
+    tree ~/2026-09-22-read_cleaning
     ```
 
 The resulting directory structure should look like this:
 
 !!! terminal 
     ```
-    2025-09-22-read_cleaning
+    2026-09-22-read_cleaning
     ├── input
     │   ├── reads.pe1.fastq.gz -> /shared/data/reads.pe1.fastq.gz
     │   └── reads.pe2.fastq.gz -> /shared/data/reads.pe2.fastq.gz
@@ -377,50 +392,60 @@ Other similar tools include [*fastx_toolkit*](https://github.com/agordon/fastx_t
 ### **Read trimming**
 
 To clean the FASTQ sequences, we will use a software tool called
-[*cutadapt*](https://cutadapt.readthedocs.io/en/stable/). As stated on the
+[*Trimmomatic*](http://www.usadellab.org/cms/?page=trimmomatic). As stated on the
 official website:
 
-* Cutadapt finds and removes adapter sequences, primers, poly-A tails and other types of unwanted sequence from your high-throughput sequencing reads.
+* Trimmomatic is a flexible read trimming tool for Illumina NGS data. It performs a variety of useful trimming tasks for Illumina paired-end and single ended data.
 
-Specifically, we will use `cutadapt` to trim the sequences.
+Trimmomatic works with paired-end reads and can perform several trimming steps in a single command.
 
 !!! Question
-    What is the meaning of `cutadapt` options `--cut` and `--quality-cutoff` ?
-    (*Hint:* you can read a short description of the options by calling the
-    command `cutadapt -h`)
+    What is the meaning of Trimmomatic options `LEADING`, `TRAILING`, `SLIDINGWINDOW`, and `MINLEN`?
+    (*Hint:* you can read a detailed description of the options in the Trimmomatic manual or by searching online)
 
 To identify relevant quality cutoffs, it is necessary to be familiar with
 [base quality scores](https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/)
 and examine the per-base quality score in your FastQC report.
 
-We will run `cutadapt` with two options, `--cut` and/or `--quality-cutoff`,
-corresponding to the number of nucleotides to trim from the beginning (`--cut`)
-and end (`--quality-cutoff`) of the sequences.
+We will run Trimmomatic with several options:
+- `LEADING`: removes low quality bases from the beginning of the read
+- `TRAILING`: removes low quality bases from the end of the read  
+- `SLIDINGWINDOW`: performs a sliding window trimming approach
+- `MINLEN`: removes reads that fall below the specified minimum length
 
 
 !!! Info 
     **_Note:_**
-    If you trim too much of your sequence (i.e., too large values for `--cut` and
-    `--quality-cutoff`), you increase the likelihood of eliminating important
-    information. Additionally, if the trimming is too aggressive, some sequences
-    may be discarded completely, which will cause problems in the subsequent
-    steps of the pre-processing. For this example, we suggest to keep `--cut` below 5 and `--quality-cutoff` below 10.
+    If you trim too much of your sequence (i.e., too large values for `LEADING`, 
+    `TRAILING`, or too stringent `SLIDINGWINDOW` parameters), you increase the 
+    likelihood of eliminating important information. Additionally, if the trimming 
+    is too aggressive, some sequences may be discarded completely, which will cause 
+    problems in the subsequent steps of the pre-processing. For this example, we 
+    suggest keeping quality thresholds around 3-5 for `LEADING` and `TRAILING`, and 
+    using a sliding window of 4:15 (window size:quality threshold).
 
 !!! task
-    The command to run `cutadapt` on the two reads files is reported below, where
-    `BEGINNING` and `CUTOFF` are the the two integer values corresponding to the
-    number of bases to trim from the beginning of the sequence and the quality
-    threshold **(see the above info note for suggestion about the values to use)**. 
-    Remember that each `.fq` file can have a different set of values.
+    The command to run Trimmomatic on the paired-end reads files is reported below. 
+    Trimmomatic processes both paired-end files simultaneously and produces four 
+    output files: two for paired reads that survived trimming and two for unpaired 
+    reads where only one of the pair survived.
 
     ```
+    cd ~/2026-09-22-read_cleaning
 
-    cd ~/2025-09-22-read_cleaning
-
-    cutadapt --cut BEGINNING --quality-cutoff CUTOFF input/reads.pe1.fastq.gz > tmp/reads.pe1.trimmed.fq
-
-    cutadapt --cut BEGINNING --quality-cutoff CUTOFF input/reads.pe2.fastq.gz > tmp/reads.pe2.trimmed.fq
+    trimmomatic PE \
+      input/reads.pe1.fastq.gz \
+      input/reads.pe2.fastq.gz \
+      tmp/reads.pe1.trimmed.fq \
+      tmp/reads.pe1.unpaired.fq \
+      tmp/reads.pe2.trimmed.fq \
+      tmp/reads.pe2.unpaired.fq \
+      LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
     ```
+    
+    Note: You can adjust the quality parameters (`LEADING`, `TRAILING`, and 
+    `SLIDINGWINDOW`) based on your FastQC results. The `MINLEN` value removes 
+    reads shorter than 36 bp after trimming.
 
 -------------------
 
