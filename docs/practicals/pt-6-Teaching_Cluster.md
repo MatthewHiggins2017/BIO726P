@@ -279,7 +279,8 @@ The tools we will use are:
 We now need a reference genome for *Plasmodium falciparum* 3D7.
 
 !!! Task
-    Change into your `references` directory and download the genome FASTA file.
+    Change into your `references` directory and download the genome FASTA file. 
+
 
     ```bash
     cd ~/BIO726P_Teaching_Cluster/references
@@ -311,20 +312,20 @@ You will also need a Nanopore FASTQ file for the sample we are analysing.
 
     ```bash
     cd ~/BIO726P_Teaching_Cluster/input
-    wget -O Pf_sample_1.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
-    wget -O Pf_sample_2.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
-    wget -O Pf_sample_3.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
+    wget -O Pf_Sample_A.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
+    wget -O Pf_Sample_B.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
+    wget -O Pf_Sample_C.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
     ```
 
 !!! Info
-    In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage.
+    In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage. **We will come back to this later in a bonus task**
 
 !!! Task
     Check the file exists and inspect the first read:
 
     ```bash
-    ls -lh sample_1.fastq.gz
-    zcat sample_1.fastq.gz | head
+    ls -lh Pf_Sample_A.fastq.gz
+    zcat Pf_Sample_A.fastq.gz | head
     ```
 
 !!! Question
@@ -354,18 +355,50 @@ In this first part, you will run each command manually so that you understand wh
 
     ```bash
     cd ~/BIO726P_Teaching_Cluster/tmp
-    NanoPlot --fastq ../input/sample_1.fastq.gz --outdir sample_1_nanoplot_raw
+    NanoPlot --fastq ../input/Pf_Sample_A.fastq.gz --outdir Pf_Sample_A_nanoplot_raw
     ```
 
 !!! Task
     Inspect the output directory:
 
     ```bash
-    ls sample_1_nanoplot_raw
+    ls Pf_Sample_A_nanoplot_raw
     ```
 
-    Find and open the report.html file, to inspect the metrics used to assess sample quality. 
+    The directory should contain the following files: 
 
+    ```
+    ls Pf_Sample_A_nanoplot_raw
+    LengthvsQualityScatterPlot_dot.html
+    LengthvsQualityScatterPlot_dot.png
+    LengthvsQualityScatterPlot_kde.html
+    LengthvsQualityScatterPlot_kde.png
+    NanoPlot_20260804_0826.log
+    NanoPlot-report.html
+    NanoStats.txt
+    Non_weightedHistogramReadlength.html
+    Non_weightedHistogramReadlength.png
+    Non_weightedLogTransformed_HistogramReadlength.html
+    Non_weightedLogTransformed_HistogramReadlength.png
+    WeightedHistogramReadlength.html
+    WeightedHistogramReadlength.png
+    WeightedLogTransformed_HistogramReadlength.html
+    WeightedLogTransformed_HistogramReadlength.png
+    Yield_By_Length.html
+    Yield_By_Length.png
+
+    ```
+
+    Using the left-side bar, navigate to the directory and open the `NanoPlot-report.html`. **Note** - To view the figures you may have to click the Trust HTML button on top left side of the window. 
+    
+
+
+![NanoPlot_Image](../img/NanoPlot_Report.png)
+
+
+!!! Task 
+
+    Inspect the report to gauge the underlying quality of the nanopore sequencing data!
 
 !!! Question
 
@@ -401,17 +434,29 @@ For many analyses, it is helpful to remove very short or very low-quality reads 
     === "Answer"
 
         ```
-        zcat ../input/sample_1.fastq.gz | chopper -q 10 -l 1000 | gzip > filtered_reads.fastq.gz
+        zcat ../input/Pf_Sample_A.fastq.gz | chopper -q 10 -l 1000 | gzip > Pf_Sample_A_filtered_reads.fastq.gz
         ```
+
+!!! Question
+
+    === "Question"
+
+        How many reads remained after filtering Pf_Sample_A?
+
+    === "Answer"
+
+        Kept 32939 reads out of 34084 reads
+
+
 
 !!! Info
     Here, `-q 10` removes very low-quality reads and `-l 1000` keeps only reads that are at least 1000 bases long. The `zcat ... | ... | gzip` pattern decompresses the input on the fly and writes the filtered output back out as a compressed FASTQ file.
 
 !!! Task
-    Run NanoPlot again on the filtered reads:
+    Run NanoPlot again on the filtered reads. Inspect the output report, can you confirm that the filtering implemented by chopper was successful? 
 
     ```bash
-    NanoPlot --fastq filtered_reads.fastq.gz --outdir nanoplot_filtered
+    NanoPlot --fastq Pf_Sample_A_filtered_reads.fastq.gz --outdir Pf_Sample_A_nanoplot_filtered
     ```
 
 !!! Question
@@ -429,7 +474,7 @@ For many analyses, it is helpful to remove very short or very low-quality reads 
 
     === "Question"
 
-        What other metrics does Chopper allow you to filter on? 
+        What other metrics does Chopper allow you to filter on and when would you implement these? 
 
     === "Answer"
 
@@ -444,28 +489,40 @@ We will now align the filtered reads to the reference genome using `minimap2`.
     Run the alignment and write the output to SAM format:
 
     ```bash
-    minimap2 -ax map-ont ../references/GCF_000002765.6_GCA_000002765_genomic.fna filtered_reads.fastq.gz > sample_1.sam
+    minimap2 -ax map-ont -t 10 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
     ```
 
 !!! Info
-    The `-ax map-ont` preset is designed for Oxford Nanopore reads. 
+    The `-ax map-ont` preset is designed for Oxford Nanopore reads. Using the `-h` sub-command, see what the `-t` parameter is used for!
 
 
 !!! Task
     Convert the SAM file to a sorted BAM file and index it:
 
     ```bash
-    samtools sort -O BAM sample_1.sam > sample_1.sorted.bam
-    samtools index sample_1.sorted.bam
+    samtools sort -O BAM Pf_Sample_A.sam > Pf_Sample_A.sorted.bam
+    samtools index Pf_Sample_A.sorted.bam
     ```
 
 !!! Task
     Generate a few simple alignment statistics:
 
     ```bash
-    samtools flagstat sample_1.sorted.bam
-    samtools idxstats sample_1.sorted.bam | head
+    samtools flagstat Pf_Sample_A.sorted.bam
+    samtools idxstats Pf_Sample_A.sorted.bam| head
     ```
+
+!!! Question
+
+    === "Question"
+
+        How could you redirect the stdout of these commands to a file? 
+
+    === "Answer"
+
+        ```
+        samtools flagstat Pf_Sample_A.sorted.bam > Pf_Sample_A.stats
+        ```
 
 !!! Question
 
@@ -483,22 +540,31 @@ We will now align the filtered reads to the reference genome using `minimap2`.
     Run Sniffles on the sorted BAM file:
 
     ```bash
-    sniffles --input sample_1.sorted.bam --vcf sample_1.sniffles.vcf
+    sniffles --input Pf_Sample_A.sorted.bam --vcf Pf_Sample_A.sniffles.vcf
     ```
 
 !!! Task
     Inspect the first few lines of the VCF:
 
     ```bash
-    head sample_1.sniffles.vcf
+    head Pf_Sample_A.sniffles.vcf
     ```
 
-!!! Task
-    Count how many variants were called:
 
-    ```bash
-    grep -vc "^#" sample_1.sniffles.vcf
-    ```
+!!! Question
+
+    === "Question"
+
+        How many variants were called?
+
+    === "Answer"
+
+        Only a single deletion was identified:
+
+        ```bash
+        grep -vc "^#" Pf_Sample_A.sniffles.vcf
+        ```
+
 
 !!! Question
 
@@ -516,15 +582,51 @@ We will now align the filtered reads to the reference genome using `minimap2`.
 
 Now that you have a structural variant call set, start thinking about biological interpretation.
 
+For this dataset, Sniffles reported exactly one structural variant in `Pf_Sample_A.sniffles.vcf`.
+
 !!! Task
-    Search the VCF for deletion calls:
+    Confirm how many variant records are present (non-header lines):
 
     ```bash
-    grep "SVTYPE=DEL" sample_1.sniffles.vcf | head
+    grep -vc "^#" Pf_Sample_A.sniffles.vcf
     ```
 
-!!! Task
-    If you have downloaded a GFF annotation file, use it together with the VCF to investigate whether any called deletions overlap genes of interest.
+    Then print the variant record itself:
+
+    ```bash
+    grep -v "^#" Pf_Sample_A.sniffles.vcf
+    ```
+
+!!! Info
+    Your output should contain one line similar to:
+
+    ```
+    NC_004331.3 2840727 Sniffles2.DEL.12SA N <DEL> 60 PASS PRECISE;SVTYPE=DEL;SVLEN=-975;END=2841702;SUPPORT=20;...;VAF=1.000 GT:GQ:DR:DV:PS 1/1:55:0:20:.
+    ```
+
+    This line tells us:
+
+    * `SVTYPE=DEL`: the event is a deletion.
+    * `CHROM=NC_004331.3`, `POS=2840727`, `END=2841702`: the deleted interval is on chromosome NC_004331.3 from 2,840,727 to 2,841,702.
+    * `SVLEN=-975`: deletion length is 975 bp (negative sign indicates deletion).
+    * `FILTER=PASS`: the call passed Sniffles filtering.
+    * `QUAL=60`: high confidence score.
+    * `SUPPORT=20`: 20 reads support the variant.
+    * `VAF=1.000`: all informative reads support the variant allele.
+    * `GT=1/1`, `DR=0`, `DV=20`: genotype is homozygous alternate in this sample, with 0 reference reads and 20 variant reads.
+
+
+!!! Question
+
+    === "Question"
+
+        Based on this VCF, what is the main structural variant call in Pf_Sample_A?
+
+    === "Answer"
+
+        A single, high-confidence 975 bp deletion on chromosome `NC_004331.3` from 2,840,727 to 2,841,702.
+
+        The call is supported by 20 reads, has `FILTER=PASS`, and is genotyped as `1/1` (homozygous alternate) in this sample.
 
 
 !!! Question
@@ -535,21 +637,40 @@ Now that you have a structural variant call set, start thinking about biological
 
     === "Answer"
 
-        Variant callers make predictions based on read evidence, but those predictions still need interpretation. You need to consider genomic context, read support, mapping quality, and whether the affected region overlaps biologically meaningful features.
+        Variant callers make predictions from read evidence, but those predictions still need interpretation.
+
+        You should evaluate read support, breakpoint precision, coverage context, and whether the event overlaps biologically meaningful features such as genes.
 
 !!! Question
 
     === "Question"
 
-        What extra information would help you decide whether a structural variant call is likely to be real?
+        What extra information would help you decide whether this deletion is likely to be real?
 
     === "Answer"
 
-        Useful evidence includes read depth, the number of supporting reads, consistency across replicate samples, visual inspection in a genome browser, and whether the event is plausible relative to the local annotation and repeat content.
+        Useful evidence includes consistent support in replicate samples, local inspection in a genome browser (for split-read and mapping pattern checks), read depth changes around the event, and whether the region is repetitive or difficult to map.
 
 
+!!! Task
 
-EXPAND THIS HERE BASED ON THE RAW DATA GENERATED (E.G) - SNIFFLES FILTERING BASED ON READ DEPTH REPORTED.
+    If you have access to a GFF/GTF annotation file, you can test whether this structural variant overlaps genes of interest.
+
+    As in Section 6, check the NCBI assembly page for the reference used in this practical:
+    https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/
+
+    If a GFF file is available, download it with `wget`.
+
+    Then run a simple coordinate-overlap check with `awk`:
+
+    ```
+    awk -F'\t' '$1=="CONTIG_NAME" && $4<=START_POS && $5>=END_POS' Pf3D7_annotation.gff | head
+
+    # Example
+
+    awk -F'\t' '$1=="NC_004331.3" && $4<=2841000 && $5>=2840727' Pf3D7_annotation.gff | head
+    ```
+
 
 ------------------------
 
@@ -562,7 +683,11 @@ In practice, a script does two important jobs:
 * it records the exact commands you used, so you do not need to rely on memory or terminal history,
 * it keeps repeated setup steps, file paths, and output names in one place, which reduces mistakes when you rerun the analysis.
 
-The first version of the script below only automates the early parts of the pipeline. That is deliberate: it lets you check that your inputs, paths, and Conda environment are working before you extend the workflow to mapping and variant calling.
+You have already run the full workflow manually for `Pf_Sample_A.fastq.gz`.
+
+Now the goal is to automate the same analysis for `Pf_Sample_B.fastq.gz` and `Pf_Sample_C.fastq.gz`.
+
+The first version of the script below automates only the early preprocessing steps (QC and filtering) for both samples. That is deliberate: it lets you confirm your file paths, loop logic, and environment before adding mapping and variant calling.
 
 ## 10.1 Create your first analysis script
 
@@ -578,39 +703,65 @@ The first version of the script below only automates the early parts of the pipe
 
     ```
     #!/usr/bin/env bash
-    
+    set -euo pipefail
+
     PROJECT_DIR="$HOME/BIO726P_Teaching_Cluster"
-    INPUT_FASTQ="$PROJECT_DIR/input/sample_1.fastq.gz"
+    INPUT_DIR="$PROJECT_DIR/input"
     REFERENCE="$PROJECT_DIR/references/GCF_000002765.6_GCA_000002765_genomic.fna"
-    TMP_DIR="$PROJECT_DIR/tmp/script_run"
+    TMP_DIR="$PROJECT_DIR/tmp/"
     RESULTS_DIR="$PROJECT_DIR/results"
+    SAMPLES=("Pf_Sample_B" "Pf_Sample_C")
 
     mkdir -p "$TMP_DIR" "$RESULTS_DIR"
 
-    conda activate sv_nanopore
+    for SAMPLE in "${SAMPLES[@]}"; do
+        INPUT_FASTQ="$INPUT_DIR/${SAMPLE}.fastq.gz"
+        SAMPLE_TMP_DIR="$TMP_DIR/${SAMPLE}"
 
-    NanoPlot --fastq "$INPUT_FASTQ" --outdir "$TMP_DIR/nanoplot_raw"
+        mkdir -p "$SAMPLE_TMP_DIR"
 
-    chopper -q 10 -l 1000 < "$INPUT_FASTQ" | gzip > "$TMP_DIR/filtered_reads.fastq.gz"
+        NanoPlot --fastq "$INPUT_FASTQ" --outdir "$SAMPLE_TMP_DIR/nanoplot_raw"
 
-    NanoPlot --fastq "$TMP_DIR/filtered_reads.fastq.gz" --outdir "$TMP_DIR/nanoplot_filtered"
+        zcat "$INPUT_FASTQ" | chopper -q 10 -l 1000 | gzip > "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz"
+
+        NanoPlot --fastq "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz" --outdir "$SAMPLE_TMP_DIR/nanoplot_filtered"
+    done
     ```
 
+!!! Info
+    At the top of the script you will see:
+
+    ```bash
+    #!/usr/bin/env bash
+    set -euo pipefail
+    ```
+
+    These lines make the script safer and more reproducible:
+
+    * `#!/usr/bin/env bash` is the **shebang**. It tells the system to run this file using `bash`.
+    * `set -e` makes the script stop immediately if a command fails.
+    * `set -u` treats use of an undefined variable as an error.
+    * `set -o pipefail` makes a pipeline fail if any command in that pipeline fails (not just the last one).
+
+    Together, these settings help you catch mistakes early instead of silently producing incomplete or misleading output.
+
+!!! Task
     Inspect the commands in this file. What steps of your analysis pipeline is it running, and which pieces are still left out?
 
     The variable names at the top make the script easier to read and update:
 
     * `PROJECT_DIR` stores the main project path in one place.
-    * `INPUT_FASTQ` and `REFERENCE` point to the data files used by the workflow.
+    * `INPUT_DIR` and `REFERENCE` point to the data files used by the workflow.
     * `TMP_DIR` and `RESULTS_DIR` separate temporary working files from final outputs.
+    * `SAMPLES` defines which samples are processed, so you can scale the workflow by editing one line.
 
-    The commands underneath then run two early-stage checks on the raw data:
+    The loop then runs two early-stage checks for each sample:
 
     * `NanoPlot` on the original FASTQ file for an initial quality-control summary,
     * `chopper` to filter out short or low-quality reads,
     * `NanoPlot` again on the filtered reads so you can see how the dataset changed after filtering.
 
-    In other words, this script covers the preprocessing and quality-control part of the workflow, but it does not yet map reads or call structural variants.
+    In other words, this version covers preprocessing and quality control for `Pf_Sample_B` and `Pf_Sample_C`, but it does not yet map reads or call structural variants.
 
     Save the file, then make it executable and run it once to see the intermediate output:
 
@@ -623,7 +774,7 @@ The first version of the script below only automates the early parts of the pipe
 
     === "Question"
 
-        Now try to extend the script so it also carries out the mapping, sorting, indexing, and structural variant calling steps. What would the full version look like?
+        Now extend the script so it also carries out the mapping, sorting, indexing, and structural variant calling steps for both samples. What would the full version look like?
 
     === "Answer"
 
@@ -632,40 +783,81 @@ The first version of the script below only automates the early parts of the pipe
         set -euo pipefail
 
         PROJECT_DIR="$HOME/BIO726P_Teaching_Cluster"
-        INPUT_FASTQ="$PROJECT_DIR/input/sample_1.fastq.gz"
+        INPUT_DIR="$PROJECT_DIR/input"
         REFERENCE="$PROJECT_DIR/references/GCF_000002765.6_GCA_000002765_genomic.fna"
-        TMP_DIR="$PROJECT_DIR/tmp/script_run"
+        TMP_DIR="$PROJECT_DIR/tmp/"
         RESULTS_DIR="$PROJECT_DIR/results"
+        SAMPLES=("Pf_Sample_B" "Pf_Sample_C")
 
         mkdir -p "$TMP_DIR" "$RESULTS_DIR"
 
-        conda activate sv_nanopore
+        for SAMPLE in "${SAMPLES[@]}"; do
+            INPUT_FASTQ="$INPUT_DIR/${SAMPLE}.fastq.gz"
+            SAMPLE_TMP_DIR="$TMP_DIR/${SAMPLE}"
 
-        NanoPlot --fastq "$INPUT_FASTQ" --outdir "$TMP_DIR/nanoplot_raw"
+            mkdir -p "$SAMPLE_TMP_DIR"
 
-        chopper -q 10 -l 1000 < "$INPUT_FASTQ" | gzip > "$TMP_DIR/filtered_reads.fastq.gz"
+            NanoPlot --fastq "$INPUT_FASTQ" --outdir "$SAMPLE_TMP_DIR/nanoplot_raw"
 
-        NanoPlot --fastq "$TMP_DIR/filtered_reads.fastq.gz" --outdir "$TMP_DIR/nanoplot_filtered"
+            zcat "$INPUT_FASTQ" | chopper -q 10 -l 1000 | gzip > "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz"
 
-        minimap2 -ax map-ont "$REFERENCE" "$TMP_DIR/filtered_reads.fastq.gz" > "$TMP_DIR/sample_1.sam"
+            NanoPlot --fastq "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz" --outdir "$SAMPLE_TMP_DIR/nanoplot_filtered"
 
-        samtools sort -O BAM "$TMP_DIR/sample_1.sam" > "$TMP_DIR/sample_1.sorted.bam"
-        samtools index "$TMP_DIR/sample_1.sorted.bam"
+            minimap2 -ax map-ont -t 10 "$REFERENCE" "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz" > "$SAMPLE_TMP_DIR/${SAMPLE}.sam"
 
-        samtools flagstat "$TMP_DIR/sample_1.sorted.bam" > "$RESULTS_DIR/sample_1.flagstat.txt"
+            samtools sort -O BAM "$SAMPLE_TMP_DIR/${SAMPLE}.sam" > "$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam"
+            samtools index "$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam"
 
-        sniffles --input "$TMP_DIR/sample_1.sorted.bam" --vcf "$RESULTS_DIR/sample_1.sniffles.vcf"
+            samtools flagstat "$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam" > "$RESULTS_DIR/${SAMPLE}.flagstat.txt"
+
+            sniffles --input "$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam" --vcf "$RESULTS_DIR/${SAMPLE}.sniffles.vcf"
+        done
         ```
-    You should see at least:
 
-    * `sample_1.flagstat.txt`
-    * `sample_1.sniffles.vcf`
+
+## 10.2 Comparing SV across Samples A, B & C
+
+
+!!! Task 
+
+    Inspect the structural variants identified across samples A, B, and C.
+
+    Are any of the deletions similar between samples? Do any of them affect the same genes? If so, what biological phenotype might you expect?
+
+
+!!! Question
+
+    === "Question"
+
+        Click here for answers to Task 10.2
+
+    === "Answer"
+
+        Comparing the three samples suggests the following pattern:
+
+        * `Pf_Sample_A` contains a deletion affecting **histidine-rich protein III** (`hrp3`, `PF3D7_1372200`) on `NC_004331.3`.
+        * `Pf_Sample_C` contains deletions affecting both **histidine-rich protein II** (`hrp2`, `PF3D7_0831800`) on `NC_004329.3` and **histidine-rich protein III** (`hrp3`, `PF3D7_1372200`) on `NC_004331.3`.
+        * `Pf_Sample_B` does not show either of these deletions and can be treated as the comparison sample here.
+
+        So, yes: some of the deletions are similar across samples because both `Pf_Sample_A` and `Pf_Sample_C` show loss of `hrp3`.
+
+        The two relevant deleted regions are:
+
+        * `NC_004329.3:1374236-1375299` overlapping **histidine-rich protein II** (`PF3D7_0831800`)
+        * `NC_004331.3:2840727-2841703` overlapping **histidine-rich protein III** (`PF3D7_1372200`)
+
+        A likely biological and clinical consequence is altered performance of **HRP2-based malaria rapid diagnostic tests (RDTs)**.
+
+        Parasites with an `hrp2` deletion, especially when `hrp3` is also deleted, may be more difficult to detect with HRP2-based RDTs and can sometimes produce **false-negative diagnostic results**.
+
+        In this comparison, `Pf_Sample_C` would be the sample of greatest concern for that phenotype because it lacks both `hrp2` and `hrp3`, whereas `Pf_Sample_A` only shows the `hrp3` deletion.
+
 
 ------------------------
 
 # 11. Troubleshooting and dependency issues 
 
-Conda environments do not always solve perfectly on the first attempt, especially if package versions are constrained. 
+Unlike earlier, conda environments do not always solve perfectly on the first attempt, especially if package versions are constrained. 
 
 This matters when you want to return to the same project for a second analysis pass, because later tools may need a different software stack from the one used for the main SV workflow. A common example is `medaka`, which is often used for polishing and can require a different Python version from the environment you created for NanoPlot, minimap2, samtools, and Sniffles.
 
@@ -757,27 +949,6 @@ This matters when you want to return to the same project for a second analysis p
 
 ------------------------
 
-# TO ADD IN OR MOVE!!
-
-BONUS - Find Pf Nanopore samples from NCBI and run the analysis! - This is great bonus task to get them to do it! 
-
-    In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage.
-
-
-!!! Question
-
-    === "Question"
-
-        Why is an annotation file useful when interpreting structural variants?
-
-    === "Answer"
-
-        The annotation tells you where genes and other genomic features are located. This allows you to assess whether a structural variant overlaps a gene of interest, such as `dhfr`.
-
-NEED TO EXPAND TO HAVE A DEPENDANCY CONFILCT TO CONDUCT SECOND ROUND OF ANALYSIS COMPARED TO SV PIPELINE - FIGURE THIS OUT! 
-
-------------------------
-
 # 12. Summary
 
 In this practical you have:
@@ -789,40 +960,17 @@ In this practical you have:
 * run a structural variant workflow step by step,
 * converted that workflow into a reusable bash script.
 
-These are core skills that transfer directly to larger bioinformatics projects on HPC systems.
+These are core skills that transfer directly to larger bioinformatics projects on HPC / cloud systems.
 
 ------------------------
 
 # 13. Extension Questions & Tasks
 
-!!! Question
-
-    === "Question"
-
-        If you wanted to make your script more general so that it could analyse many samples, how would you change it?
-
-    === "Answer"
-
-        You could accept the sample name and input FASTQ path as command-line arguments, loop over multiple input files, write logs for each sample, and parameterise settings such as quality thresholds and output directories.
-
-        Have a go at implementing this and ask one of the Teaching Assistants to come and assess your work!
-
-
-!!! Question
-
-    === "Question"
-
-        What are the limitations of analysing only one sample against one reference?
-
-    === "Answer"
-
-        You cannot easily distinguish sample-specific effects from general mapping artefacts, estimate how reproducible the calls are, or compare structural variation patterns across a population.
-
 !!! Task 
 
     **Bonus**
 
-    Try to source additional nanopore sequencing data for *Plasmodium falciparum*  from NCBI SRA (https://www.ncbi.nlm.nih.gov/sra) and analyse this! For example take a look at samples (ERX15224754)
+    Try to source additional nanopore sequencing data for *Plasmodium falciparum*  from NCBI SRA (https://www.ncbi.nlm.nih.gov/sra) and analyse this! For example take a look at the sample (ERX15224754)
 
 !!! Task 
 
