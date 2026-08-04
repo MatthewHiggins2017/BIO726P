@@ -1,0 +1,1343 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Part 6: Using the Teaching Cluster - BIO726P</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-6-using-the-teaching-cluster" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIO726P
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 6: Using the Teaching Cluster
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIO726P
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2026 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging_process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Debugging Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Apocrita_Access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accessing Apocrita
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="part-6-using-the-teaching-cluster">Part 6: Using the Teaching Cluster</h1>
+<hr />
+<p>This practical introduces the QMUL Teaching Cluster and uses it to run some structural variant analysis using <strong>Nanopore data</strong> from <strong><em>Plasmodium falciparum</em></strong>. The focus is not just on running a few commands, but on understanding how to set up a fresh compute environment, install software reproducibly, organise a project, and automate your analysis with some bash scripting!</p>
+<p>Before starting this practical, you should have finished all prior practicals!</p>
+<hr />
+<h1 id="1-overview-and-aims">1. Overview and Aims</h1>
+<p>By the end of this practical, you should be able to:</p>
+<ol>
+<li>Access and use the Teaching Cluster through your web browser.</li>
+<li>Understand what Conda environments are and why they are useful.</li>
+<li>Install bioinformatics software from <code>conda-forge</code> and <code>bioconda</code>.</li>
+<li>Source and download reference and sequencing data using the command line.</li>
+<li>Run a structural variant analysis workflow.</li>
+<li>Create you workflow as a reusable bash script.</li>
+</ol>
+<hr />
+<h1 id="2-accessing-the-teaching-cluster">2. Accessing the Teaching Cluster</h1>
+<p>The Teaching Cluster provides a remote Linux environment that you can access through your browser. It is a JupyterHub-based system, which means each user launches their own Jupyter server. By default, this opens as a JupyterLab session, but from there you can also open other tools and work across multiple tabs. Each server type provides access to a defined set of shared compute resources. For this practical, you should use <strong>SBBS MSc Projects (CPU)</strong>, which provides <strong>32 CPU cores</strong> and <strong>32 GB RAM</strong>.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Go to <a href="https://hub.comp-teach.qmul.ac.uk/">https://hub.comp-teach.qmul.ac.uk/</a> and log in with your QMUL account.</p>
+<p>Use your QMUL username only, for example <code>abc123</code>.
+Do <strong>not</strong> add <code>@qmul.ac.uk</code>.</p>
+</div>
+<p><img alt="TC 1" src="../../img/Teaching_Cluster_Login.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Once, logged in you will be taken to a page where you can select the instance you would like to use. For this scroll down to the bottom on the page and select the tab <strong>Project Work</strong>. This will provide several options, however you should select the option <strong>SBBS MSc Projects (CPU)</strong>. Once you have clicked on this option, scroll down to the bottom of the page and select <strong>start</strong>. </p>
+</div>
+<p><img alt="TC 2" src="../../img/Teaching_Cluster_Instance_Selection.png" /></p>
+<p><img alt="TC 3" src="../../img/Teaching_Cluster_SBBS_MSc_Projects.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Wait for the loading screen to finish. Starting server can take few seconds to few minutes (depends on the cluster use). </p>
+</div>
+<p><img alt="TC 5" src="../../img/Teaching_Cluster_Instance_Loading.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Once you image is up and running you will be presented the standard Jupyter Lab interface with Launcher open as shown in the next screenshot below:</p>
+</div>
+<p><img alt="TC 6" src="../../img/Teaching_Cluster_Instance_Homepage.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Before opening the terminal, take a moment to understand the layout of the JupyterLab screen:</p>
+<ul>
+<li>Across the <strong>top</strong> is the menu bar, where you can access options such as <code>File</code>, <code>Edit</code>, <code>View</code>, <code>Run</code>, and <code>Settings</code>.</li>
+<li>On the <strong>left-hand side</strong> is the file browser. This is where you can navigate through your folders and files on the Teaching Cluster. In the screenshot, you can already see directories such as <code>Archive</code> and <code>docs</code>.</li>
+<li>The <strong>middle of the screen</strong> is the main working area. Right now it is showing the <strong>Launcher</strong>, which gives you shortcuts to open tools such as a Notebook, Terminal, Text File, Markdown File, Python file, RStudio, Desktop, or VS Code.</li>
+<li>Along the <strong>top of the main panel</strong> you will also see tabs. As you open files, terminals, or notebooks, each one appears as a new tab in this area.</li>
+<li>The small icons in the <strong>far left sidebar</strong> give quick access to tools such as the file browser, running sessions, table of contents, or extensions.</li>
+</ul>
+<p>In this practical, the parts you will use most are the <strong>file browser on the left</strong> and the <strong>terminal launcher tile in the centre</strong>.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Click on the <strong>terminal icon</strong> to open the terminal.  </p>
+</div>
+<p><img alt="TC 7" src="../../img/Teaching_Cluster_Terminal_Open.png" /></p>
+<hr />
+<h1 id="3-creating-your-project-directory">3. Creating your project directory</h1>
+<p>As in the previous practicals, start by making a well-organised working directory.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Create a main directory for today's session, together with subdirectories for input data, reference files, intermediate files, final results, and your command log.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>BIO726P_Teaching_Cluster
+<span class="nb">cd</span><span class="w"> </span>BIO726P_Teaching_Cluster
+mkdir<span class="w"> </span>input<span class="w"> </span>references<span class="w"> </span>tmp<span class="w"> </span>results
+touch<span class="w"> </span>WHATIDID.txt
+</code></pre></div>
+</div>
+<p>Your directory structure should look like this:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>BIO726P_Teaching_Cluster
+├── input
+├── references
+├── results
+├── tmp
+└── WHATIDID.txt
+</code></pre></div>
+</div>
+<hr />
+<h1 id="4-package-management-with-conda">4. Package management with Conda</h1>
+<p>Most bioinformatics workflows depend on many external tools. Installing those tools manually can be difficult because different programs may require different versions of the same dependency.</p>
+<p><a href="https://docs.conda.io/en/latest/">Conda</a> is a package and environment manager that helps solve this problem.</p>
+<h2 id="41-why-use-conda">4.1 Why use Conda?</h2>
+<p>Conda allows you to:</p>
+<ul>
+<li>install software without admin access,</li>
+<li>keep project dependencies together in an isolated environment,</li>
+<li>avoid conflicts between tools required for different analyses,</li>
+<li>share software environments with other users.</li>
+</ul>
+<p>The two channels you will commonly see in bioinformatics are:</p>
+<ul>
+<li><code>conda-forge</code> for general-purpose scientific software,</li>
+<li><code>bioconda</code> for bioinformatics software.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>A <strong>channel</strong> in Conda is a source (repository) of installable packages.</p>
+<p>When you run an install command, Conda searches the channels you specify and resolves package versions from them.</p>
+<p>In bioinformatics, we commonly combine <code>conda-forge</code> and <code>bioconda</code> because many bioinformatics tools in <code>bioconda</code> depend on shared libraries provided by <code>conda-forge</code>.</p>
+<p>Channel order matters: Conda resolves packages based on channel priority, so using a consistent channel setup helps avoid version conflicts and improves reproducibility.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>An <strong>environment</strong> is an isolated software space with its own installed packages and versions. Activating an environment changes which software your shell uses.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What kinds of problems can happen if you install many tools into one single base environment?</p>
+</div>
+<div class="tabbed-block">
+<p>Different tools may require incompatible versions of the same dependency. This can lead to installation failures, broken software, or commands behaving differently between projects.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Take a look through the conda sub-commands (e.g. conda export) and understand when you would use each of them! If you have any questions then please ask a demonstrator.</p>
+</div>
+<h2 id="42-a-note-on-alternatives">4.2 A note on alternatives</h2>
+<p>Conda is not the only way to install software.</p>
+<p>Other common approaches include:</p>
+<ul>
+<li><code>pip</code> for Python packages,</li>
+<li>system package managers such as <code>apt</code> or <code>brew</code>,</li>
+<li>containers such as Docker or Apptainer.</li>
+</ul>
+<p>For this practical, Conda is the simplest way to build a user-controlled analysis environment. Later in your training you may encounter containers when you need stronger reproducibility or more complex software stacks.</p>
+<hr />
+<h1 id="5-creating-a-conda-environment-for-structural-variant-analysis">5. Creating a Conda environment for structural variant analysis</h1>
+<p>We will create an environment containing software for a small Nanopore-based structural variant workflow.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Structural variants (SVs)</strong> are larger genomic changes, usually affecting regions of around 50 base pairs or more.</p>
+<p>Common SV types include:</p>
+<ul>
+<li><strong>Deletions (DEL):</strong> sequence is missing relative to the reference.</li>
+<li><strong>Insertions (INS):</strong> extra sequence is present relative to the reference.</li>
+<li><strong>Inversions (INV):</strong> a region is reversed in orientation.</li>
+<li><strong>Duplications (DUP):</strong> a segment appears in extra copies.</li>
+<li><strong>Translocations (BND/TRA):</strong> sequence is rearranged between genomic locations.</li>
+</ul>
+<p>SVs can have major biological effects because they may disrupt genes, alter gene copy number, or change regulatory regions. Long Nanopore reads are particularly useful for this analysis because individual reads can span larger rearrangements that are often difficult to resolve with short-read data.</p>
+</div>
+<p>The tools we will use are:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose in this practical</th>
+<th>GitHub repository</th>
+<th>Conda package page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NanoPlot</td>
+<td>Basic Nanopore read QC</td>
+<td><a href="https://github.com/wdecoster/NanoPlot">wdecoster/NanoPlot</a></td>
+<td><a href="https://bioconda.github.io/recipes/nanoplot/README.html">bioconda: nanoplot</a></td>
+</tr>
+<tr>
+<td>chopper</td>
+<td>Read filtering</td>
+<td><a href="https://github.com/wdecoster/chopper">wdecoster/chopper</a></td>
+<td><a href="https://bioconda.github.io/recipes/chopper/README.html">bioconda: chopper</a></td>
+</tr>
+<tr>
+<td>minimap2</td>
+<td>Read mapping</td>
+<td><a href="https://github.com/lh3/minimap2">lh3/minimap2</a></td>
+<td><a href="https://bioconda.github.io/recipes/minimap2/README.html">bioconda: minimap2</a></td>
+</tr>
+<tr>
+<td>samtools</td>
+<td>Alignment file processing</td>
+<td><a href="https://github.com/samtools/samtools">samtools/samtools</a></td>
+<td><a href="https://bioconda.github.io/recipes/samtools/README.html">bioconda: samtools</a></td>
+</tr>
+<tr>
+<td>sniffles</td>
+<td>Structural variant calling</td>
+<td><a href="https://github.com/fritzsedlazeck/Sniffles">fritzsedlazeck/Sniffles</a></td>
+<td><a href="https://bioconda.github.io/recipes/sniffles/README.html">bioconda: sniffles</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Test that Conda is available by running one of the following commands:</p>
+<div class="highlight"><pre><span></span><code>conda
+<span class="c1"># or</span>
+conda<span class="w"> </span>--help
+</code></pre></div>
+<p>Your terminal output should look similar to the example below.</p>
+</div>
+<p><img alt="TC 9" src="../../img/Teaching_Cluster_Running_Conda_Command.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Create and activate a new Conda environment called <code>sv_nanopore</code>.</p>
+<p>You can either list the packages you want at creation time, as shown below, or create the environment first and install additional packages after it is active.</p>
+<p><div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>sv_nanopore<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>nanoplot<span class="w"> </span>chopper<span class="w"> </span>minimap2<span class="w"> </span>samtools<span class="w"> </span>sniffles<span class="w"> </span>-y
+</code></pre></div>
+Now activate your new environment:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>sv_nanopore
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Check that each tool is available:</p>
+<div class="highlight"><pre><span></span><code>which<span class="w"> </span>NanoPlot
+which<span class="w"> </span>chopper
+which<span class="w"> </span>minimap2
+which<span class="w"> </span>samtools
+which<span class="w"> </span>sniffles
+</code></pre></div>
+<p>Then check the versions:</p>
+<div class="highlight"><pre><span></span><code>NanoPlot<span class="w"> </span>--version
+chopper<span class="w"> </span>--help
+minimap2<span class="w"> </span>--version
+samtools<span class="w"> </span>--version
+sniffles<span class="w"> </span>--version
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>When you are finished, test deactivating and reactivating the environment:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>deactivate
+conda<span class="w"> </span>activate<span class="w"> </span>sv_nanopore
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why is it important to test whether a package actually runs after installation?</p>
+</div>
+<div class="tabbed-block">
+<p>A package may install successfully but still fail at runtime if there is a path issue, a missing dependency, or confusion over which environment is active. A quick test confirms the tool is really available.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Based on the tools listed above and your understanding from previous practicals, what order should we run them in for structural variant analysis?</p>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>NanoPlot (initial read QC)</li>
+<li>chopper (read filtering)</li>
+<li>minimap2 (read mapping)</li>
+<li>samtools (sorting and indexing alignments)</li>
+<li>sniffles (structural variant calling)</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h1 id="6-downloading-the-reference-genome-and-annotation">6. Downloading the reference genome and annotation</h1>
+<p>We now need a reference genome for <em>Plasmodium falciparum</em> 3D7.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Change into your <code>references</code> directory and download the genome FASTA file. </p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/BIO726P_Teaching_Cluster/references
+wget<span class="w"> </span>https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/GCF_000002765.6_GCA_000002765_genomic.fna.gz
+</code></pre></div>
+<p>Decompress the FASTA file:</p>
+<div class="highlight"><pre><span></span><code>gunzip<span class="w"> </span>GCF_000002765.6_GCA_000002765_genomic.fna.gz
+</code></pre></div>
+<p>Inspect the FASTA file, does it match what you expect? </p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh
+grep<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>GCF_000002765.6_GCA_000002765_genomic.fna<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+</div>
+<hr />
+<h1 id="7-downloading-uploading-example-nanopore-data">7. Downloading &amp; Uploading Example Nanopore data</h1>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>You will need to download the sequence data from each sample directly from QMPlus. This can be done by clicking on the 'Plasmodium_falciparum_Sample_Data' folder and then selecting the <code>download folder</code> button as shown below. </p>
+<p><img alt="Raw Data Download" src="../../img/TC_Download_Data_From_QMPLus.png" /></p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Next <strong>upload the data to the Teaching Cluster</strong> using the upload button as shown in the image below: </p>
+<p><img alt="Data Upload" src="../../img/TC_Upload_Data.png" /></p>
+<p>Finally move the uploaded data into your <code>input</code> directory:</p>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>Pf*.fastq.gz<span class="w">  </span>~/BIO726P_Teaching_Cluster/input
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Check the file exists and inspect the first read:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span>Pf_Sample_A.fastq.gz
+zcat<span class="w"> </span>Pf_Sample_A.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What are the four lines that make up one FASTQ record?</p>
+</div>
+<div class="tabbed-block">
+<p>A FASTQ record contains:
+    - 1) A read header line beginning with <code>@</code>, 
+    - 2) The nucleotide sequence, 
+    - 3) A separator line usually containing <code>+</code>,
+    - 4) A quality string with one character per base.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage. <strong>We will come back to this later in a bonus task</strong></p>
+</div>
+<hr />
+<h1 id="8-part-1-exploring-the-structural-variant-workflow-step-by-step">8. Part 1: Exploring the structural variant workflow step-by-step</h1>
+<p>In this first part, you will run each command manually so that you understand what every step is doing.</p>
+<h2 id="81-quality-control-of-the-raw-reads">8.1 Quality control of the raw reads</h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Change into your <code>tmp</code> directory and run NanoPlot on the raw FASTQ file:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/BIO726P_Teaching_Cluster/tmp
+NanoPlot<span class="w"> </span>--fastq<span class="w"> </span>../input/Pf_Sample_A.fastq.gz<span class="w"> </span>--outdir<span class="w"> </span>Pf_Sample_A_nanoplot_raw
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the output directory:</p>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>Pf_Sample_A_nanoplot_raw
+</code></pre></div>
+<p>The directory should contain the following files: </p>
+<div class="highlight"><pre><span></span><code>ls Pf_Sample_A_nanoplot_raw
+LengthvsQualityScatterPlot_dot.html
+LengthvsQualityScatterPlot_dot.png
+LengthvsQualityScatterPlot_kde.html
+LengthvsQualityScatterPlot_kde.png
+NanoPlot_20260804_0826.log
+NanoPlot-report.html
+NanoStats.txt
+Non_weightedHistogramReadlength.html
+Non_weightedHistogramReadlength.png
+Non_weightedLogTransformed_HistogramReadlength.html
+Non_weightedLogTransformed_HistogramReadlength.png
+WeightedHistogramReadlength.html
+WeightedHistogramReadlength.png
+WeightedLogTransformed_HistogramReadlength.html
+WeightedLogTransformed_HistogramReadlength.png
+Yield_By_Length.html
+Yield_By_Length.png
+</code></pre></div>
+<p>Using the left-side bar, navigate to the directory and open the <code>NanoPlot-report.html</code>. <strong>Note</strong> - To view the figures you may have to click the Trust HTML button on top left side of the window. </p>
+</div>
+<p><img alt="NanoPlot_Image" src="../../img/NanoPlot_Report.png" /></p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the report to gauge the underlying quality of the nanopore sequencing data!</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What kinds of features is NanoPlot useful for checking before alignment?</p>
+</div>
+<div class="tabbed-block">
+<p>It helps you inspect read-length distributions, quality-score distributions, total yield, and whether the dataset contains many short or low-quality reads.</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="82-filter-the-reads">8.2 Filter the reads</h2>
+<p>For many analyses, it is helpful to remove very short or very low-quality reads before alignment.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Filter the reads using <code>chopper</code> and save the result as a gzipped FASTQ file.</p>
+<p>For this first round of filtering, use:</p>
+<ul>
+<li>a minimum quality score of <code>10</code></li>
+<li>a minimum read length of <code>1000</code> bp</li>
+</ul>
+<p>Use <code>chopper -h</code> to work out which options you need. Then think back to previous practicals: if your input is compressed and you want the final output to stay compressed, what should your command pipeline include?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What <code>chopper</code> command would you use?</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>zcat ../input/Pf_Sample_A.fastq.gz | chopper -q 10 -l 1000 | gzip &gt; Pf_Sample_A_filtered_reads.fastq.gz
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Question</label><label for="__tabbed_7_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many reads remained after filtering Pf_Sample_A?</p>
+</div>
+<div class="tabbed-block">
+<p>Kept 32939 reads out of 34084 reads</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Here, <code>-q 10</code> removes very low-quality reads and <code>-l 1000</code> keeps only reads that are at least 1000 bases long. The <code>zcat ... | ... | gzip</code> pattern decompresses the input on the fly and writes the filtered output back out as a compressed FASTQ file.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run NanoPlot again on the filtered reads. Inspect the output report, can you confirm that the filtering implemented by chopper was successful? </p>
+<div class="highlight"><pre><span></span><code>NanoPlot<span class="w"> </span>--fastq<span class="w"> </span>Pf_Sample_A_filtered_reads.fastq.gz<span class="w"> </span>--outdir<span class="w"> </span>Pf_Sample_A_nanoplot_filtered
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Question</label><label for="__tabbed_8_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why might filtering improve downstream structural variant calling?</p>
+</div>
+<div class="tabbed-block">
+<p>Very short or poor-quality reads can map less reliably and may increase false-positive variant calls. Filtering can improve mapping quality and reduce noise.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Question</label><label for="__tabbed_9_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What other metrics does Chopper allow you to filter on and when would you implement these? </p>
+</div>
+<div class="tabbed-block">
+<p>In addition to minimum quality (<code>-q</code>) and minimum length (<code>-l</code>), <code>chopper</code> can filter on maximum quality (<code>--maxqual</code>), maximum read length (<code>--maxlength</code>), minimum and maximum GC content (<code>--mingc</code>, <code>--maxgc</code>), and contaminant sequence matching using a FASTA file (<code>--contam</code>).</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="83-map-reads-to-the-reference">8.3 Map reads to the reference</h2>
+<p>We will now align the filtered reads to the reference genome using <code>minimap2</code>.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run the alignment and write the output to SAM format:</p>
+<div class="highlight"><pre><span></span><code>minimap2 -ax map-ont -t 10 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>-ax map-ont</code> preset is designed for Oxford Nanopore reads. Using the <code>-h</code> sub-command, see what the <code>-t</code> parameter is used for!</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Convert the SAM file to a sorted BAM file and index it:</p>
+<div class="highlight"><pre><span></span><code>samtools<span class="w"> </span>sort<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>Pf_Sample_A.sam<span class="w"> </span>&gt;<span class="w"> </span>Pf_Sample_A.sorted.bam
+samtools<span class="w"> </span>index<span class="w"> </span>Pf_Sample_A.sorted.bam
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Generate a few simple alignment statistics:</p>
+<div class="highlight"><pre><span></span><code>samtools<span class="w"> </span>flagstat<span class="w"> </span>Pf_Sample_A.sorted.bam
+samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sorted.bam<span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Question</label><label for="__tabbed_10_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How could you redirect the stdout of these commands to a file? </p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>samtools flagstat Pf_Sample_A.sorted.bam &gt; Pf_Sample_A.stats
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Question</label><label for="__tabbed_11_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why do we usually work with sorted and indexed BAM files rather than raw SAM files?</p>
+</div>
+<div class="tabbed-block">
+<p>BAM files are compressed and therefore smaller than SAM files. Sorting and indexing also make downstream analyses faster because tools can efficiently access alignments by genomic position.</p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="84-call-structural-variants-with-sniffles">8.4 Call structural variants with Sniffles</h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run Sniffles on the sorted BAM file:</p>
+<div class="highlight"><pre><span></span><code>sniffles<span class="w"> </span>--input<span class="w"> </span>Pf_Sample_A.sorted.bam<span class="w"> </span>--vcf<span class="w"> </span>Pf_Sample_A.sniffles.vcf
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the first few lines of the VCF:</p>
+<div class="highlight"><pre><span></span><code>head<span class="w"> </span>Pf_Sample_A.sniffles.vcf
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Question</label><label for="__tabbed_12_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many variants were called?</p>
+</div>
+<div class="tabbed-block">
+<p>Only a single deletion was identified:</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-vc<span class="w"> </span><span class="s2">&quot;^#&quot;</span><span class="w"> </span>Pf_Sample_A.sniffles.vcf
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Question</label><label for="__tabbed_13_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What is the difference between the header lines and the variant lines in a VCF file?</p>
+</div>
+<div class="tabbed-block">
+<p>Header lines begin with <code>#</code> and describe the file format, metadata, and column names. Variant lines contain the actual variant records.</p>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h1 id="9-interpreting-the-structural-variants">9. Interpreting the structural variants</h1>
+<p>Now that you have a structural variant call set, start thinking about biological interpretation.</p>
+<p>For this dataset, Sniffles reported exactly one structural variant in <code>Pf_Sample_A.sniffles.vcf</code>.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Confirm how many variant records are present (non-header lines):</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-vc<span class="w"> </span><span class="s2">&quot;^#&quot;</span><span class="w"> </span>Pf_Sample_A.sniffles.vcf
+</code></pre></div>
+<p>Then print the variant record itself:</p>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;^#&quot;</span><span class="w"> </span>Pf_Sample_A.sniffles.vcf
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Your output should contain one line similar to:</p>
+<div class="highlight"><pre><span></span><code>NC_004331.3 2840727 Sniffles2.DEL.12SA N &lt;DEL&gt; 60 PASS PRECISE;SVTYPE=DEL;SVLEN=-975;END=2841702;SUPPORT=20;...;VAF=1.000 GT:GQ:DR:DV:PS 1/1:55:0:20:.
+</code></pre></div>
+<p>This line tells us:</p>
+<ul>
+<li><code>SVTYPE=DEL</code>: the event is a deletion.</li>
+<li><code>CHROM=NC_004331.3</code>, <code>POS=2840727</code>, <code>END=2841702</code>: the deleted interval is on chromosome NC_004331.3 from 2,840,727 to 2,841,702.</li>
+<li><code>SVLEN=-975</code>: deletion length is 975 bp (negative sign indicates deletion).</li>
+<li><code>FILTER=PASS</code>: the call passed Sniffles filtering.</li>
+<li><code>QUAL=60</code>: high confidence score.</li>
+<li><code>SUPPORT=20</code>: 20 reads support the variant.</li>
+<li><code>VAF=1.000</code>: all informative reads support the variant allele.</li>
+<li><code>GT=1/1</code>, <code>DR=0</code>, <code>DV=20</code>: genotype is homozygous alternate in this sample, with 0 reference reads and 20 variant reads.</li>
+</ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Question</label><label for="__tabbed_14_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Based on this VCF, what is the main structural variant call in Pf_Sample_A?</p>
+</div>
+<div class="tabbed-block">
+<p>A single, high-confidence 975 bp deletion on chromosome <code>NC_004331.3</code> from 2,840,727 to 2,841,702.</p>
+<p>The call is supported by 20 reads, has <code>FILTER=PASS</code>, and is genotyped as <code>1/1</code> (homozygous alternate) in this sample.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Question</label><label for="__tabbed_15_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why is it not enough to simply observe that Sniffles reported a deletion?</p>
+</div>
+<div class="tabbed-block">
+<p>Variant callers make predictions from read evidence, but those predictions still need interpretation.</p>
+<p>You should evaluate read support, breakpoint precision, coverage context, and whether the event overlaps biologically meaningful features such as genes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Question</label><label for="__tabbed_16_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>What extra information would help you decide whether this deletion is likely to be real?</p>
+</div>
+<div class="tabbed-block">
+<p>Useful evidence includes consistent support in replicate samples, local inspection in a genome browser (for split-read and mapping pattern checks), read depth changes around the event, and whether the region is repetitive or difficult to map.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>If you have access to a GFF/GTF annotation file, you can test whether this structural variant overlaps genes of interest.</p>
+<p>As in Section 6, check the NCBI assembly page for the reference used in this practical:
+https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/</p>
+<p>If a GFF file is available, download it with <code>wget</code>.</p>
+<p>Then run a simple coordinate-overlap check with <code>awk</code>:</p>
+<div class="highlight"><pre><span></span><code>awk -F&#39;\t&#39; &#39;$1==&quot;CONTIG_NAME&quot; &amp;&amp; $4&lt;=START_POS &amp;&amp; $5&gt;=END_POS&#39; Pf3D7_annotation.gff | head
+
+# Example
+
+awk -F&#39;\t&#39; &#39;$1==&quot;NC_004331.3&quot; &amp;&amp; $4&lt;=2841000 &amp;&amp; $5&gt;=2840727&#39; Pf3D7_annotation.gff | head
+</code></pre></div>
+</div>
+<hr />
+<h1 id="10-part-2-turning-the-workflow-into-a-bash-script">10. Part 2: Turning the workflow into a bash script</h1>
+<p>Running commands manually is useful for learning, but it does not scale well. A script makes your workflow easier to rerun, easier to share, and easier to adapt when you want to analyse another sample or repeat the same workflow later.</p>
+<p>In practice, a script does two important jobs:</p>
+<ul>
+<li>it records the exact commands you used, so you do not need to rely on memory or terminal history,</li>
+<li>it keeps repeated setup steps, file paths, and output names in one place, which reduces mistakes when you rerun the analysis.</li>
+</ul>
+<p>You have already run the full workflow manually for <code>Pf_Sample_A.fastq.gz</code>.</p>
+<p>Now the goal is to automate the same analysis for <code>Pf_Sample_B.fastq.gz</code> and <code>Pf_Sample_C.fastq.gz</code>.</p>
+<p>The first version of the script below automates only the early preprocessing steps (QC and filtering) for both samples. That is deliberate: it lets you confirm your file paths, loop logic, and environment before adding mapping and variant calling.</p>
+<h2 id="101-create-your-first-analysis-script">10.1 Create your first analysis script</h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Return to your main project directory and create a script called <code>run_sv_analysis.sh</code>:</p>
+<div class="highlight"><pre><span></span><code>cd ~/BIO726P_Teaching_Cluster
+nano run_sv_analysis.sh
+</code></pre></div>
+<p>Add the following script:</p>
+<div class="highlight"><pre><span></span><code>#!/usr/bin/env bash
+set -euo pipefail
+
+PROJECT_DIR=&quot;$HOME/BIO726P_Teaching_Cluster&quot;
+INPUT_DIR=&quot;$PROJECT_DIR/input&quot;
+REFERENCE=&quot;$PROJECT_DIR/references/GCF_000002765.6_GCA_000002765_genomic.fna&quot;
+TMP_DIR=&quot;$PROJECT_DIR/tmp/&quot;
+RESULTS_DIR=&quot;$PROJECT_DIR/results&quot;
+SAMPLES=(&quot;Pf_Sample_B&quot; &quot;Pf_Sample_C&quot;)
+
+mkdir -p &quot;$TMP_DIR&quot; &quot;$RESULTS_DIR&quot;
+
+for SAMPLE in &quot;${SAMPLES[@]}&quot;; do
+    INPUT_FASTQ=&quot;$INPUT_DIR/${SAMPLE}.fastq.gz&quot;
+    SAMPLE_TMP_DIR=&quot;$TMP_DIR/${SAMPLE}&quot;
+
+    mkdir -p &quot;$SAMPLE_TMP_DIR&quot;
+
+    NanoPlot --fastq &quot;$INPUT_FASTQ&quot; --outdir &quot;$SAMPLE_TMP_DIR/nanoplot_raw&quot;
+
+    zcat &quot;$INPUT_FASTQ&quot; | chopper -q 10 -l 1000 | gzip &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot;
+
+    NanoPlot --fastq &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot; --outdir &quot;$SAMPLE_TMP_DIR/nanoplot_filtered&quot;
+done
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>At the top of the script you will see:</p>
+<div class="highlight"><pre><span></span><code>#!/usr/bin/env bash
+set -euo pipefail
+</code></pre></div>
+<p>These lines make the script safer and more reproducible:</p>
+<ul>
+<li><code>#!/usr/bin/env bash</code> is the <strong>shebang</strong>. It tells the system to run this file using <code>bash</code>.</li>
+<li><code>set -e</code> makes the script stop immediately if a command fails.</li>
+<li><code>set -u</code> treats use of an undefined variable as an error.</li>
+<li><code>set -o pipefail</code> makes a pipeline fail if any command in that pipeline fails (not just the last one).</li>
+</ul>
+<p>Together, these settings help you catch mistakes early instead of silently producing incomplete or misleading output.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the commands in this file. What steps of your analysis pipeline is it running, and which pieces are still left out?</p>
+<p>The variable names at the top make the script easier to read and update:</p>
+<ul>
+<li><code>PROJECT_DIR</code> stores the main project path in one place.</li>
+<li><code>INPUT_DIR</code> and <code>REFERENCE</code> point to the data files used by the workflow.</li>
+<li><code>TMP_DIR</code> and <code>RESULTS_DIR</code> separate temporary working files from final outputs.</li>
+<li><code>SAMPLES</code> defines which samples are processed, so you can scale the workflow by editing one line.</li>
+</ul>
+<p>The loop then runs two early-stage checks for each sample:</p>
+<ul>
+<li><code>NanoPlot</code> on the original FASTQ file for an initial quality-control summary,</li>
+<li><code>chopper</code> to filter out short or low-quality reads,</li>
+<li><code>NanoPlot</code> again on the filtered reads so you can see how the dataset changed after filtering.</li>
+</ul>
+<p>In other words, this version covers preprocessing and quality control for <code>Pf_Sample_B</code> and <code>Pf_Sample_C</code>, but it does not yet map reads or call structural variants.</p>
+<p>Save the file, then make it executable and run it once to see the intermediate output:</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>run_sv_analysis.sh
+./run_sv_analysis.sh
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Question</label><label for="__tabbed_17_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Now extend the script so it also carries out the mapping, sorting, indexing, and structural variant calling steps for both samples. What would the full version look like?</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>#!/usr/bin/env bash
+set -euo pipefail
+
+PROJECT_DIR=&quot;$HOME/BIO726P_Teaching_Cluster&quot;
+INPUT_DIR=&quot;$PROJECT_DIR/input&quot;
+REFERENCE=&quot;$PROJECT_DIR/references/GCF_000002765.6_GCA_000002765_genomic.fna&quot;
+TMP_DIR=&quot;$PROJECT_DIR/tmp/&quot;
+RESULTS_DIR=&quot;$PROJECT_DIR/results&quot;
+SAMPLES=(&quot;Pf_Sample_B&quot; &quot;Pf_Sample_C&quot;)
+
+mkdir -p &quot;$TMP_DIR&quot; &quot;$RESULTS_DIR&quot;
+
+for SAMPLE in &quot;${SAMPLES[@]}&quot;; do
+    INPUT_FASTQ=&quot;$INPUT_DIR/${SAMPLE}.fastq.gz&quot;
+    SAMPLE_TMP_DIR=&quot;$TMP_DIR/${SAMPLE}&quot;
+
+    mkdir -p &quot;$SAMPLE_TMP_DIR&quot;
+
+    NanoPlot --fastq &quot;$INPUT_FASTQ&quot; --outdir &quot;$SAMPLE_TMP_DIR/nanoplot_raw&quot;
+
+    zcat &quot;$INPUT_FASTQ&quot; | chopper -q 10 -l 1000 | gzip &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot;
+
+    NanoPlot --fastq &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot; --outdir &quot;$SAMPLE_TMP_DIR/nanoplot_filtered&quot;
+
+    minimap2 -ax map-ont -t 10 &quot;$REFERENCE&quot; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot; &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sam&quot;
+
+    samtools sort -O BAM &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sam&quot; &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam&quot;
+    samtools index &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam&quot;
+
+    samtools flagstat &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam&quot; &gt; &quot;$RESULTS_DIR/${SAMPLE}.flagstat.txt&quot;
+
+    sniffles --input &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam&quot; --vcf &quot;$RESULTS_DIR/${SAMPLE}.sniffles.vcf&quot;
+done
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="102-comparing-sv-across-samples-a-b-c">10.2 Comparing SV across Samples A, B &amp; C</h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the structural variants identified across samples A, B, and C.</p>
+<p>Are any of the deletions similar between samples? Do any of them affect the same genes? If so, what biological phenotype might you expect?</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Question</label><label for="__tabbed_18_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Click here for answers to Task 10.2</p>
+</div>
+<div class="tabbed-block">
+<p>Comparing the three samples suggests the following pattern:</p>
+<ul>
+<li><code>Pf_Sample_A</code> contains a deletion affecting <strong>histidine-rich protein III</strong> (<code>hrp3</code>, <code>PF3D7_1372200</code>) on <code>NC_004331.3</code>.</li>
+<li><code>Pf_Sample_C</code> contains deletions affecting both <strong>histidine-rich protein II</strong> (<code>hrp2</code>, <code>PF3D7_0831800</code>) on <code>NC_004329.3</code> and <strong>histidine-rich protein III</strong> (<code>hrp3</code>, <code>PF3D7_1372200</code>) on <code>NC_004331.3</code>.</li>
+<li><code>Pf_Sample_B</code> does not show either of these deletions and can be treated as the comparison sample here.</li>
+</ul>
+<p>So, yes: some of the deletions are similar across samples because both <code>Pf_Sample_A</code> and <code>Pf_Sample_C</code> show loss of <code>hrp3</code>.</p>
+<p>The two relevant deleted regions are:</p>
+<ul>
+<li><code>NC_004329.3:1374236-1375299</code> overlapping <strong>histidine-rich protein II</strong> (<code>PF3D7_0831800</code>)</li>
+<li><code>NC_004331.3:2840727-2841703</code> overlapping <strong>histidine-rich protein III</strong> (<code>PF3D7_1372200</code>)</li>
+</ul>
+<p>A likely biological and clinical consequence is altered performance of <strong>HRP2-based malaria rapid diagnostic tests (RDTs)</strong>.</p>
+<p>Parasites with an <code>hrp2</code> deletion, especially when <code>hrp3</code> is also deleted, may be more difficult to detect with HRP2-based RDTs and can sometimes produce <strong>false-negative diagnostic results</strong>.</p>
+<p>In this comparison, <code>Pf_Sample_C</code> would be the sample of greatest concern for that phenotype because it lacks both <code>hrp2</code> and <code>hrp3</code>, whereas <code>Pf_Sample_A</code> only shows the <code>hrp3</code> deletion.</p>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h1 id="11-troubleshooting-and-dependency-issues">11. Troubleshooting and dependency issues</h1>
+<p>Unlike earlier, conda environments do not always solve perfectly on the first attempt, especially if package versions are constrained. </p>
+<p>This matters when you want to return to the same project for a second analysis pass, because later tools may need a different software stack from the one used for the main SV workflow. A common example is <code>medaka</code>, which is often used for polishing and can require a different Python version from the environment you created for NanoPlot, minimap2, samtools, and Sniffles.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>To demonstrate a package conflict try to install medaka using the command below in your <code>sv_nanopore</code> environment.  </p>
+<div class="highlight"><pre><span></span><code>conda install -c bioconda medaka
+</code></pre></div>
+<p>This may take 1-2 minutes as conda tries to resolve the necessary dependancies. However eventually you should get an error like this:</p>
+<div class="highlight"><pre><span></span><code>conda install -c bioconda medaka
+    Channels:
+    - bioconda
+    - conda-forge
+    Platform: linux-64
+    Collecting package metadata (repodata.json): done
+    Solving environment: failed
+
+    LibMambaUnsatisfiableError: Encountered problems while solving:
+    - nothing provides tensorflow 1.12.0 needed by medaka-0.5.2-py36h2b5150b_0
+
+    Could not solve for environment specs
+    The following packages are incompatible
+    ├─ medaka =* * is installable with the potential options
+    │  ├─ medaka [0.10.0|0.10.1|...|1.2.2] would require
+    │  │  └─ python &gt;=3.6,&lt;3.7.0a0 *, which can be installed;
+    │  ├─ medaka [0.5.2|0.6.0|...|0.7.0] would require
+    │  │  └─ tensorflow ==1.12.0 *, which does not exist (perhaps a missing channel);
+    │  ├─ medaka [1.1.1|1.1.2|...|1.2.2] would require
+    │  │  └─ python &gt;=3.7,&lt;3.8.0a0 *, which can be installed;
+    │  ├─ medaka [1.1.1|1.1.2|...|2.1.0] would require
+    │  │  └─ python &gt;=3.8,&lt;3.9.0a0 *, which can be installed;
+    │  ├─ medaka [1.10.0|1.11.0|...|2.2.1] would require
+    │  │  └─ python &gt;=3.10,&lt;3.11.0a0 *, which can be installed;
+    │  ├─ medaka [1.10.0|1.11.0|...|2.1.1] would require
+    │  │  └─ python &gt;=3.9,&lt;3.10.0a0 *, which can be installed;
+    │  ├─ medaka [1.2.3|1.2.5|...|1.6.1] would require
+    │  │  └─ tensorflow =2.2 *, which does not exist (perhaps a missing channel);
+    │  ├─ medaka [2.0.0|2.0.1|2.1.1|2.2.0|2.2.1] would require
+    │  │  └─ python &gt;=3.11,&lt;3.12.0a0 *, which can be installed;
+    │  └─ medaka [2.1.1|2.2.0|2.2.1|2.2.2] would require
+    │     └─ python &gt;=3.12,&lt;3.13.0a0 *, which can be installed;
+    └─ pin on python =3.13 * is not installable because it requires
+    └─ python =3.13 *, which conflicts with any installable versions previously reported.
+
+    Pins seem to be involved in the conflict. Currently pinned specs:
+    - python=3.13
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Question</label><label for="__tabbed_19_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Based on the error message obtained what is the main problem?</p>
+</div>
+<div class="tabbed-block">
+<p>The main problem is a Python version pin conflict. The environment is pinned to <code>python=3.13</code>, but the available <code>medaka</code> builds require older Python versions and specific TensorFlow dependencies, so Conda cannot find a compatible set of packages.</p>
+<p>In practice, the fix is usually to keep the structural-variant workflow environment unchanged and create a separate environment for the follow-up tool rather than forcing everything into one install.</p>
+<p><strong>Follow the steps outlined previously and create a new conda environment with <code>medaka</code> installed!</strong></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Question</label><label for="__tabbed_20_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If Conda reports a dependency conflict, what are some sensible next steps?</p>
+</div>
+<div class="tabbed-block">
+<p>You can try creating a fresh environment, changing the package version, changing channel priority, installing fewer packages at once, or using <code>mamba</code> to obtain a clearer solver result.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>A good long-term habit is to export your environment once it works, especially if you want to move the analysis to another machine or recreate it later.</p>
+<p>This creates a record of the software versions used in the analysis:</p>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>sv_nanopore_environment.yml
+</code></pre></div>
+<p>You can then use this file as a reference when rebuilding the environment elsewhere.</p>
+</div>
+<hr />
+<h1 id="12-summary">12. Summary</h1>
+<p>In this practical you have:</p>
+<ul>
+<li>accessed a remote Linux environment,</li>
+<li>created a structured project directory,</li>
+<li>installed software with Conda,</li>
+<li>downloaded a reference genome and Nanopore data,</li>
+<li>run a structural variant workflow step by step,</li>
+<li>converted that workflow into a reusable bash script.</li>
+</ul>
+<p>These are core skills that transfer directly to larger bioinformatics projects on HPC / cloud systems.</p>
+<hr />
+<h1 id="13-extension-questions-tasks">13. Extension Questions &amp; Tasks</h1>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><strong>Bonus</strong></p>
+<p>Try to source additional nanopore sequencing data for <em>Plasmodium falciparum</em>  from NCBI SRA (https://www.ncbi.nlm.nih.gov/sra) and analyse this! For example take a look at the sample (ERX15224754)</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><strong>Bonus</strong></p>
+<p>Can you find any bioinformatics software which is good at visualising structural variants and available in Conda? If so try download it and take a look at the SV identified via your sniffles analysis!   </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
