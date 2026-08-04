@@ -76,3 +76,33 @@ When a command fails like this, follow these systematic steps to debug the probl
 - Check if previous steps in your workflow completed successfully
 
 -----------------------------------------------------
+
+### **Step 4. Ask Colleagues / Your Neighbour**
+
+If you've tried the above steps and are still stuck, don't hesitate to ask for help from those around you:
+
+* **Explain the problem**: Describe what you're trying to do, what command you ran, and what error message you received. Often, articulating the problem helps you understand it better.
+
+* **Share your screen or terminal output**: Show your colleague the exact error message and the commands you've run. They may spot something you missed.
+
+* **Compare approaches**: Your neighbour might be using a slightly different approach that works, or they may have already solved a similar problem.
+
+**Remember**: Collaboration is a key part of bioinformatics work. Helping each other debug problems is a valuable learning experience for everyone involved!
+
+-----------------------------------------------------
+
+### **Step 5. Ask an LLM (Large Language Model)**
+
+Modern AI tools like ChatGPT, Claude, or GitHub Copilot can be helpful for debugging, but use them wisely:
+
+* **Provide context**: Share the error message, the command you ran, and relevant details about your environment.
+
+* **Don't blindly follow suggestions**: LLMs can make mistakes or provide solutions that don't apply to your specific situation. Always try to understand *why* the solution works.
+
+* **Verify the solution**: Test suggested fixes carefully and check that you understand each part of the command or code change.
+
+* **Learn from the explanation**: Ask the LLM to explain why the error occurred and how the solution addresses it. This helps build your debugging skills.
+
+**CAUTION**: While LLMs are powerful tools, they should complement—not replace—your understanding. Always critically evaluate AI-generated solutions and ensure they make sense for your specific problem.
+
+-----------------------------------------------------
