@@ -303,22 +303,26 @@ We now need a reference genome for *Plasmodium falciparum* 3D7.
 
 ------------------------
 
-# 7. Downloading the Nanopore data
+# 7. Downloading & Uploading Example Nanopore data
 
-You will also need a Nanopore FASTQ file for the sample we are analysing.
 
-!!! Task
-    Change into your `input` directory and download the FASTQ file using the link provided below: 
+!!! Task 
+    You will need to download the sequence data from each sample directly from QMPlus. This can be done by clicking on the 'Plasmodium_falciparum_Sample_Data' folder and then selecting the `download folder` button as shown below. 
+
+    ![Raw Data Download](../img/TC_Download_Data_From_QMPLus.png)
+
+!!! Task 
+    Next **upload the data to the Teaching Cluster** using the upload button as shown in the image below: 
+
+    ![Data Upload](../img/TC_Upload_Data.png)
+
+    Finally move the uploaded data into your `input` directory:
 
     ```bash
-    cd ~/BIO726P_Teaching_Cluster/input
-    wget -O Pf_Sample_A.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
-    wget -O Pf_Sample_B.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
-    wget -O Pf_Sample_C.fastq.gz <ADD_LINK_TO_GDRIVE_HERE>
+    mv Pf*.fastq.gz  ~/BIO726P_Teaching_Cluster/input
+
     ```
 
-!!! Info
-    In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage. **We will come back to this later in a bonus task**
 
 !!! Task
     Check the file exists and inspect the first read:
@@ -342,6 +346,8 @@ You will also need a Nanopore FASTQ file for the sample we are analysing.
             - 3) A separator line usually containing `+`,
             - 4) A quality string with one character per base.
 
+!!! Info
+    In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage. **We will come back to this later in a bonus task**
 ------------------------
 
 # 8. Part 1: Exploring the structural variant workflow step-by-step
@@ -488,7 +494,7 @@ We will now align the filtered reads to the reference genome using `minimap2`.
 !!! Task
     Run the alignment and write the output to SAM format:
 
-    ```bash
+    ```
     minimap2 -ax map-ont -t 10 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
     ```
 
@@ -694,7 +700,7 @@ The first version of the script below automates only the early preprocessing ste
 !!! Task
     Return to your main project directory and create a script called `run_sv_analysis.sh`:
 
-    ```bash
+    ```
     cd ~/BIO726P_Teaching_Cluster
     nano run_sv_analysis.sh
     ```
@@ -731,7 +737,7 @@ The first version of the script below automates only the early preprocessing ste
 !!! Info
     At the top of the script you will see:
 
-    ```bash
+    ```
     #!/usr/bin/env bash
     set -euo pipefail
     ```
