@@ -326,29 +326,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../Apocrita_Access/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Accessing Apocrita
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -408,15 +385,15 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Following the same procedure from the first read cleaning practical
-  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2026-09-29-mapping</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
+  <a href="../pt-1-read-cleaning/">Part 1: Read cleaning</a>, create a new main directory for today's practical (e.g., <code>2026-09-28-mapping</code>), the <code>input</code>, <code>tmp</code>, and <code>results</code> subdirectories, and the file <code>WHATIDID.txt</code> to log your commands. </p>
 <p>To help get you started 
-  <div class="highlight"><pre><span></span><code>mkdir 2026-09-29-mapping
+  <div class="highlight"><pre><span></span><code>mkdir 2026-09-28-mapping
 </code></pre></div></p>
 <p>Your directory hierarchy should look like the following</p>
 </div>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
-<div class="highlight"><pre><span></span><code>2026-09-29-mapping
+<div class="highlight"><pre><span></span><code>2026-09-28-mapping
 ├── input
 ├── tmp
 ├── results
@@ -431,7 +408,7 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 </div>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
-<div class="highlight"><pre><span></span><code>2026-09-29-mapping/
+<div class="highlight"><pre><span></span><code>2026-09-28-mapping/
 ├── input
 │   ├── reads -&gt; /shared/data/popgen/reads
 │   └── reference.fa -&gt; /shared/data/popgen/reference.fa
@@ -477,7 +454,7 @@ which was created to align short read sequences to long sequences such as the sc
 <p>Let's start by linking scaffold sequences to our <code>tmp</code> directory.</p>
 <p>Symlink <code>reference.fa</code> to <code>tmp/</code>:</p>
 <div class="highlight"><pre><span></span><code>cd tmp
-ln -s ~/2026-09-29-mapping/input/reference.fa .
+ln -s ~/2026-09-28-mapping/input/reference.fa .
 cd ..
 </code></pre></div>
 <p>Build the index (step 1):</p>
@@ -601,8 +578,8 @@ cp tmp/alignments/*.bai results/
 <div class="highlight"><pre><span></span><code>2026-09-29-genotyping/
 ├── input
 │   ├── -&gt; /shared/data/popgen/reference.fa
-│   ├── -&gt; ~/2026-09-29-mapping/results/f1_B.bam
-│   ├── -&gt; ~/2026-09-29-mapping/results/f1_B.bam.bai
+│   ├── -&gt; ~/2026-09-28-mapping/results/f1_B.bam
+│   ├── -&gt; ~/2026-09-28-mapping/results/f1_B.bam.bai
 │   └── -&gt; ...
 ├── results
 ├── tmp
@@ -610,7 +587,7 @@ cp tmp/alignments/*.bai results/
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p><strong><em>Note:</em></strong> When you create links from one directory to another, it is better to use the absolute path for links like <code>~/2026-09-29-mapping/results/*.bam*</code> instead of <code>../../2026-09-29-mapping/results/*.bam</code></p>
+<p><strong><em>Note:</em></strong> When you create links from one directory to another, it is better to use the absolute path for links like <code>~/2026-09-28-mapping/results/*.bam*</code> instead of <code>../../2026-09-28-mapping/results/*.bam</code></p>
 </div>
 <p>Several variant calling approaches exist. The simplest approach is to look for positions where the mapped reads consistently have a different base than the reference assembly (this is called <strong>consensus approach</strong>). For this, we will use <a href="http://www.htslib.org/doc/bcftools.html"><em>bcftools</em></a>, a set of tools to call variants and manipulate them. We will run two commands:</p>
 <div class="highlight"><pre><span></span><code>bcftools mpileup
