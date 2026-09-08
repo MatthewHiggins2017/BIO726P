@@ -36,12 +36,12 @@ and *b* in sliding windows using **PLINK 2**, and nucleotide diversity (π) usin
 
 !!! Task
       As before, create a new directory for this practical (e.g.,
-      `2026-09-30-population_genetics`) with the standard subdirectory structure and
+      `2026-09-29-population_genetics`) with the standard subdirectory structure and
       a `WHATIDID.txt` log file:
 
       ```bash
-      mkdir 2026-09-30-population_genetics
-      cd 2026-09-30-population_genetics
+      mkdir 2026-09-29-population_genetics
+      cd 2026-09-29-population_genetics
       mkdir input results tmp
       touch WHATIDID.txt
       ```
@@ -61,7 +61,7 @@ and *b* in sliding windows using **PLINK 2**, and nucleotide diversity (π) usin
 
 !!! terminal
       ```
-      2026-09-30-population_genetics/
+      2026-09-29-population_genetics/
       ├── input
       │   ├── snp.vcf.gz -> ~/2026-09-29-genotyping/results/snp.vcf.gz
       │   └── snp.vcf.gz.tbi -> ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi

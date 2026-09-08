@@ -41,7 +41,7 @@ package in R.
 
 !!! Task
     As before, create a directory for this practical (e.g.,
-    `2026-09-30-population_genetics`). Copy over the R markdown notebook
+    `2026-09-29-population_genetics`). Copy over the R markdown notebook
     `/shared/data/popgen/popgen.Rmd` to your project directory. Create `input/` 
     subdirectory and symlink the `snp.vcf.gz` and `snp.vcf.gz.tbi` file we created
     in the last practical to it. 
@@ -53,7 +53,7 @@ package in R.
 
 !!! Terminal
     ```
-    2026-09-30-population_genetics
+    2026-09-29-population_genetics
     ├── input
     │   ├── snp.vcf.gz -> /home/alice/2026-09-29-genotyping/results/snp.vcf.gz
     │   └── snp.vcf.gz.tbi -> /home/alice/2026-09-29-genotyping/results/snp.vcf.gz.tbi

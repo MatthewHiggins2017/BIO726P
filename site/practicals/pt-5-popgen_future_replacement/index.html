@@ -1,0 +1,956 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Part 5 - Population Genetics - BIO726P</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-5-population-genetics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIO726P
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 5 - Population Genetics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIO726P
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2026 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging_process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Debugging Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="part-5-population-genetics"><strong>Part 5 - Population Genetics</strong></h1>
+<hr />
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p>In this practical, we will use samples with two genotypes associated to two
+distinct phenotypes. Our example assembly consists of two scaffolds from two
+different chromosomes:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Genotype label</th>
+<th style="text-align: center;">Phenotype description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>B</em></td>
+<td style="text-align: center;"><em>single-queen</em> colony</td>
+</tr>
+<tr>
+<td style="text-align: center;"><em>b</em></td>
+<td style="text-align: center;"><em>multiple-queen</em> colony</td>
+</tr>
+</tbody>
+</table>
+<p>The aim of our analysis is to test whether any parts of this assembly differ
+between the individuals from these two groups (<em>B</em> and <em>b</em>).</p>
+<p>In the first part, we will create genotype heatmaps and run Principal Component
+Analysis (PCA). The PCA computation will be performed using <strong>PLINK 2</strong> and
+the results plotted using a short <strong>R</strong> script.</p>
+<p>In the second part, we will measure genetic differentiation (FST) between <em>B</em>
+and <em>b</em> in sliding windows using <strong>PLINK 2</strong>, and nucleotide diversity (π) using
+<strong>VCFtools</strong>. The results will again be visualised with a short R script.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>All commands in this practical are run from the terminal. Short R plotting
+  scripts are included where needed — you do not need prior R experience. Simply
+  copy and paste each command block and focus on interpreting the results!</strong></p>
+</div>
+<hr />
+<h2 id="2-setting-up"><strong>2. Setting Up</strong></h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>As before, create a new directory for this practical (e.g.,
+  <code>2026-09-29-population_genetics</code>) with the standard subdirectory structure and
+  a <code>WHATIDID.txt</code> log file:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span><span class="m">2026</span>-09-29-population_genetics
+<span class="nb">cd</span><span class="w"> </span><span class="m">2026</span>-09-29-population_genetics
+mkdir<span class="w"> </span>input<span class="w"> </span>results<span class="w"> </span>tmp
+touch<span class="w"> </span>WHATIDID.txt
+</code></pre></div>
+<p>Next, symlink the <code>snp.vcf.gz</code> and <code>snp.vcf.gz.tbi</code> files created in the
+  previous practical to your <code>input/</code> directory.</p>
+<div class="highlight"><pre><span></span><code>ln<span class="w"> </span>-s<span class="w"> </span>~/2026-09-29-genotyping/results/snp.vcf.gz<span class="w"> </span>input/
+ln<span class="w"> </span>-s<span class="w"> </span>~/2026-09-29-genotyping/results/snp.vcf.gz.tbi<span class="w"> </span>input/
+</code></pre></div>
+<p>If you don't have these files, you can use the backup copies in
+  <code>/shared/data/backup_vcf</code>.</p>
+<p>Once set up, the output of <code>tree</code> should look like this:</p>
+</div>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>2026-09-29-population_genetics/
+├── input
+│   ├── snp.vcf.gz -&gt; ~/2026-09-29-genotyping/results/snp.vcf.gz
+│   └── snp.vcf.gz.tbi -&gt; ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi
+├── results
+├── tmp
+└── WHATIDID.txt
+</code></pre></div>
+</div>
+<hr />
+<h2 id="3-extracting-snp-data"><strong>3. Extracting SNP Data</strong></h2>
+<p>Before running population genetic analyses, we need to extract the genotype
+information from the VCF file into plain-text files that will be used by
+downstream tools.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Use <code>bcftools query</code> to extract the SNP genotype matrix and the list of
+  sample names:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Extract genotype matrix: CHROM, POS, then one genotype column per sample</span>
+bcftools<span class="w"> </span>query<span class="w"> </span>input/snp.vcf.gz<span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;%CHROM\t%POS[\t%GT]\n&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>./tmp/snp_matrix.txt
+
+<span class="c1"># Extract sample names (one per line, in the same order as the genotype columns)</span>
+bcftools<span class="w"> </span>query<span class="w"> </span>-l<span class="w"> </span>input/snp.vcf.gz<span class="w"> </span>&gt;<span class="w"> </span>./tmp/sample_names.txt
+</code></pre></div>
+<p>Inspect the resulting files once generated using either head / Nano / Vim! Can you figure out what the command did? </p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<p><code>snp_matrix.txt</code> contains one row per SNP. The first two columns are the
+  chromosome and position, followed by one genotype column per sample (0 = reference
+  allele, 1 = alternative allele). <code>sample_names.txt</code> lists the 14 sample IDs in
+  the same order as the columns.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>    * How many SNPs are in your dataset? (Hint: `wc -l snp_matrix.txt`)
+    * How many samples do you have? (Hint: `wc -l sample_names.txt`)
+</code></pre>
+<p>=== "Answer"</p>
+<pre><code>    * The number of lines in `snp_matrix.txt` equals the number of SNPs.
+    * You should have 14 samples (7 B and 7 b). This matches the number of
+      BAM files used in the previous practical.
+</code></pre>
+</div>
+<hr />
+<h2 id="4-building-a-population-file"><strong>4. Building a Population File</strong></h2>
+<p>PLINK 2 requires a phenotype/population file to distinguish the two groups when
+computing FST. We build this automatically from the sample names — any sample
+whose ID contains an uppercase <strong>B</strong> is assigned to group B, all others are
+assigned to group b.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Create a file called <code>tmp/populations.tsv</code> by copying and pasting the
+  following contents based on your <code>tmp/sample_names.txt</code> file:</p>
+<div class="highlight"><pre><span></span><code>#FID    IID         POP
+0       f1_B.bam    B
+0       f1b.bam     b
+0       f2_B.bam    B
+0       f2b.bam     b
+0       f3_B.bam    B
+0       f3b.bam     b
+0       f4_B.bam    B
+0       f4b.bam     b
+0       f5_B.bam    B
+0       f5b.bam     b
+0       f6_B.bam    B
+0       f6b.bam     b
+0       f7_B.bam    B
+0       f7b.bam     b
+</code></pre></div>
+<p><code>results/populations.tsv</code> is a three-column file containing a Family ID (FID,
+set to 0 for haploid data), the sample ID (IID), and the population label (B or b). </p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the file to confirm it looks correct:</p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>tmp/populations.tsv
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>We will now create two per-population keep files. These are used later by VCFtools to restrict analyses to one group at a time. </p>
+<div class="highlight"><pre><span></span><code># Create per-population keep-files for VCFtools (two-column IID IID format)
+awk &#39;NR&gt;1 &amp;&amp; $3==&quot;B&quot; { print $2&quot;\t&quot;$2 }&#39; tmp/populations.tsv &gt; tmp/keep_B.txt
+awk &#39;NR&gt;1 &amp;&amp; $3==&quot;b&quot; { print $2&quot;\t&quot;$2 }&#39; tmp/populations.tsv &gt; tmp/keep_b.txt
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>Can you understand what the AWK command is doing?
+</code></pre>
+<p>=== "Answer"
+    * <code>NR&gt;1</code> skips the header line (<code>#FID IID POP</code>) and processes only sample rows.
+    * <code>$3=="B"</code> (or <code>$3=="b"</code>) keeps only rows where the population column (<code>POP</code>) matches that group.
+    * <code>{ print $2"\t"$2 }</code> prints the sample ID column (<code>IID</code>, field 2) twice, separated by a tab.
+    * This creates the two-column format expected by VCFtools <code>--keep</code> (FID and IID). Here we reuse IID in both columns.
+    * <code>&gt; tmp/keep_B.txt</code> and <code>&gt; tmp/keep_b.txt</code> redirect the output into separate keep-files for each population.
+    * Result: one file listing only B samples and one file listing only b samples, ready for per-population diversity analysis.</p>
+</div>
+<hr />
+<h2 id="5-converting-vcf-to-plink-2-format"><strong>5. Converting VCF to PLINK 2 Format</strong></h2>
+<p>PLINK 2 works with its own binary file format (<code>.pgen</code> / <code>.psam</code> / <code>.pvar</code>).
+We convert the VCF once and then use the resulting files for all subsequent
+PLINK analyses.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Convert the VCF to a PLINK 2 pfile:</p>
+<div class="highlight"><pre><span></span><code>plink2 \
+  --vcf input/snp.vcf.gz \
+  --allow-extra-chr \
+  --set-all-var-ids &#39;@:#&#39; \
+  --max-alleles 2 \
+  --make-pgen \
+  --out tmp/snp
+</code></pre></div>
+</div>
+<p>The key flags used here are:</p>
+<ul>
+<li>
+<p><code>--allow-extra-chr</code> — required because our scaffold names (e.g. <code>scaffold_1</code>)
+  are not standard chromosome identifiers.</p>
+</li>
+<li>
+<p><code>--set-all-var-ids '@:#'</code> — assigns variant IDs in the format <code>CHROM:POS</code>,
+  since our VCF does not contain named SNP IDs.</p>
+</li>
+<li>
+<p><code>--max-alleles 2</code> — retains only biallelic sites.</p>
+</li>
+<li>
+<p><code>--make-pgen</code> — writes the PLINK 2 binary files (<code>.pgen</code>, <code>.psam</code>, <code>.pvar</code>).</p>
+</li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>    * How many variants and samples were retained after conversion?
+      (Check the PLINK 2 log output printed to the terminal)
+</code></pre>
+<p>=== "Answer"</p>
+<pre><code>    * The summary line printed by PLINK 2 reports the number of samples
+      loaded and the number of variants written. The variant count should
+      match the number of SNPs in `snp_matrix.txt`.
+</code></pre>
+</div>
+<hr />
+<h2 id="6-principal-component-analysis-pca"><strong>6. Principal Component Analysis (PCA)</strong></h2>
+<p>PCA summarises the genetic variation across all samples into a small number of
+principal components (PCs). If B and b individuals are genetically distinct, we
+expect them to separate into distinct clusters .</p>
+<p>With newer PLINK 2 builds, PCA on small datasets (fewer than 50 samples) needs
+an explicit allele-frequency file. We therefore generate frequencies once and
+provide them with <code>--read-freq</code> in all PCA runs.</p>
+<h3 id="61-running-pca-with-plink-2"><strong>6.1 Running PCA with PLINK 2</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>First, generate allele frequencies from the full dataset:</p>
+<div class="highlight"><pre><span></span><code>plink2<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pfile<span class="w"> </span>tmp/snp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--allow-extra-chr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--freq<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>tmp/snp_freq
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Then run PCA on the whole dataset and separately for each scaffold:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Whole-genome PCA</span>
+plink2<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pfile<span class="w"> </span>tmp/snp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--read-freq<span class="w"> </span>tmp/snp_freq.afreq<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--allow-extra-chr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pca<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>results/pca_all
+
+<span class="c1"># Per-scaffold PCA</span>
+<span class="k">for</span><span class="w"> </span>scaffold<span class="w"> </span><span class="k">in</span><span class="w"> </span>scaffold_1<span class="w"> </span>scaffold_2<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>plink2<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pfile<span class="w"> </span>tmp/snp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--read-freq<span class="w"> </span>tmp/snp_freq.afreq<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--allow-extra-chr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--chr<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$scaffold</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--pca<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="s2">&quot;results/pca_</span><span class="si">${</span><span class="nv">scaffold</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+</div>
+<p><code>--pca 10</code> computes the top 10 principal components. PLINK 2 produces two output
+files per run:</p>
+<ul>
+<li><code>.eigenvec</code> — the PC scores for each sample (one row per individual).</li>
+<li><code>.eigenval</code> — the variance explained by each PC.</li>
+</ul>
+<p>Running PCA separately for each scaffold lets us test whether the B/b separation
+is driven by one chromosome rather than the whole genome.</p>
+<h3 id="62-visualising-pca-with-r"><strong>6.2 Visualising PCA with R</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run the following R script to read the PLINK 2 output and generate PCA plots. Please do not worry about understanding the full block of R code below, we have included it here as a means of generating the PCA plot necessary for you to interpret. </p>
+<p><strong>Problem - these scripts need to be run in RStudio as R not accessible via terminal for some reason. This creates additional hassle. In future switch this to be python based and ask Vit to install matplotlib</strong></p>
+<div class="highlight"><pre><span></span><code>Rscript - &lt;&lt;&#39;REOF&#39;
+suppressPackageStartupMessages(library(ggplot2))
+
+for (tag in c(&quot;all&quot;, &quot;scaffold_1&quot;, &quot;scaffold_2&quot;)) {
+  vec_f &lt;- paste0(&quot;results/pca_&quot;, tag, &quot;.eigenvec&quot;)
+  val_f &lt;- paste0(&quot;results/pca_&quot;, tag, &quot;.eigenval&quot;)
+  if (!file.exists(vec_f)) next
+
+  # PLINK 2 eigenvec header: #FID IID PC1 PC2 ...
+  ev  &lt;- read.table(vec_f, header = TRUE, check.names = FALSE)
+  val &lt;- scan(val_f, quiet = TRUE)
+  pct &lt;- round(val / sum(val) * 100, 1)
+  ev$POP &lt;- ifelse(grepl(&quot;B&quot;, ev[[2]]), &quot;B&quot;, &quot;b&quot;)   # col 2 = IID
+
+  p &lt;- ggplot(ev, aes(.data[[&quot;PC1&quot;]], .data[[&quot;PC2&quot;]], colour = POP)) +
+    geom_point(size = 3) +
+    xlab(paste0(&quot;PC1 (&quot;, pct[1], &quot;%)&quot;)) +
+    ylab(paste0(&quot;PC2 (&quot;, pct[2], &quot;%)&quot;)) +
+    ggtitle(paste(&quot;PCA -&quot;, tag)) +
+    theme_minimal() + coord_fixed()
+
+  ggsave(paste0(&quot;results/pca_&quot;, tag, &quot;.png&quot;), p, width = 6, height = 5, dpi = 150)
+}
+REOF
+</code></pre></div>
+</div>
+<p>The script reads the <code>.eigenvec</code> and <code>.eigenval</code> files, colours each point by
+population (B or b), and saves a PNG image to <code>results/</code>. The percentage of
+variance explained is automatically added to each axis label.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>    * Do B and b individuals separate along PC1 in the whole-genome PCA?
+    * Which scaffold is responsible for the separation between B and b?
+    * What does it mean if one scaffold separates B from b but the other
+      does not?
+</code></pre>
+<p>=== "Answer"</p>
+<pre><code>    * B and b should clearly separate along PC1 in the whole-genome PCA.
+    * scaffold_2 should drive the B/b separation; scaffold_1 should show
+      little or no separation between groups.
+    * It indicates that the genetic differences between B and b are
+      concentrated on scaffold_2 — the chromosome carrying the supergene —
+      while scaffold_1 (from a different chromosome) segregates
+      independently of colony type.
+</code></pre>
+</div>
+<hr />
+<h2 id="7-genotype-heatmaps"><strong>7. Genotype Heatmaps</strong></h2>
+<p>A genotype heatmap shows the raw genotype of each individual (rows) at each SNP
+position (columns). This gives a visual overview of how consistently the alleles
+differ between the B and b groups across the genome.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Run the following R script to generate heatmaps for the whole genome and
+  each scaffold individually:</p>
+<div class="highlight"><pre><span></span><code>Rscript<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;REOF&#39;</span>
+<span class="s">suppressPackageStartupMessages(library(adegenet))</span>
+
+<span class="s">snp_data     &lt;- read.table(&quot;snp_matrix.txt&quot;)</span>
+<span class="s">sample_names &lt;- gsub(&quot;\\.bam$&quot;, &quot;&quot;, readLines(&quot;sample_names.txt&quot;))</span>
+<span class="s">loci         &lt;- snp_data[, 1:2]</span>
+<span class="s">snp_mat      &lt;- t(snp_data[, 3:ncol(snp_data)])</span>
+<span class="s">row.names(snp_mat) &lt;- sample_names</span>
+
+<span class="s">bb &lt;- sample_names[grep(&quot;B&quot;, sample_names)]   # B group</span>
+<span class="s">lb &lt;- sample_names[grep(&quot;b&quot;, sample_names)]   # b group</span>
+<span class="s">snp_mat &lt;- snp_mat[c(bb, lb), ]</span>
+
+<span class="s">gl &lt;- new(&quot;genlight&quot;, snp_mat,</span>
+<span class="s">          chromosome = loci[, 1], position = loci[, 2],</span>
+<span class="s">          pop = as.factor(c(rep(&quot;B&quot;, length(bb)), rep(&quot;b&quot;, length(lb)))))</span>
+
+<span class="s">for (sc in c(&quot;all&quot;, &quot;scaffold_1&quot;, &quot;scaffold_2&quot;)) {</span>
+<span class="s">  obj &lt;- if (sc == &quot;all&quot;) gl else gl[, which(gl@chromosome == sc)]</span>
+<span class="s">  png(paste0(&quot;results/heatmap_&quot;, sc, &quot;.png&quot;), width = 1000, height = 500)</span>
+<span class="s">  glPlot(obj, main = paste(&quot;Genotype heatmap -&quot;, sc))</span>
+<span class="s">  dev.off()</span>
+<span class="s">}</span>
+<span class="s">REOF</span>
+</code></pre></div>
+</div>
+<p>In the heatmap, each row is a sample and each column is a SNP. Light cells
+indicate the reference allele (0) and dark cells indicate the alternative allele
+(1). Samples are ordered with all B individuals at the top and all b individuals
+at the bottom, making group-level patterns easy to see.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>    * In the whole-genome heatmap, is the genotype difference between B
+      and b consistent across the entire genome?
+    * Compare the `heatmap_scaffold_1.png` and `heatmap_scaffold_2.png`
+      images. What do you observe?
+</code></pre>
+<p>=== "Answer"</p>
+<pre><code>    * No — the B/b genotype difference is clearly visible in one scaffold
+      but not the other.
+    * scaffold_2 shows a strong block-like pattern where B and b carry
+      consistently different alleles across most SNP positions. scaffold_1
+      shows no such pattern, with alleles appearing mixed between B and b
+      individuals.
+</code></pre>
+</div>
+<hr />
+<h2 id="8-measuring-genetic-differentiation-fst"><strong>8. Measuring Genetic Differentiation (FST)</strong></h2>
+<p>FST (the fixation index) measures the degree of genetic differentiation between
+two populations. FST = 0 means the two groups are genetically identical at that
+position; FST = 1 means they are completely differentiated. We calculate FST in
+10 kb sliding windows to identify which regions of the genome show the strongest
+B/b differentiation.</p>
+<h3 id="81-windowed-fst-with-plink-2"><strong>8.1 Windowed FST with PLINK 2</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Calculate FST in 10 kb non-overlapping windows across the genome:</p>
+<div class="highlight"><pre><span></span><code>plink2<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pfile<span class="w"> </span>results/snp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--allow-extra-chr<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pheno<span class="w"> </span>results/populations.tsv<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--pheno-name<span class="w"> </span>POP<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--fst<span class="w"> </span>POP<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--fst-window-size<span class="w"> </span><span class="m">10000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--fst-window-bp-step<span class="w"> </span><span class="m">10000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--out<span class="w"> </span>results/fst
+</code></pre></div>
+</div>
+<ul>
+<li><code>--pheno</code> and <code>--pheno-name POP</code> tell PLINK 2 to use the <code>POP</code> column in our
+  population file to define the two groups (B and b).</li>
+<li><code>--fst-window-size 10000</code> sets each window to 10,000 bp.</li>
+<li><code>--fst-window-bp-step 10000</code> moves the window forward by 10,000 bp, producing
+  non-overlapping windows.</li>
+</ul>
+<p>PLINK 2 writes a <code>.fst.summary</code> file with columns: <code>#CHROM</code>, <code>BIN_START</code>,
+<code>BIN_END</code>, <code>OBS_CT</code> (number of SNPs in the window), and <code>FST</code>.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Inspect the output file to see what it looks like:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># The filename includes the two population labels, e.g. fst.B.b.fst.summary</span>
+ls<span class="w"> </span>results/fst*
+head<span class="w"> </span>results/fst.B.b.fst.summary
+</code></pre></div>
+</div>
+<h3 id="82-visualising-fst"><strong>8.2 Visualising FST</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Plot the windowed FST values across both scaffolds:</p>
+<div class="highlight"><pre><span></span><code>Rscript<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;REOF&#39;</span>
+<span class="s">suppressPackageStartupMessages(library(ggplot2))</span>
+
+<span class="s">fst_file &lt;- Sys.glob(&quot;results/fst.*.fst.summary&quot;)[1]</span>
+<span class="s">fst &lt;- read.table(fst_file, header = TRUE, comment.char = &quot;&quot;)</span>
+<span class="s">colnames(fst)[1] &lt;- &quot;CHROM&quot;</span>
+<span class="s">fst$MID &lt;- (fst$BIN_START + fst$BIN_END) / 2</span>
+
+<span class="s">p &lt;- ggplot(fst, aes(MID, FST, colour = CHROM)) +</span>
+<span class="s">  geom_point(size = 1.5) +</span>
+<span class="s">  facet_wrap(~ CHROM, scales = &quot;free_x&quot;) +</span>
+<span class="s">  xlab(&quot;Genomic position (bp)&quot;) + ylab(&quot;FST&quot;) +</span>
+<span class="s">  ggtitle(&quot;Windowed FST - B vs b (10 kb windows)&quot;) +</span>
+<span class="s">  theme_minimal() + theme(legend.position = &quot;none&quot;)</span>
+<span class="s">ggsave(&quot;results/fst_windows.png&quot;, p, width = 10, height = 4, dpi = 150)</span>
+<span class="s">REOF</span>
+</code></pre></div>
+</div>
+<p>The script reads the PLINK 2 FST output, calculates the midpoint of each window,
+and produces a scatter plot faceted by scaffold. Each point represents the FST
+value in one 10 kb window.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>    * Which scaffold shows consistently high FST?
+    * Knowing that B and b do not recombine with each other in one region
+      of the genome, why do you think FST is high in one scaffold but not
+      the other?
+</code></pre>
+<p>=== "Answer"</p>
+<pre><code>    * scaffold_2 should show high FST, while scaffold_1 should show values
+      close to 0.
+    * The scaffold_2 region corresponds to the supergene — because B and b
+      do not recombine here, the two haplotypes have accumulated many fixed
+      differences over time (high FST). scaffold_1 is outside the supergene
+      and recombines freely, so alleles are shared between B and b
+      individuals (low FST).
+</code></pre>
+</div>
+<hr />
+<h2 id="9-measuring-nucleotide-diversity"><strong>9. Measuring Nucleotide Diversity</strong></h2>
+<p>Nucleotide diversity (π) measures the average number of nucleotide differences
+between pairs of individuals <em>within</em> a population. Low π can indicate a recent
+population bottleneck or a selective sweep — events that reduce the amount of
+genetic variation within a group.</p>
+<h3 id="91-per-window-with-vcftools"><strong>9.1 Per-window π with VCFtools</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Calculate nucleotide diversity in 10 kb windows separately for the B and b
+  groups:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span>pop<span class="w"> </span><span class="k">in</span><span class="w"> </span>B<span class="w"> </span>b<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span>vcftools<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gzvcf<span class="w"> </span>input/snp.vcf.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--keep<span class="w"> </span><span class="s2">&quot;results/keep_</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--window-pi<span class="w"> </span><span class="m">10000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--out<span class="w"> </span><span class="s2">&quot;results/diversity_</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div>
+</div>
+<ul>
+<li><code>--keep</code> restricts the analysis to only the samples listed in the given file,
+  so each run analyses one population at a time.</li>
+<li><code>--window-pi 10000</code> computes π across non-overlapping 10 kb windows.</li>
+</ul>
+<p>VCFtools outputs a <code>.windowed.pi</code> file with columns: <code>CHROM</code>, <code>BIN_START</code>,
+<code>BIN_END</code>, <code>N_VARIANTS</code>, and <code>PI</code>.</p>
+<h3 id="92-visualising-nucleotide-diversity"><strong>9.2 Visualising Nucleotide Diversity</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Plot the per-window diversity for both populations:</p>
+<div class="highlight"><pre><span></span><code>Rscript<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;REOF&#39;</span>
+<span class="s">suppressPackageStartupMessages(library(ggplot2))</span>
+
+<span class="s">for (pop in c(&quot;B&quot;, &quot;b&quot;)) {</span>
+<span class="s">  f &lt;- paste0(&quot;results/diversity_&quot;, pop, &quot;.windowed.pi&quot;)</span>
+<span class="s">  if (!file.exists(f)) next</span>
+<span class="s">  d &lt;- read.table(f, header = TRUE)</span>
+<span class="s">  d$MID &lt;- (d$BIN_START + d$BIN_END) / 2</span>
+<span class="s">  p &lt;- ggplot(d, aes(MID, PI, colour = CHROM)) +</span>
+<span class="s">    geom_point(size = 1.5) +</span>
+<span class="s">    facet_wrap(~ CHROM, scales = &quot;free_x&quot;) +</span>
+<span class="s">    xlab(&quot;Genomic position (bp)&quot;) + ylab(&quot;Nucleotide diversity (pi)&quot;) +</span>
+<span class="s">    ggtitle(paste(&quot;Nucleotide diversity -&quot;, pop, &quot;group (10 kb windows)&quot;)) +</span>
+<span class="s">    theme_minimal() + theme(legend.position = &quot;none&quot;)</span>
+<span class="s">  ggsave(paste0(&quot;results/diversity_&quot;, pop, &quot;.png&quot;), p, width = 10, height = 4, dpi = 150)</span>
+<span class="s">}</span>
+<span class="s">REOF</span>
+</code></pre></div>
+</div>
+<p>The script loops over both populations, reads their <code>.windowed.pi</code> files, and
+saves a plot for each to <code>results/</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>=== "Question"</p>
+<pre><code>    * Compare the nucleotide diversity of the B and b groups in each
+      scaffold. Which group has lower diversity in scaffold_2?
+    * What evolutionary processes could explain very low nucleotide diversity
+      within the b group in scaffold_2?
+</code></pre>
+<p>=== "Answer"</p>
+<pre><code>    * The b group should show much lower nucleotide diversity in scaffold_2
+      compared to the B group.
+    * The b supergene haplotype has accumulated very little genetic variation.
+      This is consistent with a selective sweep — if the b haplotype spread
+      rapidly through the population at some point in the past, it would
+      carry very little standing diversity. The complete absence of
+      recombination on the b haplotype also means variation cannot be
+      reshuffled, so diversity remains low.
+</code></pre>
+</div>
+<hr />
+<h2 id="10-summary-of-output-files"><strong>10. Summary of Output Files</strong></h2>
+<p>Once all steps are complete, your <code>results/</code> directory should contain the
+following key files:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>results/
+├── populations.tsv             # Population assignments (B/b)
+├── keep_B.txt                  # Sample list for B group (VCFtools format)
+├── keep_b.txt                  # Sample list for b group (VCFtools format)
+├── snp.pgen / .psam / .pvar    # PLINK 2 binary genotype files
+├── pca_all.eigenvec / .eigenval
+├── pca_scaffold_1.eigenvec / .eigenval
+├── pca_scaffold_2.eigenvec / .eigenval
+├── fst.B.b.fst.summary         # Windowed FST values (PLINK 2)
+├── diversity_B.windowed.pi     # Per-window pi - B group (VCFtools)
+├── diversity_b.windowed.pi     # Per-window pi - b group (VCFtools)
+├── heatmap_all.png
+├── heatmap_scaffold_1.png
+├── heatmap_scaffold_2.png
+├── pca_all.png
+├── pca_scaffold_1.png
+├── pca_scaffold_2.png
+├── fst_windows.png
+├── diversity_B.png
+└── diversity_b.png
+</code></pre></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

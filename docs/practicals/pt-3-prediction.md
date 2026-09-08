@@ -33,11 +33,11 @@ In this practical, we will use [**MAKER**]((http://www.yandell-lab.org/software/
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2026-09-25-gene_prediction`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2026-09-24-gene_prediction`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```
-      mkdir 2026-09-25-gene_prediction
+      mkdir 2026-09-24-gene_prediction
       ```
 
 
@@ -45,7 +45,7 @@ Your directory hierarchy should look like the following
 
 !!! terminal 
     ```
-    2026-09-25-gene_prediction
+    2026-09-24-gene_prediction
     ├── input
     ├── tmp
     ├── results
@@ -58,8 +58,8 @@ Next lets link your assembled scaffolds from from yesterdays practical into our 
     Link the output (assembly) from Part 2 practical into `input` subdirectory:
 
     ```
-    cd ~/2026-09-25-gene_prediction/input
-    ln -s ~/2026-09-24-assembly/results/scaffolds.fasta .
+    cd ~/2026-09-24-gene_prediction/input
+    ln -s ~/2026-09-23-assembly/results/scaffolds.fasta .
     cd ..
     ```
 

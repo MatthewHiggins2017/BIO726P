@@ -45,18 +45,18 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 
 !!! Task
       Following the same procedure from the first read cleaning practical
-      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2026-09-29-mapping`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
+      [Part 1: Read cleaning](pt-1-read-cleaning.md), create a new main directory for today's practical (e.g., `2026-09-28-mapping`), the `input`, `tmp`, and `results` subdirectories, and the file `WHATIDID.txt` to log your commands. 
 
       To help get you started 
       ```
-      mkdir 2026-09-29-mapping
+      mkdir 2026-09-28-mapping
       ```
 
       Your directory hierarchy should look like the following
 
 !!! terminal 
     ```
-    2026-09-29-mapping
+    2026-09-28-mapping
     ├── input
     ├── tmp
     ├── results
@@ -72,7 +72,7 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 
 !!! terminal 
       ```
-      2026-09-29-mapping/
+      2026-09-28-mapping/
       ├── input
       │   ├── reads -> /shared/data/popgen/reads
       │   └── reference.fa -> /shared/data/popgen/reference.fa
@@ -121,7 +121,7 @@ which was created to align short read sequences to long sequences such as the sc
 
       ```
       cd tmp
-      ln -s ~/2026-09-29-mapping/input/reference.fa .
+      ln -s ~/2026-09-28-mapping/input/reference.fa .
       cd ..
       ```
 
@@ -289,8 +289,8 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
    2026-09-29-genotyping/
    ├── input
    │   ├── -> /shared/data/popgen/reference.fa
-   │   ├── -> ~/2026-09-29-mapping/results/f1_B.bam
-   │   ├── -> ~/2026-09-29-mapping/results/f1_B.bam.bai
+   │   ├── -> ~/2026-09-28-mapping/results/f1_B.bam
+   │   ├── -> ~/2026-09-28-mapping/results/f1_B.bam.bai
    │   └── -> ...
    ├── results
    ├── tmp
@@ -298,7 +298,7 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
    ```
 
 !!! Info
-      **_Note:_** When you create links from one directory to another, it is better to use the absolute path for links like `~/2026-09-29-mapping/results/*.bam*` instead of `../../2026-09-29-mapping/results/*.bam`
+      **_Note:_** When you create links from one directory to another, it is better to use the absolute path for links like `~/2026-09-28-mapping/results/*.bam*` instead of `../../2026-09-28-mapping/results/*.bam`
 
 
 Several variant calling approaches exist. The simplest approach is to look for positions where the mapped reads consistently have a different base than the reference assembly (this is called **consensus approach**). For this, we will use [*bcftools*](http://www.htslib.org/doc/bcftools.html), a set of tools to call variants and manipulate them. We will run two commands:
