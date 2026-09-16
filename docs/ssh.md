@@ -119,6 +119,9 @@ Type in the password that you've been emailed, and hit return. Nothing will appe
 
 1) On Windows 10+, type cmd (short for command) into the search box, and press Enter.
 
+![](./img/windows_find_command_prompt.png)
+
+
 2) Into the Windows command line that appears, type `ssh username@servername`, 
    replacing username and servername with the username and server name that you 
    have been emailed:
