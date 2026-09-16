@@ -155,7 +155,9 @@ Type in the password that you've been emailed, and hit return. Nothing will appe
 
 7) Congratulations! You are now logged in!
 
-## Using MobaXTerm SSH client
+--------------------
+
+## **Using MobaXTerm SSH client**
 
 If built-in SSH client did not work for you, then use MobaXTerm as exlained below.
 
