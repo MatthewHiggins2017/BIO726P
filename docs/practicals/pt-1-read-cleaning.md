@@ -729,10 +729,3 @@ concept of k-mer filtering and the reasoning behind each step.
 * Kokot, M., Długosz, M. and Deorowicz, S., 2017. KMC 3: counting and
   manipulating k-mer statistics. Bioinformatics, 33(17), pp.2759-2761.
 
-## 9. Bonus questions if you're done early
-
-!!! Question
-      * Which read cleaners exist and are the most popular today? 
-      * Which read cleaners would you use for Illumina data? Why?
-      * Which read cleaners would you use for long-read data? Why?
-      * Can having an existing genome assembly help with read cleaning? How?
