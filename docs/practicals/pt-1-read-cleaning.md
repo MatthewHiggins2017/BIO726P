@@ -349,36 +349,95 @@ Now lets inspect those FastQC report generated!
 
 !!! task
 
-    First, copy the files `reads.pe1_fastqc.html` and
-    `reads.pe2_fastqc.html` to the directory `~/www/tmp`. Then, open the browser and
-    go to your personal module page (e.g., if your QMUL username is `bob`,  the
-    URL will be `https://bob.genomicscourse.com`) and click on the `~/www/tmp` link. After
-    that, click on one of the links corresponding to the reports files.
-
-!!! question
-    **_Question:_**
-    What does the *FastQC* report tell you? 
+    First, copy the output html files to the directory ~/www/tmp directory.
     
-    If in doubt, check the documentation [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/) and what the quality scores mean [here](https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/).
+    `cp tmp/*_fastqc.html ~/www/tmp/`
 
-For comparison, have a look at some plots from other sequencing libraries:
-e.g, [[1]](../img/qc/per_base_quality.png), [[2]](../img/qc/qc_factq_tile_sequence_quality.png), [[3]](../img/qc/per_base_sequence_content.png). Note, the results for your sequences may look different.
+    Then, open the browser and go to your personal module page (e.g., if your QMUL username is `bob`,  the  URL will be `https://bob.genomicscourse.com`) and click on the `~/www/tmp` link.
+
+    ![](../img/Selecting_www_tmp.png)
+    
+    After you should be presented with a screen that allows you to select the following HTML files to visualise.
+    
+    ![](../img/First_FASTQC_Files_Available.png)
+     
+    Click the link to corresponding report files. You display should be similar to the image below. 
+
+    ![](../img/First_FASTQC_Image_Display.png)
+
+
+
+!!! Task
+    **_Question:_**
+    What does the *FastQC* report tell you? Take 10 minutes to look through the following FASTQC documentation [here](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/) to understand the purpose of each plot. 
+
+    If you are still confused about Phred Scores, check out this page [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035531872-Phred-scaled-quality-scores)
+
+
+
 
 !!! Question
-    Clearly, some sequences have very low quality bases towards the end. Why do you think that may be?
+     
+    === "Question"
+
+        Which FastQC plots shows the relationship between base quality and position in the sequence? What else does this plot tell you about nucleotide composition towards the end of the sequences?
+
+    === "Answer"
+        
+        The **Per Base Sequence Quality** Plot 
+
+        ![](../img/First_Per_Base_Seq_Qual_Answer.png)
+
+        For each position a **Box-Whisker** type plot is drawn. The elements of the plot are as follows:
+
+        The central red line is the median value
+        The yellow box represents the inter-quartile range (25-75%)
+        The upper and lower whiskers represent the 10% and 90% points
+        The blue line represents the mean quality
+        The y-axis on the graph shows the quality scores.
+
 
 
 !!! Question
-    Which FastQC plots shows the relationship between base quality and position in the sequence? What else does this plot tell you about nucleotide composition towards the end of the sequences?
+     
+    === "Question"
+
+        How does the quality change across the read? Is it uniform? 
+
+    === "Answer"
+        
+        Typically the average nucleotide quality declines towards the end of the read, meaning that the sequencing quality is not uniform across the entire read. This reduction in quality towards the 3′ end is common in sequencing data and can be caused by factors such as signal degradation during the sequencing process.
+    
 
 !!! Question
-    Should you maybe trim the sequences to remove low-quality ends? What else might you want to do?
+     
+    === "Question"
+        
+        Comparing the per-base sequencing quality reports for **reads.pe1.fastq.gz** and **reads.pe2.fastq.gz**, which set has, on average, higher quality? 
 
-In the following sections, we will perform two cleaning steps:
+    === "Answer"
+        
+        - reads.pe1.fastq.gz 
 
-* Trimming the ends of sequence reads using cutadapt.
-* K-mer filtering using the bioinformatics tool **kmc3**.
-* Removing sequences that are of low quality or too short using cutadapt.
+
+!!! Question
+     
+    === "Question"
+
+        How could you handle low quality reads? Discuss this question with a partner before looking at the answer. 
+
+    === "Answer"
+        
+        - **Discard entire reads** that do not meet a specified quality threshold.
+        - **Trim low-quality regions** from individual reads while retaining the higher-quality portions. 
+
+        In the following sections, we will perform the following cleaning steps:
+
+
+        * Trimming the ends of sequence reads using cutadapt.
+        * K-mer filtering using the bioinformatics tool **kmc3**.
+        * Removing sequences that are of low quality or too short using cutadapt.
+
 
 Other similar tools include [*fastx_toolkit*](https://github.com/agordon/fastx_toolkit),
 [*BBTools*](https://jgi.doe.gov/data-and-tools/bbtools/), and
@@ -390,19 +449,11 @@ Other similar tools include [*fastx_toolkit*](https://github.com/agordon/fastx_t
 
 To clean the FASTQ sequences, we will use a software tool called
 [*Trimmomatic*](http://www.usadellab.org/cms/?page=trimmomatic). As stated on the
-official website:
+official website: *Trimmomatic is a flexible read trimming tool for Illumina NGS data. It performs a variety of useful trimming tasks for Illumina paired-end and single ended data.*
 
-* Trimmomatic is a flexible read trimming tool for Illumina NGS data. It performs a variety of useful trimming tasks for Illumina paired-end and single ended data.
-
-Trimmomatic works with paired-end reads and can perform several trimming steps in a single command.
-
-!!! Question
-    What is the meaning of Trimmomatic options `LEADING`, `TRAILING`, `SLIDINGWINDOW`, and `MINLEN`?
-    (*Hint:* you can read a detailed description of the options in the Trimmomatic manual or by searching online)
 
 To identify relevant quality cutoffs, it is necessary to be familiar with
-[base quality scores](https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/)
-and examine the per-base quality score in your FastQC report.
+[base quality scores](https://gatk.broadinstitute.org/hc/en-us/articles/360035531872-Phred-scaled-quality-scores) and examine the per-base quality score in your FastQC report.
 
 We will run Trimmomatic with several options:
 - `LEADING`: removes low quality bases from the beginning of the read
@@ -410,21 +461,12 @@ We will run Trimmomatic with several options:
 - `SLIDINGWINDOW`: performs a sliding window trimming approach
 - `MINLEN`: removes reads that fall below the specified minimum length
 
+!!! task
+    Take 5 minutes to review the [**trimmomatic documentation here**]((http://www.usadellab.org/cms/?page=trimmomatic)) to make sure you understand completely how the tool works. This is best practice for bioinformaticians when using a new tool for the first time and a good habit! 
 
-!!! Info 
-    **_Note:_**
-    If you trim too much of your sequence (i.e., too large values for `LEADING`, 
-    `TRAILING`, or too stringent `SLIDINGWINDOW` parameters), you increase the 
-    likelihood of eliminating important information. Additionally, if the trimming 
-    is too aggressive, some sequences may be discarded completely, which will cause 
-    problems in the subsequent steps of the pre-processing. For this example, we 
-    suggest keeping quality thresholds around 3-5 for `LEADING` and `TRAILING`, and 
-    using a sliding window of 4:15 (window size:quality threshold).
 
 !!! task
-    The command to run Trimmomatic on the paired-end reads files is reported below. 
-    Trimmomatic processes both paired-end files simultaneously and produces four 
-    output files: two for paired reads that survived trimming and two for unpaired 
+    The command to run Trimmomatic on the paired-end reads files is reported below.  Trimmomatic processes both paired-end files simultaneously and produces four  output files: two for paired reads that survived trimming and two for unpaired 
     reads where only one of the pair survived.
 
     ```
@@ -440,9 +482,38 @@ We will run Trimmomatic with several options:
       LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
     ```
     
-    Note: You can adjust the quality parameters (`LEADING`, `TRAILING`, and 
-    `SLIDINGWINDOW`) based on your FastQC results. The `MINLEN` value removes 
-    reads shorter than 36 bp after trimming.
+    **Note**: You can adjust the quality parameters (`LEADING`, `TRAILING`, and 
+    `SLIDINGWINDOW`) based on your FastQC results.
+
+
+!!! Info 
+    **_Note:_**
+    If you trim too much of your sequence (i.e., too large values for `LEADING`, 
+    `TRAILING`, or too stringent `SLIDINGWINDOW` parameters), you increase the 
+    likelihood of eliminating important information. For this example, we 
+    suggest keeping quality thresholds around 3-5 for `LEADING` and `TRAILING`, and using a sliding window of 4:15 (window size:quality threshold).
+
+
+!!! Question
+     
+    === "Question"
+        
+        When using Trimmomatic, does the order of trimming commands matter?
+
+
+    === "Answer"
+        
+        **Yes.** Trimmomatic executes trimming steps sequentially from left to right in the exact order specified on the command line. The output of each step becomes the input for the next.
+
+        Because commands run as a pipeline, the sequence directly impacts your output. For example it is best practice to: 
+
+        - Run Quality Trimming in a logical sequence. Steps like `LEADING` or `TRAILING` remove low-quality bases from the read edges before `SLIDINGWINDOW` evaluates broader region quality.
+
+        - The `SLIDINGWINDOW` will scan the read 5' to 3' and cut the left most position in the window where the average quality drops below the threshold, subsequently removing the rest of the read.
+        
+        - The Minimum length filter (MINLEN) is typically the final step. If placed earlier, reads are checked before subsequent quality trimming shortens them, allowing reads that end up below your minimum length threshold to slip into your final file.
+
+        
 
 -------------------
 
@@ -501,6 +572,9 @@ concept of k-mer filtering and the reasoning behind each step.
 
 
 !!! Task
+
+    **Work through the following set of commands and before you run each one, try to understand what each step is doing!**
+
     To mask rare k-mers we will first build a k-mer database that includes counts for each k-mer. For this, we first make a list of files to input to KMC.
 
     ```
@@ -514,6 +588,60 @@ concept of k-mer filtering and the reasoning behind each step.
     ```
     kmc -m4 -k21 @tmp/file_list_for_kmc tmp/21-mers tmp
     ```
+
+
+!!! Question
+     
+    === "Question"
+        
+        As you were building the Kmer database a response was returned to the terminal, how did you interpret the output?
+
+        ```
+        ***************************************
+        Stage 1: 100%
+        Stage 2: 100%
+        1st stage: 6.42227s
+        2nd stage: 11.3654s
+        Total    : 17.7877s
+        Tmp size : 99MB
+
+        Stats:
+        No. of k-mers below min. threshold :      3595345
+        No. of k-mers above max. threshold :            0
+        No. of unique k-mers               :      7172390
+        No. of unique counted k-mers       :      3577045
+        Total no. of k-mers                :     80217049
+        Total no. of reads                 :       674112
+        Total no. of super-k-mers          :     12191773
+        ```
+
+    === "Answer"
+
+        This output summarise the metrics, temporary resource usage, and k-mer count statistics produced by KMC (K-mer Counter) after processing the set of reads provided. 
+
+        **Performance Metrics**
+
+        - Stage 1 & Stage 2 (100%): KMC completed both of its operational phases. Stage 1 partitions sequencing reads into disk bins via super-k-mers, and Stage 2 counts and sorts k-mers within each bin.
+
+        - 1st stage / 2nd stage / Total: Stage 1 took ~6.42s, Stage 2 took ~11.37s, for a total run time of 17.79 seconds.
+
+        - Tmp size (99MB): Peak disk space used for temporary bin files during processing.
+
+        **Dataset & K-mer Statistics**
+
+        - Total no. of reads (674,112): Total number of sequencing reads read from the input files.
+        - Total no. of k-mers (80,217,049): Cumulative count of all k-mers observed across all reads (includes all duplicates and repetitions).
+        - Total no. of super-k-mers (12,191,773): Overlapping sequences of k-mers sharing identical signatures, generated during Stage 1 for efficient memory and disk management.
+        - No. of unique k-mers (7,172,390): Total number of distinct k-mer sequences observed in the dataset before applying filters.
+        - No. of k-mers below min. threshold (3,595,345): Distinct k-mers filtered out because their occurrence count fell below the minimum cutoff (-ci, usually set to 2 to eliminate sequencing errors).
+        - No. of k-mers above max. threshold (0): Distinct k-mers filtered out for exceeding the maximum cutoff (-cx).
+        - No. of unique counted k-mers (3,577,045): Distinct k-mers that passed all threshold filters and were written to the output database (7,172,390 - 3,595,345 = 3,577,045).
+        
+
+
+!!! Task
+
+    Now the k-mer database is built it is time to continue! 
 
     Mask k-mers (-hm) observed less than two times (-ci) in the database
     (tmp/21-mers). The -t option tells KMC to run in single-threaded mode: this is
@@ -551,16 +679,34 @@ concept of k-mer filtering and the reasoning behind each step.
     cp tmp/reads.pe1.clean.fq tmp/reads.pe2.clean.fq results
     ```
 
+!!! Info
+
+    **Note.** If you are interested in understanding how KMC3 works at a deeper level, take a look the [corresponding publication here](https://academic.oup.com/bioinformatics/article/33/17/2759/3796399), especially the supplementary information [here](https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/33/17/10.1093_bioinformatics_btx304/4/bioinformatics_33_17_2759_s2.pdf?Expires=1792590023&Signature=Uny9F0foIijNmtspDz9hiLfM3QfxxCU3x87dKARFq-VStn5JWO8xQ5FQkrrghK3XnBr8h30SdOy3GV7N7SpQb8mAhe0l8CQj7nPG3owC9vl-ory4VDxKN5CCkT~fcLeHXUuQHpTzJ6u87WeCJtAu-nFw45Bdo1fYh3Cv5FnwBU2~XfzaQHJoTlzB~VDhduy4G3fsQKSd0xxylBu18CYDeEvaXMMIrTUc5GrOd3tqMMgHcDjCGj4fqQMup46-vscjK2iygtlFcGs2xLesRby1KdDAl12P7TCuAwcYtaDL~nZDB9G~0nvPkAZEuALIfXH7iQf1VDepg9aJjpTWCnJbtg__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
+
+
 -----------
 
 ### **Inspecting quality of cleaned reads**
 
-Now we have cleaned our reads, lets have a look at how the 'cleaned' file is different from the original! 
+
+!!! task    
+    Now you have successfully performed read trimming, it is time to inspect the "cleaned" reads generated (**reads.pe1.clean.fq** & **reads.pe2.clean.fq**).To achieve this use the **FastQC** tool which you implemented earlier!  
+
 
 !!! Question
-    Which percentage of reads have we removed overall? (hint: `wc -l` can count lines in a non-gzipped file).  
+    Comparing the FASTQC reports prior and post cleaning did you observe an improvment in the per-base nucleotide quality score and other metrics? 
 
-If you have time, maybe rerun FastQC on the cleaned data and inspect the output!  
+
+-----------
+
+### **Bonus Info (Optional)**
+
+
+!!! Info    
+    The use of **kmers** pops up across bioinformatics! Take a look at the tool [Sourmash (link here)](https://sourmash.readthedocs.io/en/latest/kmers-and-minhash.html) to see how kmers can be used in species identification! 
+
+
+
 
 ----------------------
 
