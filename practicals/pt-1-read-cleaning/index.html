@@ -615,38 +615,91 @@ command (be aware of your current working directory using the command <code>pwd<
 <p>Now lets inspect those FastQC report generated!</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>First, copy the files <code>reads.pe1_fastqc.html</code> and
-<code>reads.pe2_fastqc.html</code> to the directory <code>~/www/tmp</code>. Then, open the browser and
-go to your personal module page (e.g., if your QMUL username is <code>bob</code>,  the
-URL will be <code>https://bob.genomicscourse.com</code>) and click on the <code>~/www/tmp</code> link. After
-that, click on one of the links corresponding to the reports files.</p>
+<p>First, copy the output html files to the directory ~/www/tmp directory.</p>
+<p><code>cp tmp/*_fastqc.html ~/www/tmp/</code></p>
+<p>Then, open the browser and go to your personal module page (e.g., if your QMUL username is <code>bob</code>,  the  URL will be <code>https://bob.genomicscourse.com</code>) and click on the <code>~/www/tmp</code> link.</p>
+<p><img alt="" src="../../img/Selecting_www_tmp.png" /></p>
+<p>After you should be presented with a screen that allows you to select the following HTML files to visualise.</p>
+<p><img alt="" src="../../img/First_FASTQC_Files_Available.png" /></p>
+<p>Click the link to corresponding report files. You display should be similar to the image below. </p>
+<p><img alt="" src="../../img/First_FASTQC_Image_Display.png" /></p>
 </div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
 <p><strong><em>Question:</em></strong>
-What does the <em>FastQC</em> report tell you? </p>
-<p>If in doubt, check the documentation <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/">here</a> and what the quality scores mean <a href="https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/">here</a>.</p>
-</div>
-<p>For comparison, have a look at some plots from other sequencing libraries:
-e.g, <a href="../../img/qc/per_base_quality.png">[1]</a>, <a href="../../img/qc/qc_factq_tile_sequence_quality.png">[2]</a>, <a href="../../img/qc/per_base_sequence_content.png">[3]</a>. Note, the results for your sequences may look different.</p>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>Clearly, some sequences have very low quality bases towards the end. Why do you think that may be?</p>
+What does the <em>FastQC</em> report tell you? Take 10 minutes to look through the following FASTQC documentation <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/">here</a> to understand the purpose of each plot. </p>
+<p>If you are still confused about Phred Scores, check out this page <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035531872-Phred-scaled-quality-scores">here</a></p>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>Which FastQC plots shows the relationship between base quality and position in the sequence? What else does this plot tell you about nucleotide composition towards the end of the sequences?</p>
 </div>
+<div class="tabbed-block">
+<p>The <strong>Per Base Sequence Quality</strong> Plot </p>
+<p><img alt="" src="../../img/First_Per_Base_Seq_Qual_Answer.png" /></p>
+<p>For each position a <strong>Box-Whisker</strong> type plot is drawn. The elements of the plot are as follows:</p>
+<p>The central red line is the median value
+The yellow box represents the inter-quartile range (25-75%)
+The upper and lower whiskers represent the 10% and 90% points
+The blue line represents the mean quality
+The y-axis on the graph shows the quality scores.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>Should you maybe trim the sequences to remove low-quality ends? What else might you want to do?</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How does the quality change across the read? Is it uniform? </p>
 </div>
-<p>In the following sections, we will perform two cleaning steps:</p>
+<div class="tabbed-block">
+<p>Typically the average nucleotide quality declines towards the end of the read, meaning that the sequencing quality is not uniform across the entire read. This reduction in quality towards the 3′ end is common in sequencing data and can be caused by factors such as signal degradation during the sequencing process.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Comparing the per-base sequencing quality reports for <strong>reads.pe1.fastq.gz</strong> and <strong>reads.pe2.fastq.gz</strong>, which set has, on average, higher quality? </p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>reads.pe1.fastq.gz </li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How could you handle low quality reads? Discuss this question with a partner before looking at the answer. </p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>Discard entire reads</strong> that do not meet a specified quality threshold.</li>
+<li><strong>Trim low-quality regions</strong> from individual reads while retaining the higher-quality portions. </li>
+</ul>
+<p>In the following sections, we will perform the following cleaning steps:</p>
 <ul>
 <li>Trimming the ends of sequence reads using cutadapt.</li>
 <li>K-mer filtering using the bioinformatics tool <strong>kmc3</strong>.</li>
 <li>Removing sequences that are of low quality or too short using cutadapt.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 <p>Other similar tools include <a href="https://github.com/agordon/fastx_toolkit"><em>fastx_toolkit</em></a>,
 <a href="https://jgi.doe.gov/data-and-tools/bbtools/"><em>BBTools</em></a>, and
 <a href="https://www.usadellab.org/cms/index.php?page=trimmomatic"><em>Trimmomatic</em></a> however, we will not use them in this practical!</p>
@@ -654,40 +707,21 @@ e.g, <a href="../../img/qc/per_base_quality.png">[1]</a>, <a href="../../img/qc/
 <h3 id="read-trimming"><strong>Read trimming</strong></h3>
 <p>To clean the FASTQ sequences, we will use a software tool called
 <a href="http://www.usadellab.org/cms/?page=trimmomatic"><em>Trimmomatic</em></a>. As stated on the
-official website:</p>
-<ul>
-<li>Trimmomatic is a flexible read trimming tool for Illumina NGS data. It performs a variety of useful trimming tasks for Illumina paired-end and single ended data.</li>
-</ul>
-<p>Trimmomatic works with paired-end reads and can perform several trimming steps in a single command.</p>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>What is the meaning of Trimmomatic options <code>LEADING</code>, <code>TRAILING</code>, <code>SLIDINGWINDOW</code>, and <code>MINLEN</code>?
-(<em>Hint:</em> you can read a detailed description of the options in the Trimmomatic manual or by searching online)</p>
-</div>
+official website: <em>Trimmomatic is a flexible read trimming tool for Illumina NGS data. It performs a variety of useful trimming tasks for Illumina paired-end and single ended data.</em></p>
 <p>To identify relevant quality cutoffs, it is necessary to be familiar with
-<a href="https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/">base quality scores</a>
-and examine the per-base quality score in your FastQC report.</p>
+<a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035531872-Phred-scaled-quality-scores">base quality scores</a> and examine the per-base quality score in your FastQC report.</p>
 <p>We will run Trimmomatic with several options:
 - <code>LEADING</code>: removes low quality bases from the beginning of the read
 - <code>TRAILING</code>: removes low quality bases from the end of the read<br />
 - <code>SLIDINGWINDOW</code>: performs a sliding window trimming approach
 - <code>MINLEN</code>: removes reads that fall below the specified minimum length</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p><strong><em>Note:</em></strong>
-If you trim too much of your sequence (i.e., too large values for <code>LEADING</code>, 
-<code>TRAILING</code>, or too stringent <code>SLIDINGWINDOW</code> parameters), you increase the 
-likelihood of eliminating important information. Additionally, if the trimming 
-is too aggressive, some sequences may be discarded completely, which will cause 
-problems in the subsequent steps of the pre-processing. For this example, we 
-suggest keeping quality thresholds around 3-5 for <code>LEADING</code> and <code>TRAILING</code>, and 
-using a sliding window of 4:15 (window size:quality threshold).</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Take 5 minutes to review the <a href="(http://www.usadellab.org/cms/?page=trimmomatic)"><strong>trimmomatic documentation here</strong></a> to make sure you understand completely how the tool works. This is best practice for bioinformaticians when using a new tool for the first time and a good habit! </p>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>The command to run Trimmomatic on the paired-end reads files is reported below. 
-Trimmomatic processes both paired-end files simultaneously and produces four 
-output files: two for paired reads that survived trimming and two for unpaired 
+<p>The command to run Trimmomatic on the paired-end reads files is reported below.  Trimmomatic processes both paired-end files simultaneously and produces four  output files: two for paired reads that survived trimming and two for unpaired 
 reads where only one of the pair survived.</p>
 <div class="highlight"><pre><span></span><code>cd ~/2026-09-22-read_cleaning
 
@@ -700,9 +734,41 @@ trimmomatic PE \
   tmp/reads.pe2.unpaired.fq \
   LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 </code></pre></div>
-<p>Note: You can adjust the quality parameters (<code>LEADING</code>, <code>TRAILING</code>, and 
-<code>SLIDINGWINDOW</code>) based on your FastQC results. The <code>MINLEN</code> value removes 
-reads shorter than 36 bp after trimming.</p>
+<p><strong>Note</strong>: You can adjust the quality parameters (<code>LEADING</code>, <code>TRAILING</code>, and 
+<code>SLIDINGWINDOW</code>) based on your FastQC results.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong><em>Note:</em></strong>
+If you trim too much of your sequence (i.e., too large values for <code>LEADING</code>, 
+<code>TRAILING</code>, or too stringent <code>SLIDINGWINDOW</code> parameters), you increase the 
+likelihood of eliminating important information. For this example, we 
+suggest keeping quality thresholds around 3-5 for <code>LEADING</code> and <code>TRAILING</code>, and using a sliding window of 4:15 (window size:quality threshold).</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>When using Trimmomatic, does the order of trimming commands matter?</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Yes.</strong> Trimmomatic executes trimming steps sequentially from left to right in the exact order specified on the command line. The output of each step becomes the input for the next.</p>
+<p>Because commands run as a pipeline, the sequence directly impacts your output. For example it is best practice to: </p>
+<ul>
+<li>
+<p>Run Quality Trimming in a logical sequence. Steps like <code>LEADING</code> or <code>TRAILING</code> remove low-quality bases from the read edges before <code>SLIDINGWINDOW</code> evaluates broader region quality.</p>
+</li>
+<li>
+<p>The <code>SLIDINGWINDOW</code> will scan the read 5' to 3' and cut the left most position in the window where the average quality drops below the threshold, subsequently removing the rest of the read.</p>
+</li>
+<li>
+<p>The Minimum length filter (MINLEN) is typically the final step. If placed earlier, reads are checked before subsequent quality trimming shortens them, allowing reads that end up below your minimum length threshold to slip into your final file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <hr />
 <h2 id="6-k-mer-filtering-removal-of-short-sequences">6. K-mer filtering, removal of short sequences</h2>
@@ -752,6 +818,7 @@ convoluted – is unnecessary. However, it is important to understand the
 concept of k-mer filtering and the reasoning behind each step.</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
+<p><strong>Work through the following set of commands and before you run each one, try to understand what each step is doing!</strong></p>
 <p>To mask rare k-mers we will first build a k-mer database that includes counts for each k-mer. For this, we first make a list of files to input to KMC.</p>
 <div class="highlight"><pre><span></span><code>ls tmp/reads.pe1.trimmed.fq tmp/reads.pe2.trimmed.fq &gt; tmp/file_list_for_kmc
 </code></pre></div>
@@ -760,6 +827,62 @@ produce two files in your <code>tmp/</code> directory: <code>./tmp/21-mers.kmc_p
 KMC to use only 4 GB of RAM.</p>
 <div class="highlight"><pre><span></span><code>kmc -m4 -k21 @tmp/file_list_for_kmc tmp/21-mers tmp
 </code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Question</label><label for="__tabbed_7_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>As you were building the Kmer database a response was returned to the terminal, how did you interpret the output?</p>
+<div class="highlight"><pre><span></span><code>***************************************
+Stage 1: 100%
+Stage 2: 100%
+1st stage: 6.42227s
+2nd stage: 11.3654s
+Total    : 17.7877s
+Tmp size : 99MB
+
+Stats:
+No. of k-mers below min. threshold :      3595345
+No. of k-mers above max. threshold :            0
+No. of unique k-mers               :      7172390
+No. of unique counted k-mers       :      3577045
+Total no. of k-mers                :     80217049
+Total no. of reads                 :       674112
+Total no. of super-k-mers          :     12191773
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>This output summarise the metrics, temporary resource usage, and k-mer count statistics produced by KMC (K-mer Counter) after processing the set of reads provided. </p>
+<p><strong>Performance Metrics</strong></p>
+<ul>
+<li>
+<p>Stage 1 &amp; Stage 2 (100%): KMC completed both of its operational phases. Stage 1 partitions sequencing reads into disk bins via super-k-mers, and Stage 2 counts and sorts k-mers within each bin.</p>
+</li>
+<li>
+<p>1st stage / 2nd stage / Total: Stage 1 took ~6.42s, Stage 2 took ~11.37s, for a total run time of 17.79 seconds.</p>
+</li>
+<li>
+<p>Tmp size (99MB): Peak disk space used for temporary bin files during processing.</p>
+</li>
+</ul>
+<p><strong>Dataset &amp; K-mer Statistics</strong></p>
+<ul>
+<li>Total no. of reads (674,112): Total number of sequencing reads read from the input files.</li>
+<li>Total no. of k-mers (80,217,049): Cumulative count of all k-mers observed across all reads (includes all duplicates and repetitions).</li>
+<li>Total no. of super-k-mers (12,191,773): Overlapping sequences of k-mers sharing identical signatures, generated during Stage 1 for efficient memory and disk management.</li>
+<li>No. of unique k-mers (7,172,390): Total number of distinct k-mer sequences observed in the dataset before applying filters.</li>
+<li>No. of k-mers below min. threshold (3,595,345): Distinct k-mers filtered out because their occurrence count fell below the minimum cutoff (-ci, usually set to 2 to eliminate sequencing errors).</li>
+<li>No. of k-mers above max. threshold (0): Distinct k-mers filtered out for exceeding the maximum cutoff (-cx).</li>
+<li>No. of unique counted k-mers (3,577,045): Distinct k-mers that passed all threshold filters and were written to the output database (7,172,390 - 3,595,345 = 3,577,045).</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now the k-mer database is built it is time to continue! </p>
 <p>Mask k-mers (-hm) observed less than two times (-ci) in the database
 (tmp/21-mers). The -t option tells KMC to run in single-threaded mode: this is
 required to preserve the order of the reads in the file. filter is a
@@ -784,14 +907,26 @@ if unpaired reads are found).</p>
 <div class="highlight"><pre><span></span><code>cp tmp/reads.pe1.clean.fq tmp/reads.pe2.clean.fq results
 </code></pre></div>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Note.</strong> If you are interested in understanding how KMC3 works at a deeper level, take a look the <a href="https://academic.oup.com/bioinformatics/article/33/17/2759/3796399">corresponding publication here</a>, especially the supplementary information <a href="https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/bioinformatics/33/17/10.1093_bioinformatics_btx304/4/bioinformatics_33_17_2759_s2.pdf?Expires=1792590023&amp;Signature=Uny9F0foIijNmtspDz9hiLfM3QfxxCU3x87dKARFq-VStn5JWO8xQ5FQkrrghK3XnBr8h30SdOy3GV7N7SpQb8mAhe0l8CQj7nPG3owC9vl-ory4VDxKN5CCkT~fcLeHXUuQHpTzJ6u87WeCJtAu-nFw45Bdo1fYh3Cv5FnwBU2~XfzaQHJoTlzB~VDhduy4G3fsQKSd0xxylBu18CYDeEvaXMMIrTUc5GrOd3tqMMgHcDjCGj4fqQMup46-vscjK2iygtlFcGs2xLesRby1KdDAl12P7TCuAwcYtaDL~nZDB9G~0nvPkAZEuALIfXH7iQf1VDepg9aJjpTWCnJbtg__&amp;Key-Pair-Id=APKAIE5G5CRDK6RD3PGA">here</a></p>
+</div>
 <hr />
 <h3 id="inspecting-quality-of-cleaned-reads"><strong>Inspecting quality of cleaned reads</strong></h3>
-<p>Now we have cleaned our reads, lets have a look at how the 'cleaned' file is different from the original! </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now you have successfully performed read trimming, it is time to inspect the "cleaned" reads generated (<strong>reads.pe1.clean.fq</strong> &amp; <strong>reads.pe2.clean.fq</strong>).To achieve this use the <strong>FastQC</strong> tool which you implemented earlier!  </p>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<p>Which percentage of reads have we removed overall? (hint: <code>wc -l</code> can count lines in a non-gzipped file).  </p>
+<p>Comparing the FASTQC reports prior and post cleaning did you observe an improvment in the per-base nucleotide quality score and other metrics? </p>
 </div>
-<p>If you have time, maybe rerun FastQC on the cleaned data and inspect the output!  </p>
+<hr />
+<h3 id="bonus-info-optional"><strong>Bonus Info (Optional)</strong></h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The use of <strong>kmers</strong> pops up across bioinformatics! Take a look at the tool <a href="https://sourmash.readthedocs.io/en/latest/kmers-and-minhash.html">Sourmash (link here)</a> to see how kmers can be used in species identification! </p>
+</div>
 <hr />
 <h2 id="7-references">7. References</h2>
 <ol>
@@ -818,16 +953,6 @@ if unpaired reads are found).</p>
   manipulating k-mer statistics. Bioinformatics, 33(17), pp.2759-2761.</p>
 </li>
 </ul>
-<h2 id="9-bonus-questions-if-youre-done-early">9. Bonus questions if you're done early</h2>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<ul>
-<li>Which read cleaners exist and are the most popular today? </li>
-<li>Which read cleaners would you use for Illumina data? Why?</li>
-<li>Which read cleaners would you use for long-read data? Why?</li>
-<li>Can having an existing genome assembly help with read cleaning? How?</li>
-</ul>
-</div>
 
 
 
