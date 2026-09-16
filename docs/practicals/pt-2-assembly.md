@@ -48,9 +48,18 @@ Next lets link the cleaned reads from yesterdays practical into our `input` subd
       cd ..
       ```
 
-!!! Question 
-      * Did you note the use of `*` in the above command?
-      * What does it do? (Hint: the symbol `*` is called a wildcard)
+
+!!! Question
+
+    === "Question"
+
+        Did you note the use of `*` in the above command? What does this symbol do?
+
+    === "Answer"
+
+        The symbol `*` is called a wildcard. In the shell, it matches any sequence of characters in filenames, so `reads.pe*.clean.fq` means “all files whose names start with `reads.pe`, then have any text in between, and end with `.clean.fq`. For example, it would match `reads.pe1.clean.fq` and `reads.pe2.clean.fq`, but not a file with a different name pattern. This is useful for working with many files at once without typing each name individually.
+
+
 
 !!! task
       To assemble our cleaned reads with *SPAdes*, run the following line: 
@@ -75,7 +84,16 @@ Next lets link the cleaned reads from yesterdays practical into our `input` subd
       last 10 lines).
 
 !!! Question
-      Does it contain a lot of **NNNN** sequences? What do you think might be the reason for that? (Do not worry if your assembly does not contain any **NNNN** sequence.
+
+    === "Question"
+
+        Does it contain a lot of **NNNN** sequences? What do you think might be the reason for that? (Do not worry if your assembly does not contain any **NNNN** sequence.
+
+    === "Answer"
+
+        **N** bases represent **unknown nucleotide positions**. In a SPAdes assembly, they are commonly introduced when contigs are joined into scaffolds across gaps where the reads do not provide enough information to determine the
+        exact sequence, often because of repeats or insufficient read coverage. The number of **N** bases therefore reflects unresolved regions rather than actual nucleotides. An assembly with few or no **N** bases is also possible, particularly when it contains mostly contigs rather than scaffolds.
+
 
 
 !!! Task
