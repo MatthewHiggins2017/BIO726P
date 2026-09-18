@@ -279,34 +279,31 @@ sequences: [predicted protein sequences from rice and honeybee](../data/protein_
 We will compare them using BLAST to known sequences from other species against the Swissprot database (faster), or the Uniref50 database (slower).
 
 
-## 2.1 Running BLAST with SequenceServer
+## 2.1 Running BLAST
 
-We will use [SequenceServer](https://sequenceserver.com) to run the BLAST search!
+We will use NCBI blast server to run the BLAST search!
 
 
 !!! Task
-    Open [genomicscourse.sequenceserver.com](https://genomicscourse.sequenceserver.com) in a new tab in your browser, paste the [example rice and honeybee protein sequences](../data/protein_prediction_example.fa) in the textbox.
+    Open https://blast.ncbi.nlm.nih.gov/Blast.cgi in a new tab in your browser, click on BLASTP, and paste the example rice and honeybee protein sequences in the textbox.
 
-    On the right hand side, under protein database select **Non-redundant UniProtKB/SwissProt sequences** as the database to use! 
+    Below, in the Database drop down menu select Non-redundant UniProtKB/SwissProt sequences as the database to use!
     
     **The image below is what your browser window should look like!** 
 
-    ![Using Sequence Server](../img/SequenceServer1.png)
+    ![Using Sequence Server](../img/Alex_Fig1.png)
 
   
-    **Then click on the 'BLAST' button to begin the BLAST search. This will take a minute or two and the window will look like:** 
+    **Once the analysis is complete you will get an output report like below:** 
 
-     ![Sequence Server Loading](../img/SequenceServer2.png)
+    ![Sequence Server Loading](../img/Alex_Fig2.png)
 
+    This report contains a lot of information, but dont be overwhelmed! 
     
-    **Once the analysis is complete you will get a output report like below:** 
+    Focus solely on the alignment section and you can toggle between searches by selecting either the rice or honeybee sequencing in the top left hand side (Results for:)
 
-    ![Sequence Server Results](../img/SequenceServer3.png)
+    ![Sequence Server Results](../img/Alex_Fig3.png)
 
-
-    **This report contains a lot of information, but dont be overwhelmed!** Focus solely on the alignment section and you can toggle between alignments by selecting either the rice or honeybee sequencing in the top left hand side **(as highlighted in red below)**
-
-    ![Sequence Server Options](../img/SequenceServer4.png)
 
     Now in you own time, examin the report and try to answer the questions below! 
 
@@ -328,7 +325,7 @@ We will use [SequenceServer](https://sequenceserver.com) to run the BLAST search
 
     === "Answer"
 
-         **sp|Q7F1X5.1|RecName: Full=4-coumarate--CoA ligase-like 5 [Oryza sativa Japonica Group]** with 100% query coverage and 100% identity. 
+         RecName: Full=4-coumarate--CoA ligase-like 5 [Oryza sativa Japonica Group]
 
 
 !!! Question
@@ -339,8 +336,7 @@ We will use [SequenceServer](https://sequenceserver.com) to run the BLAST search
 
     === "Answer"
 
-         **sp|Q90ZA1.1| RecName: Full=Poly(A)-specific ribonuclease PARN; AltName: Full=Deadenylating nuclease; AltName: Full=Deadenylation nuclease; AltName: Full=Polyadenylate-specific ribonuclease; AltName: Full=parn-A [Xenopus laevis]** with 40% query coverage and 42.4% identity. 
-
+         RecName: Full=Poly(A)-specific ribonuclease PARN; AltName: Full=Deadenylating nuclease; AltName: Full=Deadenylation nuclease; AltName: Full=Polyadenylate-specific ribonuclease; AltName: Full=parn-A [Xenopus laevis] 
 
 
 
@@ -470,6 +466,12 @@ about gene model curation through these YouTube videos:
 1. [EMBL-ABR training 20171121 - Genome Annotation using Apollo](https://youtu.be/Wec7ZlXykQc)
 2. [The i5k Workspace@NAL: a pan-Arthropoda genome database](https://youtu.be/HYo2RQa4BUI?t=865)
 
+As most tings these days, AI is here to replace humans! There are now AI-driven tools for genome annotation. They are very powerful, and are expected to superseed MAKER and similar pipelines. If you want to have a go with one of them with your scaffolds, upload your data here:[https://www.plabipd.de/helixer_main.html](https://www.plabipd.de/helixer_main.html). Select "Lineage-specific mode" that makes sense to your genome, in this case "Invertebrate". Run this and compare the outputs with the MAKER pipeline if you are curious (extra activity, not needed).
+
+
+# **5. Detecting contamination**
+
+ As not all samples are perfect, there could be instances where your genome is not what you thought it was. There are many tools that are made to detect contaminants in your data, and this tool OMark is precisely designed to input a predicted proteome as we just did. If you are curious, upload your predicted proteins here: [https://omark.omabrowser.org/assess/](https://omark.omabrowser.org/assess/) and check if there are contaminations. The program should find out what species you're working on without telling it much information.
 
 ----------------------
 
