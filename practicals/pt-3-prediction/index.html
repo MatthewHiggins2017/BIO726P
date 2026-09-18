@@ -595,20 +595,19 @@ FASTA format).</p>
 <p>The easiest way to get a feel for this is to use the following example
 sequences: <a href="../../data/protein_prediction_example.fa">predicted protein sequences from rice and honeybee</a>.</p>
 <p>We will compare them using BLAST to known sequences from other species against the Swissprot database (faster), or the Uniref50 database (slower).</p>
-<h2 id="21-running-blast-with-sequenceserver">2.1 Running BLAST with SequenceServer</h2>
-<p>We will use <a href="https://sequenceserver.com">SequenceServer</a> to run the BLAST search!</p>
+<h2 id="21-running-blast">2.1 Running BLAST</h2>
+<p>We will use NCBI blast server to run the BLAST search!</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Open <a href="https://genomicscourse.sequenceserver.com">genomicscourse.sequenceserver.com</a> in a new tab in your browser, paste the <a href="../../data/protein_prediction_example.fa">example rice and honeybee protein sequences</a> in the textbox.</p>
-<p>On the right hand side, under protein database select <strong>Non-redundant UniProtKB/SwissProt sequences</strong> as the database to use! </p>
+<p>Open https://blast.ncbi.nlm.nih.gov/Blast.cgi in a new tab in your browser, click on BLASTP, and paste the example rice and honeybee protein sequences in the textbox.</p>
+<p>Below, in the Database drop down menu select Non-redundant UniProtKB/SwissProt sequences as the database to use!</p>
 <p><strong>The image below is what your browser window should look like!</strong> </p>
-<p><img alt="Using Sequence Server" src="../../img/SequenceServer1.png" /></p>
-<p><strong>Then click on the 'BLAST' button to begin the BLAST search. This will take a minute or two and the window will look like:</strong> </p>
-<p><img alt="Sequence Server Loading" src="../../img/SequenceServer2.png" /></p>
-<p><strong>Once the analysis is complete you will get a output report like below:</strong> </p>
-<p><img alt="Sequence Server Results" src="../../img/SequenceServer3.png" /></p>
-<p><strong>This report contains a lot of information, but dont be overwhelmed!</strong> Focus solely on the alignment section and you can toggle between alignments by selecting either the rice or honeybee sequencing in the top left hand side <strong>(as highlighted in red below)</strong></p>
-<p><img alt="Sequence Server Options" src="../../img/SequenceServer4.png" /></p>
+<p><img alt="Using Sequence Server" src="../../img/Alex_Fig1.png" /></p>
+<p><strong>Once the analysis is complete you will get an output report like below:</strong> </p>
+<p><img alt="Sequence Server Loading" src="../../img/Alex_Fig2.png" /></p>
+<p>This report contains a lot of information, but dont be overwhelmed! </p>
+<p>Focus solely on the alignment section and you can toggle between searches by selecting either the rice or honeybee sequencing in the top left hand side (Results for:)</p>
+<p><img alt="Sequence Server Results" src="../../img/Alex_Fig3.png" /></p>
 <p>Now in you own time, examin the report and try to answer the questions below! </p>
 </div>
 <div class="admonition info">
@@ -631,7 +630,7 @@ sequences: <a href="../../data/protein_prediction_example.fa">predicted protein 
 <p>What sequence is the <em>rice_spQ7F1X5</em> sequence most similar too?</p>
 </div>
 <div class="tabbed-block">
-<p><strong>sp|Q7F1X5.1|RecName: Full=4-coumarate--CoA ligase-like 5 [Oryza sativa Japonica Group]</strong> with 100% query coverage and 100% identity. </p>
+<p>RecName: Full=4-coumarate--CoA ligase-like 5 [Oryza sativa Japonica Group]</p>
 </div>
 </div>
 </div>
@@ -644,7 +643,7 @@ sequences: <a href="../../data/protein_prediction_example.fa">predicted protein 
 <p>What sequence is <em>ApisMellifera_SequenceA</em> sequence most similar too?</p>
 </div>
 <div class="tabbed-block">
-<p><strong>sp|Q90ZA1.1| RecName: Full=Poly(A)-specific ribonuclease PARN; AltName: Full=Deadenylating nuclease; AltName: Full=Deadenylation nuclease; AltName: Full=Polyadenylate-specific ribonuclease; AltName: Full=parn-A [Xenopus laevis]</strong> with 40% query coverage and 42.4% identity. </p>
+<p>RecName: Full=Poly(A)-specific ribonuclease PARN; AltName: Full=Deadenylating nuclease; AltName: Full=Deadenylation nuclease; AltName: Full=Polyadenylate-specific ribonuclease; AltName: Full=parn-A [Xenopus laevis] </p>
 </div>
 </div>
 </div>
@@ -759,6 +758,9 @@ about gene model curation through these YouTube videos:</p>
 <li><a href="https://youtu.be/Wec7ZlXykQc">EMBL-ABR training 20171121 - Genome Annotation using Apollo</a></li>
 <li><a href="https://youtu.be/HYo2RQa4BUI?t=865">The i5k Workspace@NAL: a pan-Arthropoda genome database</a></li>
 </ol>
+<p>As most tings these days, AI is here to replace humans! There are now AI-driven tools for genome annotation. They are very powerful, and are expected to superseed MAKER and similar pipelines. If you want to have a go with one of them with your scaffolds, upload your data here:<a href="https://www.plabipd.de/helixer_main.html">https://www.plabipd.de/helixer_main.html</a>. Select "Lineage-specific mode" that makes sense to your genome, in this case "Invertebrate". Run this and compare the outputs with the MAKER pipeline if you are curious (extra activity, not needed).</p>
+<h1 id="5-detecting-contamination"><strong>5. Detecting contamination</strong></h1>
+<p>As not all samples are perfect, there could be instances where your genome is not what you thought it was. There are many tools that are made to detect contaminants in your data, and this tool OMark is precisely designed to input a predicted proteome as we just did. If you are curious, upload your predicted proteins here: <a href="https://omark.omabrowser.org/assess/">https://omark.omabrowser.org/assess/</a> and check if there are contaminations. The program should find out what species you're working on without telling it much information.</p>
 <hr />
 <!---
 
