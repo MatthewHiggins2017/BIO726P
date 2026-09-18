@@ -366,7 +366,7 @@
 </ol>
 <hr />
 <h1 id="2-accessing-the-teaching-cluster">2. Accessing the Teaching Cluster</h1>
-<p>The Teaching Cluster provides a remote Linux environment that you can access through your browser. It is a JupyterHub-based system, which means each user launches their own Jupyter server. By default, this opens as a JupyterLab session, but from there you can also open other tools and work across multiple tabs. Each server type provides access to a defined set of shared compute resources. For this practical, you should use <strong>SBBS MSc Projects (CPU)</strong>, which provides <strong>32 CPU cores</strong> and <strong>32 GB RAM</strong>.</p>
+<p>The Teaching Cluster provides a remote Linux environment that you can access through your browser. It is a JupyterHub-based system, which means each user launches their own Jupyter server. By default, this opens as a JupyterLab session, but from there you can also open other tools and work across multiple tabs. Each server type provides access to a defined set of shared compute resources. For this practical, you should use <strong>BIO726P - Unix &amp; Analysis Of Large Genomic Datasets</strong>, image. </p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Go to <a href="https://hub.comp-teach.qmul.ac.uk/">https://hub.comp-teach.qmul.ac.uk/</a> and log in with your QMUL account.</p>
@@ -376,13 +376,13 @@ Do <strong>not</strong> add <code>@qmul.ac.uk</code>.</p>
 <p><img alt="TC 1" src="../../img/Teaching_Cluster_Login.png" /></p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Once, logged in you will be taken to a page where you can select the instance you would like to use. For this scroll down to the bottom on the page and select the tab <strong>Project Work</strong>. This will provide several options, however you should select the option <strong>SBBS MSc Projects (CPU)</strong>. Once you have clicked on this option, scroll down to the bottom of the page and select <strong>start</strong>. </p>
+<p>Once, logged in you will be taken to a page where you can select the instance you would like to use. For this scroll down to the bottom on the page and select the tab <strong>Project Work</strong>. This will provide several options, however you should select the option <strong>Unix and Analysis of Large Genomic Datasets</strong> image. Once you have clicked on this option, scroll down to the bottom of the page and select <strong>start</strong>. </p>
 </div>
 <p><img alt="TC 2" src="../../img/Teaching_Cluster_Instance_Selection.png" /></p>
-<p><img alt="TC 3" src="../../img/Teaching_Cluster_SBBS_MSc_Projects.png" /></p>
+<p><img alt="TC 3" src="../../img/Teaching_Cluster_BIO726P_Image.png" /></p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Wait for the loading screen to finish. Starting server can take few seconds to few minutes (depends on the cluster use). </p>
+<p>Once you have clicked on this option, scroll down to the bottom of the page and select <strong>start</strong>. Wait for the loading screen to finish. Starting server can take few seconds to few minutes (depends on the cluster use). </p>
 </div>
 <p><img alt="TC 5" src="../../img/Teaching_Cluster_Instance_Loading.png" /></p>
 <div class="admonition task">
@@ -414,10 +414,10 @@ Do <strong>not</strong> add <code>@qmul.ac.uk</code>.</p>
 <p class="admonition-title">Task</p>
 <p>Create a main directory for today's session, together with subdirectories for input data, reference files, intermediate files, final results, and your command log.</p>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>BIO726P_Teaching_Cluster
-<span class="nb">cd</span><span class="w"> </span>BIO726P_Teaching_Cluster
-mkdir<span class="w"> </span>input<span class="w"> </span>references<span class="w"> </span>tmp<span class="w"> </span>results
-touch<span class="w"> </span>WHATIDID.txt
+<div class="highlight"><pre><span></span><code>mkdir BIO726P_Teaching_Cluster
+cd BIO726P_Teaching_Cluster
+mkdir input references tmp results
+touch WHATIDID.txt
 </code></pre></div>
 </div>
 <p>Your directory structure should look like this:</p>
@@ -432,160 +432,106 @@ touch<span class="w"> </span>WHATIDID.txt
 </code></pre></div>
 </div>
 <hr />
-<h1 id="4-package-management-with-conda">4. Package management with Conda</h1>
-<p>Most bioinformatics workflows depend on many external tools. Installing those tools manually can be difficult because different programs may require different versions of the same dependency.</p>
-<p><a href="https://docs.conda.io/en/latest/">Conda</a> is a package and environment manager that helps solve this problem.</p>
+<h1 id="4-software-environments-with-conda">4. Software environments with Conda</h1>
+<p>The Teaching Cluster image used for this practical already contains the software needed
+for the structural variant analysis, including <code>NanoPlot</code>, <code>chopper</code>, <code>minimap2</code>,
+<code>samtools</code>, and <code>Sniffles</code>. These programs are installed in Conda's <code>base</code> environment,
+which is active by default when you open a terminal, so they can be used immediately.</p>
+<p>However, it is still important to understand how software environments are managed in bioinformatics. Different projects may require different versions of the same program, or programs with conflicting dependencies. Conda provides one way to create and manage these isolated environments.</p>
 <h2 id="41-why-use-conda">4.1 Why use Conda?</h2>
-<p>Conda allows you to:</p>
+<p>Conda is a package and environment manager. It can be used to:</p>
 <ul>
-<li>install software without admin access,</li>
-<li>keep project dependencies together in an isolated environment,</li>
-<li>avoid conflicts between tools required for different analyses,</li>
-<li>share software environments with other users.</li>
+<li>install software without requiring administrator access;</li>
+<li>create isolated environments containing specific software versions;</li>
+<li>keep the dependencies for different projects separate;</li>
+<li>reproduce a software environment on another system;</li>
+<li>document which software was used in an analysis.</li>
 </ul>
-<p>The two channels you will commonly see in bioinformatics are:</p>
+<p>In bioinformatics, you will commonly encounter the <code>conda-forge</code> and <code>bioconda</code> channels.</p>
 <ul>
-<li><code>conda-forge</code> for general-purpose scientific software,</li>
-<li><code>bioconda</code> for bioinformatics software.</li>
+<li><code>conda-forge</code> provides a large collection of general scientific and computational software.</li>
+<li><code>bioconda</code> provides many bioinformatics packages.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>A <strong>channel</strong> in Conda is a source (repository) of installable packages.</p>
-<p>When you run an install command, Conda searches the channels you specify and resolves package versions from them.</p>
-<p>In bioinformatics, we commonly combine <code>conda-forge</code> and <code>bioconda</code> because many bioinformatics tools in <code>bioconda</code> depend on shared libraries provided by <code>conda-forge</code>.</p>
-<p>Channel order matters: Conda resolves packages based on channel priority, so using a consistent channel setup helps avoid version conflicts and improves reproducibility.</p>
+<p>A <strong>Conda channel</strong> is a repository from which Conda obtains packages.</p>
+<p>An <strong>environment</strong> is an isolated collection of software packages and their dependencies. Activating an environment changes which versions of programs are available to your shell.</p>
 </div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>An <strong>environment</strong> is an isolated software space with its own installed packages and versions. Activating an environment changes which software your shell uses.</p>
+<hr />
+<h2 id="42-inspecting-the-existing-software">4.2 Inspecting the existing software</h2>
+<p>First, confirm which executable and version are available in the supplied environment.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Check where the main SV-analysis programs are located:</p>
+<div class="highlight"><pre><span></span><code>which NanoPlot
+which chopper
+which minimap2
+which samtools
+which sniffles
+</code></pre></div>
+<p>You should see something like:</p>
+<div class="highlight"><pre><span></span><code>/opt/conda/bin/NanoPlot
+</code></pre></div>
+<p>Now check their versions:</p>
+<div class="highlight"><pre><span></span><code>NanoPlot --version
+chopper --help
+minimap2 --version
+samtools --version
+sniffles --version
+</code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>What kinds of problems can happen if you install many tools into one single base environment?</p>
+<p>Why might it still be useful to know the exact version of each program even though the software is already installed?</p>
 </div>
 <div class="tabbed-block">
-<p>Different tools may require incompatible versions of the same dependency. This can lead to installation failures, broken software, or commands behaving differently between projects.</p>
+<p>It helps with reproducibility, interpreting results, troubleshooting, and comparing analyses performed on different systems.</p>
 </div>
 </div>
 </div>
 </div>
-<div class="admonition task">
-<p class="admonition-title">Task</p>
-<p>Take a look through the conda sub-commands (e.g. conda export) and understand when you would use each of them! If you have any questions then please ask a demonstrator.</p>
-</div>
-<h2 id="42-a-note-on-alternatives">4.2 A note on alternatives</h2>
-<p>Conda is not the only way to install software.</p>
-<p>Other common approaches include:</p>
-<ul>
-<li><code>pip</code> for Python packages,</li>
-<li>system package managers such as <code>apt</code> or <code>brew</code>,</li>
-<li>containers such as Docker or Apptainer.</li>
-</ul>
-<p>For this practical, Conda is the simplest way to build a user-controlled analysis environment. Later in your training you may encounter containers when you need stronger reproducibility or more complex software stacks.</p>
 <hr />
-<h1 id="5-creating-a-conda-environment-for-structural-variant-analysis">5. Creating a Conda environment for structural variant analysis</h1>
-<p>We will create an environment containing software for a small Nanopore-based structural variant workflow.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p><strong>Structural variants (SVs)</strong> are larger genomic changes, usually affecting regions of around 50 base pairs or more.</p>
-<p>Common SV types include:</p>
-<ul>
-<li><strong>Deletions (DEL):</strong> sequence is missing relative to the reference.</li>
-<li><strong>Insertions (INS):</strong> extra sequence is present relative to the reference.</li>
-<li><strong>Inversions (INV):</strong> a region is reversed in orientation.</li>
-<li><strong>Duplications (DUP):</strong> a segment appears in extra copies.</li>
-<li><strong>Translocations (BND/TRA):</strong> sequence is rearranged between genomic locations.</li>
-</ul>
-<p>SVs can have major biological effects because they may disrupt genes, alter gene copy number, or change regulatory regions. Long Nanopore reads are particularly useful for this analysis because individual reads can span larger rearrangements that are often difficult to resolve with short-read data.</p>
-</div>
-<p>The tools we will use are:</p>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Purpose in this practical</th>
-<th>GitHub repository</th>
-<th>Conda package page</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>NanoPlot</td>
-<td>Basic Nanopore read QC</td>
-<td><a href="https://github.com/wdecoster/NanoPlot">wdecoster/NanoPlot</a></td>
-<td><a href="https://bioconda.github.io/recipes/nanoplot/README.html">bioconda: nanoplot</a></td>
-</tr>
-<tr>
-<td>chopper</td>
-<td>Read filtering</td>
-<td><a href="https://github.com/wdecoster/chopper">wdecoster/chopper</a></td>
-<td><a href="https://bioconda.github.io/recipes/chopper/README.html">bioconda: chopper</a></td>
-</tr>
-<tr>
-<td>minimap2</td>
-<td>Read mapping</td>
-<td><a href="https://github.com/lh3/minimap2">lh3/minimap2</a></td>
-<td><a href="https://bioconda.github.io/recipes/minimap2/README.html">bioconda: minimap2</a></td>
-</tr>
-<tr>
-<td>samtools</td>
-<td>Alignment file processing</td>
-<td><a href="https://github.com/samtools/samtools">samtools/samtools</a></td>
-<td><a href="https://bioconda.github.io/recipes/samtools/README.html">bioconda: samtools</a></td>
-</tr>
-<tr>
-<td>sniffles</td>
-<td>Structural variant calling</td>
-<td><a href="https://github.com/fritzsedlazeck/Sniffles">fritzsedlazeck/Sniffles</a></td>
-<td><a href="https://bioconda.github.io/recipes/sniffles/README.html">bioconda: sniffles</a></td>
-</tr>
-</tbody>
-</table>
+<h2 id="43-exploring-conda">4.3 Exploring Conda</h2>
+<p>Conda is also available on the Teaching Cluster. Use it to confirm which environment is
+active and where that environment is located.</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Test that Conda is available by running one of the following commands:</p>
-<div class="highlight"><pre><span></span><code>conda
-<span class="c1"># or</span>
-conda<span class="w"> </span>--help
+<p>Check that Conda is available:</p>
+<div class="highlight"><pre><span></span><code>conda --help
 </code></pre></div>
-<p>Your terminal output should look similar to the example below.</p>
+<p>Now inspect the environments that already exist:</p>
+<div class="highlight"><pre><span></span><code>conda env list
+</code></pre></div>
+<p>You should see something like the following.</p>
+<div class="highlight"><pre><span></span><code># conda environments:
+#
+# * -&gt; active
+# + -&gt; frozen
+base                 *   /opt/conda
+</code></pre></div>
+<p>The <code>*</code> marks <code>base</code> as active, and <code>/opt/conda</code> is its location. Conda adds the
+active environment's <code>bin</code> directory to your <code>PATH</code>, which is why the programs in
+Section 4.2 can be run by name. In the next section, you will create a separate
+environment for demonstrating project-specific packages and versions.</p>
 </div>
-<p><img alt="TC 9" src="../../img/Teaching_Cluster_Running_Conda_Command.png" /></p>
+<hr />
+<h1 id="5-creating-a-small-conda-environment">5. Creating a small Conda environment</h1>
+<p>You will now create a separate Conda environment to demonstrate how software environments can be built and isolated.</p>
+<p><strong>This environment is for learning about Conda. You do not need to use it for the main SV analysis in this practical.</strong></p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Create and activate a new Conda environment called <code>sv_nanopore</code>.</p>
-<p>You can either list the packages you want at creation time, as shown below, or create the environment first and install additional packages after it is active.</p>
-<p><div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>sv_nanopore<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>bioconda<span class="w"> </span>nanoplot<span class="w"> </span>chopper<span class="w"> </span>minimap2<span class="w"> </span>samtools<span class="w"> </span>sniffles<span class="w"> </span>-y
+<p>For example lets assume on the Teaching Cluster we want run a SNP identification pipeline, for this we will need the [BowTie2 aligner - link] (https://anaconda.org/channels/bioconda/packages/bowtie2/overview) and <a href="https://anaconda.org/channels/bioconda/packages/bcftools/overview">bcftools - link</a>. To install these packages in a fresh environment you can use the following command! Review each component to ensure you understand what is going on! (To do this you can use <code>conda --help</code> and <code>conda create --help</code>).</p>
+<div class="highlight"><pre><span></span><code>conda create -n SNP_Pipeline -c conda-forge -c bioconda bowtie2 bcftools -y
 </code></pre></div>
-Now activate your new environment:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>activate<span class="w"> </span>sv_nanopore
+<p>Activate it:</p>
+<div class="highlight"><pre><span></span><code>conda activate SNP_Pipeline
 </code></pre></div>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Task</p>
-<p>Check that each tool is available:</p>
-<div class="highlight"><pre><span></span><code>which<span class="w"> </span>NanoPlot
-which<span class="w"> </span>chopper
-which<span class="w"> </span>minimap2
-which<span class="w"> </span>samtools
-which<span class="w"> </span>sniffles
-</code></pre></div>
-<p>Then check the versions:</p>
-<div class="highlight"><pre><span></span><code>NanoPlot<span class="w"> </span>--version
-chopper<span class="w"> </span>--help
-minimap2<span class="w"> </span>--version
-samtools<span class="w"> </span>--version
-sniffles<span class="w"> </span>--version
-</code></pre></div>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Task</p>
-<p>When you are finished, test deactivating and reactivating the environment:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>deactivate
-conda<span class="w"> </span>activate<span class="w"> </span>sv_nanopore
+<p>Check that the programs are available:</p>
+<div class="highlight"><pre><span></span><code>which bowtie2
+which bcftools
 </code></pre></div>
 </div>
 <div class="admonition question">
@@ -593,70 +539,110 @@ conda<span class="w"> </span>activate<span class="w"> </span>sv_nanopore
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Why is it important to test whether a package actually runs after installation?</p>
+<p>What has changed compared with the tools you inspected before activating <code>SNP_Pipeline</code>?</p>
 </div>
 <div class="tabbed-block">
-<p>A package may install successfully but still fail at runtime if there is a path issue, a missing dependency, or confusion over which environment is active. A quick test confirms the tool is really available.</p>
+<p>The location of the executable changes, and the version of the software may differ depending on the environment. Activating a Conda environment changes which software your shell uses.</p>
+<p>For example, minimap2 which is installed in the base environment is at:</p>
+<div class="highlight"><pre><span></span><code>which minimap2
+/opt/conda/bin/minimap2
+</code></pre></div>
+<p>Compared to bowtie2, which is installed in the SNP_Pipeline enviornment:</p>
+<div class="highlight"><pre><span></span><code>/home/jovyan/.conda/envs/SNP_Pipeline/bin/bowtie2
+</code></pre></div>
 </div>
 </div>
 </div>
+</div>
+<hr />
+<h2 id="52-exporting-an-environment">5.2 Exporting an environment</h2>
+<p>Once an environment has been created, its configuration can be recorded.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Export your environment:</p>
+<div class="highlight"><pre><span></span><code>conda env export &gt; SNP_Pipeline.yml
+</code></pre></div>
+<p>Inspect the resulting file:</p>
+<div class="highlight"><pre><span></span><code>head SNP_Pipeline.yml
+</code></pre></div>
+<p>The YAML file records information about the environment, including its packages and versions. This should look something like:</p>
+<div class="highlight"><pre><span></span><code>name: SNP_Pipeline
+channels:
+- conda-forge
+- bioconda
+dependencies:
+- _openmp_mutex=4.5=20_gnu
+- bcftools=1.24=h118bc1c_2
+- bowtie2=2.5.5=h63e9258_1
+- bzip2=1.0.8=hda65f42_10
+- c-ares=1.34.8=hebe6cf0_2
+</code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Based on the tools listed above and your understanding from previous practicals, what order should we run them in for structural variant analysis?</p>
+<p>How could this file help someone else reproduce your analysis?</p>
 </div>
 <div class="tabbed-block">
-<ol>
-<li>NanoPlot (initial read QC)</li>
-<li>chopper (read filtering)</li>
-<li>minimap2 (read mapping)</li>
-<li>samtools (sorting and indexing alignments)</li>
-<li>sniffles (structural variant calling)</li>
-</ol>
+<p>It provides a reproducible specification of the exact software stack used, which allows another person or a future workflow to recreate the same environment on a different machine.</p>
 </div>
 </div>
 </div>
 </div>
 <hr />
-<h1 id="6-downloading-the-reference-genome-and-annotation">6. Downloading the reference genome and annotation</h1>
-<p>We now need a reference genome for <em>Plasmodium falciparum</em> 3D7.</p>
+<h2 id="53-deactivating-the-environment">5.3 Deactivating the environment</h2>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Change into your <code>references</code> directory and download the genome FASTA file. </p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/BIO726P_Teaching_Cluster/references
-wget<span class="w"> </span>https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/GCF_000002765.6_GCA_000002765_genomic.fna.gz
+<p><strong>Important</strong> - When you are finished exploring and using the environment remember to deactivate it! We wont need these tools in the following session for structural variant analysis. </p>
+<div class="highlight"><pre><span></span><code>conda deactivate -n SNP_Pipeline
+</code></pre></div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Conda is <strong>not simply an alternative way of finding programs that are missing</strong>.</p>
+<p>It is a way of controlling the software environment in which an analysis is performed.</p>
+<p>In a real research project, you might encounter a situation where:</p>
+<ul>
+<li>the system already provides most of the software you need;</li>
+<li>one project requires a particular version of a tool;</li>
+<li>two projects require incompatible versions;</li>
+<li>a collaborator gives you an environment specification;</li>
+<li>you need to reproduce an analysis months or years later.</li>
+</ul>
+<p>Conda can help address these situations.</p>
+</div>
+<hr />
+<h1 id="6-now-back-to-our-structural-variant-analysis">6. Now Back To Our Structural Variant Analysis!</h1>
+<p>We now need a reference genome for <em>Plasmodium falciparum</em> 3D7. To source this we can turn to the NCBI genome database <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=36329">link here!</a>. Select the reference genome assembly <strong>(GCA_000002765)</strong> and subsequently navigate to the <strong>FTP site</strong> <a href="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/">link here</a>. Look across the files available, do any formats look familiar? </p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now it is time to download the reference genome. </p>
+<div class="highlight"><pre><span></span><code>cd ~/BIO726P_Teaching_Cluster/references
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/GCF_000002765.6_GCA_000002765_genomic.fna.gz
 </code></pre></div>
 <p>Decompress the FASTA file:</p>
-<div class="highlight"><pre><span></span><code>gunzip<span class="w"> </span>GCF_000002765.6_GCA_000002765_genomic.fna.gz
+<div class="highlight"><pre><span></span><code>gunzip GCF_000002765.6_GCA_000002765_genomic.fna.gz
 </code></pre></div>
 <p>Inspect the FASTA file, does it match what you expect? </p>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh
-grep<span class="w"> </span><span class="s2">&quot;^&gt;&quot;</span><span class="w"> </span>GCF_000002765.6_GCA_000002765_genomic.fna<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+<div class="highlight"><pre><span></span><code>ls -lh
+grep &quot;^&gt;&quot; GCF_000002765.6_GCA_000002765_genomic.fna | head
 </code></pre></div>
 </div>
 <hr />
-<h1 id="7-downloading-uploading-example-nanopore-data">7. Downloading &amp; Uploading Example Nanopore data</h1>
+<h1 id="7-downloading-our-nanopore-data">7. Downloading Our Nanopore Data</h1>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>You will need to download the sequence data from each sample directly from QMPlus. This can be done by clicking on the 'Plasmodium_falciparum_Sample_Data' folder and then selecting the <code>download folder</code> button as shown below. </p>
-<p><img alt="Raw Data Download" src="../../img/TC_Download_Data_From_QMPLus.png" /></p>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Task</p>
-<p>Next <strong>upload the data to the Teaching Cluster</strong> using the upload button as shown in the image below: </p>
-<p><img alt="Data Upload" src="../../img/TC_Upload_Data.png" /></p>
-<p>Finally move the uploaded data into your <code>input</code> directory:</p>
-<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>Pf*.fastq.gz<span class="w">  </span>~/BIO726P_Teaching_Cluster/input
+<p>Now it is time to download the <em>Plasmodium falciparum</em> sequencing data for <strong>3 samples</strong> which you will be analysing in this assessment. The dataset is available on your AWS Instances and as such you must transfer it to the teaching cluster. To achieve this we will be using <strong>RSync</strong> (remote synchronisation). This is a command-line tool for copying and synchronising files between locations, including between your AWS instance and the teaching cluster. It compares the source and destination, transferring only new or changed files rather than copying everything each time</p>
+<p>1) First ensure your AWS Instances are switched on by going to  <a href="https://switch.genomicscourse.com/">https://switch.genomicscourse.com/</a></p>
+<p>2) Navigate into your input data sub-directory and subsequently run the Rsync Command. <strong>Remember to change matt to your username!</strong> </p>
+<div class="highlight"><pre><span></span><code>cd ~/BIO726P_Teaching_Cluster/input/
+rsync -avzP matt@matt.genomicscourse.com:&#39;/shared/data/Pf_*.fastq.gz&#39; ./ 
 </code></pre></div>
-</div>
-<div class="admonition task">
-<p class="admonition-title">Task</p>
-<p>Check the file exists and inspect the first read:</p>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span>Pf_Sample_A.fastq.gz
-zcat<span class="w"> </span>Pf_Sample_A.fastq.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+<p>3) Check the file exists and inspect the first read:</p>
+<div class="highlight"><pre><span></span><code>ls -lh Pf_Sample_A.fastq.gz
+zcat Pf_Sample_A.fastq.gz | head -n 4
 </code></pre></div>
 </div>
 <div class="admonition question">
@@ -664,7 +650,23 @@ zcat<span class="w"> </span>Pf_Sample_A.fastq.gz<span class="w"> </span><span cl
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>What are the four lines that make up one FASTQ record?</p>
+<p>Looking at the rsync manual (<code>man rsync</code>) can you identify what the parameters <code>-avzP</code> were doing?</p>
+</div>
+<div class="tabbed-block">
+<p><strong>-a (archive)</strong>: Preserves file permissions, modification times, and symlinks.
+<strong>-v (verbose)</strong>: Displays transfer details in the console.
+<strong>-z (compress)</strong>: Compresses data during transit to speed up the download.
+<strong>-P (progress/partial)</strong>: Shows a real-time progress bar and retains partially downloaded files if the connection drops.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Thinking back to the practical session on Day, what are the four lines that make up one FASTQ record?</p>
 </div>
 <div class="tabbed-block">
 <p>A FASTQ record contains:
@@ -678,7 +680,14 @@ zcat<span class="w"> </span>Pf_Sample_A.fastq.gz<span class="w"> </span><span cl
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage. <strong>We will come back to this later in a bonus task</strong></p>
+<p><strong>BACK UP - Please follow this method for obtaining the sequencing data if you were not able to use RSync.</strong> </p>
+<p>If you were unable to use RSync, please let a demonstrator know. In the mean time you can source the data via QMPLus. Please identitfy the 'Plasmodium_falciparum_Sample_Data' folder and then select the <code>download folder</code> button as shown below. </p>
+<p><img alt="Raw Data Download" src="../../img/TC_Download_Data_From_QMPLus.png" /></p>
+<p>Next <strong>upload the data to the Teaching Cluster</strong> using the upload button as shown in the image below: </p>
+<p><img alt="Data Upload" src="../../img/TC_Upload_Data.png" /></p>
+<p>Finally move the uploaded data into your <code>input</code> directory:</p>
+<div class="highlight"><pre><span></span><code>mv Pf*.fastq.gz  ~/BIO726P_Teaching_Cluster/input
+</code></pre></div>
 </div>
 <hr />
 <h1 id="8-part-1-exploring-the-structural-variant-workflow-step-by-step">8. Part 1: Exploring the structural variant workflow step-by-step</h1>
@@ -687,14 +696,53 @@ zcat<span class="w"> </span>Pf_Sample_A.fastq.gz<span class="w"> </span><span cl
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Change into your <code>tmp</code> directory and run NanoPlot on the raw FASTQ file:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/BIO726P_Teaching_Cluster/tmp
-NanoPlot<span class="w"> </span>--fastq<span class="w"> </span>../input/Pf_Sample_A.fastq.gz<span class="w"> </span>--outdir<span class="w"> </span>Pf_Sample_A_nanoplot_raw
+<div class="highlight"><pre><span></span><code>cd ~/BIO726P_Teaching_Cluster/tmp
+NanoPlot --fastq ../input/Pf_Sample_A.fastq.gz --outdir Pf_Sample_A_nanoplot_raw
 </code></pre></div>
+<p>Did you encounter an <strong>error message</strong> like below?</p>
+<div class="highlight"><pre><span></span><code>If you read this then NanoPlot 1.48.0 has crashed :-(
+Please try updating NanoPlot and see if that helps...
+
+If not, please report this issue at https://github.com/wdecoster/NanoPlot/issues
+If you could include the log file that would be really helpful.
+Thanks!
+
+
+
+Traceback (most recent call last):
+File &quot;/opt/conda/bin/NanoPlot&quot;, line 10, in &lt;module&gt;
+    sys.exit(main())
+            ^^^^^^
+File &quot;/opt/conda/lib/python3.12/site-packages/nanoplot/NanoPlot.py&quot;, line 111, in main
+    plots = make_plots(datadf, settings)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File &quot;/opt/conda/lib/python3.12/site-packages/nanoplot/NanoPlot.py&quot;, line 190, in make_plots
+    nanoplotter.scatter(
+File &quot;/opt/conda/lib/python3.12/site-packages/nanoplotter/nanoplotter_main.py&quot;, line 161, in scatter
+    fig = ff.create_2d_density(
+        ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module &#39;plotly.figure_factory&#39; has no attribute &#39;create_2d_density&#39;
+</code></pre></div>
+<p>First thing we can do is see if anyone else has encountered the same issue by searching online. Most people log issues via Github reports and it appears someone hit the same issue <a href="https://github.com/wdecoster/NanoPlot/issues/442.">Link Here</a> From reading this thread, it appears we have hit a dependancy issue within our environment specifically regarding the Plotly package depedancy  </p>
+<p>Right lets see what version of Plotly we are using: </p>
+<div class="highlight"><pre><span></span><code>pip show plotly
+</code></pre></div>
+<p>We can see that we have plotly version 7.0.0 install which is causing the issue. To fix and practice creating a new enviornment at the same time lets, reinstall nanoplot with the correct version (6.9.0) of the <a href="https://anaconda.org/channels/conda-forge/packages/plotly/overview">(Plotly Package)</a>: </p>
+<div class="highlight"><pre><span></span><code>conda create -n NANOPLOT_FIX -c conda-forge -c bioconda plotly==6.9.0 nanoplot=1.48 -y
+</code></pre></div>
+<p>Now lets activate our environment, double check we have the correct versionof plotly installed (6.9.0) and retry our command </p>
+<div class="highlight"><pre><span></span><code>conda activate NANOPLOT_FIX
+
+pip show plotly        
+
+NanoPlot --fastq ../input/Pf_Sample_A.fastq.gz --outdir Pf_Sample_A_nanoplot_raw
+</code></pre></div>
+<p>This time the command works and we can move forward with the analysis! </p>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Inspect the output directory:</p>
-<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>Pf_Sample_A_nanoplot_raw
+<div class="highlight"><pre><span></span><code>ls Pf_Sample_A_nanoplot_raw
 </code></pre></div>
 <p>The directory should contain the following files: </p>
 <div class="highlight"><pre><span></span><code>ls Pf_Sample_A_nanoplot_raw
@@ -716,7 +764,11 @@ WeightedLogTransformed_HistogramReadlength.png
 Yield_By_Length.html
 Yield_By_Length.png
 </code></pre></div>
-<p>Using the left-side bar, navigate to the directory and open the <code>NanoPlot-report.html</code>. <strong>Note</strong> - To view the figures you may have to click the Trust HTML button on top left side of the window. </p>
+<p>Using the left-side bar, navigate to the directory and open the <code>NanoPlot-report.html</code>. </p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>IMPORTANT NOTE</strong> - To view all the figures in the .html report you may have to click the Trust HTML button on top left side of the window. </p>
 </div>
 <p><img alt="NanoPlot_Image" src="../../img/NanoPlot_Report.png" /></p>
 <div class="admonition task">
@@ -725,7 +777,7 @@ Yield_By_Length.png
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What kinds of features is NanoPlot useful for checking before alignment?</p>
@@ -750,7 +802,7 @@ Yield_By_Length.png
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Question</label><label for="__tabbed_7_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What <code>chopper</code> command would you use?</p>
@@ -764,7 +816,7 @@ Yield_By_Length.png
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Question</label><label for="__tabbed_7_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Question</label><label for="__tabbed_8_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How many reads remained after filtering Pf_Sample_A?</p>
@@ -782,12 +834,12 @@ Yield_By_Length.png
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Run NanoPlot again on the filtered reads. Inspect the output report, can you confirm that the filtering implemented by chopper was successful? </p>
-<div class="highlight"><pre><span></span><code>NanoPlot<span class="w"> </span>--fastq<span class="w"> </span>Pf_Sample_A_filtered_reads.fastq.gz<span class="w"> </span>--outdir<span class="w"> </span>Pf_Sample_A_nanoplot_filtered
+<div class="highlight"><pre><span></span><code>NanoPlot --fastq Pf_Sample_A_filtered_reads.fastq.gz --outdir Pf_Sample_A_nanoplot_filtered
 </code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Question</label><label for="__tabbed_8_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Question</label><label for="__tabbed_9_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Why might filtering improve downstream structural variant calling?</p>
@@ -800,7 +852,7 @@ Yield_By_Length.png
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Question</label><label for="__tabbed_9_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Question</label><label for="__tabbed_10_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What other metrics does Chopper allow you to filter on and when would you implement these? </p>
@@ -826,20 +878,20 @@ Yield_By_Length.png
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Convert the SAM file to a sorted BAM file and index it:</p>
-<div class="highlight"><pre><span></span><code>samtools<span class="w"> </span>sort<span class="w"> </span>-O<span class="w"> </span>BAM<span class="w"> </span>Pf_Sample_A.sam<span class="w"> </span>&gt;<span class="w"> </span>Pf_Sample_A.sorted.bam
-samtools<span class="w"> </span>index<span class="w"> </span>Pf_Sample_A.sorted.bam
+<div class="highlight"><pre><span></span><code>samtools sort -O BAM Pf_Sample_A.sam &gt; Pf_Sample_A.sorted.bam
+samtools index Pf_Sample_A.sorted.bam
 </code></pre></div>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Generate a few simple alignment statistics:</p>
-<div class="highlight"><pre><span></span><code>samtools<span class="w"> </span>flagstat<span class="w"> </span>Pf_Sample_A.sorted.bam
-samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sorted.bam<span class="p">|</span><span class="w"> </span>head
+<div class="highlight"><pre><span></span><code>samtools flagstat Pf_Sample_A.sorted.bam
+samtools idxstats Pf_Sample_A.sorted.bam| head
 </code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Question</label><label for="__tabbed_10_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Question</label><label for="__tabbed_11_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How could you redirect the stdout of these commands to a file? </p>
@@ -853,7 +905,7 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Question</label><label for="__tabbed_11_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Question</label><label for="__tabbed_12_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Why do we usually work with sorted and indexed BAM files rather than raw SAM files?</p>
@@ -868,25 +920,25 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Run Sniffles on the sorted BAM file:</p>
-<div class="highlight"><pre><span></span><code>sniffles<span class="w"> </span>--input<span class="w"> </span>Pf_Sample_A.sorted.bam<span class="w"> </span>--vcf<span class="w"> </span>Pf_Sample_A.sniffles.vcf
+<div class="highlight"><pre><span></span><code>sniffles --input Pf_Sample_A.sorted.bam --vcf Pf_Sample_A.sniffles.vcf
 </code></pre></div>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Inspect the first few lines of the VCF:</p>
-<div class="highlight"><pre><span></span><code>head<span class="w"> </span>Pf_Sample_A.sniffles.vcf
+<div class="highlight"><pre><span></span><code>head Pf_Sample_A.sniffles.vcf
 </code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Question</label><label for="__tabbed_12_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Question</label><label for="__tabbed_13_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>How many variants were called?</p>
 </div>
 <div class="tabbed-block">
 <p>Only a single deletion was identified:</p>
-<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-vc<span class="w"> </span><span class="s2">&quot;^#&quot;</span><span class="w"> </span>Pf_Sample_A.sniffles.vcf
+<div class="highlight"><pre><span></span><code>grep -vc &quot;^#&quot; Pf_Sample_A.sniffles.vcf
 </code></pre></div>
 </div>
 </div>
@@ -894,7 +946,7 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Question</label><label for="__tabbed_13_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Question</label><label for="__tabbed_14_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What is the difference between the header lines and the variant lines in a VCF file?</p>
@@ -912,10 +964,10 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Confirm how many variant records are present (non-header lines):</p>
-<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-vc<span class="w"> </span><span class="s2">&quot;^#&quot;</span><span class="w"> </span>Pf_Sample_A.sniffles.vcf
+<div class="highlight"><pre><span></span><code>grep -vc &quot;^#&quot; Pf_Sample_A.sniffles.vcf
 </code></pre></div>
 <p>Then print the variant record itself:</p>
-<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;^#&quot;</span><span class="w"> </span>Pf_Sample_A.sniffles.vcf
+<div class="highlight"><pre><span></span><code>grep -v &quot;^#&quot; Pf_Sample_A.sniffles.vcf
 </code></pre></div>
 </div>
 <div class="admonition info">
@@ -937,7 +989,7 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Question</label><label for="__tabbed_14_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Question</label><label for="__tabbed_15_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Based on this VCF, what is the main structural variant call in Pf_Sample_A?</p>
@@ -951,7 +1003,7 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Question</label><label for="__tabbed_15_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Question</label><label for="__tabbed_16_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Why is it not enough to simply observe that Sniffles reported a deletion?</p>
@@ -965,7 +1017,7 @@ samtools<span class="w"> </span>idxstats<span class="w"> </span>Pf_Sample_A.sort
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Question</label><label for="__tabbed_16_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Question</label><label for="__tabbed_17_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>What extra information would help you decide whether this deletion is likely to be real?</p>
@@ -1068,13 +1120,13 @@ set -euo pipefail
 </ul>
 <p>In other words, this version covers preprocessing and quality control for <code>Pf_Sample_B</code> and <code>Pf_Sample_C</code>, but it does not yet map reads or call structural variants.</p>
 <p>Save the file, then make it executable and run it once to see the intermediate output:</p>
-<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>run_sv_analysis.sh
+<div class="highlight"><pre><span></span><code>chmod +x run_sv_analysis.sh
 ./run_sv_analysis.sh
 </code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Question</label><label for="__tabbed_17_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Question</label><label for="__tabbed_18_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Now extend the script so it also carries out the mapping, sorting, indexing, and structural variant calling steps for both samples. What would the full version look like?</p>
@@ -1126,7 +1178,7 @@ done
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Question</label><label for="__tabbed_18_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Question</label><label for="__tabbed_19_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Click here for answers to Task 10.2</p>
@@ -1202,7 +1254,7 @@ done
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Question</label><label for="__tabbed_19_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Question</label><label for="__tabbed_20_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Based on the error message obtained what is the main problem?</p>
@@ -1217,7 +1269,7 @@ done
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Question</label><label for="__tabbed_20_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Question</label><label for="__tabbed_21_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>If Conda reports a dependency conflict, what are some sensible next steps?</p>
@@ -1232,7 +1284,7 @@ done
 <p class="admonition-title">Info</p>
 <p>A good long-term habit is to export your environment once it works, especially if you want to move the analysis to another machine or recreate it later.</p>
 <p>This creates a record of the software versions used in the analysis:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>env<span class="w"> </span><span class="nb">export</span><span class="w"> </span>&gt;<span class="w"> </span>sv_nanopore_environment.yml
+<div class="highlight"><pre><span></span><code>conda env export &gt; sv_nanopore_environment.yml
 </code></pre></div>
 <p>You can then use this file as a reference when rebuilding the environment elsewhere.</p>
 </div>
