@@ -816,7 +816,7 @@ Yield_By_Length.png
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p>Run the alignment and write the output to SAM format:</p>
-<div class="highlight"><pre><span></span><code>minimap2 -ax map-ont -t 10 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
+<div class="highlight"><pre><span></span><code>minimap2 -ax map-ont -t 4 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
 </code></pre></div>
 </div>
 <div class="admonition info">
@@ -1104,7 +1104,7 @@ for SAMPLE in &quot;${SAMPLES[@]}&quot;; do
 
     NanoPlot --fastq &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot; --outdir &quot;$SAMPLE_TMP_DIR/nanoplot_filtered&quot;
 
-    minimap2 -ax map-ont -t 10 &quot;$REFERENCE&quot; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot; &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sam&quot;
+    minimap2 -ax map-ont -t 4 &quot;$REFERENCE&quot; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz&quot; &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sam&quot;
 
     samtools sort -O BAM &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sam&quot; &gt; &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam&quot;
     samtools index &quot;$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam&quot;

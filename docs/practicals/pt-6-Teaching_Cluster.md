@@ -23,7 +23,7 @@ By the end of this practical, you should be able to:
 
 # 2. Accessing the Teaching Cluster
 
-The Teaching Cluster provides a remote Linux environment that you can access through your browser. It is a JupyterHub-based system, which means each user launches their own Jupyter server. By default, this opens as a JupyterLab session, but from there you can also open other tools and work across multiple tabs. Each server type provides access to a defined set of shared compute resources. For this practical, you should use **SBBS MSc Projects (CPU)**, which provides **32 CPU cores** and **32 GB RAM**.
+The Teaching Cluster provides a remote Linux environment that you can access through your browser. It is a JupyterHub-based system, which means each user launches their own Jupyter server. By default, this opens as a JupyterLab session, but from there you can also open other tools and work across multiple tabs. Each server type provides access to a defined set of shared compute resources. For this practical, you should use **BIO726P - Unix & Analysis Of Large Genomic Datasets**, image. 
 
 !!! Task
     Go to [https://hub.comp-teach.qmul.ac.uk/](https://hub.comp-teach.qmul.ac.uk/) and log in with your QMUL account.
@@ -34,14 +34,15 @@ The Teaching Cluster provides a remote Linux environment that you can access thr
 ![TC 1](../img/Teaching_Cluster_Login.png)
 
 !!! Task
-    Once, logged in you will be taken to a page where you can select the instance you would like to use. For this scroll down to the bottom on the page and select the tab **Project Work**. This will provide several options, however you should select the option **SBBS MSc Projects (CPU)**. Once you have clicked on this option, scroll down to the bottom of the page and select **start**. 
+    Once, logged in you will be taken to a page where you can select the instance you would like to use. For this scroll down to the bottom on the page and select the tab **Project Work**. This will provide several options, however you should select the option **Unix and Analysis of Large Genomic Datasets** image. Once you have clicked on this option, scroll down to the bottom of the page and select **start**. 
 
 ![TC 2](../img/Teaching_Cluster_Instance_Selection.png)
 
-![TC 3](../img/Teaching_Cluster_SBBS_MSc_Projects.png)
+![TC 3](../img/Teaching_Cluster_BIO726P_Image.png)
 
 !!! Task
-    Wait for the loading screen to finish. Starting server can take few seconds to few minutes (depends on the cluster use). 
+    Once you have clicked on this option, scroll down to the bottom of the page and select **start**. Wait for the loading screen to finish. Starting server can take few seconds to few minutes (depends on the cluster use). 
+
 ![TC 5](../img/Teaching_Cluster_Instance_Loading.png)
 
 !!! Task
@@ -78,7 +79,7 @@ As in the previous practicals, start by making a well-organised working director
 
     For example:
 
-    ```bash
+    ```
     mkdir BIO726P_Teaching_Cluster
     cd BIO726P_Teaching_Cluster
     mkdir input references tmp results
@@ -99,129 +100,46 @@ Your directory structure should look like this:
 
 ------------------------
 
-# 4. Package management with Conda
+# 4. Software environments with Conda
 
-Most bioinformatics workflows depend on many external tools. Installing those tools manually can be difficult because different programs may require different versions of the same dependency.
+The Teaching Cluster image used for this practical already contains the software needed
+for the structural variant analysis, including `NanoPlot`, `chopper`, `minimap2`,
+`samtools`, and `Sniffles`. These programs are installed in Conda's `base` environment,
+which is active by default when you open a terminal, so they can be used immediately.
 
-[Conda](https://docs.conda.io/en/latest/) is a package and environment manager that helps solve this problem.
+However, it is still important to understand how software environments are managed in bioinformatics. Different projects may require different versions of the same program, or programs with conflicting dependencies. Conda provides one way to create and manage these isolated environments.
 
 ## 4.1 Why use Conda?
 
-Conda allows you to:
+Conda is a package and environment manager. It can be used to:
 
-* install software without admin access,
-* keep project dependencies together in an isolated environment,
-* avoid conflicts between tools required for different analyses,
-* share software environments with other users.
+- install software without requiring administrator access;
+- create isolated environments containing specific software versions;
+- keep the dependencies for different projects separate;
+- reproduce a software environment on another system;
+- document which software was used in an analysis.
 
-The two channels you will commonly see in bioinformatics are:
+In bioinformatics, you will commonly encounter the `conda-forge` and `bioconda` channels.
 
-* `conda-forge` for general-purpose scientific software,
-* `bioconda` for bioinformatics software.
-
-!!! Info
-    A **channel** in Conda is a source (repository) of installable packages.
-
-    When you run an install command, Conda searches the channels you specify and resolves package versions from them.
-
-    In bioinformatics, we commonly combine `conda-forge` and `bioconda` because many bioinformatics tools in `bioconda` depend on shared libraries provided by `conda-forge`.
-
-    Channel order matters: Conda resolves packages based on channel priority, so using a consistent channel setup helps avoid version conflicts and improves reproducibility.
-
+- `conda-forge` provides a large collection of general scientific and computational software.
+- `bioconda` provides many bioinformatics packages.
 
 !!! Info
-    An **environment** is an isolated software space with its own installed packages and versions. Activating an environment changes which software your shell uses.
+    A **Conda channel** is a repository from which Conda obtains packages.
 
-!!! Question
-
-    === "Question"
-
-        What kinds of problems can happen if you install many tools into one single base environment?
-
-    === "Answer"
-
-        Different tools may require incompatible versions of the same dependency. This can lead to installation failures, broken software, or commands behaving differently between projects.
-
-!!! Task 
-    Take a look through the conda sub-commands (e.g. conda export) and understand when you would use each of them! If you have any questions then please ask a demonstrator.
+    An **environment** is an isolated collection of software packages and their dependencies. Activating an environment changes which versions of programs are available to your shell.
 
 
-## 4.2 A note on alternatives
+---
 
-Conda is not the only way to install software.
+## 4.2 Inspecting the existing software
 
-Other common approaches include:
-
-* `pip` for Python packages,
-* system package managers such as `apt` or `brew`,
-* containers such as Docker or Apptainer.
-
-For this practical, Conda is the simplest way to build a user-controlled analysis environment. Later in your training you may encounter containers when you need stronger reproducibility or more complex software stacks.
-
-------------------------
-
-# 5. Creating a Conda environment for structural variant analysis
-
-We will create an environment containing software for a small Nanopore-based structural variant workflow.
-
-!!! Info 
-    **Structural variants (SVs)** are larger genomic changes, usually affecting regions of around 50 base pairs or more.
-
-    Common SV types include:
-
-    * **Deletions (DEL):** sequence is missing relative to the reference.
-    * **Insertions (INS):** extra sequence is present relative to the reference.
-    * **Inversions (INV):** a region is reversed in orientation.
-    * **Duplications (DUP):** a segment appears in extra copies.
-    * **Translocations (BND/TRA):** sequence is rearranged between genomic locations.
-
-    SVs can have major biological effects because they may disrupt genes, alter gene copy number, or change regulatory regions. Long Nanopore reads are particularly useful for this analysis because individual reads can span larger rearrangements that are often difficult to resolve with short-read data.
-
-
-The tools we will use are:
-
-| Tool | Purpose in this practical | GitHub repository | Conda package page |
-|---|---|---|---|
-| NanoPlot | Basic Nanopore read QC | [wdecoster/NanoPlot](https://github.com/wdecoster/NanoPlot) | [bioconda: nanoplot](https://bioconda.github.io/recipes/nanoplot/README.html) |
-| chopper | Read filtering | [wdecoster/chopper](https://github.com/wdecoster/chopper) | [bioconda: chopper](https://bioconda.github.io/recipes/chopper/README.html) |
-| minimap2 | Read mapping | [lh3/minimap2](https://github.com/lh3/minimap2) | [bioconda: minimap2](https://bioconda.github.io/recipes/minimap2/README.html) |
-| samtools | Alignment file processing | [samtools/samtools](https://github.com/samtools/samtools) | [bioconda: samtools](https://bioconda.github.io/recipes/samtools/README.html) |
-| sniffles | Structural variant calling | [fritzsedlazeck/Sniffles](https://github.com/fritzsedlazeck/Sniffles) | [bioconda: sniffles](https://bioconda.github.io/recipes/sniffles/README.html) |
-
+First, confirm which executable and version are available in the supplied environment.
 
 !!! Task
-    Test that Conda is available by running one of the following commands:
+    Check where the main SV-analysis programs are located:
 
-    ```bash
-    conda
-    # or
-    conda --help
     ```
-
-    Your terminal output should look similar to the example below.
-
-![TC 9](../img/Teaching_Cluster_Running_Conda_Command.png)
-
-
-!!! Task
-    Create and activate a new Conda environment called `sv_nanopore`.
-
-    You can either list the packages you want at creation time, as shown below, or create the environment first and install additional packages after it is active.
-
-    ```bash
-    conda create -n sv_nanopore -c conda-forge -c bioconda nanoplot chopper minimap2 samtools sniffles -y
-    ```
-    Now activate your new environment:
-
-    ```bash 
-    conda activate sv_nanopore
-    ```
-
-
-!!! Task
-    Check that each tool is available:
-
-    ```bash
     which NanoPlot
     which chopper
     which minimap2
@@ -229,9 +147,15 @@ The tools we will use are:
     which sniffles
     ```
 
-    Then check the versions:
+    You should see something like:
 
-    ```bash
+    ```
+    /opt/conda/bin/NanoPlot
+    ```
+
+    Now check their versions:
+
+    ```
     NanoPlot --version
     chopper --help
     minimap2 --version
@@ -239,63 +163,201 @@ The tools we will use are:
     sniffles --version
     ```
 
-!!! Task
-    When you are finished, test deactivating and reactivating the environment:
+!!! Question
 
-    ```bash
-    conda deactivate
-    conda activate sv_nanopore
+    === "Question"
+
+        Why might it still be useful to know the exact version of each program even though the software is already installed?
+
+    === "Answer"
+
+        It helps with reproducibility, interpreting results, troubleshooting, and comparing analyses performed on different systems.
+
+---
+
+## 4.3 Exploring Conda
+
+Conda is also available on the Teaching Cluster. Use it to confirm which environment is
+active and where that environment is located.
+
+!!! Task
+    Check that Conda is available:
+
+    ```
+    conda --help
+    ```
+
+    Now inspect the environments that already exist:
+
+    ```
+    conda env list
+    ```
+
+    You should see something like the following.
+
+    ```
+    # conda environments:
+    #
+    # * -> active
+    # + -> frozen
+    base                 *   /opt/conda
+    ```
+
+    The `*` marks `base` as active, and `/opt/conda` is its location. Conda adds the
+    active environment's `bin` directory to your `PATH`, which is why the programs in
+    Section 4.2 can be run by name. In the next section, you will create a separate
+    environment for demonstrating project-specific packages and versions.
+
+------------------------
+
+# 5. Creating a small Conda environment
+
+You will now create a separate Conda environment to demonstrate how software environments can be built and isolated.
+
+**This environment is for learning about Conda. You do not need to use it for the main SV analysis in this practical.**
+
+!!! Task
+    For example lets assume on the Teaching Cluster we want run a SNP identification pipeline, for this we will need the [BowTie2 aligner - link] (https://anaconda.org/channels/bioconda/packages/bowtie2/overview) and [bcftools - link](https://anaconda.org/channels/bioconda/packages/bcftools/overview). To install these packages in a fresh environment you can use the following command! Review each component to ensure you understand what is going on! (To do this you can use `conda --help` and `conda create --help`).
+
+    ```
+    conda create -n SNP_Pipeline -c conda-forge -c bioconda bowtie2 bcftools -y
+    ```
+
+    Activate it:
+
+    ```
+    conda activate SNP_Pipeline
+    ```
+
+    Check that the programs are available:
+
+    ```
+    which bowtie2
+    which bcftools
+    ```
+
+
+!!! Question
+
+    === "Question"
+
+        What has changed compared with the tools you inspected before activating `SNP_Pipeline`?
+
+    === "Answer"
+
+        The location of the executable changes, and the version of the software may differ depending on the environment. Activating a Conda environment changes which software your shell uses.
+
+        For example, minimap2 which is installed in the base environment is at:
+
+        ```
+        which minimap2
+        /opt/conda/bin/minimap2
+        ```
+
+        Compared to bowtie2, which is installed in the SNP_Pipeline enviornment:
+
+        ```
+        /home/jovyan/.conda/envs/SNP_Pipeline/bin/bowtie2
+        ```
+
+---
+
+
+## 5.2 Exporting an environment
+
+Once an environment has been created, its configuration can be recorded.
+
+!!! Task
+    Export your environment:
+
+    ```
+    conda env export > SNP_Pipeline.yml
+    ```
+
+    Inspect the resulting file:
+
+    ```
+    head SNP_Pipeline.yml
+    ```
+
+    The YAML file records information about the environment, including its packages and versions. This should look something like:
+
+    ```
+    name: SNP_Pipeline
+    channels:
+    - conda-forge
+    - bioconda
+    dependencies:
+    - _openmp_mutex=4.5=20_gnu
+    - bcftools=1.24=h118bc1c_2
+    - bowtie2=2.5.5=h63e9258_1
+    - bzip2=1.0.8=hda65f42_10
+    - c-ares=1.34.8=hebe6cf0_2
     ```
 
 !!! Question
 
     === "Question"
 
-        Why is it important to test whether a package actually runs after installation?
+        How could this file help someone else reproduce your analysis?
 
     === "Answer"
 
-        A package may install successfully but still fail at runtime if there is a path issue, a missing dependency, or confusion over which environment is active. A quick test confirms the tool is really available.
+        It provides a reproducible specification of the exact software stack used, which allows another person or a future workflow to recreate the same environment on a different machine.
+
+---
+
+## 5.3 Deactivating the environment
 
 
-!!! Question
 
-    === "Question"
+!!! Task
 
-        Based on the tools listed above and your understanding from previous practicals, what order should we run them in for structural variant analysis?
+    **Important** - When you are finished exploring and using the environment remember to deactivate it! We wont need these tools in the following session for structural variant analysis. 
 
-    === "Answer"
+    ```
+    conda deactivate -n SNP_Pipeline
+    ```
 
-        1. NanoPlot (initial read QC)
-        2. chopper (read filtering)
-        3. minimap2 (read mapping)
-        4. samtools (sorting and indexing alignments)
-        5. sniffles (structural variant calling)
+!!! Info
+    Conda is **not simply an alternative way of finding programs that are missing**.
+
+    It is a way of controlling the software environment in which an analysis is performed.
+
+    In a real research project, you might encounter a situation where:
+
+    - the system already provides most of the software you need;
+    - one project requires a particular version of a tool;
+    - two projects require incompatible versions;
+    - a collaborator gives you an environment specification;
+    - you need to reproduce an analysis months or years later.
+
+    Conda can help address these situations.
 
 ------------------------
 
-# 6. Downloading the reference genome and annotation
+# 6. Now Back To Our Structural Variant Analysis!
 
-We now need a reference genome for *Plasmodium falciparum* 3D7.
+We now need a reference genome for *Plasmodium falciparum* 3D7. To source this we can turn to the NCBI genome database [link here!](https://www.ncbi.nlm.nih.gov/datasets/genome/?taxon=36329). Select the reference genome assembly **(GCA_000002765)** and subsequently navigate to the **FTP site** [link here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/). Look across the files available, do any formats look familiar? 
 
 !!! Task
-    Change into your `references` directory and download the genome FASTA file. 
+    Now it is time to download the reference genome. 
 
 
-    ```bash
+    ```
     cd ~/BIO726P_Teaching_Cluster/references
     wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/002/765/GCF_000002765.6_GCA_000002765/GCF_000002765.6_GCA_000002765_genomic.fna.gz
     ```
 
     Decompress the FASTA file:
 
-    ```bash
+    ```
     gunzip GCF_000002765.6_GCA_000002765_genomic.fna.gz
     ```
 
     Inspect the FASTA file, does it match what you expect? 
 
-    ```bash
+    ```
     ls -lh
     grep "^>" GCF_000002765.6_GCA_000002765_genomic.fna | head
     ```
@@ -303,40 +365,48 @@ We now need a reference genome for *Plasmodium falciparum* 3D7.
 
 ------------------------
 
-# 7. Downloading & Uploading Example Nanopore data
+# 7. Downloading Our Nanopore Data
 
 
 !!! Task 
-    You will need to download the sequence data from each sample directly from QMPlus. This can be done by clicking on the 'Plasmodium_falciparum_Sample_Data' folder and then selecting the `download folder` button as shown below. 
+    Now it is time to download the *Plasmodium falciparum* sequencing data for **3 samples** which you will be analysing in this assessment. The dataset is available on your AWS Instances and as such you must transfer it to the teaching cluster. To achieve this we will be using **RSync** (remote synchronisation). This is a command-line tool for copying and synchronising files between locations, including between your AWS instance and the teaching cluster. It compares the source and destination, transferring only new or changed files rather than copying everything each time
 
-    ![Raw Data Download](../img/TC_Download_Data_From_QMPLus.png)
+    1) First ensure your AWS Instances are switched on by going to  [https://switch.genomicscourse.com/](https://switch.genomicscourse.com/)
 
-!!! Task 
-    Next **upload the data to the Teaching Cluster** using the upload button as shown in the image below: 
 
-    ![Data Upload](../img/TC_Upload_Data.png)
-
-    Finally move the uploaded data into your `input` directory:
-
-    ```bash
-    mv Pf*.fastq.gz  ~/BIO726P_Teaching_Cluster/input
+    2) Navigate into your input data sub-directory and subsequently run the Rsync Command. **Remember to change matt to your username!** 
 
     ```
+    cd ~/BIO726P_Teaching_Cluster/input/
+    rsync -avzP matt@matt.genomicscourse.com:'/shared/data/Pf_*.fastq.gz' ./ 
+    ```
+    
+    3) Check the file exists and inspect the first read:
 
-
-!!! Task
-    Check the file exists and inspect the first read:
-
-    ```bash
+    ```
     ls -lh Pf_Sample_A.fastq.gz
-    zcat Pf_Sample_A.fastq.gz | head
+    zcat Pf_Sample_A.fastq.gz | head -n 4
     ```
+
 
 !!! Question
 
     === "Question"
 
-        What are the four lines that make up one FASTQ record?
+        Looking at the rsync manual (`man rsync`) can you identify what the parameters `-avzP` were doing?
+
+    === "Answer"
+        **-a (archive)**: Preserves file permissions, modification times, and symlinks.
+        **-v (verbose)**: Displays transfer details in the console.
+        **-z (compress)**: Compresses data during transit to speed up the download.
+        **-P (progress/partial)**: Shows a real-time progress bar and retains partially downloaded files if the connection drops.
+
+
+!!! Question
+
+    === "Question"
+
+        Thinking back to the practical session on Day, what are the four lines that make up one FASTQ record?
 
     === "Answer"
 
@@ -346,8 +416,28 @@ We now need a reference genome for *Plasmodium falciparum* 3D7.
             - 3) A separator line usually containing `+`,
             - 4) A quality string with one character per base.
 
-!!! Info
-    In this session the FASTQ file is supplied for you. In a real project, data may come from public archives such as ENA, SRA, or institutional storage. **We will come back to this later in a bonus task**
+
+
+!!! Info 
+
+    **BACK UP - Please follow this method for obtaining the sequencing data if you were not able to use RSync.** 
+
+    If you were unable to use RSync, please let a demonstrator know. In the mean time you can source the data via QMPLus. Please identitfy the 'Plasmodium_falciparum_Sample_Data' folder and then select the `download folder` button as shown below. 
+
+    ![Raw Data Download](../img/TC_Download_Data_From_QMPLus.png)
+
+    Next **upload the data to the Teaching Cluster** using the upload button as shown in the image below: 
+
+    ![Data Upload](../img/TC_Upload_Data.png)
+
+    Finally move the uploaded data into your `input` directory:
+
+    ```
+    mv Pf*.fastq.gz  ~/BIO726P_Teaching_Cluster/input
+
+    ```
+
+
 ------------------------
 
 # 8. Part 1: Exploring the structural variant workflow step-by-step
@@ -359,15 +449,69 @@ In this first part, you will run each command manually so that you understand wh
 !!! Task
     Change into your `tmp` directory and run NanoPlot on the raw FASTQ file:
 
-    ```bash
+    ```
     cd ~/BIO726P_Teaching_Cluster/tmp
     NanoPlot --fastq ../input/Pf_Sample_A.fastq.gz --outdir Pf_Sample_A_nanoplot_raw
     ```
 
+    Did you encounter an **error message** like below?
+
+    ```
+    If you read this then NanoPlot 1.48.0 has crashed :-(
+    Please try updating NanoPlot and see if that helps...
+
+    If not, please report this issue at https://github.com/wdecoster/NanoPlot/issues
+    If you could include the log file that would be really helpful.
+    Thanks!
+
+
+
+    Traceback (most recent call last):
+    File "/opt/conda/bin/NanoPlot", line 10, in <module>
+        sys.exit(main())
+                ^^^^^^
+    File "/opt/conda/lib/python3.12/site-packages/nanoplot/NanoPlot.py", line 111, in main
+        plots = make_plots(datadf, settings)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "/opt/conda/lib/python3.12/site-packages/nanoplot/NanoPlot.py", line 190, in make_plots
+        nanoplotter.scatter(
+    File "/opt/conda/lib/python3.12/site-packages/nanoplotter/nanoplotter_main.py", line 161, in scatter
+        fig = ff.create_2d_density(
+            ^^^^^^^^^^^^^^^^^^^^
+    AttributeError: module 'plotly.figure_factory' has no attribute 'create_2d_density'
+    ```
+
+    First thing we can do is see if anyone else has encountered the same issue by searching online. Most people log issues via Github reports and it appears someone hit the same issue [Link Here](https://github.com/wdecoster/NanoPlot/issues/442.) From reading this thread, it appears we have hit a dependancy issue within our environment specifically regarding the Plotly package depedancy  
+
+    Right lets see what version of Plotly we are using: 
+
+    ```
+    pip show plotly
+    ```
+
+    We can see that we have plotly version 7.0.0 install which is causing the issue. To fix and practice creating a new enviornment at the same time lets, reinstall nanoplot with the correct version (6.9.0) of the [(Plotly Package)](https://anaconda.org/channels/conda-forge/packages/plotly/overview): 
+
+    ```
+    conda create -n NANOPLOT_FIX -c conda-forge -c bioconda plotly==6.9.0 nanoplot=1.48 -y
+    ```
+
+    Now lets activate our environment, double check we have the correct versionof plotly installed (6.9.0) and retry our command 
+
+    ```
+    conda activate NANOPLOT_FIX
+
+    pip show plotly        
+
+    NanoPlot --fastq ../input/Pf_Sample_A.fastq.gz --outdir Pf_Sample_A_nanoplot_raw
+    ```
+
+    This time the command works and we can move forward with the analysis! 
+
+
 !!! Task
     Inspect the output directory:
 
-    ```bash
+    ```
     ls Pf_Sample_A_nanoplot_raw
     ```
 
@@ -395,7 +539,12 @@ In this first part, you will run each command manually so that you understand wh
 
     ```
 
-    Using the left-side bar, navigate to the directory and open the `NanoPlot-report.html`. **Note** - To view the figures you may have to click the Trust HTML button on top left side of the window. 
+    Using the left-side bar, navigate to the directory and open the `NanoPlot-report.html`. 
+    
+
+
+!!! Info
+    **IMPORTANT NOTE** - To view all the figures in the .html report you may have to click the Trust HTML button on top left side of the window. 
     
 
 
@@ -461,7 +610,7 @@ For many analyses, it is helpful to remove very short or very low-quality reads 
 !!! Task
     Run NanoPlot again on the filtered reads. Inspect the output report, can you confirm that the filtering implemented by chopper was successful? 
 
-    ```bash
+    ```
     NanoPlot --fastq Pf_Sample_A_filtered_reads.fastq.gz --outdir Pf_Sample_A_nanoplot_filtered
     ```
 
@@ -495,7 +644,7 @@ We will now align the filtered reads to the reference genome using `minimap2`.
     Run the alignment and write the output to SAM format:
 
     ```
-    minimap2 -ax map-ont -t 10 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
+    minimap2 -ax map-ont -t 4 ../references/GCF_000002765.6_GCA_000002765_genomic.fna Pf_Sample_A_filtered_reads.fastq.gz -o Pf_Sample_A.sam
     ```
 
 !!! Info
@@ -505,7 +654,7 @@ We will now align the filtered reads to the reference genome using `minimap2`.
 !!! Task
     Convert the SAM file to a sorted BAM file and index it:
 
-    ```bash
+    ```
     samtools sort -O BAM Pf_Sample_A.sam > Pf_Sample_A.sorted.bam
     samtools index Pf_Sample_A.sorted.bam
     ```
@@ -513,7 +662,7 @@ We will now align the filtered reads to the reference genome using `minimap2`.
 !!! Task
     Generate a few simple alignment statistics:
 
-    ```bash
+    ```
     samtools flagstat Pf_Sample_A.sorted.bam
     samtools idxstats Pf_Sample_A.sorted.bam| head
     ```
@@ -545,14 +694,14 @@ We will now align the filtered reads to the reference genome using `minimap2`.
 !!! Task
     Run Sniffles on the sorted BAM file:
 
-    ```bash
+    ```
     sniffles --input Pf_Sample_A.sorted.bam --vcf Pf_Sample_A.sniffles.vcf
     ```
 
 !!! Task
     Inspect the first few lines of the VCF:
 
-    ```bash
+    ```
     head Pf_Sample_A.sniffles.vcf
     ```
 
@@ -567,7 +716,7 @@ We will now align the filtered reads to the reference genome using `minimap2`.
 
         Only a single deletion was identified:
 
-        ```bash
+        ```
         grep -vc "^#" Pf_Sample_A.sniffles.vcf
         ```
 
@@ -593,13 +742,13 @@ For this dataset, Sniffles reported exactly one structural variant in `Pf_Sample
 !!! Task
     Confirm how many variant records are present (non-header lines):
 
-    ```bash
+    ```
     grep -vc "^#" Pf_Sample_A.sniffles.vcf
     ```
 
     Then print the variant record itself:
 
-    ```bash
+    ```
     grep -v "^#" Pf_Sample_A.sniffles.vcf
     ```
 
@@ -771,7 +920,7 @@ The first version of the script below automates only the early preprocessing ste
 
     Save the file, then make it executable and run it once to see the intermediate output:
 
-    ```bash
+    ```
     chmod +x run_sv_analysis.sh
     ./run_sv_analysis.sh
     ```
@@ -809,7 +958,7 @@ The first version of the script below automates only the early preprocessing ste
 
             NanoPlot --fastq "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz" --outdir "$SAMPLE_TMP_DIR/nanoplot_filtered"
 
-            minimap2 -ax map-ont -t 10 "$REFERENCE" "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz" > "$SAMPLE_TMP_DIR/${SAMPLE}.sam"
+            minimap2 -ax map-ont -t 4 "$REFERENCE" "$SAMPLE_TMP_DIR/${SAMPLE}.filtered.fastq.gz" > "$SAMPLE_TMP_DIR/${SAMPLE}.sam"
 
             samtools sort -O BAM "$SAMPLE_TMP_DIR/${SAMPLE}.sam" > "$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam"
             samtools index "$SAMPLE_TMP_DIR/${SAMPLE}.sorted.bam"
@@ -947,7 +1096,7 @@ This matters when you want to return to the same project for a second analysis p
 
     This creates a record of the software versions used in the analysis:
 
-    ```bash
+    ```
     conda env export > sv_nanopore_environment.yml
     ```
 

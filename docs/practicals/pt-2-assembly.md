@@ -156,16 +156,45 @@ generate a standardized report.
 
       ![QUAST Output](../img/QUAST_Report.png)
 
-!!! Question
-      * What do the values in the table mean?
-      * For which values is higher better, and for which ones is smaller better?
 
-In some cases, we have prior knowledge about the expected percentage of **GC** 
-content, the number of chromosomes, and the total genome size. This information
-can be compared to the statistics present in Quast's report.
+!!! Question
+
+    === "Question"
+
+         Looking at the **assembly metrics** in the QUAST report? For which metrics is a higher or smaller value better?
+
+    === "Answer"
+
+        **A Higher Value is Better**
+
+        - N50, N90: Higher values indicate greater assembly contiguity, meaning larger contiguous sequences make up the core of the assembly.
+
+        - Largest contig: A longer maximum contig length reflects fewer assembly breakpoints across major genomic regions.
+
+        **A Smaller Value is Better**
+
+        - L50 and L90: Lower values mean fewer contigs are required to cover 50 percent or 90 percent of the assembly total length.
+
+        - Number of Ns / Ns per 100 kbp: Fewer ambiguous bases indicate higher sequence completeness and accuracy within scaffolds.
+
+        **Context-Dependent** 
+
+        - Number of contigs: Fewer total contigs generally indicate a less fragmented, more contiguous assembly. However, this metric must be evaluated alongside total assembly length as an artificially low contig count can simply indicate an incomplete assembly that missed large genomic regions.
+
+        - Total length: Total length should closely approximate the expected genome size of the target organism. An assembly significantly smaller than expected suggests missing sequence or collapsed repeats, whereas a substantially larger assembly may indicate sample contamination or underlying high error rate..
+
+        - GC percentage: Neither higher nor lower is inherently better, instead this value should closely match the known baseline GC content of the target organism.
+
+
+
+
+      
+            
+            
+
 
 !!! Task
-      See if you can find the expected GC content of the complete Fire Ant genome? Does the GC content of the assembly match what is expected? 
+      Using your web-browser of choice see if you can find the expected **GC** content of the complete Fire Ant genome? Does the GC content of the assembly match what is expected? 
 
 ------------------------------------------
 

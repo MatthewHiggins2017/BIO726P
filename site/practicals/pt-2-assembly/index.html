@@ -387,10 +387,16 @@ cd ..
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<ul>
-<li>Did you note the use of <code>*</code> in the above command?</li>
-<li>What does it do? (Hint: the symbol <code>*</code> is called a wildcard)</li>
-</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Did you note the use of <code>*</code> in the above command? What does this symbol do?</p>
+</div>
+<div class="tabbed-block">
+<p>The symbol <code>*</code> is called a wildcard. In the shell, it matches any sequence of characters in filenames, so <code>reads.pe*.clean.fq</code> means “all files whose names start with <code>reads.pe</code>, then have any text in between, and end with <code>.clean.fq</code>. For example, it would match <code>reads.pe1.clean.fq</code> and <code>reads.pe2.clean.fq</code>, but not a file with a different name pattern. This is useful for working with many files at once without typing each name individually.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
@@ -410,7 +416,17 @@ cd ..
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>Does it contain a lot of <strong>NNNN</strong> sequences? What do you think might be the reason for that? (Do not worry if your assembly does not contain any <strong>NNNN</strong> sequence.</p>
+</div>
+<div class="tabbed-block">
+<p><strong>N</strong> bases represent <strong>unknown nucleotide positions</strong>. In a SPAdes assembly, they are commonly introduced when contigs are joined into scaffolds across gaps where the reads do not provide enough information to determine the
+exact sequence, often because of repeats or insufficient read coverage. The number of <strong>N</strong> bases therefore reflects unresolved regions rather than actual nucleotides. An assembly with few or no <strong>N</strong> bases is also possible, particularly when it contains mostly contigs rather than scaffolds.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
@@ -462,17 +478,49 @@ quast.py scaffolds.fasta
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Looking at the <strong>assembly metrics</strong> in the QUAST report? For which metrics is a higher or smaller value better?</p>
+</div>
+<div class="tabbed-block">
+<p><strong>A Higher Value is Better</strong></p>
 <ul>
-<li>What do the values in the table mean?</li>
-<li>For which values is higher better, and for which ones is smaller better?</li>
+<li>
+<p>N50, N90: Higher values indicate greater assembly contiguity, meaning larger contiguous sequences make up the core of the assembly.</p>
+</li>
+<li>
+<p>Largest contig: A longer maximum contig length reflects fewer assembly breakpoints across major genomic regions.</p>
+</li>
+</ul>
+<p><strong>A Smaller Value is Better</strong></p>
+<ul>
+<li>
+<p>L50 and L90: Lower values mean fewer contigs are required to cover 50 percent or 90 percent of the assembly total length.</p>
+</li>
+<li>
+<p>Number of Ns / Ns per 100 kbp: Fewer ambiguous bases indicate higher sequence completeness and accuracy within scaffolds.</p>
+</li>
+</ul>
+<p><strong>Context-Dependent</strong> </p>
+<ul>
+<li>
+<p>Number of contigs: Fewer total contigs generally indicate a less fragmented, more contiguous assembly. However, this metric must be evaluated alongside total assembly length as an artificially low contig count can simply indicate an incomplete assembly that missed large genomic regions.</p>
+</li>
+<li>
+<p>Total length: Total length should closely approximate the expected genome size of the target organism. An assembly significantly smaller than expected suggests missing sequence or collapsed repeats, whereas a substantially larger assembly may indicate sample contamination or underlying high error rate..</p>
+</li>
+<li>
+<p>GC percentage: Neither higher nor lower is inherently better, instead this value should closely match the known baseline GC content of the target organism.</p>
+</li>
 </ul>
 </div>
-<p>In some cases, we have prior knowledge about the expected percentage of <strong>GC</strong> 
-content, the number of chromosomes, and the total genome size. This information
-can be compared to the statistics present in Quast's report.</p>
+</div>
+</div>
+</div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>See if you can find the expected GC content of the complete Fire Ant genome? Does the GC content of the assembly match what is expected? </p>
+<p>Using your web-browser of choice see if you can find the expected <strong>GC</strong> content of the complete Fire Ant genome? Does the GC content of the assembly match what is expected? </p>
 </div>
 <hr />
 <h3 id="22-biologically-meaningful-measures"><strong>2.2 Biologically meaningful measures</strong></h3>
