@@ -343,7 +343,7 @@ We will use NCBI blast server to run the BLAST search!
 !!! Task
     Now try a few of your gene predictions. To do this you can use the predicted protein sequences which you generated and which can be found in `min10000.all.maker.augustus.proteins.fasta`. 
     
-    **Note** - Run BLAST on only a maximum of 12 sequences at a time (instead of simply selecting the first 12 genes in your file, copy-paste sequences randomly from  the file). See if you can tell if based on the SequencingServer report generated the quality of the genome annotation!
+    **Note** - Run BLAST on only a maximum of 12 sequences at a time (instead of simply selecting the first 12 genes in your file, copy-paste sequences randomly from  the file). See if you can tell if based on the NCBI blastp report generated the quality of the genome annotation!
 
 
 As you can see, gene prediction software is imperfect. This is even the case when using all available evidence. This is potentially costly for analyses that rely on gene predictions, i.e. many of the analyses we might want to do:
