@@ -694,7 +694,7 @@ The y-axis on the graph shows the quality scores.</p>
 <ul>
 <li>Trimming the ends of sequence reads using cutadapt.</li>
 <li>K-mer filtering using the bioinformatics tool <strong>kmc3</strong>.</li>
-<li>Removing sequences that are of low quality or too short using cutadapt.</li>
+<li>Removing sequences that are of low quality or too short using trimmomatic.</li>
 </ul>
 </div>
 </div>
@@ -702,7 +702,7 @@ The y-axis on the graph shows the quality scores.</p>
 </div>
 <p>Other similar tools include <a href="https://github.com/agordon/fastx_toolkit"><em>fastx_toolkit</em></a>,
 <a href="https://jgi.doe.gov/data-and-tools/bbtools/"><em>BBTools</em></a>, and
-<a href="https://www.usadellab.org/cms/index.php?page=trimmomatic"><em>Trimmomatic</em></a> however, we will not use them in this practical!</p>
+<a href="http://www.usadellab.org/cms/?page=trimmomatic"><em>Trimmomatic</em></a> however, we will not use them in this practical!</p>
 <hr />
 <h3 id="read-trimming"><strong>Read trimming</strong></h3>
 <p>To clean the FASTQ sequences, we will use a software tool called
@@ -717,7 +717,7 @@ official website: <em>Trimmomatic is a flexible read trimming tool for Illumina 
 - <code>MINLEN</code>: removes reads that fall below the specified minimum length</p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Take 5 minutes to review the <a href="(http://www.usadellab.org/cms/?page=trimmomatic)"><strong>trimmomatic documentation here</strong></a> to make sure you understand completely how the tool works. This is best practice for bioinformaticians when using a new tool for the first time and a good habit! </p>
+<p>Take 5 minutes to review the <a href="http://www.usadellab.org/cms/?page=trimmomatic"><strong>trimmomatic documentation here</strong></a> to make sure you understand completely how the tool works. This is best practice for bioinformaticians when using a new tool for the first time and a good habit! </p>
 </div>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
@@ -970,8 +970,6 @@ if unpaired reads are found).</p>
             </div>
           
           
-  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
-
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1003,7 +1001,7 @@ if unpaired reads are found).</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
