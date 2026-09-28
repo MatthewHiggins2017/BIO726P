@@ -1,0 +1,1369 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Part 6 (Bonus) - Population Genomics on the Command Line - BIO726P</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-6-bonus-population-genomics-on-the-command-line" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="BIO726P" class="md-header__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BIO726P
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 6 (Bonus) - Population Genomics on the Command Line
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="BIO726P" class="md-nav__button md-logo" aria-label="BIO726P" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BIO726P
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Practicals for the 2026 Genome Bioinformatics module
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../debugging_process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Debugging Process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SSH &amp; Your Virtual Computer!
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="part-6-bonus-population-genomics-on-the-command-line"><strong>Part 6 (Bonus) - Population Genomics on the Command Line</strong></h1>
+<hr />
+<h2 id="1-introduction"><strong>1. Introduction</strong></h2>
+<p>In <strong>Part 5</strong> you analysed the fire ant SNP data in <em>R</em>, using <code>adegenet</code> to draw a
+genotype heat map and <code>PopGenome</code> to calculate FST in sliding windows. You were
+given every line of code.</p>
+<p>This bonus practical asks you to reach the <strong>same biological conclusions without
+R, and without being given the commands</strong>. You will use
+<a href="https://www.cog-genomics.org/plink/2.0/"><strong>PLINK 2</strong></a> - the standard
+command-line toolkit for population-scale genotype data - and then go <em>beyond</em>
+Part 5 by measuring <strong>linkage disequilibrium</strong>, the signature that most directly
+reveals a non-recombining supergene.</p>
+<p>Your dataset is unchanged:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Genotype label</th>
+<th style="text-align: center;">Phenotype description</th>
+<th style="text-align: center;">Number of samples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>B</em></td>
+<td style="text-align: center;"><em>single-queen</em> colony</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr>
+<td style="text-align: center;"><em>b</em></td>
+<td style="text-align: center;"><em>multiple-queen</em> colony</td>
+<td style="text-align: center;">7</td>
+</tr>
+</tbody>
+</table>
+<p>Fourteen <strong>haploid</strong> males, across <strong>two scaffolds</strong> taken from two different
+chromosomes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>This is a deliberately hard, self-directed exercise.</strong> Each section states a
+<em>goal</em>, not a recipe. Work out the commands yourself from
+<code>plink2 --help</code>, <code>plink2 --help &lt;flag-name&gt;</code> and the
+<a href="https://www.cog-genomics.org/plink/2.0/">PLINK 2 documentation</a>. Every
+section then offers a collapsed <strong>Hints</strong> box (flag names only) and, below it,
+a collapsed <strong>worked command</strong>. Open them in that order, and only after you
+have genuinely tried.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>No plots, no R.</strong> Every result in this practical is read directly in the
+terminal with <code>head</code>, <code>awk</code>, <code>sort</code> and <code>column</code>. Fourteen samples is small
+enough that the raw numbers <em>are</em> the visualisation - which is precisely why
+we can drop the graphics.</p>
+</div>
+<h3 id="11-fourteen-samples-is-not-many"><strong>1.1. Fourteen samples is not many</strong></h3>
+<p>Almost every design decision below follows from the sample size, so keep these
+in mind throughout:</p>
+<ul>
+<li>Within a group of 7 haploids, an allele frequency can only take the values
+  0, 1/7, 2/7 ... 1. Across all 14, the step is 1/14. <strong>Your resolution is blunt.</strong></li>
+<li>A 10 kb window may contain only a couple of SNPs. A window average built from
+  2 SNPs is noise, not signal - you will have to filter these out yourself.</li>
+<li>Linkage disequilibrium estimated from 14 haplotypes is coarse and biased
+  <em>upwards</em>. Rare variants make this far worse, so they must be removed first.</li>
+<li>With 7 versus 7 haploid genomes, however, a <strong>fixed difference</strong> (an allele
+  present in all 7 <em>B</em> and absent from all 7 <em>b</em>) is unambiguous and easy to
+  count. Small samples are bad at estimating frequencies but fine at detecting
+  complete separation.</li>
+</ul>
+<hr />
+<h2 id="2-setting-up"><strong>2. Setting Up</strong></h2>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Create a project directory with the usual structure and a <code>WHATIDID.txt</code> log:</p>
+<div class="highlight"><pre><span></span><code>mkdir 2026-09-29-popgen_bonus
+cd 2026-09-29-popgen_bonus
+mkdir input results tmp
+touch WHATIDID.txt
+</code></pre></div>
+<p>Symlink the VCF and its index from the genotyping practical into <code>input/</code>:</p>
+<div class="highlight"><pre><span></span><code>ln -s ~/2026-09-29-genotyping/results/snp.vcf.gz input/
+ln -s ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi input/
+</code></pre></div>
+<p>If you do not have these files, use the backups in <code>/shared/data/backup_vcf</code>.</p>
+<p>Check that <code>tree</code> gives you:</p>
+</div>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>2026-09-29-popgen_bonus/
+├── input
+│   ├── snp.vcf.gz -&gt; ~/2026-09-29-genotyping/results/snp.vcf.gz
+│   └── snp.vcf.gz.tbi -&gt; ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi
+├── results
+├── tmp
+└── WHATIDID.txt
+</code></pre></div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Confirm PLINK 2 is available and note the version - flag names change between
+alpha releases, so the version matters when you read the documentation:</p>
+<div class="highlight"><pre><span></span><code>plink2 --version
+</code></pre></div>
+<p>You should see <code>PLINK v2.0.0-a.7.1LM</code> or similar.</p>
+</div>
+<hr />
+<h2 id="3-challenge-1-get-the-data-into-plink-2"><strong>3. Challenge 1 - Get the Data Into PLINK 2</strong></h2>
+<p>PLINK 2 does not work directly from a VCF for most analyses. It converts to its
+own binary format - a <strong>pfile</strong>, consisting of <code>.pgen</code> (genotypes), <code>.pvar</code>
+(variants) and <code>.psam</code> (samples) - and everything downstream reads that.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Convert <code>input/snp.vcf.gz</code> into a pfile called <code>tmp/snp</code>.</p>
+<p>Your first attempt <strong>will fail</strong>. That is intentional. Read PLINK's error
+message carefully and solve each problem in turn. You need to work out:</p>
+<ul>
+<li>Why does PLINK reject our chromosome names? (Look at them: <code>bcftools view -H input/snp.vcf.gz | cut -f1 | uniq</code>)</li>
+<li>Our VCF has <code>.</code> in the ID column. Several later analyses need <strong>unique
+  variant IDs</strong>. How do you make PLINK generate them from chromosome and
+  position?</li>
+<li>How do you restrict the dataset to biallelic sites only?</li>
+</ul>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 1</summary>
+<p>The four flags you need are among:
+<code>--vcf</code>, <code>--allow-extra-chr</code>, <code>--set-all-var-ids</code>, <code>--max-alleles</code>,
+<code>--make-pgen</code>, <code>--out</code>.</p>
+<p>For <code>--set-all-var-ids</code>, the template characters <code>@</code> and <code>#</code> stand for
+chromosome and position. Quote the template so the shell does not touch <code>#</code>.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 1</summary>
+<div class="highlight"><pre><span></span><code>plink2 \
+  --vcf input/snp.vcf.gz \
+  --allow-extra-chr \
+  --set-all-var-ids &#39;@:#&#39; \
+  --max-alleles 2 \
+  --make-pgen \
+  --out tmp/snp
+</code></pre></div>
+</details>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Verify the conversion rather than trusting it. Compare PLINK's reported counts
+against the VCF itself:</p>
+<div class="highlight"><pre><span></span><code>bcftools view -H input/snp.vcf.gz | wc -l   # variants in the VCF
+bcftools query -l input/snp.vcf.gz | wc -l  # samples in the VCF
+head -n 3 tmp/snp.pvar
+cat tmp/snp.psam
+</code></pre></div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>How many samples and variants did PLINK load, and do they match the VCF?</li>
+<li>If the variant count dropped, which flag caused it and is that acceptable?</li>
+<li>Look at <code>tmp/snp.psam</code>. What are the sample IDs, and what happened to the
+  family ID (FID) column?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>You should have <strong>14 samples</strong>. The variant count should match the VCF
+  unless there were multiallelic sites.</li>
+<li>Any drop is caused by <code>--max-alleles 2</code>. It is acceptable here: r² and
+  most FST estimators are only defined for biallelic markers, and
+  multiallelic sites in a 14-sample haploid dataset are almost always
+  alignment artefacts.</li>
+<li>The IDs are the original VCF sample names, still carrying the <code>.bam</code>
+  suffix (e.g. <code>f1_B.bam</code>). There is no FID column at all - the header
+  starts <code>#IID</code> - because a VCF has no family structure, so PLINK 2 does
+  not invent one. You must use the <strong>full ID including <code>.bam</code></strong> in every
+  file you write from now on.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="4-challenge-2-describe-the-dataset-and-define-the-two-groups"><strong>4. Challenge 2 - Describe the Dataset and Define the Two Groups</strong></h2>
+<p>Before any population comparison, find out what you are working with: how much
+data is missing, and how variable the SNPs actually are.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Using your pfile, produce (a) an allele-frequency report and (b) a
+per-sample missingness report. Then look at both.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 2a</summary>
+<p><code>--pfile</code> to load the data, then <code>--freq</code> and <code>--missing</code>. Remember
+<code>--allow-extra-chr</code> is needed on <strong>every</strong> PLINK command with this dataset.
+The outputs are <code>.afreq</code>, <code>.smiss</code> and <code>.vmiss</code> files.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked commands - Challenge 2a</summary>
+<div class="highlight"><pre><span></span><code>plink2 --pfile tmp/snp --allow-extra-chr --freq    --out tmp/snp
+plink2 --pfile tmp/snp --allow-extra-chr --missing --out tmp/snp
+
+head tmp/snp.afreq
+column -t tmp/snp.smiss
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Look at the <code>ALT_FREQS</code> column of <code>tmp/snp.afreq</code>. What is the smallest
+  non-zero value you can see, and why can it not be any smaller?</li>
+<li>Does any sample have unusually high missingness? What would you do about
+  it if one did?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>The smallest non-zero frequency is <strong>1/14 ≈ 0.0714</strong>: one alternative
+  allele among 14 haploid males. (Strictly, PLINK stores each haploid call
+  as a homozygous diploid, so it counts 2 of 28 alleles - but the frequency
+  is the same.) Frequencies move in fourteenths - there is no such thing as
+  a 1% allele in this dataset.</li>
+<li>With 14 samples, a single poorly sequenced individual removes 7% of the
+  information and can distort every group comparison. If one stood out you
+  would exclude it with <code>--remove</code> and re-run everything downstream.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h3 id="41-defining-the-populations"><strong>4.1. Defining the populations</strong></h3>
+<p>PLINK has no idea which sample is <em>B</em> and which is <em>b</em>. You must tell it, using a
+<strong>phenotype file</strong>: a tab-separated table whose header line begins with <code>#IID</code>,
+with one row per sample.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Write <code>tmp/populations.tsv</code> with two columns - the sample ID and a <code>POP</code>
+column containing <code>B</code> or <code>b</code>.</p>
+<p>Do <strong>not</strong> type it out by hand. Generate it from <code>tmp/snp.psam</code> so that it can
+never disagree with the actual sample list. The <em>B</em> samples are the ones whose
+ID ends in <code>_B.bam</code>.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 2b</summary>
+<p><code>awk</code> with a conditional expression: <code>cond ? "B" : "b"</code>. Skip the <code>.psam</code>
+header with <code>NR&gt;1</code>. Prepend the header line with <code>printf '#IID\tPOP\n'</code> and
+group the two commands with <code>{ ... ; } &gt; file</code>.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 2b</summary>
+<div class="highlight"><pre><span></span><code>{ printf &#39;#IID\tPOP\n&#39;
+  awk &#39;NR&gt;1 { print $1&quot;\t&quot;( $1 ~ /_B\.bam$/ ? &quot;B&quot; : &quot;b&quot; ) }&#39; tmp/snp.psam
+} &gt; tmp/populations.tsv
+
+column -t tmp/populations.tsv
+</code></pre></div>
+</details>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>You will also need two <strong>sample ID files</strong> so that later commands can be
+restricted to one group at a time. Create <code>tmp/keep_B.txt</code> and
+<code>tmp/keep_b.txt</code>, each containing a <code>#IID</code> header followed by the IDs of that
+group only.</p>
+</div>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 2c</summary>
+<div class="highlight"><pre><span></span><code>for pop in B b; do
+  { printf &#39;#IID\n&#39;
+    awk -v p=&quot;$pop&quot; &#39;NR&gt;1 &amp;&amp; $2==p { print $1 }&#39; tmp/populations.tsv
+  } &gt; tmp/keep_${pop}.txt
+done
+
+wc -l tmp/keep_B.txt tmp/keep_b.txt
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Each keep file should have 8 lines. Why 8 and not 7?</p>
+</div>
+<div class="tabbed-block">
+<p>Seven sample IDs plus the <code>#IID</code> header line. PLINK 2 uses that header to
+work out that the file contains IIDs only rather than FID/IID pairs - if
+you omit it, PLINK will try to interpret your single column as a family ID
+and match nothing.</p>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="5-challenge-3-who-resembles-whom-a-genetic-relationship-matrix"><strong>5. Challenge 3 - Who Resembles Whom? A Genetic Relationship Matrix</strong></h2>
+<p>In Part 5 you drew a genotype heat map and a PCA to ask a single question: <em>do
+the B and b individuals fall into two genetic groups, and does that depend on
+which scaffold you look at?</em></p>
+<p>With 14 samples there is a more direct answer that needs no graphics at all. Ask
+PLINK for the <strong>genetic relationship between every pair of samples</strong>. The result
+is a 14 × 14 matrix - small enough to read straight off the screen.</p>
+<p>Each off-diagonal value compares two samples across all SNPs, after scaling each
+SNP by its allele frequency:</p>
+<ul>
+<li><strong>positive</strong> - the pair share <em>more</em> alleles than expected by chance;</li>
+<li><strong>around 0</strong> - no more or less similar than two random samples;</li>
+<li><strong>negative</strong> - the pair share <em>fewer</em> alleles than expected.</li>
+</ul>
+<p>The diagonal is each sample compared with itself, so it is close to 1.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Compute a genetic relationship matrix (GRM) for all samples and write it as a
+full square matrix to <code>results/rel_all</code>.</p>
+<p>If PLINK refuses to run, read the error carefully. With only 14 samples it
+does not trust frequencies it estimates on the fly - but you already made a
+frequency file in Challenge 2.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 3a</summary>
+<p>Look up <code>--make-rel</code> with <code>plink2 --help make-rel</code>. The <code>square</code> modifier
+controls the output shape.</p>
+<p><code>--read-freq</code> supplies a pre-computed <code>.afreq</code> file. <code>--mac 1</code> drops sites
+with no minor allele, which carry no information about relatedness.</p>
+<p>The command writes two files: the numbers (<code>.rel</code>), and the sample IDs in
+matrix order (<code>.rel.id</code>).</p>
+<p>Note: if you search online you will find <code>--distance</code>. That is a PLINK 1.9
+flag and does not exist in PLINK 2.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 3a</summary>
+<div class="highlight"><pre><span></span><code>plink2 \
+  --pfile tmp/snp \
+  --allow-extra-chr \
+  --read-freq tmp/snp.afreq \
+  --mac 1 \
+  --make-rel square \
+  --out results/rel_all
+</code></pre></div>
+</details>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>The matrix file has no row labels and far too many decimal places. Glue the
+sample IDs onto the front of each row, round the values to 2 decimal places,
+and line up the columns.</p>
+<p>Inspect <code>results/rel_all.rel.id</code> first: does it start with a <code>#</code> header line
+that you need to skip?</p>
+<p>Notice that the samples alternate <code>f1_B</code>, <code>f1b</code>, <code>f2_B</code>, <code>f2b</code> ... Before you
+look at the numbers, predict what pattern two genetic groups would produce in
+a matrix whose rows and columns alternate between groups.</p>
+</div>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 3b</summary>
+<div class="highlight"><pre><span></span><code>paste &lt;(awk &#39;!/^#/ { print $NF }&#39; results/rel_all.rel.id) \
+      &lt;(awk &#39;{ for (i=1; i&lt;=NF; i++) printf &quot;%.2f%s&quot;, $i, (i&lt;NF ? &quot;\t&quot; : &quot;\n&quot;) }&#39; results/rel_all.rel) \
+  | column -t
+</code></pre></div>
+</details>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now repeat the whole thing <strong>one scaffold at a time</strong>. This is the crucial
+comparison - it is the command-line equivalent of the two separate heat maps
+you made in Part 5.</p>
+<p>Do not assume you know which scaffold carries the supergene. Let the numbers
+tell you.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 3c</summary>
+<p><code>--chr &lt;name&gt;</code> restricts an analysis to one chromosome/scaffold. Wrap the two
+runs in a <code>for</code> loop over <code>scaffold_1 scaffold_2</code>.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 3c</summary>
+<div class="highlight"><pre><span></span><code>for sc in scaffold_1 scaffold_2; do
+  plink2 \
+    --pfile tmp/snp \
+    --allow-extra-chr \
+    --chr &quot;$sc&quot; \
+    --read-freq tmp/snp.afreq \
+    --mac 1 \
+    --make-rel square \
+    --out &quot;results/rel_${sc}&quot;
+
+  echo &quot;=== $sc ===&quot;
+  paste &lt;(awk &#39;!/^#/ { print $NF }&#39; results/rel_${sc}.rel.id) \
+        &lt;(awk &#39;{ for (i=1; i&lt;=NF; i++) printf &quot;%.2f%s&quot;, $i, (i&lt;NF ? &quot;\t&quot; : &quot;\n&quot;) }&#39; results/rel_${sc}.rel) \
+    | column -t
+done
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>On which scaffold do <em>B</em>–<em>B</em> and <em>b</em>–<em>b</em> values differ consistently from
+  <em>B</em>–<em>b</em> values? Describe the pattern.</li>
+<li>On the other scaffold, do samples still form groups? If so, are those
+  groups related to colony type?</li>
+<li>On the supergene scaffold, compare the <em>b</em>–<em>b</em> values with the <em>b</em>
+  diagonal values, then do the same for <em>B</em>. Which group is more
+  genetically uniform? Which Part 5 result does this reproduce?</li>
+<li>This matrix contains the same information as the Part 5 heat map and PCA.
+  Why would this approach stop working if you had 500 samples instead of 14?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>scaffold_1</code>. It is a perfect checkerboard: every <em>B</em>–<em>b</em> value is about
+  -1.2, every <em>b</em>–<em>b</em> value is about +1.25, and every <em>B</em>–<em>B</em> value is
+  positive (roughly 0.7 to 2.2). The 14 samples fall into two genetic groups
+  that exactly match the phenotype labels. (Sorting the rows so all <em>B</em>
+  come first would turn the checkerboard into two solid blocks.)</li>
+<li>Yes, but not by colony type. On <code>scaffold_2</code>, pairs such as
+  <code>f2_B</code>/<code>f2b</code> and <code>f7_B</code>/<code>f7b</code> are almost identical to each other, and six
+  samples of both types (<code>f1b</code>, <code>f3_B</code>, <code>f3b</code>, <code>f4_B</code>, <code>f4b</code>, <code>f6b</code>) form a
+  tight cluster. This is the ordinary relatedness and haplotype sharing
+  you expect on a freely recombining chromosome, and it cuts straight across
+  the <em>B</em>/<em>b</em> labels.</li>
+<li>On <code>scaffold_1</code>, the <em>b</em>–<em>b</em> values (~1.25) are nearly as high as the <em>b</em>
+  diagonal (~1.27-1.33): every <em>b</em> is almost identical to every other <em>b</em>.
+  The <em>B</em> diagonals (2.2-3.5) are much higher than the <em>B</em>–<em>B</em> values, so
+  <em>B</em> individuals differ from each other. This is the low diversity of the
+  <em>b</em> supergene haplotype that <code>PopGenome</code> measured in Part 5.</li>
+<li>With 500 samples the matrix has 250,000 entries and cannot be read by
+  eye. That is exactly the problem PCA solves: PLINK's <code>--pca</code> is an
+  eigen-decomposition of this same relationship matrix, compressing it into
+  a handful of coordinates that <em>can</em> be plotted. Our sample size is small
+  enough that we can skip the compression step entirely.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="6-challenge-4-genetic-differentiation-fst"><strong>6. Challenge 4 - Genetic Differentiation (FST)</strong></h2>
+<p>FST measures how differentiated two groups are at a locus: 0 means the groups are
+identical, 1 means they share no alleles at all. In Part 5, <code>PopGenome</code> gave you
+FST averaged over sliding windows.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>PLINK 2 has no sliding-window FST option.</strong> It will give you FST <em>per
+variant</em>; turning that into windows is your job. Do not waste time looking for
+a <code>--fst-window-size</code> flag - it does not exist.</p>
+</div>
+<h3 id="61-per-variant-fst"><strong>6.1. Per-variant FST</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Calculate FST between <em>B</em> and <em>b</em> for every SNP. You need to:</p>
+<ul>
+<li>load the population labels from <code>tmp/populations.tsv</code>;</li>
+<li>tell PLINK which column of that file defines the groups;</li>
+<li>request the <strong>Hudson</strong> estimator rather than the default;</li>
+<li>ask for per-variant output as well as the summary.</li>
+</ul>
+<p>Then find out what PLINK actually wrote - the filenames include the population
+names, so do not guess:</p>
+<div class="highlight"><pre><span></span><code>ls results/fst*
+</code></pre></div>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 4a</summary>
+<p><code>--pheno</code> loads the file, <code>--pheno-name</code> picks the column, and <code>--fst</code> takes
+the name of that same column plus modifiers. Look up the modifiers with
+<code>plink2 --help fst</code>: you want <code>method=hudson</code> and <code>report-variants</code>.</p>
+<p>A phenotype column containing non-numeric values such as <code>B</code>/<code>b</code> is loaded as a
+<strong>categorical</strong> phenotype, which is what <code>--fst</code> requires.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 4a</summary>
+<div class="highlight"><pre><span></span><code>plink2 \
+  --pfile tmp/snp \
+  --allow-extra-chr \
+  --pheno tmp/populations.tsv \
+  --pheno-name POP \
+  --fst POP method=hudson report-variants \
+  --out results/fst
+
+ls results/fst*
+head results/fst.*.fst.var
+cat  results/fst.fst.summary
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why does the <em>choice of estimator</em> matter more here than it would in a study
+of 2,000 humans? (Hint: read what <code>plink2 --help fst</code> says about the two
+methods.)</p>
+</div>
+<div class="tabbed-block">
+<p>The Weir–Cockerham and Hudson estimators differ mainly in how they correct
+for finite sample size. With 7 haplotypes per group those corrections are
+large relative to the quantity being estimated, so the two methods can give
+noticeably different numbers. The Hudson estimator is less sensitive to
+small and unequal sample sizes, which is why it is preferred here. With
+thousands of samples the correction is negligible and the choice barely
+matters.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="62-building-your-own-windows"><strong>6.2. Building your own windows</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Turn the per-variant file into <strong>10 kb non-overlapping windows</strong>, reporting for
+each window: scaffold, start, end, number of SNPs, and mean FST.</p>
+<p>Two traps to handle:</p>
+<ul>
+<li>The FST column is not in the same position in every PLINK version. Find it
+  from the header line rather than hard-coding a field number.</li>
+<li>Monomorphic sites give <code>nan</code>. One <code>nan</code> will poison an entire window average.</li>
+<li>Finally - and most importantly - <strong>discard windows built from only a handful
+  of SNPs</strong> before you rank anything.</li>
+</ul>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 4b</summary>
+<p><code>int($pos/10000)</code> gives the window index. Build a key from scaffold plus window
+index, accumulate <code>sum[key]</code> and <code>n[key]</code>, and print in an <code>END</code> block.
+Test a numeric value with <code>($x+0==$x)</code>, which is false for <code>nan</code>.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 4b</summary>
+<div class="highlight"><pre><span></span><code>awk -F&#39;\t&#39; &#39;
+  NR==1 { for (i=1; i&lt;=NF; i++) { if ($i ~ /FST$/) f=i; if ($i==&quot;POS&quot;) p=i }; next }
+  ($f+0==$f) {
+    w = int($p/10000)
+    key = $1&quot;\t&quot;(w*10000)&quot;\t&quot;((w+1)*10000)
+    sum[key] += $f; n[key]++
+  }
+  END { for (k in sum) if (n[k] &gt;= 5) printf &quot;%s\t%d\t%.4f\n&quot;, k, n[k], sum[k]/n[k] }
+&#39; results/fst.*.fst.var \
+  | sort -k1,1 -k2,2n \
+  &gt; results/fst_windows.tsv
+
+head results/fst_windows.tsv
+</code></pre></div>
+</details>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Now interrogate the table from the shell. Work out how to:</p>
+<ul>
+<li>rank all windows by mean FST and show the top 10;</li>
+<li>compute the mean FST separately for each scaffold.</li>
+</ul>
+</div>
+<details class="example">
+<summary>Stuck? Worked commands - Challenge 4c</summary>
+<div class="highlight"><pre><span></span><code># Top 10 windows genome-wide
+sort -k5,5gr results/fst_windows.tsv | head -n 10 | column -t
+
+# Mean FST and window count per scaffold
+awk &#39;{ s[$1]+=$5; c[$1]++ } END { for (k in s) printf &quot;%s\tn_windows=%d\tmean_FST=%.4f\n&quot;, k, c[k], s[k]/c[k] }&#39; \
+  results/fst_windows.tsv
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Which scaffold holds the high-FST windows?</li>
+<li>Re-run the windowing step with the <code>n[k] &gt;= 5</code> filter removed. What
+  happens to the top of the ranked list, and why?</li>
+<li><em>B</em> and <em>b</em> do not recombine with one another in one region of the
+  genome. Explain the FST pattern in that light.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>scaffold_1</code>: every one of the top 10 windows is on it, and its mean
+  window FST is about 0.67, compared with about 0.02 on <code>scaffold_2</code>. The
+  genome-wide summary (about 0.63) is dominated by <code>scaffold_1</code>.</li>
+<li>Without the filter, the top of the list fills with windows containing one
+  or two SNPs and an FST of exactly 1. A single SNP that happens to be fixed
+  between the groups gives a perfect window average, but it is one
+  observation from 14 haplotypes - it tells you almost nothing. Minimum-SNP
+  filters are not cosmetic; with small samples they are what separates
+  signal from arithmetic.</li>
+<li><code>scaffold_1</code> contains the supergene. Because recombination between the
+  <em>B</em> and <em>b</em> haplotypes is suppressed, mutations arising on one haplotype
+  can never be shuffled onto the other, so differences accumulate and become
+  fixed - driving FST up across the whole region. <code>scaffold_2</code>
+  recombines normally, so alleles continue to be shared between the groups
+  and FST stays near zero.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h3 id="63-counting-fixed-differences"><strong>6.3. Counting fixed differences</strong></h3>
+<p>FST is a summary statistic. With haploid data and clean groups you can ask
+something more concrete: <strong>at how many SNPs does every single <em>B</em> carry one allele
+and every single <em>b</em> the other?</strong></p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Calculate allele frequencies <em>separately</em> for each group, then compare them.
+Use the keep-files from Challenge 2.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 4d</summary>
+<p><code>--keep</code> restricts a run to the listed samples. Loop over <code>B</code> and <code>b</code>, writing
+<code>tmp/freq_B.afreq</code> and <code>tmp/freq_b.afreq</code>. A fixed difference is a variant
+where <code>ALT_FREQS</code> is 1 in one group and 0 in the other.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked commands - Challenge 4e</summary>
+<div class="highlight"><pre><span></span><code>for pop in B b; do
+  plink2 \
+    --pfile tmp/snp \
+    --allow-extra-chr \
+    --keep tmp/keep_${pop}.txt \
+    --freq \
+    --out tmp/freq_${pop}
+done
+
+awk &#39;
+  FNR==1 { for (i=1; i&lt;=NF; i++) col[$i]=i; id=col[&quot;ID&quot;]; fq=col[&quot;ALT_FREQS&quot;]; ch=col[&quot;#CHROM&quot;]; next }
+  NR==FNR { fB[$id]=$fq; chrom[$id]=$ch; next }
+  ($id in fB) {
+    total[chrom[$id]]++
+    if ((fB[$id]+0==1 &amp;&amp; $fq+0==0) || (fB[$id]+0==0 &amp;&amp; $fq+0==1)) fixed[chrom[$id]]++
+  }
+  END { for (c in total) printf &quot;%s\tSNPs=%d\tfixed_differences=%d\t(%.1f%%)\n&quot;, c, total[c], fixed[c], 100*fixed[c]/total[c] }
+&#39; tmp/freq_B.afreq tmp/freq_b.afreq
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Question</label><label for="__tabbed_7_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>How many fixed differences are there on each scaffold?</li>
+<li>A sceptic says: "with only 7 samples per group, some of those apparent
+  fixed differences are luck." Are they right, and does that objection apply
+  equally to both scaffolds?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><code>scaffold_1</code> has about 524 fixed differences - nearly half of its
+  1,106 SNPs. <code>scaffold_2</code> has none.</li>
+<li>The sceptic has a fair point in principle: a variant at 80% frequency in a
+  large population can easily appear in all 7 sampled <em>B</em> individuals by
+  chance. For any <em>single</em> SNP the evidence is weak. But the objection does
+  not explain what you see: chance cannot produce <em>hundreds</em> of fixed
+  differences concentrated in one contiguous region of one scaffold while
+  the other scaffold has none. The clustering, not the individual SNPs, is
+  what makes the result convincing - and it is why the next section, which
+  looks at how those SNPs are linked together, matters so much.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="7-challenge-5-linkage-disequilibrium-going-beyond-part-5"><strong>7. Challenge 5 - Linkage Disequilibrium (Going Beyond Part 5)</strong></h2>
+<p>Everything so far tells you that <em>B</em> and <em>b</em> differ on <code>scaffold_1</code>. It does not
+directly show <em>why</em>. The supergene hypothesis makes a specific, testable
+prediction about <strong>linkage disequilibrium (LD)</strong>: the non-random association
+between alleles at different positions, measured as r².</p>
+<p>Under normal recombination, LD decays with physical distance - nearby SNPs are
+correlated, distant ones are not. Inside a region where recombination is
+suppressed, the whole block is inherited as a single unit, so <strong>r² stays high no
+matter how far apart the SNPs are</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>LD from 14 haplotypes is noisy and biased upwards, and rare alleles make this
+much worse: a variant seen in a single individual is perfectly correlated with
+every other singleton in that individual, by construction. <strong>You must apply a
+minor-allele-frequency filter before computing r², or your results are an
+artefact.</strong></p>
+</div>
+<h3 id="71-calculating-r2"><strong>7.1. Calculating r²</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>For each scaffold separately, calculate r² between pairs of SNPs, having first
+removed low-frequency variants.</p>
+<p>You will need to work out:</p>
+<ul>
+<li>which r² flag suits <strong>unphased</strong> genotype data;</li>
+<li>how to stop PLINK discarding pairs below its default r² threshold (you want
+  the low values too - they are the whole point of a decay curve);</li>
+<li>how to stop PLINK limiting pairs by <em>variant count</em> and by <em>distance</em>, so
+  that you get comparisons spanning the full scaffold;</li>
+<li>what MAF threshold corresponds to "seen in at least 2 of the 14 samples".</li>
+</ul>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 5a</summary>
+<p><code>--r2-unphased</code> is the calculation. The relevant windowing flags are
+<code>--ld-window</code>, <code>--ld-window-kb</code> and <code>--ld-window-r2</code>; check their defaults with
+<code>plink2 --help ld-window</code>, because the defaults are designed for human
+genome-wide data and will silently throw away most of your pairs.</p>
+<p><code>--maf</code> sets the frequency filter. 2/14 ≈ 0.14.</p>
+<p>Run <code>ls results/ld_*</code> afterwards - work out the output extension rather than
+assuming it.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 5a</summary>
+<div class="highlight"><pre><span></span><code>for sc in scaffold_1 scaffold_2; do
+  plink2 \
+    --pfile tmp/snp \
+    --allow-extra-chr \
+    --chr &quot;$sc&quot; \
+    --maf 0.14 \
+    --r2-unphased \
+    --ld-window 100000 \
+    --ld-window-kb 10000 \
+    --ld-window-r2 0 \
+    --out &quot;results/ld_${sc}&quot;
+done
+
+ls results/ld_*
+head results/ld_scaffold_1.vcor
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Question</label><label for="__tabbed_8_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Before you look at any r² values, predict: in Challenge 4 you found that
+around half the SNPs on <code>scaffold_1</code> are fixed differences between <em>B</em> and
+<em>b</em>. What must r² be between <em>any two</em> of those SNPs, and how should that
+depend on the distance between them?</p>
+</div>
+<div class="tabbed-block">
+<p>Exactly 1, at any distance. Every fixed-difference SNP splits the 14
+samples into the same two groups (the 7 <em>B</em> and the 7 <em>b</em>), so knowing the
+allele at one tells you the allele at every other with certainty. With
+around 500 such SNPs, roughly a third of all <code>scaffold_1</code> pairs should have
+r² = 1 regardless of distance. Look for this in the next step.</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="72-ld-decay-with-distance"><strong>7.2. LD decay with distance</strong></h3>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Build an <strong>LD decay table</strong>: group SNP pairs by the physical distance between
+them (for example in 10 kb bins), and report for each bin the number of pairs,
+the mean r², and the <strong>proportion of pairs in near-perfect LD</strong> (r² ≥ 0.8).</p>
+<p>As in Challenge 4, locate the columns from the header line rather than
+hard-coding positions, and require a minimum number of pairs per bin.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 5b</summary>
+<p>The columns you need are the two positions and the r² value; the r² header ends
+in <code>R2</code>. Distance is the absolute difference between the positions. The bin
+index is <code>int(distance/10000)</code>. Keep a third counter for pairs with r² ≥ 0.8.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked command - Challenge 5b</summary>
+<div class="highlight"><pre><span></span><code>for sc in scaffold_1 scaffold_2; do
+  echo &quot;=== $sc ===&quot;
+  awk -F&#39;\t&#39; &#39;
+    NR==1 { for (i=1;i&lt;=NF;i++) { if ($i ~ /R2$/) r=i; if ($i==&quot;POS_A&quot;) a=i; if ($i==&quot;POS_B&quot;) b=i }; next }
+    ($r+0==$r) {
+      d = ($b &gt; $a) ? $b-$a : $a-$b
+      k = int(d/10000)
+      sum[k] += $r; n[k]++; if ($r &gt;= 0.8) hi[k]++
+      if (k &gt; maxk) maxk = k
+    }
+    END {
+      printf &quot;%-14s %8s %10s %12s\n&quot;, &quot;distance_kb&quot;, &quot;n_pairs&quot;, &quot;mean_r2&quot;, &quot;prop_r2&gt;=0.8&quot;
+      for (k=0; k&lt;=maxk; k++) if (n[k] &gt;= 20)
+        printf &quot;%-14s %8d %10.3f %12.3f\n&quot;, (k*10)&quot;-&quot;((k+1)*10), n[k], sum[k]/n[k], hi[k]/n[k]
+    }
+  &#39; results/ld_${sc}.vcor
+done
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Question</label><label for="__tabbed_9_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Does mean r² decay with distance on either scaffold across the ~200 kb
+  you have?</li>
+<li>Which scaffold has consistently higher r², and higher proportion of
+  near-perfect pairs? Does that change with distance?</li>
+<li><code>scaffold_2</code> recombines normally, yet its r² (~0.3) is far above what
+  unlinked SNPs should show. Look back at its relationship matrix in
+  Challenge 3. What might be inflating LD?</li>
+<li>Why is LD a more direct test of the supergene hypothesis than FST?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Not in any clear way. <code>scaffold_1</code> sits at about 0.55 and <code>scaffold_2</code> at
+  about 0.30 across every bin; <code>scaffold_2</code> drops only slightly from its
+  first bin (about 0.36 at 0-10 kb). A 200 kb scaffold and 14 samples are
+  simply not enough to trace a full decay curve - an honest and important
+  limitation.</li>
+<li><code>scaffold_1</code>, at every distance. Roughly a third of its pairs (0.30-0.41)
+  have r² ≥ 0.8 whether they are 5 kb or 195 kb apart, against 0.06-0.15 on
+  <code>scaffold_2</code>. This is your prediction from 7.1 coming true: the
+  fixed-difference SNPs are all in perfect LD with each other, 10 bp or
+  190 kb apart. Nothing has broken the <em>B</em> and <em>b</em> haplotypes up.</li>
+<li>Relatedness. The relationship matrix showed near-identical pairs
+  (<code>f2_B</code>/<code>f2b</code>, <code>f7_B</code>/<code>f7b</code>) and a tight six-sample cluster. Related
+  individuals share long stretches of chromosome, which creates LD between
+  distant SNPs even where recombination is normal. With 14 samples, a few
+  such pairs are enough to lift the whole curve. This is also why PLINK warns
+  about estimating LD from fewer than 50 samples.</li>
+<li>High FST says the groups differ, but drift, isolation or selection can all
+  produce that. The LD result is more specific: across the whole of
+  <code>scaffold_1</code>, the same two haplotypes persist intact over the full length
+  of the scaffold. That is what suppressed recombination - the defining
+  property of a supergene - looks like.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h3 id="73-pruning-does-the-signal-survive"><strong>7.3. Pruning: does the signal survive?</strong></h3>
+<p>A fair criticism of Challenge 3 is that your relationship matrix counted hundreds
+of <em>scaffold_1</em> SNPs that are all telling you the same thing, because they are in
+perfect LD. Effectively, you may have counted one piece of evidence many times.</p>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Use LD-based pruning to retain an approximately independent subset of SNPs,
+then rebuild the <code>scaffold_1</code> relationship matrix using only those SNPs. Does
+the <em>B</em>/<em>b</em> checkerboard survive?</p>
+<p>PLINK <strong>will refuse</strong> to prune this dataset. Read the error message in full.
+It tells you how to override it - but before you do, decide whether overriding
+is justified here, and write your reasoning in <code>WHATIDID.txt</code>.</p>
+</div>
+<details class="tip">
+<summary>Hints - Challenge 5c</summary>
+<p><code>--indep-pairwise</code> takes a window size, a step size and an r² threshold, and
+writes <code>.prune.in</code> (keep) and <code>.prune.out</code> (drop). Feed the <code>.prune.in</code> list
+back into a later run with <code>--extract</code>. The override flag is named in the
+error message.</p>
+</details>
+<details class="example">
+<summary>Stuck? Worked commands - Challenge 5c</summary>
+<div class="highlight"><pre><span></span><code># --bad-ld: fewer than 50 samples; acceptable for an exploratory check only
+plink2 \
+  --pfile tmp/snp \
+  --allow-extra-chr \
+  --bad-ld \
+  --indep-pairwise 50kb 1 0.5 \
+  --out tmp/pruned
+
+# Kept / removed per scaffold (IDs are CHROM:POS)
+cut -d: -f1 tmp/pruned.prune.in  | sort | uniq -c
+cut -d: -f1 tmp/pruned.prune.out | sort | uniq -c
+
+plink2 \
+  --pfile tmp/snp \
+  --allow-extra-chr \
+  --chr scaffold_1 \
+  --extract tmp/pruned.prune.in \
+  --read-freq tmp/snp.afreq \
+  --mac 1 \
+  --make-rel square \
+  --out results/rel_scaffold_1_pruned
+
+paste &lt;(awk &#39;!/^#/ { print $NF }&#39; results/rel_scaffold_1_pruned.rel.id) \
+      &lt;(awk &#39;{ for (i=1; i&lt;=NF; i++) printf &quot;%.2f%s&quot;, $i, (i&lt;NF ? &quot;\t&quot; : &quot;\n&quot;) }&#39; results/rel_scaffold_1_pruned.rel) \
+  | column -t
+</code></pre></div>
+</details>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Question</label><label for="__tabbed_10_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Why does PLINK refuse to prune fewer than 50 samples, and was it
+  reasonable to override it here?</li>
+<li>What proportion of each scaffold's SNPs survives pruning? Is that what
+  you expected for a supergene versus an ordinary chromosome?</li>
+<li>Is the <em>B</em>/<em>b</em> split still visible in the pruned relationship matrix?
+  What has changed?</li>
+<li>A colleague suggests always pruning before calculating FST. Would you
+  agree, for this dataset?</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Pruning decisions depend entirely on r², and r² from 14 samples is noisy
+  and inflated, so PLINK over-prunes. Here it removed 1,794 of 1,859 SNPs
+  (about 96%). Overriding is defensible for an exploratory check whose
+  conclusion does not hinge on exactly which SNPs survive, but you should not
+  use these pruned sets in a published analysis without saying so.</li>
+<li>About 4% survive on <em>both</em> scaffolds (42 of 1,106 on <code>scaffold_1</code>, 23 of
+  753 on <code>scaffold_2</code>). You might have expected the supergene to lose far
+  more, but the relatedness that inflated r² on <code>scaffold_2</code> in 7.2 pushes
+  almost every pair there above 0.5 as well. At this sample size pruning
+  cannot tell the two scaffolds apart - a direct demonstration of why PLINK
+  issued the warning.</li>
+<li>Partly. The <em>b</em> samples still form a tight group (every <em>b</em>–<em>b</em> value is
+  positive) and every <em>B</em>–<em>b</em> value is still negative. But the <em>B</em>–<em>B</em>
+  values are now scattered around 0: <em>B</em> individuals no longer look alike.
+  Pruning collapsed the ~500 fixed differences - the SNPs that made every <em>B</em>
+  resemble every other <em>B</em> - down to a handful, so what remains is mostly
+  variation <em>within</em> <em>B</em>. The split is weaker because the "redundant" SNPs
+  were the signal.</li>
+<li>No. Pruning is designed for analyses that assume independent markers, such
+  as PCA or association testing. Here, the clustering of differentiated SNPs
+  <em>is</em> the finding - as the pruned matrix just showed, pruning them away
+  discards the evidence you are trying to measure. Choose to prune based on
+  what the analysis assumes, not out of habit.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 id="8-wrap-up"><strong>8. Wrap-Up</strong></h2>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Question</label><label for="__tabbed_11_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Using only the numbers you generated in this practical - no plots - write
+three sentences summarising what you have learned about the two scaffolds.</p>
+</div>
+<div class="tabbed-block">
+<p><code>scaffold_2</code> behaves like an ordinary chromosome: relationships between
+samples reflect relatedness rather than colony type, FST between <em>B</em> and
+<em>b</em> is near zero, and there are no fixed differences. <code>scaffold_1</code> behaves
+like a supergene: samples split cleanly into <em>B</em> and <em>b</em>, the <em>b</em> haplotype
+is almost invariant, FST is high across the whole scaffold, around half its
+SNPs are fixed between the groups, and r² stays high over the full length of
+the scaffold. That persistent LD is the key observation, because it points
+to suppressed recombination as the cause of the differentiation rather than
+merely another symptom of it.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p>Check that <code>WHATIDID.txt</code> contains every command you actually ran, including
+the ones that failed and what you changed. A colleague should be able to
+reproduce all of your results from that file alone.</p>
+</div>
+<h3 id="files-you-should-have-produced"><strong>Files you should have produced</strong></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<div class="highlight"><pre><span></span><code>results/
+├── rel_all.rel / .rel.id                    # 14x14 relationship matrix, all SNPs
+├── rel_scaffold_1.rel / .rel.id             # ... scaffold_1 only
+├── rel_scaffold_2.rel / .rel.id             # ... scaffold_2 only
+├── rel_scaffold_1_pruned.rel / .rel.id      # ... after LD pruning
+├── fst.fst.summary                          # genome-wide FST summary
+├── fst.B.b.fst.var                          # per-variant FST
+├── fst_windows.tsv                          # your 10 kb windowed FST table
+├── ld_scaffold_1.vcor                       # pairwise r2, scaffold_1
+└── ld_scaffold_2.vcor                       # pairwise r2, scaffold_2
+</code></pre></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.tooltips", "navigation.instant", "navigation.tabs", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
