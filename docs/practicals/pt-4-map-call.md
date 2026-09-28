@@ -100,9 +100,64 @@ diploid and males are haploid. Here we will use only males, so all our samples a
       Have a look at the fastq files (`ls input/reads`).
 
       * Why does each sample have two sets of reads?
-      * How many reads do we have in individual *f1_B*? (you can use `zless` and `wc -l`)
+      * How many reads do we have in individual *f1_B*? (you can use `zcat` and `wc -l`)
       * How long are the reads?
       * Knowing that each scaffold is 200kb, calculate which coverage you would expect per base pair of individual *f1_B*?
+
+
+
+!!! Question
+     
+    === "Question"
+        
+        Why does each sample have two sets of reads?
+
+
+    === "Answer"
+        
+        As we are working with paired-end illumina data.
+
+
+
+!!! Question
+     
+    === "Question"
+        
+        How many reads do we have in individual *f1_B*? (you can use `zcat` and `wc -l`)
+
+
+    === "Answer"
+        
+        AIf we run `zcat input/reads/f1_B.* | wc -l` this returns a value of 123616. Now we know there are 4 lines of info per read so 123616 / 4 = 30,904 reads total! Alternatively you could use FASTQC! 
+
+
+
+!!! Question
+     
+    === "Question"
+        
+        How long are the reads?
+
+
+    === "Answer"
+        
+        81bp - To determine this we could use the command line with something like: `zcat input/reads/f1_B.1.fq.gz | head -n 10 | tail -n 1 | tr -d '\n' | wc -c`. Alternatively you could use FASTQC again! 
+
+
+
+!!! Question
+     
+    === "Question"
+        
+        Knowing that each scaffold is 200kb, calculate which coverage you would expect per base pair of individual *f1_B*?
+
+
+    === "Answer"
+        
+        The total length of our reference is 200kb x 2 = 400,000 bp. Then we can take the total number of reads 30,904 multipled by length to get our sequencing yield 30,904 * 81 = 2,503,224 bp. So to deteremine coverage assuming uniform coverage we do  2,503,224 / 400,000 = ~6.25x coverage
+
+
+
 
 ## 4. Aligning reads to a reference assembly
 
@@ -275,18 +330,18 @@ Because the *SAM* files include a lot of information, they tend to occupy a lot 
 ## 5. Variant calling
 
 !!! Task
-      Create a new directory in your `home` for the second part of today's practical (e.g., `2026-09-29-genotyping`). You will want to set up the relevant subdirectories  and `WHATIDID.txt` file, as you have done before. Then symlink (`ln -s`) the reference genome `/shared/data/popgen/reference.fa` and the alignments from the mapping part of the practical (both `.bam` and `.bai` files) to your input` directory.
+      Create a new directory in your `home` for the second part of today's practical (e.g., `2026-09-28-genotyping`). You will want to set up the relevant subdirectories  and `WHATIDID.txt` file, as you have done before. Then symlink (`ln -s`) the reference genome `/shared/data/popgen/reference.fa` and the alignments from the mapping part of the practical (both `.bam` and `.bai` files) to your input` directory.
 
       To help get you started 
       ```
-      mkdir 2026-09-29-genotyping
+      mkdir 2026-09-28-genotyping
       ```
 
       Your directory hierarchy should look like the following when running `tree`
 
 !!! terminal 
    ```
-   2026-09-29-genotyping/
+   2026-09-28-genotyping/
    ├── input
    │   ├── -> /shared/data/popgen/reference.fa
    │   ├── -> ~/2026-09-28-mapping/results/f1_B.bam
@@ -324,7 +379,7 @@ individuals as **haploid**.
 
       ```
       cd tmp
-      ln -s ~/2026-09-29-genotyping/input/reference.fa .
+      ln -s ~/2026-09-28-genotyping/input/reference.fa .
       cd ..
       ```
 
@@ -422,9 +477,21 @@ We will filter the VCF using `bcftools filter`. Based on the distribution of qua
 
 
 !!! Question
-      * How many SNPs does the resulting *VCF* file have?
-      * Can you find any other parameters indicating the quality of the site?
-      * Can you find any other parameters indicating the quality of the variant call for a given individual on a given site?
+     
+    === "Question"
+        
+        How many SNPs does the resulting *VCF* file have?
+
+
+    === "Answer"
+        
+        The total number of SNPs should be 1,913. Again there are several routes to identify this including using `bcftools stats tmp/snp.vcf` or running `bcftools view -H tmp/snp.vcf | wc -l`
+
+
+
+
+
+
 
 In this practical, we only looked at a subset of the fire ant genome. When calling variants for the entire genome and using hundreds or thousands of samples, the resulting VCF files can be very large (reaching terabytes for cancer genomics projects!). It is thus a good idea to compress and index a *VCF* file. This is typically done using `bgzip` (for compression) and `tabix` (for indexing - tabix requires the file to be compressed using `bgzip`).
 
@@ -509,11 +576,20 @@ designed to be embedded in web pages and the installation is pre-configured to u
       * Do you think our filtering was effective?
 
 
-## 8. Refining your skills 
+## 8. Bonus Tasks
 
 !!! Task
+
+      **Bonus Task 1**
 
       Well done if you have made it this far! 
       
       To further develop your skills, repeat the mapping and variant calling process for a few samples using your own reference assembly created during the *Week 1, Wednesday, Assembly Practical Session*. This exercise will help you gain confidence in independently running the mapping and variant calling pipeline, and give you more practice with tools like samtools and bcftools. 
+
+
+!!! Task
+
+      **Bonus Task 2**
+
+      Next select a few samples and assess the quality of the underlying data, in line with the QC principles learnt on Day 2 (e.g. FastQC, KMC & Trimmomatic). Following QC, repeat mapping and variant calling. Do you find the total number of variants identified remains the same or does this decrease? 
 
