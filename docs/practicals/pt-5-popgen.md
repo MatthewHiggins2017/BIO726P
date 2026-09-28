@@ -83,6 +83,20 @@ package in R.
 
     ![Opening Rmd Visual](../img/RmdRun.png)
 
+----------------------------------------------------------------------------
+
+## **3. Finished Early? Try the Bonus Practical**
+
+!!! Info
+    Once you have completed the analysis above, have a go at
+    [Part 5 (Bonus) - Population Genomics on the Command Line](pt-5-popgen_bonus.md).
+
+    It asks you to reach the same conclusions **without R and without being given
+    the commands**, using PLINK 2 on the cluster, and then goes further by
+    measuring linkage disequilibrium across the supergene. It is deliberately
+    challenging and entirely optional.
+
+
 
     
 
