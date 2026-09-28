@@ -433,10 +433,62 @@ diploid and males are haploid. Here we will use only males, so all our samples a
 <p>Have a look at the fastq files (<code>ls input/reads</code>).</p>
 <ul>
 <li>Why does each sample have two sets of reads?</li>
-<li>How many reads do we have in individual <em>f1_B</em>? (you can use <code>zless</code> and <code>wc -l</code>)</li>
+<li>How many reads do we have in individual <em>f1_B</em>? (you can use <code>zcat</code> and <code>wc -l</code>)</li>
 <li>How long are the reads?</li>
 <li>Knowing that each scaffold is 200kb, calculate which coverage you would expect per base pair of individual <em>f1_B</em>?</li>
 </ul>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Why does each sample have two sets of reads?</p>
+</div>
+<div class="tabbed-block">
+<p>As we are working with paired-end illumina data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many reads do we have in individual <em>f1_B</em>? (you can use <code>zcat</code> and <code>wc -l</code>)</p>
+</div>
+<div class="tabbed-block">
+<p>AIf we run <code>zcat input/reads/f1_B.* | wc -l</code> this returns a value of 123616. Now we know there are 4 lines of info per read so 123616 / 4 = 30,904 reads total! Alternatively you could use FASTQC! </p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Question</label><label for="__tabbed_3_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How long are the reads?</p>
+</div>
+<div class="tabbed-block">
+<p>81bp - To determine this we could use the command line with something like: <code>zcat input/reads/f1_B.1.fq.gz | head -n 10 | tail -n 1 | tr -d '\n' | wc -c</code>. Alternatively you could use FASTQC again! </p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Knowing that each scaffold is 200kb, calculate which coverage you would expect per base pair of individual <em>f1_B</em>?</p>
+</div>
+<div class="tabbed-block">
+<p>The total length of our reference is 200kb x 2 = 400,000 bp. Then we can take the total number of reads 30,904 multipled by length to get our sequencing yield 30,904 * 81 = 2,503,224 bp. So to deteremine coverage assuming uniform coverage we do  2,503,224 / 400,000 = ~6.25x coverage</p>
+</div>
+</div>
+</div>
 </div>
 <h2 id="4-aligning-reads-to-a-reference-assembly">4. Aligning reads to a reference assembly</h2>
 <p>The first step in our pipeline is to align the paired end reads to the reference genome. We are using the software <a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml"><em>bowtie2</em></a>,
@@ -470,7 +522,7 @@ bowtie2 --local -x tmp/reference -1 input/reads/f1_B.1.fq.gz -2 input/reads/f1_B
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Question</label><label for="__tabbed_1_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Question</label><label for="__tabbed_5_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ul>
@@ -566,16 +618,16 @@ cp tmp/alignments/*.bai results/
 <h2 id="5-variant-calling">5. Variant calling</h2>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>Create a new directory in your <code>home</code> for the second part of today's practical (e.g., <code>2026-09-29-genotyping</code>). You will want to set up the relevant subdirectories  and <code>WHATIDID.txt</code> file, as you have done before. Then symlink (<code>ln -s</code>) the reference genome <code>/shared/data/popgen/reference.fa</code> and the alignments from the mapping part of the practical (both <code>.bam</code> and <code>.bai</code> files) to your input` directory.</p>
+<p>Create a new directory in your <code>home</code> for the second part of today's practical (e.g., <code>2026-09-28-genotyping</code>). You will want to set up the relevant subdirectories  and <code>WHATIDID.txt</code> file, as you have done before. Then symlink (<code>ln -s</code>) the reference genome <code>/shared/data/popgen/reference.fa</code> and the alignments from the mapping part of the practical (both <code>.bam</code> and <code>.bai</code> files) to your input` directory.</p>
 <p>To help get you started 
-  <div class="highlight"><pre><span></span><code>mkdir 2026-09-29-genotyping
+  <div class="highlight"><pre><span></span><code>mkdir 2026-09-28-genotyping
 </code></pre></div></p>
 <p>Your directory hierarchy should look like the following when running <code>tree</code></p>
 </div>
 <div class="admonition terminal">
 <p class="admonition-title">Terminal</p>
 </div>
-<div class="highlight"><pre><span></span><code>2026-09-29-genotyping/
+<div class="highlight"><pre><span></span><code>2026-09-28-genotyping/
 ├── input
 │   ├── -&gt; /shared/data/popgen/reference.fa
 │   ├── -&gt; ~/2026-09-28-mapping/results/f1_B.bam
@@ -602,7 +654,7 @@ individuals as <strong>haploid</strong>.</p>
 <p class="admonition-title">Task</p>
 <p>First link <code>reference.fa</code> to <code>tmp/</code></p>
 <div class="highlight"><pre><span></span><code>cd tmp
-ln -s ~/2026-09-29-genotyping/input/reference.fa .
+ln -s ~/2026-09-28-genotyping/input/reference.fa .
 cd ..
 </code></pre></div>
 <p>Then create the index of the reference (different from that used by <em>bowtie2</em>):</p>
@@ -617,7 +669,7 @@ cd ..
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Question</label><label for="__tabbed_2_2">Answer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Question</label><label for="__tabbed_6_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ul>
@@ -687,11 +739,16 @@ cd ..
 </div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
-<ul>
-<li>How many SNPs does the resulting <em>VCF</em> file have?</li>
-<li>Can you find any other parameters indicating the quality of the site?</li>
-<li>Can you find any other parameters indicating the quality of the variant call for a given individual on a given site?</li>
-</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Question</label><label for="__tabbed_7_2">Answer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>How many SNPs does the resulting <em>VCF</em> file have?</p>
+</div>
+<div class="tabbed-block">
+<p>The total number of SNPs should be 1,913. Again there are several routes to identify this including using <code>bcftools stats tmp/snp.vcf</code> or running <code>bcftools view -H tmp/snp.vcf | wc -l</code></p>
+</div>
+</div>
+</div>
 </div>
 <p>In this practical, we only looked at a subset of the fire ant genome. When calling variants for the entire genome and using hundreds or thousands of samples, the resulting VCF files can be very large (reaching terabytes for cancer genomics projects!). It is thus a good idea to compress and index a <em>VCF</em> file. This is typically done using <code>bgzip</code> (for compression) and <code>tabix</code> (for indexing - tabix requires the file to be compressed using <code>bgzip</code>).</p>
 <div class="admonition task">
@@ -750,11 +807,17 @@ designed to be embedded in web pages and the installation is pre-configured to u
 <li>Do you think our filtering was effective?</li>
 </ul>
 </div>
-<h2 id="8-refining-your-skills">8. Refining your skills</h2>
+<h2 id="8-bonus-tasks">8. Bonus Tasks</h2>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
+<p><strong>Bonus Task 1</strong></p>
 <p>Well done if you have made it this far! </p>
 <p>To further develop your skills, repeat the mapping and variant calling process for a few samples using your own reference assembly created during the <em>Week 1, Wednesday, Assembly Practical Session</em>. This exercise will help you gain confidence in independently running the mapping and variant calling pipeline, and give you more practice with tools like samtools and bcftools. </p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Task</p>
+<p><strong>Bonus Task 2</strong></p>
+<p>Next select a few samples and assess the quality of the underlying data, in line with the QC principles learnt on Day 2 (e.g. FastQC, KMC &amp; Trimmomatic). Following QC, repeat mapping and variant calling. Do you find the total number of variants identified remains the same or does this decrease? </p>
 </div>
 
 
