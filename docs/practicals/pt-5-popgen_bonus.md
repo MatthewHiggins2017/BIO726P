@@ -73,8 +73,8 @@ There are 14 **haploid** males and **two scaffolds** (`scaffold_1` and
     Create a project directory with the usual structure:
 
     ```
-    mkdir 2026-09-29-popgen_bonus_simple
-    cd 2026-09-29-popgen_bonus_simple
+    mkdir 2026-09-29-popgen_bonus
+    cd 2026-09-29-popgen_bonus
     mkdir input results tmp
     touch WHATIDID.txt
     ```
@@ -501,11 +501,6 @@ This is something you did *not* test in Part 5.
         across the whole scaffold because recombination is suppressed.
         `scaffold_2` behaves like a normal chromosome: FST is close to zero, there
         are no fixed differences, and LD is lower and falls with distance.
-
-!!! Info
-    Finished early? Try the full
-    [Part 6 (Bonus) - Population Genomics on the Command Line](pt-6-popgen_bonus.md),
-    which adds a genetic relationship matrix, sliding-window FST and LD pruning.
 
 ### **Files you should have produced**
 
