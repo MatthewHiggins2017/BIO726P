@@ -1,4 +1,4 @@
-# **Part 6 Bonus - Population Genomics with PLINK 2**
+# **Part 5 Bonus - Population Genomics with PLINK 2**
 
 ----------------------------------------------------------------------------
 
