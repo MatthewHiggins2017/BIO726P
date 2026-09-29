@@ -523,7 +523,7 @@ environment for demonstrating project-specific packages and versions.</p>
 <p><strong>This environment is for learning about Conda. You do not need to use it for the main SV analysis in this practical.</strong></p>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
-<p>For example lets assume on the Teaching Cluster we want run a SNP identification pipeline, for this we will need the [BowTie2 aligner - link] (https://anaconda.org/channels/bioconda/packages/bowtie2/overview) and <a href="https://anaconda.org/channels/bioconda/packages/bcftools/overview">bcftools - link</a>. To install these packages in a fresh environment you can use the following command! Review each component to ensure you understand what is going on! (To do this you can use <code>conda --help</code> and <code>conda create --help</code>).</p>
+<p>For example lets assume on the Teaching Cluster we want run a SNP identification pipeline, for this we will need the <a href="https://anaconda.org/channels/bioconda/packages/bowtie2/overview">BowTie2 aligner - link</a> and <a href="https://anaconda.org/channels/bioconda/packages/bcftools/overview">bcftools - link</a>. To install these packages in a fresh environment you can use the following command! Review each component to ensure you understand what is going on! (To do this you can use <code>conda --help</code> and <code>conda create --help</code>).</p>
 <div class="highlight"><pre><span></span><code>conda create -n SNP_Pipeline -c conda-forge -c bioconda bowtie2 bcftools -y
 </code></pre></div>
 <p>Activate it:</p>
@@ -636,7 +636,7 @@ grep &quot;^&gt;&quot; GCF_000002765.6_GCA_000002765_genomic.fna | head
 <p class="admonition-title">Task</p>
 <p>Now it is time to download the <em>Plasmodium falciparum</em> sequencing data for <strong>3 samples</strong> which you will be analysing in this assessment. The dataset is available on your AWS Instances and as such you must transfer it to the teaching cluster. To achieve this we will be using <strong>RSync</strong> (remote synchronisation). This is a command-line tool for copying and synchronising files between locations, including between your AWS instance and the teaching cluster. It compares the source and destination, transferring only new or changed files rather than copying everything each time</p>
 <p>1) First ensure your AWS Instances are switched on by going to  <a href="https://switch.genomicscourse.com/">https://switch.genomicscourse.com/</a></p>
-<p>2) Navigate into your input data sub-directory and subsequently run the Rsync Command. <strong>Remember to change matt to your username!</strong> </p>
+<p>2) Navigate into your input data sub-directory and subsequently run the Rsync Command. <strong>Remember to change matt to your username!</strong> Also, the first time you run this you maube prompted to add the known host, please press enter to accept this! </p>
 <div class="highlight"><pre><span></span><code>cd ~/BIO726P_Teaching_Cluster/input/
 rsync -avzP matt@matt.genomicscourse.com:&#39;/shared/data/Pf_*.fastq.gz&#39; ./ 
 </code></pre></div>
@@ -1204,92 +1204,7 @@ done
 </div>
 </div>
 <hr />
-<h1 id="11-troubleshooting-and-dependency-issues">11. Troubleshooting and dependency issues</h1>
-<p>Unlike earlier, conda environments do not always solve perfectly on the first attempt, especially if package versions are constrained. </p>
-<p>This matters when you want to return to the same project for a second analysis pass, because later tools may need a different software stack from the one used for the main SV workflow. A common example is <code>medaka</code>, which is often used for polishing and can require a different Python version from the environment you created for NanoPlot, minimap2, samtools, and Sniffles.</p>
-<div class="admonition task">
-<p class="admonition-title">Task</p>
-<p>To demonstrate a package conflict try to install medaka using the command below in your <code>sv_nanopore</code> environment.  </p>
-<div class="highlight"><pre><span></span><code>conda install -c bioconda medaka
-</code></pre></div>
-<p>This may take 1-2 minutes as conda tries to resolve the necessary dependancies. However eventually you should get an error like this:</p>
-<div class="highlight"><pre><span></span><code>conda install -c bioconda medaka
-    Channels:
-    - bioconda
-    - conda-forge
-    Platform: linux-64
-    Collecting package metadata (repodata.json): done
-    Solving environment: failed
-
-    LibMambaUnsatisfiableError: Encountered problems while solving:
-    - nothing provides tensorflow 1.12.0 needed by medaka-0.5.2-py36h2b5150b_0
-
-    Could not solve for environment specs
-    The following packages are incompatible
-    ├─ medaka =* * is installable with the potential options
-    │  ├─ medaka [0.10.0|0.10.1|...|1.2.2] would require
-    │  │  └─ python &gt;=3.6,&lt;3.7.0a0 *, which can be installed;
-    │  ├─ medaka [0.5.2|0.6.0|...|0.7.0] would require
-    │  │  └─ tensorflow ==1.12.0 *, which does not exist (perhaps a missing channel);
-    │  ├─ medaka [1.1.1|1.1.2|...|1.2.2] would require
-    │  │  └─ python &gt;=3.7,&lt;3.8.0a0 *, which can be installed;
-    │  ├─ medaka [1.1.1|1.1.2|...|2.1.0] would require
-    │  │  └─ python &gt;=3.8,&lt;3.9.0a0 *, which can be installed;
-    │  ├─ medaka [1.10.0|1.11.0|...|2.2.1] would require
-    │  │  └─ python &gt;=3.10,&lt;3.11.0a0 *, which can be installed;
-    │  ├─ medaka [1.10.0|1.11.0|...|2.1.1] would require
-    │  │  └─ python &gt;=3.9,&lt;3.10.0a0 *, which can be installed;
-    │  ├─ medaka [1.2.3|1.2.5|...|1.6.1] would require
-    │  │  └─ tensorflow =2.2 *, which does not exist (perhaps a missing channel);
-    │  ├─ medaka [2.0.0|2.0.1|2.1.1|2.2.0|2.2.1] would require
-    │  │  └─ python &gt;=3.11,&lt;3.12.0a0 *, which can be installed;
-    │  └─ medaka [2.1.1|2.2.0|2.2.1|2.2.2] would require
-    │     └─ python &gt;=3.12,&lt;3.13.0a0 *, which can be installed;
-    └─ pin on python =3.13 * is not installable because it requires
-    └─ python =3.13 *, which conflicts with any installable versions previously reported.
-
-    Pins seem to be involved in the conflict. Currently pinned specs:
-    - python=3.13
-</code></pre></div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Question</label><label for="__tabbed_20_2">Answer</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Based on the error message obtained what is the main problem?</p>
-</div>
-<div class="tabbed-block">
-<p>The main problem is a Python version pin conflict. The environment is pinned to <code>python=3.13</code>, but the available <code>medaka</code> builds require older Python versions and specific TensorFlow dependencies, so Conda cannot find a compatible set of packages.</p>
-<p>In practice, the fix is usually to keep the structural-variant workflow environment unchanged and create a separate environment for the follow-up tool rather than forcing everything into one install.</p>
-<p><strong>Follow the steps outlined previously and create a new conda environment with <code>medaka</code> installed!</strong></p>
-</div>
-</div>
-</div>
-</div>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Question</label><label for="__tabbed_21_2">Answer</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>If Conda reports a dependency conflict, what are some sensible next steps?</p>
-</div>
-<div class="tabbed-block">
-<p>You can try creating a fresh environment, changing the package version, changing channel priority, installing fewer packages at once, or using <code>mamba</code> to obtain a clearer solver result.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>A good long-term habit is to export your environment once it works, especially if you want to move the analysis to another machine or recreate it later.</p>
-<p>This creates a record of the software versions used in the analysis:</p>
-<div class="highlight"><pre><span></span><code>conda env export &gt; sv_nanopore_environment.yml
-</code></pre></div>
-<p>You can then use this file as a reference when rebuilding the environment elsewhere.</p>
-</div>
-<hr />
-<h1 id="12-summary">12. Summary</h1>
+<h1 id="11-summary">11. Summary</h1>
 <p>In this practical you have:</p>
 <ul>
 <li>accessed a remote Linux environment,</li>
@@ -1301,7 +1216,7 @@ done
 </ul>
 <p>These are core skills that transfer directly to larger bioinformatics projects on HPC / cloud systems.</p>
 <hr />
-<h1 id="13-extension-questions-tasks">13. Extension Questions &amp; Tasks</h1>
+<h1 id="12-extension-questions-tasks">12. Extension Questions &amp; Tasks</h1>
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p><strong>Bonus</strong></p>
