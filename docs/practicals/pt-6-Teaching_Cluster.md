@@ -217,7 +217,7 @@ You will now create a separate Conda environment to demonstrate how software env
 **This environment is for learning about Conda. You do not need to use it for the main SV analysis in this practical.**
 
 !!! Task
-    For example lets assume on the Teaching Cluster we want run a SNP identification pipeline, for this we will need the [BowTie2 aligner - link] (https://anaconda.org/channels/bioconda/packages/bowtie2/overview) and [bcftools - link](https://anaconda.org/channels/bioconda/packages/bcftools/overview). To install these packages in a fresh environment you can use the following command! Review each component to ensure you understand what is going on! (To do this you can use `conda --help` and `conda create --help`).
+    For example lets assume on the Teaching Cluster we want run a SNP identification pipeline, for this we will need the [BowTie2 aligner - link](https://anaconda.org/channels/bioconda/packages/bowtie2/overview) and [bcftools - link](https://anaconda.org/channels/bioconda/packages/bcftools/overview). To install these packages in a fresh environment you can use the following command! Review each component to ensure you understand what is going on! (To do this you can use `conda --help` and `conda create --help`).
 
     ```
     conda create -n SNP_Pipeline -c conda-forge -c bioconda bowtie2 bcftools -y
@@ -374,12 +374,14 @@ We now need a reference genome for *Plasmodium falciparum* 3D7. To source this w
     1) First ensure your AWS Instances are switched on by going to  [https://switch.genomicscourse.com/](https://switch.genomicscourse.com/)
 
 
-    2) Navigate into your input data sub-directory and subsequently run the Rsync Command. **Remember to change matt to your username!** 
+    2) Navigate into your input data sub-directory and subsequently run the Rsync Command. **Remember to change matt to your username!** Also, the first time you run this you maube prompted to add the known host, please press enter to accept this! 
 
     ```
     cd ~/BIO726P_Teaching_Cluster/input/
     rsync -avzP matt@matt.genomicscourse.com:'/shared/data/Pf_*.fastq.gz' ./ 
     ```
+
+    
     
     3) Check the file exists and inspect the first read:
 
@@ -1010,101 +1012,7 @@ The first version of the script below automates only the early preprocessing ste
 
 ------------------------
 
-# 11. Troubleshooting and dependency issues 
-
-Unlike earlier, conda environments do not always solve perfectly on the first attempt, especially if package versions are constrained. 
-
-This matters when you want to return to the same project for a second analysis pass, because later tools may need a different software stack from the one used for the main SV workflow. A common example is `medaka`, which is often used for polishing and can require a different Python version from the environment you created for NanoPlot, minimap2, samtools, and Sniffles.
-
-!!! Task 
-    To demonstrate a package conflict try to install medaka using the command below in your `sv_nanopore` environment.  
-
-    ```
-    conda install -c bioconda medaka
-    ```
-
-    This may take 1-2 minutes as conda tries to resolve the necessary dependancies. However eventually you should get an error like this:
-
-    ```
-    conda install -c bioconda medaka
-        Channels:
-        - bioconda
-        - conda-forge
-        Platform: linux-64
-        Collecting package metadata (repodata.json): done
-        Solving environment: failed
-
-        LibMambaUnsatisfiableError: Encountered problems while solving:
-        - nothing provides tensorflow 1.12.0 needed by medaka-0.5.2-py36h2b5150b_0
-
-        Could not solve for environment specs
-        The following packages are incompatible
-        ├─ medaka =* * is installable with the potential options
-        │  ├─ medaka [0.10.0|0.10.1|...|1.2.2] would require
-        │  │  └─ python >=3.6,<3.7.0a0 *, which can be installed;
-        │  ├─ medaka [0.5.2|0.6.0|...|0.7.0] would require
-        │  │  └─ tensorflow ==1.12.0 *, which does not exist (perhaps a missing channel);
-        │  ├─ medaka [1.1.1|1.1.2|...|1.2.2] would require
-        │  │  └─ python >=3.7,<3.8.0a0 *, which can be installed;
-        │  ├─ medaka [1.1.1|1.1.2|...|2.1.0] would require
-        │  │  └─ python >=3.8,<3.9.0a0 *, which can be installed;
-        │  ├─ medaka [1.10.0|1.11.0|...|2.2.1] would require
-        │  │  └─ python >=3.10,<3.11.0a0 *, which can be installed;
-        │  ├─ medaka [1.10.0|1.11.0|...|2.1.1] would require
-        │  │  └─ python >=3.9,<3.10.0a0 *, which can be installed;
-        │  ├─ medaka [1.2.3|1.2.5|...|1.6.1] would require
-        │  │  └─ tensorflow =2.2 *, which does not exist (perhaps a missing channel);
-        │  ├─ medaka [2.0.0|2.0.1|2.1.1|2.2.0|2.2.1] would require
-        │  │  └─ python >=3.11,<3.12.0a0 *, which can be installed;
-        │  └─ medaka [2.1.1|2.2.0|2.2.1|2.2.2] would require
-        │     └─ python >=3.12,<3.13.0a0 *, which can be installed;
-        └─ pin on python =3.13 * is not installable because it requires
-        └─ python =3.13 *, which conflicts with any installable versions previously reported.
-
-        Pins seem to be involved in the conflict. Currently pinned specs:
-        - python=3.13
-    ```
-
-!!! Question
-
-    === "Question"
-
-        Based on the error message obtained what is the main problem?
-
-    === "Answer"
-
-        The main problem is a Python version pin conflict. The environment is pinned to `python=3.13`, but the available `medaka` builds require older Python versions and specific TensorFlow dependencies, so Conda cannot find a compatible set of packages.
-
-        In practice, the fix is usually to keep the structural-variant workflow environment unchanged and create a separate environment for the follow-up tool rather than forcing everything into one install.
-
-        **Follow the steps outlined previously and create a new conda environment with `medaka` installed!**
-
-
-!!! Question
-
-    === "Question"
-
-        If Conda reports a dependency conflict, what are some sensible next steps?
-
-    === "Answer"
-
-        You can try creating a fresh environment, changing the package version, changing channel priority, installing fewer packages at once, or using `mamba` to obtain a clearer solver result.
-
-
-!!! Info
-    A good long-term habit is to export your environment once it works, especially if you want to move the analysis to another machine or recreate it later.
-
-    This creates a record of the software versions used in the analysis:
-
-    ```
-    conda env export > sv_nanopore_environment.yml
-    ```
-
-    You can then use this file as a reference when rebuilding the environment elsewhere.
-
-------------------------
-
-# 12. Summary
+# 11. Summary
 
 In this practical you have:
 
@@ -1119,7 +1027,7 @@ These are core skills that transfer directly to larger bioinformatics projects o
 
 ------------------------
 
-# 13. Extension Questions & Tasks
+# 12. Extension Questions & Tasks
 
 !!! Task 
 
