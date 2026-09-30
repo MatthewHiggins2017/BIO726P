@@ -596,7 +596,7 @@ dependencies:
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p><strong>Important</strong> - When you are finished exploring and using the environment remember to deactivate it! We wont need these tools in the following session for structural variant analysis. </p>
-<div class="highlight"><pre><span></span><code>conda deactivate -n SNP_Pipeline
+<div class="highlight"><pre><span></span><code>conda deactivate 
 </code></pre></div>
 </div>
 <div class="admonition info">
@@ -650,7 +650,7 @@ zcat Pf_Sample_A.fastq.gz | head -n 4
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Question</label><label for="__tabbed_4_2">Answer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Looking at the rsync manual (<code>man rsync</code>) can you identify what the parameters <code>-avzP</code> were doing?</p>
+<p>Looking at the rsync manual (<code>rsync --help</code> or <code>man rsync</code>) can you identify what the parameters <code>-avzP</code> were doing? Note if the man command doesnt work, please see </p>
 </div>
 <div class="tabbed-block">
 <p><strong>-a (archive)</strong>: Preserves file permissions, modification times, and symlinks.
@@ -1225,7 +1225,13 @@ done
 <div class="admonition task">
 <p class="admonition-title">Task</p>
 <p><strong>Bonus</strong></p>
-<p>Can you find any bioinformatics software which is good at visualising structural variants and available in Conda? If so try download it and take a look at the SV identified via your sniffles analysis!   </p>
+<p>In today's practical, you used read mapping to identify structural variants. An alternative approach is to perform <em>de novo</em> assembly for each sample and then compare the whole assemblies against each other.</p>
+<p>Two tools you could use for this are:</p>
+<ul>
+<li><strong>Flye</strong> – a genome assembler designed for long reads such as Nanopore data. <a href="https://github.com/mikolmogorov/Flye">Flye - Link</a> - remember to install via bioconda!</li>
+<li><strong>Mauve</strong> – a tool for aligning and comparing genomes at the chromosome level. <a href="https://darlinglab.org/mauve/download.html">Mauve - Link</a> - remember to install via bioconda!</li>
+</ul>
+<p>Create a new Conda environment, install these tools into it, and use them to assemble and compare your samples. You will need to use each tool's manual and <code>--help</code> output to work out how to run them. </p>
 </div>
 
 
