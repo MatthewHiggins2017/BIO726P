@@ -316,7 +316,7 @@ Once an environment has been created, its configuration can be recorded.
     **Important** - When you are finished exploring and using the environment remember to deactivate it! We wont need these tools in the following session for structural variant analysis. 
 
     ```
-    conda deactivate -n SNP_Pipeline
+    conda deactivate 
     ```
 
 !!! Info
@@ -395,7 +395,7 @@ We now need a reference genome for *Plasmodium falciparum* 3D7. To source this w
 
     === "Question"
 
-        Looking at the rsync manual (`man rsync`) can you identify what the parameters `-avzP` were doing?
+        Looking at the rsync manual (`rsync --help` or `man rsync`) can you identify what the parameters `-avzP` were doing? Note if the man command doesnt work, please see 
 
     === "Answer"
         **-a (archive)**: Preserves file permissions, modification times, and symlinks.
@@ -1035,8 +1035,18 @@ These are core skills that transfer directly to larger bioinformatics projects o
 
     Try to source additional nanopore sequencing data for *Plasmodium falciparum*  from NCBI SRA (https://www.ncbi.nlm.nih.gov/sra) and analyse this! For example take a look at the sample (ERX15224754)
 
+
 !!! Task 
 
     **Bonus**
     
-    Can you find any bioinformatics software which is good at visualising structural variants and available in Conda? If so try download it and take a look at the SV identified via your sniffles analysis!   
+    In today's practical, you used read mapping to identify structural variants. An alternative approach is to perform *de novo* assembly for each sample and then compare the whole assemblies against each other.
+
+    Two tools you could use for this are:
+
+    * **Flye** – a genome assembler designed for long reads such as Nanopore data. [Flye - Link](https://github.com/mikolmogorov/Flye) - remember to install via bioconda!
+    * **Mauve** – a tool for aligning and comparing genomes at the chromosome level. [Mauve - Link](https://darlinglab.org/mauve/download.html) - remember to install via bioconda!
+
+    Create a new Conda environment, install these tools into it, and use them to assemble and compare your samples. You will need to use each tool's manual and `--help` output to work out how to run them. 
+
+
