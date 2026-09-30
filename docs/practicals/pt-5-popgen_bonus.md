@@ -82,8 +82,8 @@ There are 14 **haploid** males and **two scaffolds** (`scaffold_1` and
     Link in the VCF file from the genotyping practical:
 
     ```
-    ln -s ~/2026-09-29-genotyping/results/snp.vcf.gz input/
-    ln -s ~/2026-09-29-genotyping/results/snp.vcf.gz.tbi input/
+    ln -s ~/2026-09-28-genotyping/results/snp.vcf.gz input/
+    ln -s ~/2026-09-28-genotyping/results/snp.vcf.gz.tbi input/
     ```
 
     If you do not have these files, use the backups in `/shared/data/backup_vcf`.
